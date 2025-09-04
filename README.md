@@ -14,7 +14,7 @@ Algorithm implementations referenced in the textbook, organized by chapter and s
 - **Chapter 6**: Randomized algorithms (pattern matching, Rabin-Miller primality)
 - **Chapter 7**: Parallel algorithms in linear algebra (Gaussian elimination, lattice reduction)
 - **Chapter 8**: Machine learning
-- **Chapter 9**: Computational foundations (CYK algorithm)
+- **Chapter 9**: Computational foundations
 - **Chapter 10**: Mathematical foundations
 - **Additional algorithms**: Bellman-Ford, Berkowitz, Csanky, Dijkstra, PageRank, Quicksort, Merkle-Hellman
 
