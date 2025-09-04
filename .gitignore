@@ -2,6 +2,7 @@
 sync_numbering.py
 NUMBERING_REPORT.md
 numbering_mapping.json
+.gitignore
 
 # Python files
 *.pyc

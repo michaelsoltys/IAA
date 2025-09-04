@@ -6,13 +6,16 @@ This repository contains the companion materials for the book "Introduction to t
 
 ### 📂 Algorithms/
 Algorithm implementations referenced in the textbook, organized by chapter and section:
-- **Chapter 1**: Basic algorithms (Division, Euclidean GCD, Palindrome check, Ulam sequences, Gale-Shapley matching, Extended Euclidean algorithm, Powers of 2)
+- **Chapter 1**: Preliminaries (Division, Euclidean GCD, Palindrome check, Ulam sequences, Gale-Shapley matching, Extended Euclidean algorithm, Powers of 2)
 - **Chapter 2**: Greedy algorithms (Kruskal's MST, component merging, job scheduling, make change, Huffman coding)
 - **Chapter 3**: Divide & conquer (merge operations, mergesort, recursive binary multiplication, Savitch's theorem)
 - **Chapter 4**: Dynamic programming (longest subsequence, Floyd-Warshall, knapsack variants, activity selection)
-- **Chapter 6**: Number theory & cryptography (perfect matching, pattern matching, Rabin-Miller primality)
-- **Chapter 7**: Linear algebra algorithms (Gaussian elimination, lattice reduction)
-- **Chapter 8**: Context-free languages (CYK algorithm)
+- **Chapter 5**: Online algorithms
+- **Chapter 6**: Randomized algorithms (pattern matching, Rabin-Miller primality)
+- **Chapter 7**: Parallel algorithms in linear algebra (Gaussian elimination, lattice reduction)
+- **Chapter 8**: Machine learning
+- **Chapter 9**: Computational foundations (CYK algorithm)
+- **Chapter 10**: Mathematical foundations
 - **Additional algorithms**: Bellman-Ford, Berkowitz, Csanky, Dijkstra, PageRank, Quicksort, Merkle-Hellman
 
 Each algorithm directory typically contains:
