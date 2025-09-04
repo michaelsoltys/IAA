@@ -1,1 +1,1 @@
-alg:whatis2
+alg:powers2

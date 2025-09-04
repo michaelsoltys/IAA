@@ -1,7 +1,5 @@
 # Synchronization tools - keep local only
-sync_numbering.py
-NUMBERING_REPORT.md
-numbering_mapping.json
+util/
 
 # Python files
 *.pyc

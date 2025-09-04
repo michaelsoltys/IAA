@@ -65,3 +65,5 @@ Each solution directory contains:
 
 ## Book Information
 This companion site supports "Introduction to the Analysis of Algorithms" by Michael Soltys. The materials provide practical implementations and detailed solutions to complement the theoretical foundations presented in the textbook.
+
+**Note**: All numbering references (problems, exercises, algorithms) correspond to the **4th edition** of the book.
