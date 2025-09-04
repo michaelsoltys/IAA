@@ -1,0 +1,25 @@
+# Synchronization tools - keep local only
+sync_numbering.py
+NUMBERING_REPORT.md
+numbering_mapping.json
+
+# Python files
+*.pyc
+__pycache__/
+*.ipynb_checkpoints
+
+# LaTeX files (from Slides)
+Slides/Makefile
+Slides/Makefile.old
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+
+# Solutions files
+*.swp
+*.blg
+*.dvi
+*.bbl
