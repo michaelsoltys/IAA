@@ -1,0 +1,19 @@
+
+%Solution to 5.1.1c in Sipser
+$L=\{ww:w\in\{0,1\}^*\}$ is not CF, but $L^c$ is CF.  So CFLs are not
+close under complementation either.
+
+We design a CFG for $L^c$.  First note that no odd strings are of the
+form $ww$, so the first rule should be:
+\begin{align*}
+& S\longrightarrow O|E \\
+& O\longrightarrow a|b|aaO|abO|baO|bbO
+\end{align*}
+here $O$ generates all the odd strings.
+
+$E$ generates
+even length strings not of the form $ww$, i.e., all strings of the
+form:
+\begin{verbatim}
+X=|_____0__|_____1__|  or  Y=|_____1__|_____0__|
+\end{verbatim}
