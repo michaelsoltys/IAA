@@ -10,7 +10,7 @@ REMOTE='184.169.244.79:~/Prof/wp-content/uploads/archive/Slides/'
 CHP=chp4
 
 # List of all chapter files
-CHAPTERS = chp0 chp1 chp2 chp3 chp4 chp5 chp6 chp7 chp9 chp10
+CHAPTERS = chp0 chp1 chp2 chp3 chp4 chp5 chp6 chp7 chp9.1-2 chp9.3 chp9.4 chp9.5 chp9appendix chp10
 TEX_FILES = $(CHAPTERS:%=%.tex)
 PDF_FILES = $(CHAPTERS:%=%.pdf)
 
