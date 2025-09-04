@@ -1,6 +1,14 @@
 # Introduction to the Analysis of Algorithms - Companion Site
 
-This repository contains the companion materials for the book "Introduction to the Analysis of Algorithms" by Michael Soltys. The materials are organized into three main directories:
+## Book Information
+
+<img src="Slides/figures/Soltys-4th-Algorithms.pdf" alt="Introduction to the Analysis of Algorithms - 4th Edition" width="300" align="right">
+
+This companion site supports "Introduction to the Analysis of Algorithms" by Michael Soltys. The materials provide practical implementations and detailed solutions to complement the theoretical foundations presented in the textbook.
+
+**Note**: All numbering references (problems, exercises, algorithms) correspond to the **4th edition** of the book.
+
+This repository contains the companion materials organized into three main directories:
 
 ## Directory Structure
 
@@ -63,7 +71,3 @@ Each solution directory contains:
 2. Check `Solutions/` for worked examples of textbook problems  
 3. View `Slides/` for presentation materials covering theoretical concepts
 
-## Book Information
-This companion site supports "Introduction to the Analysis of Algorithms" by Michael Soltys. The materials provide practical implementations and detailed solutions to complement the theoretical foundations presented in the textbook.
-
-**Note**: All numbering references (problems, exercises, algorithms) correspond to the **4th edition** of the book.
