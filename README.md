@@ -44,7 +44,6 @@ LaTeX presentation slides for each chapter of the book:
 - Compiled PDF versions of each chapter/section
 - `figures/` subdirectory with diagrams, photos, and illustrations
 - Common styling and title templates
-- Makefile for compilation (supports all chapter subdivisions)
 
 ### 📂 Solutions/
 Worked solutions to selected textbook problems, organized by problem number:
