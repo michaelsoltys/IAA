@@ -2,7 +2,7 @@
 
 ## Book Information
 
-<img src="Slides/figures/Soltys-4th-Algorithms.jpg" alt="Introduction to the Analysis of Algorithms - 4th Edition" width="300" align="right">
+<img src="Soltys-4th-Algorithms.jpg" alt="Introduction to the Analysis of Algorithms - 4th Edition" width="300" align="right">
 
 This companion site supports "Introduction to the Analysis of Algorithms" by Michael Soltys. The materials provide practical implementations and detailed solutions to complement the theoretical foundations presented in the textbook.
 
