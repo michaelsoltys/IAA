@@ -36,13 +36,13 @@ Each algorithm directory typically contains:
 
 ### 📂 Slides/
 LaTeX presentation slides for each chapter of the book:
-- Individual chapter files (`chp0.tex` through `chp10.tex`)
+- Individual chapter files (`chp0.pdf` through `chp10.pdf`)
 - **Chapter 9** is divided into focused sections:
-  - `chp9.1-2.tex` - Sections 9.1-9.2: Alphabets, strings and languages
-  - `chp9.3.tex` - Section 9.3: Regular Languages  
-  - `chp9.4.tex` - Context-Free Languages
-  - `chp9.5.tex` - Turing Machines
-  - `chp9appendix.tex` - Lambda-calculus and recursive functions (appendix)
+  - `chp9.1-2.pdf` - Sections 9.1-9.2: Alphabets, strings and languages
+  - `chp9.3.pdf` - Section 9.3: Regular Languages  
+  - `chp9.4.pdf` - Context-Free Languages
+  - `chp9.5.pdf` - Turing Machines
+  - `chp9appendix.pdf` - Lambda-calculus and recursive functions (appendix)
 - Compiled PDF versions of each chapter/section
 - `figures/` subdirectory with diagrams, photos, and illustrations
 - Common styling and title templates
