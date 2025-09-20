@@ -43,8 +43,6 @@ LaTeX presentation slides for each chapter of the book:
   - `chp9.4.pdf` - Context-Free Languages
   - `chp9.5.pdf` - Turing Machines
   - `chp9appendix.pdf` - Lambda-calculus and recursive functions (appendix)
-- Compiled PDF versions of each chapter/section
-- `figures/` subdirectory with diagrams, photos, and illustrations
 - Common styling and title templates
 
 ### 📂 Solutions/
