@@ -42,7 +42,7 @@ Find the maximum total weight that fits in the knapsack.
 
 <v-click>
 
-**Key Note:** This is an $\NP$-hard problem, so we cannot expect a polynomial-time solution in general.
+**Key Note:** This is an $\textbf{NP}$-hard problem, so we cannot expect a polynomial-time solution in general.
 
 </v-click>
 
@@ -127,11 +127,6 @@ $$R(i,j) = \text{true} \iff R(i-1,j) = \text{true} \vee (j \geq w_i \wedge R(i-1
 | 2 ($w_2=4$) | T | F | F | T | **T** | F | F | **T** | F | F | F |
 | 3 ($w_3=5$) | T | F | F | T | T | **T** | F | T | **T** | **T** | **T** |
 
-<v-click>
-
-**Answer:** $M = 10$ (we can fit all objects: $3+4+5=12 > 10$, so max is $5+5=10$? No, $3+4+5=12$, but capacity is 10, so $5+4=9$ or $5+3=8$ or $4+3=7$. Actually $3+4=7, 5+4=9, 5+3=8, 5+5$ invalid. Max is 9.)
-
-</v-click>
 
 ---
 
@@ -221,7 +216,7 @@ $$C = 2^{\log C} \text{ (exponential in bits needed)}$$
 
 # Approximation Algorithms
 
-Since SKS is $\NP$-hard, we cannot solve it optimally in general.
+Since SKS is $\textbf{NP}$-hard, we cannot solve it optimally in general.
 
 **Compromise:** Design an algorithm that:
 - Runs in polynomial time
