@@ -4,13 +4,13 @@ class: text-center
 highlighter: shiki
 lineNumbers: true
 info: |
-  ## Chapter 0: Welcome
+  ## COMP/MATH 354: Analysis of Algorithms
   An Introduction to the Analysis of Algorithms (4th Edition)
   Michael Soltys
 drawings:
   persist: false
 transition: slide-left
-title: Welcome - Introduction to the Analysis of Algorithms
+title: COMP/MATH 354 - Analysis of Algorithms
 mdc: true
 ---
 
@@ -24,15 +24,40 @@ mdc: true
 }
 </style>
 
-# Welcome
+# COMP/MATH 354
 
-An Introduction to the Analysis of Algorithms
+Analysis of Algorithms
 
 ---
 
-# Course
+# Instructor
 
-**An Introduction to the Analysis of Algorithms**
+**Michael Soltys**
+
+<v-clicks>
+
+- Email: michael.soltys@csuci.edu
+- Office: Shasta Hall 2611
+- Office Hours: Thursdays 11:30–2:30 or by appointment
+- Lecture: Wednesdays 6:00–7:00
+
+</v-clicks>
+
+---
+
+# Prerequisites
+
+<v-clicks>
+
+- **MATH 300** (Discrete Math)
+- Some computer programming experience
+- We will implement algorithms in **Python 3**
+
+</v-clicks>
+
+---
+
+# Textbook
 
 <div class="flex gap-8 mt-8 justify-center">
 <div class="text-center">
@@ -47,7 +72,7 @@ An Introduction to the Analysis of Algorithms
 
 <v-click>
 
-**Repository:** https://github.com/michaelsoltys/IAA
+**Code Repository:** https://github.com/michaelsoltys/IAA-Code
 
 </v-click>
 
@@ -57,23 +82,30 @@ An Introduction to the Analysis of Algorithms
 
 <v-clicks>
 
-1. **Preliminaries:** division, Euclid, Palindromes, etc.; complexity, and ranking algorithms
-2. **Greedy algorithms:** spanning trees, jobs, shortest path, Huffman codes, etc.
-3. **Divide and Conquer:** mergesort, Savitch's algorithm, etc.
-4. **Dynamic Programming:** longest monotone subsequence, knapsack problem, activity selection, etc.
+1. **Correctness** — Pre/post-conditions, loop invariants, division, Euclid
+2. **Ranking Algorithms** — PageRank, Stable Marriage, Pairwise Comparisons
+3. **Greedy Algorithms** — Spanning trees, job scheduling, promising solutions
+4. **Divide and Conquer** — Mergesort, binary multiplication, Savitch's algorithm
+5. **Dynamic Programming** — LMS, shortest paths, knapsack, activity selection
 
 </v-clicks>
 
+<v-click>
+
+**Throughout:** Performance analysis (Big-O), implementation in Python 3
+
+</v-click>
+
 ---
 
-# Advanced material (COMP 554 only)
+# Grading
 
 <v-clicks>
 
-5. **Online Algorithms**
-6. **Randomized Algorithms**
-7. **Parallel Algorithms**
-8. **Machine Learning**
+- **Quizzes:** 8 quizzes × 5% = 40%
+- **Assignments:** 4 assignments × 5% = 20%
+- **Midterms:** 2 midterms × 10% = 20%
+- **Final Exam:** 20% (cumulative)
 
 </v-clicks>
 
@@ -122,14 +154,27 @@ A BBC Documentary by Marcus Du Sautoy
 
 ---
 
-# Student Learning Outcome (SLO)
+# Student Learning Outcomes (SLOs)
 
-Measured for the COMP 354 assessment
-(ABET accreditation requirement)
+Upon successful completion you will be able to:
+
+<v-clicks>
+
+1. **Design** algorithms using greedy, divide-and-conquer, and dynamic programming
+2. **Analyze** performance using worst-case complexity and Big-O notation
+3. **Prove** correctness of algorithms
+
+</v-clicks>
+
+---
+
+# Assessment (ABET SLO 1)
+
+Measured for the COMP/MATH 354 assessment (ABET accreditation requirement)
 
 <v-click>
 
-> Analyze a complex computing problem and to apply principles of computing and other relevant disciplines to identify solutions.
+> Analyze a complex computing problem and apply principles of computing and other relevant disciplines to identify solutions.
 
 </v-click>
 
@@ -151,38 +196,10 @@ All three rubric rows will be measured by corresponding questions on the final e
 
 <v-clicks>
 
-- **Design Question:** A problem is posed; choose one of the three basic algorithm design techniques and present the solution in clear pseudo-code
+- **Design Question:** Choose a design technique and present solution in pseudo-code
 
-- **Performance Question:** An algorithm is posed; evaluate time and/or space complexity in worst-case Big-O notation, including tradeoffs
+- **Performance Question:** Evaluate time/space complexity in Big-O notation with trade-offs
 
-- **Correctness Question:** Given a problem, provide an algorithmic solution with proof of correctness, showing the algorithm solves the problem
-
-</v-clicks>
-
----
-
-# Grading Criteria
-
-All questions will designate how to measure the answer:
-
-<v-clicks>
-
-- **Unsatisfactory**
-- **Developing**
-- **Satisfactory**
-- **Exemplary**
-
-</v-clicks>
-
----
-
-# Let's Begin!
-
-<v-clicks>
-
-- Review the textbook and code repository
-- Familiarize yourself with the course outline
-- Prepare for algorithm design, analysis, and correctness proofs
-- Next: Chapter 1 - Preliminaries
+- **Correctness Question:** Provide algorithmic solution with proof of correctness
 
 </v-clicks>
