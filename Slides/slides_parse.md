@@ -32,7 +32,7 @@ From Theory to Practice
 
 <v-click>
 
-CFG Specification --> Parser Generator --> Working Parser
+CFG Specification → Parser Generator → Working Parser
 
 </v-click>
 
@@ -76,9 +76,9 @@ A Context-Free Grammar consists of:
 
 Example productions:
 
-- value --> STRING or NUMBER or object or array
-- object --> empty braces or braces with members
-- array --> empty brackets or brackets with elements
+- value → STRING or NUMBER or object or array
+- object → empty braces or braces with members
+- array → empty brackets or brackets with elements
 
 </v-click>
 
@@ -110,13 +110,13 @@ Example productions:
 
 Source Code
 
---> Flex/Lex (regex rules)
+→ Flex/Lex (regex rules)
 
---> Token Stream
+→ Token Stream
 
---> Bison/Yacc (CFG rules)
+→ Bison/Yacc (CFG rules)
 
---> Parse Result
+→ Parse Result
 
 </v-click>
 
@@ -160,6 +160,197 @@ This connects to **Context-Free Grammars** (Chapter 9.4)!
 
 ---
 
+# Lex vs Flex
+
+<div class="grid grid-cols-2 gap-8">
+<div>
+
+**Lex** (original, 1975)
+- Created at Bell Labs
+- Part of original Unix
+- Proprietary versions exist
+
+</div>
+<div>
+
+**Flex** (modern, 1987)
+- "Fast Lexical Analyzer"
+- Open source replacement
+- Faster and more features
+- What you should use today
+
+</div>
+</div>
+
+<v-click>
+
+**Both use the same .l file format!**
+
+</v-click>
+
+---
+
+# Flex/Lex Code Example
+
+**File: json_lexer.l**
+
+```
+%%
+"true"          { return TRUE; }
+"false"         { return FALSE; }
+"null"          { return NULL_VAL; }
+[0-9]+          { return NUMBER; }
+[ \t\n]+        { /* skip whitespace */ }
+.               { return yytext[0]; }
+%%
+```
+
+<v-click>
+
+**Structure:** Pattern on left, action on right
+
+Each line: **regex** → **C code to execute**
+
+</v-click>
+
+---
+
+# Understanding Flex Rules
+
+| Pattern | Meaning | Token Returned |
+|---------|---------|----------------|
+| "true" | Literal string | TRUE |
+| "false" | Literal string | FALSE |
+| [0-9]+ | One or more digits | NUMBER |
+| [ \t\n]+ | Whitespace | (skip) |
+| . | Any other character | The character itself |
+
+<v-click>
+
+**Key insight:** These are **regular expressions** - the theory from Chapter 9.3!
+
+</v-click>
+
+---
+
+# Yacc vs Bison
+
+<div class="grid grid-cols-2 gap-8">
+<div>
+
+**Yacc** (original, 1975)
+- "Yet Another Compiler-Compiler"
+- Created at Bell Labs
+- LALR(1) parser generator
+
+</div>
+<div>
+
+**Bison** (modern, 1985)
+- GNU replacement for Yacc
+- Backward compatible
+- Additional features (GLR parsing)
+- What you should use today
+
+</div>
+</div>
+
+<v-click>
+
+**Both use the same .y file format!**
+
+</v-click>
+
+---
+
+# Bison/Yacc Code Example
+
+**File: json_parser.y**
+
+```
+%%
+json: value ;
+
+value: STRING
+     | NUMBER
+     | TRUE
+     | FALSE
+     | object
+     | array
+     ;
+
+object: LBRACE RBRACE
+      | LBRACE members RBRACE
+      ;
+%%
+```
+
+---
+
+# Understanding Bison Rules
+
+**Rule structure:** non-terminal: alternatives ;
+
+| Rule | Meaning |
+|------|---------|
+| json: value | A JSON doc is a value |
+| value: STRING or NUMBER... | Value can be several things |
+| object: LBRACE RBRACE | Empty braces = empty object |
+| object: LBRACE members RBRACE | Braces with members inside |
+
+<v-click>
+
+**Key insight:** These are **CFG production rules** - the theory from Chapter 9.4!
+
+</v-click>
+
+---
+
+# Complete File Structure
+
+<div class="grid grid-cols-2 gap-4">
+<div>
+
+**Flex file (.l)**
+
+```
+%{
+  /* C declarations */
+  #include "parser.tab.h"
+%}
+%%
+  /* regex rules */
+%%
+  /* C functions */
+```
+
+</div>
+<div>
+
+**Bison file (.y)**
+
+```
+%{
+  /* C declarations */
+%}
+%token STRING NUMBER
+%%
+  /* grammar rules */
+%%
+  /* C functions */
+```
+
+</div>
+</div>
+
+<v-click>
+
+Both have three sections separated by %%
+
+</v-click>
+
+---
+
 # JSON Grammar in Bison
 
 <div class="grid grid-cols-2 gap-4">
@@ -167,12 +358,12 @@ This connects to **Context-Free Grammars** (Chapter 9.4)!
 
 **CFG (Theory)**
 
-- json --> value
-- value --> STRING or NUMBER or TRUE or FALSE or NULL or object or array
-- object --> empty or with members
-- members --> member or member, members
-- array --> empty or with elements
-- elements --> value or value, elements
+- json → value
+- value → STRING or NUMBER or TRUE or FALSE or NULL or object or array
+- object → empty or with members
+- members → member or member, members
+- array → empty or with elements
+- elements → value or value, elements
 
 </div>
 <div>
