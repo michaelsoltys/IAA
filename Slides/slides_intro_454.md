@@ -152,10 +152,15 @@ Three major topics:
   - Complete modules with all course material
 
 - **GitHub:** https://github.com/michaelsoltys/IAA
-  - Slides
-  - Solutions
-  - Summaries
+  - Slides, Solutions, Summaries
   - Implementations of Algorithms
+
+- **GitHub Classroom:** https://classroom.github.com/
+  - Assignment URL provided in Canvas
+  - Work directly in Codespaces
+
+- **YouTube:** https://www.youtube.com/playlist?list=PLZV4fOisnXZ4OmDurTxZAq9WA4Vv7NIHR
+  - Prerecorded lectures
 
 </v-clicks>
 
