@@ -144,6 +144,23 @@ Three major topics:
 
 ---
 
+# Resources
+
+<v-clicks>
+
+- **Canvas:** https://cilearn.csuci.edu/courses/33936
+  - Complete modules with all course material
+
+- **GitHub:** https://github.com/michaelsoltys/IAA
+  - Slides
+  - Solutions
+  - Summaries
+  - Implementations of Algorithms
+
+</v-clicks>
+
+---
+
 # Grading
 
 <v-clicks>
