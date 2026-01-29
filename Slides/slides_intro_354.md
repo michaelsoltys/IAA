@@ -45,7 +45,30 @@ Analysis of Algorithms
 
 ---
 
+# Algorithms
+
+<v-clicks>
+
+- **The word "algorithm"** comes from the 9th-century Persian mathematician al-Khwarizmi, whose name was Latinized to "Algoritmi"
+
+- **Euclid's GCD algorithm** (c. 300 BCE) is one of the oldest algorithms still in use today — over 2,300 years old! (Section 1.1.3)
+
+- **Google processes 8.5 billion searches per day**, each one relying on algorithms that return results in under 0.5 seconds (PageRank, Section 1.2.1)
+
+- **The Traveling Salesman Problem** with just 20 cities has over 60 quadrillion possible routes — algorithms help us avoid checking them all (NP, Section 4.4)
+
+- **Sorting algorithms** are estimated to use 25% of all computing cycles worldwide (Divide and Conquer, Section 3.1)
+
+- **Dynamic Programming** powers spell checkers, DNA sequence alignment, and GPS navigation — by remembering solutions to subproblems (Chapter 4)
+
+</v-clicks>
+
+---
+
 # Prerequisites
+
+<div class="flex gap-8">
+<div class="flex-1">
 
 <v-clicks>
 
@@ -54,6 +77,18 @@ Analysis of Algorithms
 - We will implement algorithms in **Python 3**
 
 </v-clicks>
+
+</div>
+<div class="flex-1">
+
+<div class="border rounded-lg p-4 bg-gray-50 text-sm">
+  <img src="./Figures/discrete_math.jpg" class="w-full rounded mb-2" />
+  <p class="italic">"Discrete mathematics I will always love you"</p>
+  <p class="text-gray-500 mt-2">— @Anthony_Bonato</p>
+</div>
+
+</div>
+</div>
 
 ---
 
@@ -65,14 +100,14 @@ Analysis of Algorithms
 <p>3rd Edition</p>
 </div>
 <div class="text-center">
-<img src="./Figures/IAA-ed4.png" class="h-60" />
+<img src="./Figures/IAA-ed4.jpg" class="h-60" />
 <p>4th Edition</p>
 </div>
 </div>
 
 <v-click>
 
-**Code Repository:** https://github.com/michaelsoltys/IAA-Code
+**Code Repository:** https://github.com/michaelsoltys/IAA
 
 </v-click>
 
