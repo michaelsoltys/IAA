@@ -65,7 +65,7 @@ Automata, Languages and Computation
 <p>3rd Edition</p>
 </div>
 <div class="text-center">
-<img src="./Figures/IAA-ed4.png" class="h-60" />
+<img src="./Figures/IAA-ed4.jpg" class="h-60" />
 <p>4th Edition</p>
 </div>
 </div>
@@ -74,7 +74,7 @@ Automata, Languages and Computation
 
 **We use Chapter 9** (PDF provided by instructor)
 
-**Code Repository:** https://github.com/michaelsoltys/IAA-Code
+**Code Repository:** https://github.com/michaelsoltys/IAA
 
 </v-click>
 
