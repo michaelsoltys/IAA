@@ -115,6 +115,9 @@ So: $111 \notin L_{01}$, but $001 \in L_{01}$
 
 <v-click>
 
+<div class="grid grid-cols-2 gap-4">
+<div>
+
 **Transition table:**
 
 | | $0$ | $1$ |
@@ -122,6 +125,16 @@ So: $111 \notin L_{01}$, but $001 \in L_{01}$
 | $q_0$ | $q_2$ | $q_0$ |
 | $\ast q_1$ | $q_1$ | $q_1$ |
 | $q_2$ | $q_2$ | $q_1$ |
+
+</div>
+<div>
+
+**Transition diagram:**
+
+<img src="/Figures/L01.drawio.svg" class="h-48" />
+
+</div>
+</div>
 
 </v-click>
 
@@ -191,7 +204,7 @@ Both encode the same information — use whichever is clearer
 
 where $(w)_b$ is the binary representation of $w \in \mathbb{N}$. What are their DFAs?
 
-**Exercise 4:** Design a DFA for a vending machine over alphabet $\{1¢, 5¢, 10¢, 25¢\}$ that accepts sequences of coins summing to a multiple of 25
+**Exercise 4:** Design a DFA for a vending machine over alphabet $\{\textcircled{1}, \textcircled{5}, \textcircled{10}, \textcircled{25}\}$ that accepts sequences of coins summing to a multiple of 25
 
 </v-clicks>
 
