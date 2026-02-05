@@ -14,16 +14,6 @@ title: Deterministic Finite Automata
 mdc: true
 ---
 
-<style>
-.slidev-layout.cover {
-  background: white !important;
-  color: black !important;
-}
-.slidev-layout.cover h1 {
-  color: black !important;
-}
-</style>
-
 # Deterministic Finite Automata
 
 Section 9.3.1 - Regular Languages
@@ -95,48 +85,55 @@ Otherwise, $A$ **rejects** $w$
 
 ---
 
-# Example: Language $L_{01}$
+# Example
 
-$$L_{01} = \{ w \mid w \text{ is of the form } x01y \in \Sigma^* \}$$
+A language with a DFA
 
-The set of strings over $\Sigma = \{0, 1\}$ that contain $01$ as a substring
+<div class="grid grid-cols-2 gap-8">
+<div>
 
-<v-click>
+$L_{01} = \{ w \mid w \text{ is of the form } x01y \in \Sigma^* \}$
+
+The set of strings over $\Sigma = \{0, 1\}$ containing $01$ as a substring
+
+<v-clicks>
 
 So: $111 \notin L_{01}$, but $001 \in L_{01}$
 
-</v-click>
+**DFA:** i
+- $\Sigma = \{0,1\}$
+- $Q = \{q_0, q_1, q_2\}$
+- $F = \{q_1\}$
 
-<v-click>
-
-**DFA:** $\Sigma = \{0,1\}$, $Q = \{q_0, q_1, q_2\}$, $F = \{q_1\}$
-
-</v-click>
-
-<v-click>
-
-<div class="grid grid-cols-2 gap-4">
-<div>
-
-**Transition table:**
-
-| | $0$ | $1$ |
-|---|---|---|
-| $q_0$ | $q_2$ | $q_0$ |
-| $\ast q_1$ | $q_1$ | $q_1$ |
-| $q_2$ | $q_2$ | $q_1$ |
+</v-clicks>
 
 </div>
 <div>
+
+<v-click>
+
+**Transition table:**
+$$
+\begin{array}{c||c|c}
+       & 0   & 1   \\\hline\hline
+q_0    & q_2 & q_0 \\\hline
+\ast q_1 & q_1 & q_1 \\\hline
+q_2    & q_2 & q_1
+\end{array}
+$$
+
+</v-click>
+
+<v-click>
 
 **Transition diagram:**
 
-<img src="/Figures/L01.drawio.svg" class="h-48" />
-
-</div>
-</div>
+<img src="/Figures/L01.drawio.svg" class="h-40" />
 
 </v-click>
+
+</div>
+</div>
 
 ---
 
