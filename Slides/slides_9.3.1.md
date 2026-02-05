@@ -128,7 +128,7 @@ $$
 
 **Transition diagram:**
 
-<img src="/Figures/L01.drawio.svg" class="h-40" />
+<img src="/Figures/L01.drawio.svg" class="h-50" />
 
 </v-click>
 
