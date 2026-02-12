@@ -39,6 +39,7 @@ Real-world matching problems:
 - Matching **interns** with **hospitals**
 - Matching **students** with **colleges**
 - The **admission process problem**
+- Matching **TAs** with **Slots** at the Learning Resource Center
 
 </v-clicks>
 
@@ -103,11 +104,7 @@ A pair $(b, g)$ is a **blocking pair** if:
 
 <v-click>
 
-```
-    b ----→ g
-    ↓   ✗   ↓
-  p_M(g)   p_M(b)
-```
+<img src="/Figures/BlockingPari.drawio.svg" class="mx-auto h-40" />
 
 Both $b$ and $g$ would rather be with each other than their current partners!
 
@@ -196,7 +193,7 @@ For s = 1 to |B| - 1 (Stage s+1):
         Else if g was engaged to b but g prefers b*:
             M ← (M - {(b, g)}) ∪ {(b*, g)}
             b* ← b
-            repeat from line 5
+            repeat from line 6
     Mₛ₊₁ ← M
 
 Return M_{|B|}

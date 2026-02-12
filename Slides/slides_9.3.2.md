@@ -140,9 +140,7 @@ $$\delta: Q \times (\Sigma \cup \{\varepsilon\}) \to \mathcal{P}(Q)$$
 
 An $\varepsilon$-NFA accepting decimal numbers like $3.14$, $51.$, $.14$, $+3.0$, $-0.5$ but **not** a bare decimal point:
 
-$$q_0 \xrightarrow{\varepsilon, +, -} q_1$$
-
-From $q_1$: two paths to handle digits before/after the decimal point
+<img src="/Figures/floating-point.drawio.svg" class="mx-auto h-48 my-4" />
 
 $\varepsilon$-transitions are convenient for **designing** NFAs by connecting sub-machines
 
