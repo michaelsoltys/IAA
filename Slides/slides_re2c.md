@@ -64,6 +64,8 @@ Regular Expression  →  RE2C  →  Optimized C Code (DFA)
 
 # RE2C vs Flex
 
+**Flex** = "Fast Lexical Analyzer Generator." Written by Vern Paxson (~1987) at Lawrence Berkeley Lab as a free replacement for AT&T's proprietary **Lex** (1975, Bell Labs). Flex generates table-driven scanners and is the classic Unix lexer tool, typically paired with Bison/Yacc for parsing.
+
 <div class="grid grid-cols-2 gap-8">
 <div>
 
@@ -98,6 +100,12 @@ Regular Expression  →  RE2C  →  Optimized C Code (DFA)
 Both implement the same theory: **Regular Expression → NFA → DFA → Code**
 
 </v-click>
+
+<!--
+The original Lex (1975) was co-created at Bell Labs by Mike Lesk and Eric Schmidt — the same Eric Schmidt who later became CEO of Google. So the roots of lexer generators trace back to the same Bell Labs Unix culture that gave us C, Unix, and grep.
+
+Flex was Paxson's clean-room rewrite — no shared code with Lex, but full input compatibility. The name is a playful acronym: Fast LEXical analyzer generator.
+-->
 
 ---
 
@@ -146,6 +154,10 @@ Notice: Regular expression patterns on the left, actions on the right!
 
 </v-click>
 
+<!--
+The code here is NOT commented out — `/*!re2c ... */` is RE2C's actual syntax. The `!` after `/*` is a special marker that tells the RE2C tool to process this block. It's designed this way so that the `.re` source file remains valid C code even before RE2C runs: if you accidentally compile with gcc directly, the regex rules are just harmless C comments — no compile errors. The pipeline is: write rules inside `/*!re2c ... */`, then run `re2c lexer.re -o lexer.c`, and RE2C replaces the comment block with generated C code (the goto-based DFA). Everything between `/*!re2c` and `*/` — the YYCTYPE config, named definitions (digit, letter), and the pattern/action rules — is RE2C's domain-specific language embedded inside what looks like a C comment.
+-->
+
 ---
 
 # How RE2C Works
@@ -165,6 +177,12 @@ Notice: Regular expression patterns on the left, actions on the right!
 **Key insight:** Each DFA state becomes a label, each transition becomes a `goto`!
 
 </v-click>
+
+<!--
+Thompson's construction is named after Ken Thompson, who described it in his 1968 paper "Programming Techniques: Regular expression search algorithm" (CACM). Thompson built one of the first practical regex engines using this algorithm — it powered the text editor QED and later ed, the standard Unix editor. The construction is beautifully recursive: each regex operator (concatenation, alternation, Kleene star) maps to a small NFA fragment with epsilon-transitions, and these fragments snap together like building blocks. The resulting NFA has at most 2n states for a regex of length n — linear size, which is why it's still the method of choice.
+
+Ken Thompson is also co-creator of Unix (with Dennis Ritchie), the B programming language, UTF-8 encoding, and the Go programming language. He won the Turing Award in 1983.
+-->
 
 ---
 
@@ -235,6 +253,33 @@ RE2C compiles this to a DFA with ~15-20 states!
 
 ---
 
+# Practical vs Formal RE Syntax
+
+The JSON regex uses **practical syntax** (POSIX/PCRE) — but it's all **syntactic sugar** over the three operations from Section 9.3.3
+
+| Practical | Meaning | Formal RE (Section 9.3.3) |
+|-----------|---------|--------------------------|
+| `R?` | zero or one | $(R + \varepsilon)$ |
+| `R+` | one or more | $R \cdot R^*$ |
+| `[0-9]` | character class | $(0 + 1 + 2 + \cdots + 9)$ |
+| `[a-z]` | character range | $(a + b + \cdots + z)$ |
+| `R\|S` | alternation | $R + S$ |
+
+<v-click>
+
+**Key point:** No new expressive power! Every practical regex can be rewritten using only $+$, $\cdot$ , and $*$
+
+The sugar just makes regexes readable — compare:
+
+```
+Practical:  -?(0|[1-9][0-9]*)
+Formal:     (- + ε)(0 + (1+2+...+9)(0+1+...+9)*)
+```
+
+</v-click>
+
+---
+
 # Performance Benefits
 
 <v-clicks>
@@ -285,6 +330,9 @@ Run `re2c lexer.re -o lexer.c` to generate C code!
 
 # RE2C in Real World
 
+<div class="grid grid-cols-2 gap-8">
+<div>
+
 <v-clicks>
 
 **PHP Language**
@@ -297,27 +345,44 @@ Run `re2c lexer.re -o lexer.c` to generate C code!
 - RE2C parses build files quickly
 
 **Other uses:**
-- Protocol parsers, log analyzers, data validators
+- SpamAssassin, YASM assembler, BRL-CAD
 
 </v-clicks>
+
+</div>
+<div>
+
+<v-clicks>
+
+**Origins (1993)**
+- Created by Peter Bumbulis at U. of Waterloo
+- Published with Donald Cowan (1994 paper)
+- Name literally means "RE to C"
+
+**Why it won**
+- PHP chose RE2C over Flex because the generated lexer was 2-3x faster — at web scale that matters
+- Now targets 12+ languages: C, C++, Go, Rust, Java, Python, JS, Haskell, OCaml, D, Swift, Zig
+
+**Under the hood**
+- Uses *lookahead TDFA* for submatch extraction
+- Builds *tunnel automata* to shrink output
+
+</v-clicks>
+
+</div>
+</div>
+
+<!--
+YASM is a rewrite of NASM (Netwide Assembler) — an open-source x86/x86-64 assembler. It supports multiple syntaxes (NASM, GAS/AT&T) and output formats (ELF, COFF, Mach-O). It uses RE2C for lexing assembly source code — parsing mnemonics, registers, operands, and directives. Assembly syntax is surprisingly tricky to lex due to context-dependent tokens, so a fast lexer matters. YASM was popular in the 2000s-2010s (FFmpeg/libav used it for hand-written SIMD routines).
+
+BRL-CAD is an open-source solid modeling CAD system originally developed by the U.S. Army Research Laboratory (now DEVCOM ARL). It's been in continuous development since 1979, making it one of the oldest open-source projects.
+-->
 
 ---
 
 # Theory to Practice Pipeline
 
-```
-1. Define patterns as regular expressions
-       ↓
-2. RE2C builds NFA (Thompson's construction)
-       ↓
-3. Convert to DFA (subset construction)
-       ↓
-4. Minimize DFA (Hopcroft's algorithm)
-       ↓
-5. Generate direct-coded scanner
-       ↓
-6. Compile and run at high speed!
-```
+![Theory to Practice Pipeline](./Figures/t2p-pipeline.drawio.svg)
 
 <v-click>
 

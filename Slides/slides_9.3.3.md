@@ -189,6 +189,14 @@ Convert RE $R$ to an $\varepsilon$-NFA using **structural induction**
 
 </v-click>
 
+<!--
+This structural induction construction is known as **Thompson's construction**, after Ken Thompson, who described it in his 1968 CACM paper "Programming Techniques: Regular expression search algorithm." Thompson used it to build one of the first practical regex engines, which powered the text editor QED and later ed — the standard Unix line editor (the "ed" in sed, grep's ancestor).
+
+Thompson is one of the towering figures of CS. With Dennis Ritchie he created Unix (1969) and the B programming language (precursor to C). He later co-created UTF-8 encoding and the Go programming language. He won the Turing Award in 1983. His classic book with Ritchie — "The UNIX Programming Environment" (1984, co-authored with Rob Pike) — wait, actually the famous book is "The Unix Programming Environment" by Kernighan and Pike (1984). Thompson and Ritchie's iconic contribution was the paper "The UNIX Time-Sharing System" (1974, CACM). The whole ecosystem — Unix, C, regex, grep, lex — grew from the same Bell Labs culture of the 1970s.
+
+The beauty of Thompson's construction is that it produces an NFA with at most 2n states for a regex of length n (linear!), and the three invariants we maintain are exactly what make the inductive step work cleanly.
+-->
+
 ---
 
 # RE to $\varepsilon$-NFA: Basis Case

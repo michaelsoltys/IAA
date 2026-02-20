@@ -104,7 +104,7 @@ A pair $(b, g)$ is a **blocking pair** if:
 
 <v-click>
 
-<img src="/Figures/BlockingPari.drawio.svg" class="mx-auto h-40" />
+<img src="/Figures/BlockingPair.drawio.svg" class="mx-auto h-40" />
 
 Both $b$ and $g$ would rather be with each other than their current partners!
 
