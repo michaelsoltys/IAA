@@ -175,13 +175,7 @@ Like old cartographers mapping unknown territory!
 
 **Expanding the frontier:**
 
-```
-        ┌─────────────────────┐
-        │    Explored S       │
-    s ══╪══> ... ══> u ───────┼──> v
-        │                     │
-        └─────────────────────┘
-```
+![Expanding the frontier: explored set S with path from s through u to unexplored v](Figures/explored.drawio.svg)
 
 </v-click>
 
@@ -297,17 +291,7 @@ Fixed-length: 6 chars → 3 bits each → 300 bits total
 
 # Huffman Tree Example
 
-```
-              100
-             /   \
-           a:44   56
-                 /   \
-               25     31
-              /  \   /  \
-           c:11 b:14 14  d:17
-                    /  \
-                  f:6  e:8
-```
+![Huffman tree for {a:44, b:14, c:11, d:17, e:8, f:6} with root 100](Figures/huffman.drawio.svg)
 
 <v-click>
 
