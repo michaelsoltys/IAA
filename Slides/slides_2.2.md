@@ -125,23 +125,34 @@ A scientific confirmation of the benefits of **procrastination**!
 
 # Example
 
+<div class="grid grid-cols-2 gap-4">
+<div>
+
 Jobs: $(d_1, g_1) = (1, 10)$, $(d_2, g_2) = (1, 10)$, $(d_3, g_3) = (2, 8)$, $(d_4, g_4) = (2, 8)$
 
 <v-clicks>
 
-- Latest deadline $d = 2$, so slots: $|\ \ |\ \ |$
-- Job 1 ($g=10$, $d=1$): Schedule at slot 1 → $|1|\ |$
-- Job 2 ($g=10$, $d=1$): Slot 1 full, can't schedule before deadline
-- Job 3 ($g=8$, $d=2$): Schedule at slot 2 → $|1|3|$
-- Job 4 ($g=8$, $d=2$): No free slots before deadline
+- Latest deadline $d = 2$
+- Job 1 ($g=10$, $d=1$): slot 1
+- Job 2 ($g=10$, $d=1$): can't schedule
+- Job 3 ($g=8$, $d=2$): slot 2
+- Job 4 ($g=8$, $d=2$): can't schedule
 
 </v-clicks>
 
 <v-click>
 
-**Final:** $S = (1, 3)$ with profit $P(S) = 10 + 8 = 18$
+**Final:** $S = (1, 3)$, profit $= 18$
 
 </v-click>
+
+</div>
+<div class="flex items-center">
+
+<img src="/Figures/slots-3.drawio.svg" class="mx-auto h-48" />
+
+</div>
+</div>
 
 ---
 
