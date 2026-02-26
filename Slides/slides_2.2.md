@@ -97,8 +97,8 @@ $$t_1 \neq t_2 \text{ and } S(t_1) \neq 0 \Rightarrow S(t_1) \neq S(t_2)$$
 
 # The Greedy Algorithm
 
+Job scheduling algorithm:
 ```text
-Job Scheduling Algorithm:
 Sort jobs by non-increasing profit: g₁ ≥ g₂ ≥ ... ≥ gₙ
 d ← max_i dᵢ
 for t = 1 to d:
