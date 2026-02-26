@@ -65,7 +65,7 @@ A **schedule** $S$ is an array $S(1), S(2), \ldots, S(d)$ where:
 
 <v-click>
 
-Think of it as "slots": $|\ \ |\ \ |\ \ |\ \ |\ \ |$
+<img src="/Figures/slots.drawio.svg" class="mx-auto h-12 my-4" />
 
 Each slot can hold at most one job.
 
@@ -99,14 +99,14 @@ $$t_1 \neq t_2 \text{ and } S(t_1) \neq 0 \Rightarrow S(t_1) \neq S(t_2)$$
 
 ```text
 Job Scheduling Algorithm:
-1. Sort jobs by non-increasing profit: g₁ ≥ g₂ ≥ ... ≥ gₙ
-2. d ← max_i dᵢ
-3. for t = 1 to d:
-4.     S(t) ← 0
-5. for i = 1 to n:
-6.     Find largest t such that S(t) = 0 and t ≤ dᵢ
-7.     S(t) ← i
-8. return S
+Sort jobs by non-increasing profit: g₁ ≥ g₂ ≥ ... ≥ gₙ
+d ← max_i dᵢ
+for t = 1 to d:
+    S(t) ← 0
+for i = 1 to n:
+    Find largest t such that S(t) = 0 and t ≤ dᵢ
+    S(t) ← i
+return S
 ```
 
 <v-click>
@@ -202,10 +202,7 @@ Let $S'$ be the result after considering job $i$.
 
 **Goal:** Show there exists optimal $S'_{\text{opt}}$ extending $S'$.
 
-```
-S     = |   | 0 |   | 0 |   | j |   |   |
-S_opt = |   | 0 |   | i |   | j |   |   |
-```
+<img src="/Figures/slots-2.drawio.svg" class="mx-auto h-24 my-4" />
 
 If $S$ has job $j$ somewhere, $S_{\text{opt}}$ has $j$ in the same position.
 
