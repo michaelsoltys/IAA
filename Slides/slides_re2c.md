@@ -11,7 +11,7 @@ drawings:
   persist: false
 transition: slide-left
 title: RE2C and Regular Languages
-mdc: true
+mdc: false
 ---
 
 # RE2C and Regular Languages
@@ -22,90 +22,13 @@ From Regular Expressions to Efficient Scanners
 
 # The Big Picture
 
-<v-clicks>
-
 - **Regular expressions** define patterns
 - **Finite automata** recognize those patterns
-- **RE2C** compiles regex to highly optimized code
+- **Lexer generators** compile regex to code that scans input
 
-</v-clicks>
+![RE2C pipeline](./Figures/re2c.drawio.svg)
 
-<v-click>
-
-```
-Regular Expression  →  RE2C  →  Optimized C Code (DFA)
-     (theory)         (tool)        (practice)
-```
-
-</v-click>
-
----
-
-# What is RE2C?
-
-<v-clicks>
-
-**RE2C** = "Regular Expressions to C"
-
-- A lexer generator (like Flex, but different approach)
-- Converts regular expressions directly to C code
-- Generates **direct-coded DFAs** (no tables!)
-- Produces extremely fast scanners
-
-</v-clicks>
-
-<v-click>
-
-**Used in:** PHP (official lexer), Ninja build system, and many performance-critical applications
-
-</v-click>
-
----
-
-# RE2C vs Flex
-
-**Flex** = "Fast Lexical Analyzer Generator." Written by Vern Paxson (~1987) at Lawrence Berkeley Lab as a free replacement for AT&T's proprietary **Lex** (1975, Bell Labs). Flex generates table-driven scanners and is the classic Unix lexer tool, typically paired with Bison/Yacc for parsing.
-
-<div class="grid grid-cols-2 gap-8">
-<div>
-
-**Flex**
-<v-clicks>
-
-- Table-driven DFA
-- Lookup tables at runtime
-- Portable, well-documented
-- Easier to debug
-
-</v-clicks>
-
-</div>
-<div>
-
-**RE2C**
-<v-clicks>
-
-- Direct-coded DFA
-- Generates `goto` statements
-- Faster execution
-- Smaller memory footprint
-
-</v-clicks>
-
-</div>
-</div>
-
-<v-click>
-
-Both implement the same theory: **Regular Expression → NFA → DFA → Code**
-
-</v-click>
-
-<!--
-The original Lex (1975) was co-created at Bell Labs by Mike Lesk and Eric Schmidt — the same Eric Schmidt who later became CEO of Google. So the roots of lexer generators trace back to the same Bell Labs Unix culture that gave us C, Unix, and grep.
-
-Flex was Paxson's clean-room rewrite — no shared code with Lex, but full input compatibility. The name is a playful acronym: Fast LEXical analyzer generator.
--->
+Today: how the theory from Chapter 9.3 powers a real tool used in production systems
 
 ---
 
@@ -113,21 +36,78 @@ Flex was Paxson's clean-room rewrite — no shared code with Lex, but full input
 
 A language is **regular** if it can be described by:
 
-<v-clicks>
-
 - **Regular expression**
 - **DFA** (Deterministic Finite Automaton)
 - **NFA** (Nondeterministic Finite Automaton)
 
-</v-clicks>
-
-<v-click>
-
 **Theorem:** These three are equivalent!
 
-This is the foundation for all lexer generators.
+This equivalence is the foundation for all lexer generators: you write patterns (regex), the tool builds the recognizer (DFA).
 
-</v-click>
+---
+
+# Practical vs Formal RE Syntax
+
+Tools like RE2C use **practical syntax** (POSIX/PCRE) — but it's all **syntactic sugar** over the three operations from Section 9.3.3
+
+<div class="grid grid-cols-2 gap-8">
+<div>
+
+**Practical (POSIX/PCRE)**
+
+- `R?` — zero or one
+- `R+` — one or more
+- `[0-9]` — character class
+- `[a-z]` — character range
+- `R|S` — alternation
+
+</div>
+<div>
+
+**Formal RE (Section 9.3.3)**
+
+- $(R + \varepsilon)$
+- $R \cdot R^*$
+- $(0 + 1 + 2 + \cdots + 9)$
+- $(a + b + \cdots + z)$
+- $R + S$
+
+</div>
+</div>
+
+**Key point:** No new expressive power! Every practical regex can be rewritten using only $+$, $\cdot$ , and $*$
+
+```
+Practical:  -?(0|[1-9][0-9]*)
+Formal:     (- + ε)(0 + (1+2+...+9)(0+1+...+9)*)
+```
+
+<!--
+POSIX = Portable Operating System Interface (IEEE Std 1003.1). The POSIX standard defines a "Basic Regular Expression" (BRE) and "Extended Regular Expression" (ERE) syntax used by Unix tools like grep, sed, and awk. ERE adds +, ?, and | without backslash escaping. POSIX regex is what you get on any Unix/Linux system out of the box.
+
+PCRE = Perl Compatible Regular Expressions. A regex library written by Philip Hazel (1997) that implements the regex syntax from Perl 5 — far richer than POSIX. PCRE adds features like non-greedy quantifiers (*?, +?), lookahead/lookbehind assertions, named capture groups, backreferences, and Unicode support. Used by PHP (preg_ functions), Python's re module (partially), Apache, Nginx, and many other tools. PCRE2 is the current version.
+
+The key point for students: both POSIX and PCRE are strictly more convenient, not more powerful, than formal regular expressions when it comes to defining regular languages. Features like backreferences in PCRE actually go beyond regular languages (they can match {ww}), but the core pattern syntax — character classes, quantifiers, alternation — is pure syntactic sugar over union, concatenation, and Kleene star.
+-->
+
+---
+
+# What is RE2C?
+
+**RE2C** = "Regular Expressions to C"
+
+- Created by Peter Bumbulis at U. of Waterloo (1993)
+- A lexer generator: converts regular expressions directly to C code
+- Generates **direct-coded DFAs** — `goto` statements, no tables!
+- Produces extremely fast scanners
+
+**Used in:** PHP (official lexer), Ninja build system, and many performance-critical applications
+
+<!--
+Published with Donald Cowan (1994 paper). The name literally means "RE to C."
+
+Now targets 12+ languages: C, C++, Go, Rust, Java, Python, JS, Haskell, OCaml, D, Swift, Zig.
+-->
 
 ---
 
@@ -148,11 +128,7 @@ This is the foundation for all lexer generators.
 */
 ```
 
-<v-click>
-
-Notice: Regular expression patterns on the left, actions on the right!
-
-</v-click>
+Regular expression patterns on the left, actions on the right — just like the formal definition of a scanner!
 
 <!--
 The code here is NOT commented out — `/*!re2c ... */` is RE2C's actual syntax. The `!` after `/*` is a special marker that tells the RE2C tool to process this block. It's designed this way so that the `.re` source file remains valid C code even before RE2C runs: if you accidentally compile with gcc directly, the regex rules are just harmless C comments — no compile errors. The pipeline is: write rules inside `/*!re2c ... */`, then run `re2c lexer.re -o lexer.c`, and RE2C replaces the comment block with generated C code (the goto-based DFA). Everything between `/*!re2c` and `*/` — the YYCTYPE config, named definitions (digit, letter), and the pattern/action rules — is RE2C's domain-specific language embedded inside what looks like a C comment.
@@ -162,21 +138,21 @@ The code here is NOT commented out — `/*!re2c ... */` is RE2C's actual syntax.
 
 # How RE2C Works
 
-<v-clicks>
+RE2C follows exactly the pipeline from Chapter 9.3:
 
-1. **Parse** regular expressions
+1. **Parse** regular expressions from the `/*!re2c` block
 2. **Build** NFA using Thompson's construction
 3. **Convert** NFA to DFA (subset construction)
 4. **Minimize** DFA (optional)
 5. **Generate** C code with `goto` statements
 
-</v-clicks>
-
-<v-click>
-
-**Key insight:** Each DFA state becomes a label, each transition becomes a `goto`!
-
-</v-click>
+| Theory (Chapter 9) | RE2C Implementation |
+|-------------------|---------------------|
+| Regular Expression | Input specification |
+| Thompson's Construction | NFA building |
+| Subset Construction | NFA → DFA conversion |
+| DFA States | Code labels (`yy1:`, `yy2:`, ...) |
+| DFA Transitions | `goto` statements |
 
 <!--
 Thompson's construction is named after Ken Thompson, who described it in his 1968 paper "Programming Techniques: Regular expression search algorithm" (CACM). Thompson built one of the first practical regex engines using this algorithm — it powered the text editor QED and later ed, the standard Unix editor. The construction is beautifully recursive: each regex operator (concatenation, alternation, Kleene star) maps to a small NFA fragment with epsilon-transitions, and these fragments snap together like building blocks. The resulting NFA has at most 2n states for a regex of length n — linear size, which is why it's still the method of choice.
@@ -206,83 +182,11 @@ yy5:
     { return NUMBER; }
 ```
 
-<v-click>
-
-This IS the DFA, encoded as control flow!
-
-</v-click>
+This IS the DFA, encoded as control flow! Each label is a state, each `goto` is a transition.
 
 ---
 
-# The Theory Connection
-
-| Theory (Chapter 9) | RE2C Implementation |
-|-------------------|---------------------|
-| Regular Expression | Input specification |
-| Thompson's Construction | NFA building |
-| Subset Construction | NFA → DFA conversion |
-| DFA Minimization | Optimization phase |
-| DFA States | Code labels (`yy1:`, `yy2:`, ...) |
-| DFA Transitions | `goto` statements |
-
----
-
-# Example: Tokenizing Numbers
-
-**Regular expression for JSON numbers:**
-
-```
--?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?
-```
-
-<v-clicks>
-
-Breaking it down:
-- `-?` — optional minus sign
-- `(0|[1-9][0-9]*)` — integer part (no leading zeros except for 0)
-- `(\.[0-9]+)?` — optional decimal part
-- `([eE][+-]?[0-9]+)?` — optional exponent
-
-</v-clicks>
-
-<v-click>
-
-RE2C compiles this to a DFA with ~15-20 states!
-
-</v-click>
-
----
-
-# Practical vs Formal RE Syntax
-
-The JSON regex uses **practical syntax** (POSIX/PCRE) — but it's all **syntactic sugar** over the three operations from Section 9.3.3
-
-| Practical | Meaning | Formal RE (Section 9.3.3) |
-|-----------|---------|--------------------------|
-| `R?` | zero or one | $(R + \varepsilon)$ |
-| `R+` | one or more | $R \cdot R^*$ |
-| `[0-9]` | character class | $(0 + 1 + 2 + \cdots + 9)$ |
-| `[a-z]` | character range | $(a + b + \cdots + z)$ |
-| `R\|S` | alternation | $R + S$ |
-
-<v-click>
-
-**Key point:** No new expressive power! Every practical regex can be rewritten using only $+$, $\cdot$ , and $*$
-
-The sugar just makes regexes readable — compare:
-
-```
-Practical:  -?(0|[1-9][0-9]*)
-Formal:     (- + ε)(0 + (1+2+...+9)(0+1+...+9)*)
-```
-
-</v-click>
-
----
-
-# Performance Benefits
-
-<v-clicks>
+# Performance: Direct-Coded vs Table-Driven
 
 **Why is direct-coded DFA faster?**
 
@@ -291,13 +195,30 @@ Formal:     (- + ε)(0 + (1+2+...+9)(0+1+...+9)*)
 3. **Smaller code size** — no transition tables in memory
 4. **Cache-friendly** — code locality is better
 
-</v-clicks>
-
-<v-click>
-
 **Benchmarks:** RE2C-generated lexers can be 2-3x faster than table-driven ones
 
-</v-click>
+---
+
+# RE2C vs Other Lexer Tools
+
+**Flex** = "Fast Lexical Analyzer Generator." Written by Vern Paxson (~1987) at Lawrence Berkeley Lab as a free replacement for AT&T's proprietary **Lex** (1975, Bell Labs). The classic Unix lexer tool, typically paired with Bison/Yacc for parsing.
+
+| Tool | Approach | Speed | Portability |
+|------|----------|-------|-------------|
+| **Flex** | Table-driven DFA | Good | Excellent |
+| **RE2C** | Direct-coded DFA | Excellent | Good |
+| **Ragel** | Multiple backends | Excellent | Good |
+| **Hand-written** | Manual | Varies | Excellent |
+
+All implement the same theory: **Regular Expression → NFA → DFA → Code**
+
+The difference is only in the final step — how the DFA is represented in code.
+
+<!--
+The original Lex (1975) was co-created at Bell Labs by Mike Lesk and Eric Schmidt — the same Eric Schmidt who later became CEO of Google. So the roots of lexer generators trace back to the same Bell Labs Unix culture that gave us C, Unix, and grep.
+
+Flex was Paxson's clean-room rewrite — no shared code with Lex, but full input compatibility. The name is a playful acronym: Fast LEXical analyzer generator.
+-->
 
 ---
 
@@ -320,20 +241,32 @@ int lex(const char *YYCURSOR) {
 }
 ```
 
-<v-click>
-
 Run `re2c lexer.re -o lexer.c` to generate C code!
-
-</v-click>
 
 ---
 
-# RE2C in Real World
+# Example: Tokenizing JSON Numbers
+
+A more complex example — the **regular expression for JSON numbers:**
+
+```
+-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?
+```
+
+Breaking it down:
+- `-?` — optional minus sign
+- `(0|[1-9][0-9]*)` — integer part (no leading zeros except for 0)
+- `(\.[0-9]+)?` — optional decimal part
+- `([eE][+-]?[0-9]+)?` — optional exponent
+
+RE2C compiles this to a DFA with ~15-20 states — all generated automatically from one line of regex!
+
+---
+
+# RE2C in the Real World
 
 <div class="grid grid-cols-2 gap-8">
 <div>
-
-<v-clicks>
 
 **PHP Language**
 - The official PHP lexer is built with RE2C
@@ -347,27 +280,25 @@ Run `re2c lexer.re -o lexer.c` to generate C code!
 **Other uses:**
 - SpamAssassin, YASM assembler, BRL-CAD
 
-</v-clicks>
-
 </div>
 <div>
 
-<v-clicks>
-
-**Origins (1993)**
-- Created by Peter Bumbulis at U. of Waterloo
-- Published with Donald Cowan (1994 paper)
-- Name literally means "RE to C"
-
-**Why it won**
-- PHP chose RE2C over Flex because the generated lexer was 2-3x faster — at web scale that matters
-- Now targets 12+ languages: C, C++, Go, Rust, Java, Python, JS, Haskell, OCaml, D, Swift, Zig
+**Why PHP chose RE2C over Flex**
+- The generated lexer was 2-3x faster
+- At web scale, that matters
 
 **Under the hood**
 - Uses *lookahead TDFA* for submatch extraction
 - Builds *tunnel automata* to shrink output
 
-</v-clicks>
+**Installation:**
+```bash
+# Ubuntu/Debian
+sudo apt-get install re2c
+
+# macOS
+brew install re2c
+```
 
 </div>
 </div>
@@ -380,21 +311,7 @@ BRL-CAD is an open-source solid modeling CAD system originally developed by the 
 
 ---
 
-# Theory to Practice Pipeline
-
-![Theory to Practice Pipeline](./Figures/t2p-pipeline.drawio.svg)
-
-<v-click>
-
-**Everything you learn in Chapter 9.3 powers this!**
-
-</v-click>
-
----
-
 # Limitations
-
-<v-clicks>
 
 **What RE2C (and regex) CANNOT do:**
 
@@ -402,75 +319,35 @@ BRL-CAD is an open-source solid modeling CAD system originally developed by the 
 - Count occurrences: "same number of a's and b's"
 - Parse nested structures (need CFG for that)
 
-</v-clicks>
-
-<v-click>
-
 **Pumping Lemma** tells us these are impossible with finite automata.
 
-That's why we need **parsers** (CFGs) for programming languages!
+That's why we need **parsers** (CFGs) for programming languages — the lexer handles tokens, the parser handles structure!
 
-</v-click>
+---
+
+# Theory to Practice Pipeline
+
+![Theory to Practice Pipeline](./Figures/t2p-pipeline.drawio.svg)
+
+**Everything you learn in Chapter 9.3 powers this!**
 
 ---
 
 # RE2C Resources
-
-<v-clicks>
 
 - **Official site:** https://re2c.org/
 - **Documentation:** https://re2c.org/manual/manual.html
 - **GitHub:** https://github.com/skvadrik/re2c
 - **Try online:** https://re2c.org/manual/manual_c.html (examples)
 
-</v-clicks>
-
-<v-click>
-
-**Installation:**
-```bash
-# Ubuntu/Debian
-sudo apt-get install re2c
-
-# macOS
-brew install re2c
-```
-
-</v-click>
-
----
-
-# Comparison: Lexer Tools
-
-| Tool | Approach | Speed | Portability |
-|------|----------|-------|-------------|
-| **Flex** | Table-driven DFA | Good | Excellent |
-| **RE2C** | Direct-coded DFA | Excellent | Good |
-| **Ragel** | Multiple backends | Excellent | Good |
-| **Hand-written** | Manual | Varies | Excellent |
-
-<v-click>
-
-**Choose based on:** Performance needs, team familiarity, target platform
-
-</v-click>
-
 ---
 
 # Summary
 
-<v-clicks>
-
 1. **Regular expressions** define what we want to match
 2. **Finite automata** (DFA/NFA) are the computational model
-3. **RE2C** compiles regex to highly optimized C code
-4. **Performance:** Direct-coded DFAs avoid table lookups
+3. **RE2C** compiles regex to highly optimized C code via the full pipeline: regex → NFA → DFA → `goto`-based code
+4. **Performance:** Direct-coded DFAs avoid table lookups (2-3x faster)
 5. **Real-world impact:** Powers PHP, build systems, and more
 
-</v-clicks>
-
-<v-click>
-
 **Key takeaway:** The regular language theory from Chapter 9.3 directly enables tools like RE2C that power production systems!
-
-</v-click>
