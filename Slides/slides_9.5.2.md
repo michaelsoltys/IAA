@@ -26,7 +26,7 @@ mdc: true
 
 # Encodings
 
-Section 9.5.2 - Turing Machines
+Section 9.5.2 - Encodings
 
 ---
 

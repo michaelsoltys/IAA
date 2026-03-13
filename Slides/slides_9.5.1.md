@@ -26,7 +26,7 @@ mdc: true
 
 # Turing Machines
 
-Sections 9.5 & 9.5.1 - Computational Foundations
+Section 9.5.1 - TMs and Non-Det TMs
 
 ---
 
@@ -260,7 +260,7 @@ layout: section
 
 # Nondeterministic Turing Machines
 
-Section 9.5.1 — Multiple possible moves
+Section 9.5.1 — Nondeterministic Turing Machines
 
 ---
 

@@ -26,7 +26,7 @@ mdc: true
 
 # Undecidability
 
-Section 9.5.5 - Computational Foundations
+Section 9.5.5 - Undecidability
 
 ---
 

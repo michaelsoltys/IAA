@@ -26,7 +26,7 @@ mdc: true
 
 # Undecidability
 
-Section 9.5.4 - The Limits of Computation
+Section 9.5.4 - Church-Turing thesis
 
 ---
 
