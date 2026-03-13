@@ -4,7 +4,7 @@ class: text-center
 highlighter: shiki
 lineNumbers: true
 info: |
-  ## Section 9.4: Logic
+  ## Section 10.4: Logic
   An Introduction to the Analysis of Algorithms (4th Edition)
   Michael Soltys
 drawings:
@@ -26,7 +26,7 @@ mdc: true
 
 # Logic
 
-Section 9.4 - Mathematical Foundations
+Section 10.4 - Mathematical Foundations
 
 ---
 
@@ -822,7 +822,7 @@ Where does logic appear in CS?
 
 - Practice constructing PK proofs for tautologies
 - Work through BSD definitions with examples
-- Study Peano Arithmetic (Section 9.4.3 in the book)
+- Study Peano Arithmetic (Section 10.4.3 in the book)
 - Explore formal verification applications
 - Read about Gödel's incompleteness theorems
 
