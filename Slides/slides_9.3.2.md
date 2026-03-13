@@ -26,7 +26,7 @@ mdc: true
 
 # Nondeterministic Finite Automata
 
-Section 9.3.2 - Regular Languages
+Section 9.3.2 - Nondeterministic Finite Automata
 
 ---
 

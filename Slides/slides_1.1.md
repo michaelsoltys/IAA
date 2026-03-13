@@ -26,7 +26,7 @@ mdc: true
 
 # What is Correctness?
 
-Section 1.1 - Preliminaries
+Section 1.1 - What is Correctness?
 
 ---
 

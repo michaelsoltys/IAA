@@ -26,7 +26,7 @@ mdc: true
 
 # Algebraic Laws for Regular Expressions
 
-Section 9.3.4 - Regular Languages
+Section 9.3.4 - Algebraic Laws for Regular Expressions
 
 ---
 

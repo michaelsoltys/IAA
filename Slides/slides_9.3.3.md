@@ -26,7 +26,7 @@ mdc: true
 
 # Regular Expressions
 
-Section 9.3.3 - Regular Languages
+Section 9.3.3 - Regular Expressions
 
 ---
 

@@ -26,7 +26,7 @@ mdc: true
 
 # Closure Properties of Regular Languages
 
-Section 9.3.5 - Regular Languages
+Section 9.3.5 - Closure Properties of Regular Languages
 
 ---
 

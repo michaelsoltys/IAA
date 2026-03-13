@@ -26,7 +26,7 @@ mdc: true
 
 # Longest Monotone Subsequence
 
-Section 4.1 - Dynamic Programming
+Section 4.1 - LMS
 
 ---
 

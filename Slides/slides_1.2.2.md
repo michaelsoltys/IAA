@@ -26,7 +26,7 @@ mdc: true
 
 # Stable Marriage Problem
 
-Section 1.2.2 - Ranking Algorithms
+Section 1.2.2 - Stable Marriage Problem
 
 ---
 

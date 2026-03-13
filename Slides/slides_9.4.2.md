@@ -16,7 +16,7 @@ mdc: true
 
 # Pushdown Automata
 
-Section 9.4.2 - Computational Foundations
+Section 9.4.2 - Pushdown Automata
 
 ---
 

@@ -26,7 +26,7 @@ mdc: true
 
 # Logic
 
-Section 10.4 - Mathematical Foundations
+Section 10.4 - Logic
 
 ---
 

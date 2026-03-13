@@ -26,7 +26,7 @@ mdc: true
 
 # Jobs with Deadlines and Profits
 
-Section 2.2 - Greedy Algorithms
+Section 2.2 - Jobs with Deadlines and Profits
 
 ---
 

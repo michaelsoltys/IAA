@@ -16,7 +16,7 @@ mdc: true
 
 # Deterministic Finite Automata
 
-Section 9.3.1 - Regular Languages
+Section 9.3.1 - Deterministic Finite Automata
 
 ---
 

@@ -26,7 +26,7 @@ mdc: true
 
 # All Pairs Shortest Path
 
-Section 4.2 - Dynamic Programming
+Section 4.2 - All pairs shortest path
 
 ---
 layout: section

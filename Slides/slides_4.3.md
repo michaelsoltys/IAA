@@ -26,7 +26,7 @@ mdc: true
 
 # Simple Knapsack Problem
 
-Section 4.3 - Dynamic Programming
+Section 4.3 - Simple Knapsack Problem
 
 ---
 

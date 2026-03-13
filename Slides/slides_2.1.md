@@ -26,7 +26,7 @@ mdc: true
 
 # Minimum Cost Spanning Trees
 
-Section 2.1 - Greedy Algorithms
+Section 2.1 - Minimum Cost Spanning Trees
 
 ---
 

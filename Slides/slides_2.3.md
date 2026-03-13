@@ -16,7 +16,7 @@ mdc: false
 
 # Further Greedy Examples
 
-Section 2.3 - Greedy Algorithms
+Section 2.3 - Further Greedy Examples
 
 ---
 

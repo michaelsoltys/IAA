@@ -16,7 +16,7 @@ mdc: true
 
 # Context-Free Grammars
 
-Section 9.4.1 - Computational Foundations
+Section 9.4.1 - Context-Free Grammars
 
 ---
 
