@@ -119,7 +119,7 @@ def minimizationDFA(stateTable):
                     previousZeroGroup = zeroGroup
                     previousOneGroup = oneGroup
                 
-            if len(tempGroups) is not 0:
+            if len(tempGroups) != 0:
                 for tempGroupToAdd in tempGroups:
                     for tempStateToRemove in tempGroupToAdd:
                         group.remove(tempStateToRemove)

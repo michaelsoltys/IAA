@@ -74,4 +74,9 @@ The algorithm implementations and solutions in this companion repository were co
 - **Rishikesh Patil** — proof-read the 4th edition during the summer of 2024
 - **Skyler Atchison** — improved the manuscript by pointing out typos, omissions, errors and gaps
 - **Greg Herman** — improved the manuscript by pointing out typos, omissions, errors and gaps
-- **Christopher Kuske** — improved the manuscript by pointing out typos, omissions, errors and gaps
+- **Christopher Kuske** — contributed the Gale-Shapley implementation and improved the manuscript
+- **Mike Moniz** — contributed the Kruskal grid implementation
+- **Tiffany Antopolski** — contributed the OSPF routing simulator (collaborated with Vineet Sharma)
+- **Hang Zhang** — contributed the FIFO cache implementation
+- **Qingwen Zhu** — contributed the Merkle-Hellman cryptosystem implementation
+- **Matthew Morales** — contributed the DFA minimization implementation

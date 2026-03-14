@@ -3,7 +3,7 @@
 # An Introduction to the Analysis of Algorithms (4th Edition)
 
 from collections import deque
-from itertools import permutations as perm #don't worry, only permuting 2
+from itertools import product as prod
 import sys
 
 
@@ -87,7 +87,7 @@ class CFG:
     
     #check if in CNF
     def isCNF(self):
-        pp = set([''.join(x) for x in perm(self.var,2)])
+        pp = set([''.join(x) for x in prod(self.var,repeat=2)])
         for p in self.prod.values():
             for q in p:
                 if not q in self.term and not q in pp:

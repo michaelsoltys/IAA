@@ -13,6 +13,7 @@ class Node(object):
 
     # combine node strings and add frequencies into a new node with
     # children: left, node1; right, node2
+    @staticmethod
     def merge_nodes(node1,node2):
         totalFreq = node1.get_freq() + node2.get_freq()
         catLetters = node1.get_letters() + node2.get_letters()
@@ -30,7 +31,7 @@ class Node(object):
     def get_letters(self):
         return self.letters
 
-    def print(self):
+    def show(self):
         print("{0} : {1}".format(repr(self.letters),self.freq))
 
 class NodeList(object):
@@ -62,9 +63,9 @@ class NodeList(object):
     def len(self):
         return len(self.list)
 
-    def print(self):
+    def show(self):
         for node in self.list:
-            node.print()
+            node.show()
 
 class HuffmanTree(object):
     def __init__(self):
@@ -115,7 +116,7 @@ class HuffmanTree(object):
                 if len(curr_node.get_letters()) == 1:
                     write_buffer += curr_node.get_letters()
                     curr_node = self.tree
-                if bits_read > self.bits:
+                if bits_read >= self.bits:
                     output.write(write_buffer)
                     mask = 0
             mask = 0b10000000

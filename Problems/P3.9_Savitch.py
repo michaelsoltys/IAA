@@ -12,14 +12,14 @@ class Graph(object):
         adjacencyString = ''
         self.size = 0
         for line in f:
-            adjacencyString += line[:-1]
+            adjacencyString += line.rstrip('\n')
             self.size += 1
         self.vertices = list(range(1,self.size+1))
         self.edges = []
         i = 0
         while i < len(adjacencyString) :
             if  adjacencyString[i:i+1] == '1':
-                u = 1 + int((i)/self.size)
+                u = 1 + i // self.size
                 v = 1 + i%self.size
                 self.edges.append([u,v])
             i += 1

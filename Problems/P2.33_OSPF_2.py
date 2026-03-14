@@ -52,7 +52,7 @@ class route:
                 try:
                     n1 = int(entrys[0])
                     n2 = int(entrys[1])
-                    if n1>n1:
+                    if n1>n2:
                         n1,n2 = n2,n1
                     for n in range(n1,n2+1):
                         if not n in self.rt:
@@ -99,7 +99,7 @@ class route:
                 try:
                     n1 = int(entrys[0])
                     n2 = int(entrys[1])
-                    if n1>n1:
+                    if n1>n2:
                         n1,n2 = n2,n1
                     for n in range(n1,n2+1):
                         if n in self.rt:
@@ -146,7 +146,7 @@ class route:
                 try:
                     n1 = int(entrys[0])
                     n2 = int(entrys[1])
-                    if n1>n1:
+                    if n1>n2:
                         n1,n2 = n2,n1
                     for n in range(n1,n2+1):
                         if not n in self.nt:
@@ -193,7 +193,7 @@ class route:
                 try:
                     n1 = int(entrys[0])
                     n2 = int(entrys[1])
-                    if n1>n1:
+                    if n1>n2:
                         n1,n2 = n2,n1
                     for n in range(n1,n2+1):
                         if n in self.nt:
@@ -241,7 +241,7 @@ class route:
             if not tx in ['rt','nt']:
                 print('\n"'+tx+'" is not a valid node type.\n Try "rt" for router or "nt" for network.\n')
             elif ty not in ['rt','nt']:
-                print('\n"'+tx+'" is not a valid node type.\n Try "rt" for router or "nt" for network.\n')
+                print('\n"'+ty+'" is not a valid node type.\n Try "rt" for router or "nt" for network.\n')
             elif tx=='nt' and ty=='nt':            
                 print('\nCan\'t connect two networks.\n')
             else:

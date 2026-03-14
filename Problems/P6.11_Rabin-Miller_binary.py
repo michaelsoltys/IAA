@@ -113,7 +113,7 @@ def multiply(X,Y):
             return '1'
         else:
             return '0'
-    n = int(NM/2)
+    n = NM // 2
     nu = n + NM%2
     x1 = X[:n]
     x0 = X[n:]

@@ -60,7 +60,7 @@ def minimize(input_text_name):
     
 #----------------------------------------------------Better Stack-based Version
 def dfa_min(input_text_name,output_text_name=''):
-    file = open('input.txt','r')
+    file = open(input_text_name,'r')
     lines = [line.split(',') for line in file.readlines() if line]
     file.close()
     n = len(lines)

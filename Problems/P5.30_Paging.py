@@ -311,7 +311,7 @@ class CLOCK():
         if not done:
             self.fault_count += 1
             while True:
-                if self.referenced.get_cur == 1:
+                if self.referenced.get_cur() == 1:
                     self.referenced.set_cur(0)
                     self.turn()
                 else:

@@ -35,7 +35,7 @@ class ulist:
     def get_next(self):
         x = self.list[-1]
         if x%2==0: #"if x is even"
-            self.list.append(int(x/2))
+            self.list.append(x // 2)
         else:
             self.list.append(3*x+1)
     

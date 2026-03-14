@@ -2,17 +2,12 @@
 # Label: exr:belady
 # An Introduction to the Analysis of Algorithms (4th Edition)
 
-# Problem 5.13 - FIFO_cache
-# Hang Zhang
-# 11/14/2019
-# python 3.7
-
 def FIFO_cache(stream, cache_size):
     """
-    :param stream:
-    :param cache_size:
-    For simplicity, we use an array as our input, index shows the order of an input stream,
-    Each iteration prints out cache information
+    Simulates a FIFO cache replacement policy.
+    :param stream: sequence of page requests
+    :param cache_size: number of slots in the cache
+    Each iteration prints out cache information.
     """
     cache = []
     misses = 0
@@ -23,10 +18,6 @@ def FIFO_cache(stream, cache_size):
         if len(cache) > cache_size:
             cache.pop(0)
         print(str.format("cache: {},misses: {}", cache, misses))
-
-
-
-
 
 
 

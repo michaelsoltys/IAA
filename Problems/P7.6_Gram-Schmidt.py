@@ -32,7 +32,7 @@ def gram_schmidt(B):
         V = B[i]
         for j in range(i):
             u[(i,j)] = dot(B[i],O[j]) / norm(O[j])
-            V = [v-u[(i,j)]*o for v,o in zip(B[i],O[j])]
+            V = [v-u[(i,j)]*o for v,o in zip(V,O[j])]
         O.append(V)
     return [[float(a) for a in o] for o in O]
     # return floats because they're prettier when printed...

@@ -2,9 +2,7 @@
 # Label: exr:merkle
 # An Introduction to the Analysis of Algorithms (4th Edition)
 
-__author__ = 'Qingwen Zhu'
-
-import sys;
+import sys
 
 
 # get Great Common Division
@@ -128,7 +126,7 @@ def error_verification(w, detail=False):
 
 
 def usage():
-    print("Sscrypt by Qingwen Zhu - Simple  Merkle-Hellman subset-sum cryptosystem implementation");
+    print("Merkle-Hellman subset-sum cryptosystem implementation");
     print("Usage:");
     error_encryption(False);
     print("");

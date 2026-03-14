@@ -30,7 +30,7 @@ def berk(input_matrix):
         c[1] = -a
         c[2] = -R*S
         M = Id(n-1)
-        for l in range(2,n+1):
+        for l in range(3,n+1):
             M = M*A
             c[l] = -R*M*S
         C[i] = matrix([[0 for i in range(n)] for j in range(n+1)])

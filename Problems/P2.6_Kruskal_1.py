@@ -7,7 +7,7 @@ import sys
 def kruskal(input_text):
     
     #read input, make sure it's valid
-    lines = [line[:-1].split(',') for line in open(input_text,'r').readlines()]
+    lines = [line.rstrip('\n').split(',') for line in open(input_text,'r').readlines()]
     n = len(lines)
     if any([len(line)!=n for line in lines]):
         raise ValueError('Invalid input for Kruskal.')

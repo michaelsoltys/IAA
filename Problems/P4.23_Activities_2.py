@@ -43,7 +43,7 @@ def activity_selection(activities):
     # h(i) = largest number s.t. u[i] <= s[i]
     h = get_predecessor(activities, u)
 
-    optimal_ending_here = [[] for x in range(n)]
+    optimal_ending_here = [[] for x in range(k)]
     optimal = optimal_ending_here[0]
     global_max = 0
 

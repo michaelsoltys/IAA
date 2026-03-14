@@ -22,7 +22,7 @@ def js(jobs):
                 b = pi + A[tmin-di]
                 if a < b:
                     A[t] = b
-                    B[t] = B[t-di] + [i]
+                    B[t] = B[tmin-di] + [i]
     A = A[tmax]
     B = [J[i] for i in B[tmax]]
     return(A,B)

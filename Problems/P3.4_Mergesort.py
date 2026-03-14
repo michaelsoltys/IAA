@@ -68,7 +68,7 @@ def mergesort(L):
         return L
     else:
         r = l%2 #1 if odd, 0 if even...
-        n = int(l/2) #int rounds down...
+        n = l // 2
         L1 = L[:n+r] #first ceil(n/2)
         L2 = L[-n:]
         return merge(mergesort(L1),mergesort(L2))

@@ -22,7 +22,7 @@ def ext_euc(m,n):
     b = 1
     y = 0
     while(True):
-        q = int(c/d)#int(float) rounds the float down
+        q = c // d
         r = c%d
         if r == 0:
             print(str(a)+'*'+str(m),'+',str(b)+'*'+str(n),'=',d,'= gcf('+str(d)+')')
@@ -52,7 +52,7 @@ def ext_euc_step_count(m,n):
     y = 0
     steps += 6 #6 assignments above
     while(True):
-        q = int(c/d) 
+        q = c // d
         r = c%d
         steps += 4 
         #2 assignments above, r==0 check below, 1 divsion (treating c%d as a by-product of the division)

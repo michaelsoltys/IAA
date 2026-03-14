@@ -18,7 +18,7 @@ def ext_euc(m,n):
     b = 1
     y = 0
     while(True):
-        q = int(c/d)#int(float) rounds the float down
+        q = c // d
         r = c%d
         if r == 0:
             print(str(a)+'*'+str(m),'+',str(b)+'*'+str(n),'=',d,

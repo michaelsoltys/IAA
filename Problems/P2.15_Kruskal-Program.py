@@ -23,7 +23,7 @@ def kruskal_grid(input_text):
         if a>b:
             a,b = b,a
             edges[i] = (a,b,w)
-        if b!=a+4 and (b!=a+1 or a%4==3):
+        if b!=a+n and (b!=a+1 or a%n==n-1):
             raise ValueError('Input is not a grid or is not in the specified form.')
         i += 1
     
@@ -51,9 +51,9 @@ def kruskal_grid(input_text):
         l2 = ''
         j = 0
         while j < n:
-            a = 4*i+j
+            a = n*i+j
             b = a+1
-            c = a+4
+            c = a+n
             if (a,b) in F:
                 l1 += 'o--'
             else:

@@ -15,7 +15,7 @@ def multiply(bx,by):
         else:
             return '0'
     
-    n2 = int(n/2)
+    n2 = n // 2
     nu = n2 + n%2
     x1 = bx[:n2]
     x0 = bx[n2:]

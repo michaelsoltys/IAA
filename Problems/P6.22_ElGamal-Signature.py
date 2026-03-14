@@ -29,7 +29,7 @@ def euc(m,n):
         return(m,1,0)
     else:
         (d,x,y) = euc(n,m%n)
-        return (d,y,x-int(m/n)*y)
+        return (d,y,x-(m//n)*y)
 
 
 #-------------------------------------------------------------------the scheme

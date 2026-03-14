@@ -36,7 +36,7 @@ def stable_marriage(input_text):
     matchA = dict()
     matchB = dict()
     matchA[0] = A[0].get(0)
-    matchB[matchA[0]] = matchA[0]
+    matchB[matchA[0]] = 0
     bookmark[0] += 1
     i = 1
     while i < n:

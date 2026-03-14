@@ -36,7 +36,7 @@ def rec_lt_block_invert(input_matrix): # recursive inverse for lower triangular
                 raise ValueError('Inversion method is for lower triangular matrices only.')
     
     # split into blocks for recursion
-    l = int(n/2) # size of smaller block
+    l = n // 2  # size of smaller block
     A = M[:l,:l] # upper left
     B = M[l:,l:] # lower right
     E = M[l:,:l] # lower left

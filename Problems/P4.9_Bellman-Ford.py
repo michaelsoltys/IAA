@@ -34,6 +34,7 @@ def bf(input_text,s,t):
         Opt = []
         for j in range(n):
             Opt.append(C[(j,t)])
+        Opt[t] = 0
     
         for i in range(n):
             for v in range(n):

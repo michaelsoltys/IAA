@@ -48,7 +48,7 @@ if __name__ == '__main__':
         elif len(args) >= 2:
             try:
                 args = [eval(arg) for arg in args]
-            finally: 
+            except Exception:
                 c = True
                 for i in range(len(args)-1):
                     try:
