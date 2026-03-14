@@ -11,7 +11,7 @@ drawings:
   persist: false
 transition: slide-left
 title: Multiplying Numbers in Binary
-mdc: true
+mdc: false
 ---
 
 <style>
@@ -27,6 +27,8 @@ mdc: true
 # Multiplying Numbers in Binary
 
 Section 3.2 - Multiplying Numbers in Binary
+
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
 
@@ -146,9 +148,11 @@ $$T(n) \leq 3T(n/2) + dn$$
 
 # The Karatsuba Algorithm
 
+<span style="font-size: 0.6em; color: navy;">Alg 18, Pg 66, alg:recmult</span>
+
 ```text
 Karatsuba(x, y):
-  Require: Two n-bit integers x and y
+  Pre-condition: Two n-bit integers x and y
   if n = 1:
     if x = 1 ∧ y = 1: return 1
     else: return 0
@@ -187,9 +191,9 @@ Starting from $xy = x_1 y_1 \cdot 2^n + (x_1 y_0 + x_0 y_1) \cdot 2^{n/2} + x_0 
 
 <v-clicks>
 
-1. **Problem 3.5:** Prove the correctness of the Karatsuba algorithm
+1. **Problem 3.5:** Prove the correctness of the Karatsuba algorithm <span style="font-size: 0.6em; color: navy;">Prb 3.5, Pg 65, exr:recmult-correctness</span>
 
-2. **Problem 3.6:** Implement binary multiplication — input as two strings of 0s and 1s on the command line
+2. **Problem 3.6:** Implement binary multiplication — input as two strings of 0s and 1s on the command line <span style="font-size: 0.6em; color: navy;">Prb 3.6, Pg 66, exr:recmult-program</span>
 
 3. **Think about:** Can we do even better than $O(n^{1.59})$? (Yes — Toom-Cook, Schönhage-Strassen, and Harvey-van der Hoeven achieve near-linear time!)
 

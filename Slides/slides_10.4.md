@@ -11,7 +11,7 @@ drawings:
   persist: false
 transition: slide-left
 title: Logic - Propositional and First Order
-mdc: true
+mdc: false
 ---
 
 <style>
@@ -27,6 +27,8 @@ mdc: true
 # Logic
 
 Section 10.4 - Logic
+
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
 
@@ -98,7 +100,7 @@ Building blocks of logical reasoning
 
 # Exercise: CFG for Propositional Formulas
 
-**Exercise:** Define propositional formulas with a context-free grammar
+**Exercise:** Define propositional formulas with a context-free grammar <span style="font-size: 0.6em; color: navy;">Prb 10.77, Pg 305, prb:cfg</span>
 
 <v-click>
 
@@ -135,7 +137,7 @@ This gives us a formal syntax for well-formed formulas!
 
 <v-click>
 
-**Lemma:** Any formula $\alpha$ has weight $-1$, but any proper initial segment has weight $\geq 0$
+**Lemma:** Any formula $\alpha$ has weight $-1$, but any proper initial segment has weight $\geq 0$ <span style="font-size: 0.6em; color: navy;">Lem 10.78, Pg 305, lem:weights</span>
 
 </v-click>
 
@@ -147,7 +149,7 @@ This gives us a formal syntax for well-formed formulas!
 $$(\alpha \, c \, \beta) \equiv (\alpha' \, c' \, \beta')$$
 (syntactically identical)
 
-Then: $\alpha \equiv \alpha'$ and $\beta \equiv \beta'$ and $c \equiv c'$
+Then: $\alpha \equiv \alpha'$ and $\beta \equiv \beta'$ and $c \equiv c'$ <span style="font-size: 0.6em; color: navy;">Thm 10.80, Pg 305, thm:urt</span>
 
 <v-click>
 
@@ -224,7 +226,7 @@ Extend $\tau$ to all formulas:
 
 # Important Exercises
 
-**Exercise:** Show that if $\Phi \vDash \alpha$ and $\Phi \cup \{\alpha\} \vDash \beta$, then $\Phi \vDash \beta$
+**Exercise:** Show that if $\Phi \vDash \alpha$ and $\Phi \cup \{\alpha\} \vDash \beta$, then $\Phi \vDash \beta$ <span style="font-size: 0.6em; color: navy;">Prb 10.82, Pg 306, prb:logicalconsequence</span>
 
 <v-click>
 
@@ -232,13 +234,13 @@ Extend $\tau$ to all formulas:
 - Interchanging $\vee$ and $\wedge$ in $\alpha$
 - Replacing each $p$ by $\neg p$
 
-Then: $\neg\alpha \iff \alpha'$
+Then: $\neg\alpha \iff \alpha'$ <span style="font-size: 0.6em; color: navy;">Prb 10.83, Pg 307, prb:duality</span>
 
 </v-click>
 
 <v-click>
 
-**Craig Interpolation Theorem:** If $A \rightarrow B$ is valid and variables sets overlap, there exists an "interpolant" $C$ using only common variables such that both $A \rightarrow C$ and $C \rightarrow B$ are valid
+**Craig Interpolation Theorem:** If $A \rightarrow B$ is valid and variables sets overlap, there exists an "interpolant" $C$ using only common variables such that both $A \rightarrow C$ and $C \rightarrow B$ are valid <span style="font-size: 0.6em; color: navy;">Prb 10.84, Pg 307, prb:craig</span>
 
 </v-click>
 
@@ -390,7 +392,7 @@ $$\frac{\Gamma \rightarrow \Delta, \alpha \quad \alpha, \Gamma \rightarrow \Delt
 
 # Soundness and Completeness
 
-**Rule Soundness Principle:** For each PK rule, the bottom sequent is a logical consequence of the top sequent(s)
+**Rule Soundness Principle:** For each PK rule, the bottom sequent is a logical consequence of the top sequent(s) <span style="font-size: 0.6em; color: navy;">Prb 10.88, Pg 309, exr:rsp</span>
 
 <v-click>
 
@@ -404,7 +406,7 @@ $$\frac{\Gamma \rightarrow \Delta, \alpha \quad \alpha, \Gamma \rightarrow \Delt
 
 <v-click>
 
-**PK Completeness Theorem:** Every valid propositional sequent is provable in PK (without cut or contraction!)
+**PK Completeness Theorem:** Every valid propositional sequent is provable in PK (without cut or contraction!) <span style="font-size: 0.6em; color: navy;">Prb 10.92, Pg 310, exr:pk-completeness1</span>
 
 *Proof idea:* Induction on number of connectives, using Inversion Principle
 
@@ -707,7 +709,7 @@ $$\underline{\mathbb{N}} \vDash \forall x \forall y \exists z (x = y + z \vee y 
 
 # Unique Readability for Terms
 
-**Exercise:** Show the Unique Readability Theorem for terms
+**Exercise:** Show the Unique Readability Theorem for terms <span style="font-size: 0.6em; color: navy;">Prb 10.96, Pg 311, exr:urt-terms</span>
 
 <v-click>
 

@@ -11,7 +11,7 @@ drawings:
   persist: false
 transition: slide-left
 title: Closure Properties of Regular Languages
-mdc: true
+mdc: false
 ---
 
 <style>
@@ -27,6 +27,8 @@ mdc: true
 # Closure Properties of Regular Languages
 
 Section 9.3.5 - Closure Properties of Regular Languages
+
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
 

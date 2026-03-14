@@ -11,12 +11,14 @@ drawings:
   persist: false
 transition: slide-left
 title: Parser Tools and CFGs
-mdc: true
+mdc: false
 ---
 
 # Parser Tools and CFGs
 
 From Theory to Practice
+
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
 

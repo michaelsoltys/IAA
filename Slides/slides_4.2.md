@@ -11,7 +11,7 @@ drawings:
   persist: false
 transition: slide-left
 title: All Pairs Shortest Path Problem
-mdc: true
+mdc: false
 ---
 
 <style>
@@ -27,6 +27,8 @@ mdc: true
 # All Pairs Shortest Path
 
 Section 4.2 - All pairs shortest path
+
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
 layout: section
@@ -305,7 +307,7 @@ Understanding the All Pairs Shortest Path Algorithm
 
 # Why Not Exhaustive Search?
 
-**Exercise 4.5:** Construct a family of graphs $\{G_n\}$ where:
+**Problem 4.5:** Construct a family of graphs $\{G_n\}$ where:
 - $G_n$ has $O(n)$ nodes
 - But $\Omega(2^n)$ paths (exponentially many!)
 
@@ -425,6 +427,8 @@ $$A(k, i, j) = \min\{A(k-1, i, j), \; A(k-1, i, k) + A(k-1, k, j)\}$$
 ---
 
 # Step 3: The Algorithm
+
+<span style="font-size: 0.6em; color: navy;">Alg 22, Pg 78, alg:floyd</span>
 
 ```text
 Floyd-Warshall Algorithm:
@@ -1085,29 +1089,29 @@ For **theoretical** interest (space complexity, complexity classes):
 
 # Key Exercises
 
-**Exercise 4.5:** Construct graph family with $O(n)$ nodes but $\Omega(2^n)$ paths
+**Problem 4.5:** Construct graph family with $O(n)$ nodes but $\Omega(2^n)$ paths <span style="font-size: 0.6em; color: navy;">Prb 4.5, Pg 77, prb:allpairs</span>
 
 <v-click>
 
-**Exercise (Overwriting):** Explain in detail why Floyd's overwriting trick is correct
+**Problem 4.6:** Explain in detail why Floyd's overwriting trick is correct <span style="font-size: 0.6em; color: navy;">Prb 4.6, Pg 78, exr:shortpath1</span>
 
 </v-click>
 
 <v-click>
 
-**Exercise (Correctness):** State pre/post-conditions and prove correctness using loop invariant
+**Problem 4.7:** State pre/post-conditions and prove correctness using loop invariant <span style="font-size: 0.6em; color: navy;">Prb 4.7, Pg 78, exr:shortpath2</span>
 
 </v-click>
 
 <v-click>
 
-**Exercise (Implementation):** Implement Floyd's algorithm with 2D array and overwriting
+**Problem 4.8:** Implement Floyd's algorithm with 2D array and overwriting <span style="font-size: 0.6em; color: navy;">Prb 4.8, Pg 78, exr:floyd</span>
 
 </v-click>
 
 <v-click>
 
-**Exercise (Bellman-Ford):** Implement Bellman-Ford algorithm
+**Problem 4.9:** Implement Bellman-Ford algorithm <span style="font-size: 0.6em; color: navy;">Prb 4.9, Pg 78, exr:bellman</span>
 
 </v-click>
 

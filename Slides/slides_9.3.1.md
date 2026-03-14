@@ -11,12 +11,14 @@ drawings:
   persist: false
 transition: slide-left
 title: Deterministic Finite Automata
-mdc: true
+mdc: false
 ---
 
 # Deterministic Finite Automata
 
 Section 9.3.1 - Deterministic Finite Automata
+
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
 
@@ -319,7 +321,7 @@ What operations on languages **preserve** regularity?
 
 # Closure Under Regular Operations
 
-**Theorem:** Regular languages are closed under regular operations (union, concatenation, and Kleene star)
+**Theorem:** Regular languages are closed under regular operations (union, concatenation, and Kleene star) <span style="font-size: 0.6em; color: navy;">Thm 9.8, Pg 221, thm:1</span>
 
 <v-click>
 

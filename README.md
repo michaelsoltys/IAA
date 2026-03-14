@@ -14,59 +14,55 @@ This repository contains the companion materials organized into three main direc
 
 ## Directory Structure
 
-### 📂 Algorithms/
-Algorithm implementations referenced in the textbook, organized by chapter and section:
-- **Chapter 1**: Preliminaries (Division, Euclidean GCD, Palindrome check, Ulam sequences, Gale-Shapley matching, Extended Euclidean algorithm, Powers of 2)
-- **Chapter 2**: Greedy algorithms (Kruskal's MST, component merging, job scheduling, make change, Huffman coding)
-- **Chapter 3**: Divide & conquer (merge operations, mergesort, recursive binary multiplication, Savitch's theorem)
-- **Chapter 4**: Dynamic programming (longest subsequence, Floyd-Warshall, knapsack variants, activity selection)
-- **Chapter 5**: Online algorithms
-- **Chapter 6**: Randomized algorithms (pattern matching, Rabin-Miller primality)
-- **Chapter 7**: Parallel algorithms in linear algebra (Gaussian elimination, lattice reduction)
-- **Chapter 8**: Machine learning
-- **Chapter 9**: Computational foundations
-- **Chapter 10**: Mathematical foundations
-- **Additional algorithms**: Bellman-Ford, Berkowitz, Csanky, Dijkstra, PageRank, Quicksort, Merkle-Hellman
+### Algorithms/
+Algorithm implementations referenced in the textbook. Each file is named `A<N>_<Name>.<ext>` where `<N>` is the algorithm number in the book. Every file has a header comment with the algorithm number, page, LaTeX label, and a brief description.
 
-Each algorithm directory typically contains:
-- `README.txt` - Problem description and references
-- Implementation files (`.py`, `.go` with tests)
-- `label.txt` - Chapter/section labels
-- Sample input/output files where applicable
+**Naming convention:**
+- `A<N>_<Name>.py` — Python implementation
+- `A<N>_<Name>.go` — Go implementation
+- `A<N>_<Name>_test.go` — Go unit tests
+- `input_A<N>_<Name>.txt` — sample input file
 
-### 📂 Slides/
-LaTeX presentation slides for each chapter of the book:
-- Individual chapter files (`chp0.pdf` through `chp10.pdf`)
-- **Chapter 9** is divided into focused sections:
-  - `chp9.1-2.pdf` - Sections 9.1-9.2: Alphabets, strings and languages
-  - `chp9.3.pdf` - Section 9.3: Regular Languages  
-  - `chp9.4.pdf` - Context-Free Languages
-  - `chp9.5.pdf` - Turing Machines
-  - `chp9appendix.pdf` - Lambda-calculus and recursive functions (appendix)
-- Common styling and title templates
+**Current implementations:**
 
-### 📂 Solutions/
-Worked solutions to selected textbook problems, organized by problem number:
-- Multiple solution approaches for many problems
-- Jupyter notebooks for detailed explanations
-- Python implementations with test data
-- README files explaining the solution approach
-- Input/output examples and test cases
+| File | Algorithm | Page |
+|------|-----------|:----:|
+| `A1_Division.go` | Division | 4 |
+| `A2_Euclid.go`, `A2_Euclid.py` | Euclid's Algorithm | 6 |
+| `A3_Palindromes.go` | Palindromes | 7 |
+| `A4_Whatis1.py` | What Is It? (1) | 9 |
+| `A6_Ulam.go` | Ulam's Algorithm | 10 |
+| `A7_Gale-Shapley.py` | Gale-Shapley Stable Marriage | 16 |
+| `A9_Powers2.py` | Powers of 2 | 24 |
+| `A24_Dispersed-Knapsack.py` | Dispersed Knapsack | 83 |
+| `A25_Consecutive-Subsequence.py` | Consecutive Subsequence | 89 |
+| `A27_Perfect-Matching.py` | Perfect Matching | 125 |
+| `A28_Pattern-Matching.py` | Pattern Matching | 129 |
+| `A29_Rabin-Miller.py` | Rabin-Miller Primality Test | 131 |
+| `A33_Gauss-Lattice-Reduction.py` | Gauss Lattice Reduction (2D) | 163 |
 
-Each solution directory contains:
-- `Solution-X/` subdirectories for alternative approaches
-- `README.txt` files with solution explanations
-- Implementation code with sample data
-- `label.txt` files for cross-referencing
+### Slides/
+Slidev presentations for each section of the book (`slides_X.X.md`). See [Slides/README-SLIDEV.md](Slides/README-SLIDEV.md) for conventions.
+
+### Solutions/
+Worked solutions to selected textbook problems, organized by problem number.
 
 ## Languages and Tools Used
 - **Python**: Primary implementation language for most algorithms
 - **Go**: Selected algorithms with unit tests
-- **LaTeX**: Slides and mathematical notation
-- **Jupyter**: Interactive notebooks for complex solutions
+- **Slidev**: Markdown-based presentation slides (replaces legacy LaTeX Beamer)
 
 ## Getting Started
 1. Browse the `Algorithms/` directory to find implementations of specific algorithms
-2. Check `Solutions/` for worked examples of textbook problems  
+2. Check `Solutions/` for worked examples of textbook problems
 3. View `Slides/` for presentation materials covering theoretical concepts
 
+## Acknowledgements
+
+The algorithm implementations and solutions in this companion repository were contributed by:
+
+- **Ryan McIntyre** ([ryanmcintyre](https://github.com/ryanmcintyre)) — proof-read the 3rd edition manuscript and wrote the Python implementations during the summer of 2017
+- **Rishikesh Patil** — proof-read the 4th edition during the summer of 2024
+- **Skyler Atchison** — improved the manuscript by pointing out typos, omissions, errors and gaps
+- **Greg Herman** — improved the manuscript by pointing out typos, omissions, errors and gaps
+- **Christopher Kuske** — improved the manuscript by pointing out typos, omissions, errors and gaps

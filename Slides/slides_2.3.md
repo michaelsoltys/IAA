@@ -18,6 +18,8 @@ mdc: false
 
 Section 2.3 - Further Greedy Examples
 
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
+
 ---
 
 # Overview
@@ -37,6 +39,9 @@ Three more examples of greedy algorithms:
 **Denominations:** $C = \lbrace 1, 10, 25, 100 \rbrace$ (cents)
 
 **Greedy approach to Make Change:**
+
+<span style="font-size: 0.6em; color: navy;">Alg 13, Pg 45, alg:makechange</span>
+
 ```text
 C ← {1, 10, 25, 100}; L ← ∅; s ← 0
 while s < n:
@@ -268,6 +273,8 @@ $= 44 + 42 + 33 + 51 + 32 + 24 = 226$ bits
 
 # Huffman's Algorithm
 
+<span style="font-size: 0.6em; color: navy;">Alg 14, Pg 50, alg:huffman</span>
+
 ```text
 n ← |Σ|; Q ← Σ (priority queue by frequency)
 for i = 1 to n-1:
@@ -361,15 +368,15 @@ Shannon's source coding theorem (1948) gives the theoretical limit: you cannot c
 
 # Key Problems
 
-1. **Problem 2.25:** Show greedy make-change fails for $\lbrace 1, 10, 25, 100 \rbrace$
+1. **Problem 2.26:** Implement the make-change algorithm <span style="font-size: 0.6em; color: navy;">Prb 2.26, Pg 44, exr:makechange-program</span>
 
-2. **Problem 2.26:** Prove greedy works when $C = \lbrace 1, p, p^2, \ldots, p^k \rbrace$
+2. **Problem 2.27:** Show greedy make-change can be suboptimal <span style="font-size: 0.6em; color: navy;">Prb 2.27, Pg 45, exr:suboptimal-change</span>
 
-3. **Problem 2.29:** Find a bipartite graph where greedy matching fails
+3. **Problem 2.28:** Prove greedy works when $C = \lbrace 1, p, p^2, \ldots, p^k \rbrace$ <span style="font-size: 0.6em; color: navy;">Prb 2.28, Pg 45, exr:makechange</span>
 
-4. **Problem 2.31:** Design and prove Dijkstra's algorithm in pseudocode
+4. **Problem 2.29:** Find a bipartite graph where greedy matching fails <span style="font-size: 0.6em; color: navy;">Prb 2.29, Pg 45, exr:matching</span>
 
-5. **Problem 2.34:** Implement Huffman compression
+5. **Problem 2.35:** Implement Huffman compression <span style="font-size: 0.6em; color: navy;">Prb 2.35, Pg 51, exr:huffman</span>
 
 ---
 

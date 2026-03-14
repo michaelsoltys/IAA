@@ -11,12 +11,14 @@ drawings:
   persist: false
 transition: slide-left
 title: Context-Free Grammars
-mdc: true
+mdc: false
 ---
 
 # Context-Free Grammars
 
 Section 9.4.1 - Context-Free Grammars
+
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
 
@@ -325,7 +327,7 @@ $w \in L(G)$ iff $S \in (1, n)$
   - If $\exists\; X_p \in (i, k)$ and $X_q \in (k+1, j)$ and $X_r \longrightarrow X_p X_q$
   - Put $X_r$ in $(i, j)$
 
-**Complexity:** $O(n^3 \cdot |G|)$ — a dynamic programming algorithm!
+**Complexity:** $O(n^3 \cdot |G|)$ — a dynamic programming algorithm! <span style="font-size: 0.6em; color: navy;">Alg 42, Pg 243, alg:cyk</span>
 
 </v-click>
 
@@ -341,7 +343,7 @@ Proving languages are not context-free
 
 # Pumping Lemma for CFLs
 
-**Theorem:** For every CFL $L$, there exists a $p$ such that any $s \in L$ with $|s| \geq p$ can be written as $s = uvxyz$ where:
+**Theorem:** For every CFL $L$, there exists a $p$ such that any $s \in L$ with $|s| \geq p$ can be written as $s = uvxyz$ where: <span style="font-size: 0.6em; color: navy;">Lem 9.53, Pg 244, lem:pumping-cfl</span>
 
 <v-clicks>
 

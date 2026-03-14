@@ -11,7 +11,7 @@ drawings:
   persist: false
 transition: slide-left
 title: Decidable Languages
-mdc: true
+mdc: false
 ---
 
 <style>
@@ -27,6 +27,8 @@ mdc: true
 # Decidable Languages
 
 Section 9.5.3 - Decidability
+
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
 
@@ -128,7 +130,7 @@ $$E_{\text{CFG}} := \{\langle G\rangle : \text{G is a CFG such that } L(G)=\empt
 
 <v-clicks>
 
-**If $L$ is decidable, then $\overline{L}$ is decidable**
+**If $L$ is decidable, then $\overline{L}$ is decidable** <span style="font-size: 0.6em; color: navy;">Thm 9.63, Pg 251, thm:one</span>
 
 **Proof idea:**
 - Let $M$ decide $L$
@@ -148,7 +150,7 @@ $$E_{\text{CFG}} := \{\langle G\rangle : \text{G is a CFG such that } L(G)=\empt
 
 <v-clicks>
 
-**If both $L$ and $\overline{L}$ are RE (Recursively Enumerable), then $L$ is decidable**
+**If both $L$ and $\overline{L}$ are RE (Recursively Enumerable), then $L$ is decidable** <span style="font-size: 0.6em; color: navy;">Thm 9.64, Pg 252, thm:two</span>
 
 **Proof idea:**
 - Let $M_1$ recognize $L$ and $M_2$ recognize $\overline{L}$

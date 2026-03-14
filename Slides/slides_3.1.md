@@ -11,7 +11,7 @@ drawings:
   persist: false
 transition: slide-left
 title: Mergesort
-mdc: true
+mdc: false
 ---
 
 <style>
@@ -27,6 +27,8 @@ mdc: true
 # Mergesort
 
 Section 3.1 - Mergesort
+
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
 
@@ -46,11 +48,43 @@ $$c_1 \leq c_2 \leq \cdots \leq c_{n+m}$$
 
 ---
 
+# Sorting Algorithms
+
+| Algorithm | Strategy | Time (avg) | Time (worst) | Stable? |
+|-----------|----------|:----------:|:------------:|:-------:|
+| **Insertion sort** | Insert each item in its proper position | $O(n^2)$ | $O(n^2)$ | Yes |
+| **Selection sort** | Find minimum, swap to front, repeat | $O(n^2)$ | $O(n^2)$ | No |
+| **Bubble sort** | Swap adjacent pairs, repeat until sorted | $O(n^2)$ | $O(n^2)$ | Yes |
+| **Mergesort** | Divide in half, sort each, merge | $O(n \log n)$ | $O(n \log n)$ | Yes |
+| **Quicksort** | Pick pivot, partition, recurse <span style="font-size: 0.6em; color: navy;">Prb 3.12, Pg 69, exr:quicksort</span> | $O(n \log n)$ | $O(n^2)$ | No |
+| **Heapsort** | Like selection sort, but using a heap | $O(n \log n)$ | $O(n \log n)$ | No |
+
+<v-click>
+
+Mergesort and Quicksort are both **divide and conquer** algorithms. This chapter focuses on **Mergesort**.
+
+</v-click>
+
+<!--
+**Stable sorting:** A sorting algorithm is *stable* if it preserves the relative order of elements with equal keys. For example, if two records have the same sort key, a stable sort guarantees they appear in the same order in the output as they did in the input. This matters when sorting by multiple criteria — e.g., sort by name, then by age; stability ensures names stay alphabetical within the same age group.
+
+**Why is selection sort unstable?** Consider [3a, 2, 3b, 1]. Selection sort swaps 1 with 3a, giving [1, 2, 3b, 3a] — the two 3s are now reversed.
+
+**Why is quicksort unstable?** Partitioning can swap equal elements across the pivot.
+-->
+
+---
+
 # Merge Algorithm
 
-```text
+A sorting algorithm
+
 Merge Two Lists:
-  Require: a₁ ≤ a₂ ≤ ··· ≤ aₙ and b₁ ≤ b₂ ≤ ··· ≤ bₘ
+
+<span style="font-size: 0.6em; color: navy;">Alg 16, Pg 62, alg:merge</span>
+
+```text
+  Pre-condition: a₁ ≤ a₂ ≤ ··· ≤ aₙ and b₁ ≤ b₂ ≤ ··· ≤ bₘ
   p₁ ← 1; p₂ ← 1; i ← 1
   while i ≤ n + m:
     if a[p₁] ≤ b[p₂]:
@@ -60,7 +94,7 @@ Merge Two Lists:
       c[i] ← b[p₂]
       p₂ ← p₂ + 1
     i ← i + 1
-  Ensure: c₁ ≤ c₂ ≤ ··· ≤ c_{n+m}
+  Post-condition: c₁ ≤ c₂ ≤ ··· ≤ c_{n+m}
 ```
 
 <v-click>
@@ -91,9 +125,11 @@ The Merge algorithm as stated is **incorrect**!
 
 # The Mergesort Algorithm
 
+<span style="font-size: 0.6em; color: navy;">Alg 17, Pg 63, alg:mergesort</span>
+
 ```text
 Mergesort:
-  Require: A list of integers a₁, a₂, ..., aₙ
+  Pre-condition: A list of integers a₁, a₂, ..., aₙ
   L ← a₁, a₂, ..., aₙ
   if |L| ≤ 1:
     return L
@@ -101,7 +137,7 @@ Mergesort:
     L₁ ← first ⌈n/2⌉ elements of L
     L₂ ← last  ⌊n/2⌋ elements of L
     return Merge(Mergesort(L₁), Mergesort(L₂))
-  Ensure: a_{i₁} ≤ a_{i₂} ≤ ··· ≤ a_{iₙ}
+  Post-condition: a_{i₁} ≤ a_{i₂} ≤ ··· ≤ a_{iₙ}
 ```
 
 <v-click>
@@ -166,13 +202,13 @@ This is **optimal** for comparison-based sorting!
 
 <v-clicks>
 
-1. **Problem 3.1:** Fix the out-of-bounds bug in the Merge algorithm
+1. **Problem 3.1:** Fix the out-of-bounds bug in the Merge algorithm <span style="font-size: 0.6em; color: navy;">Prb 3.1, Pg 62, exr:merge-incorrect</span>
 
-2. **Problem 3.2:** Show that $L = L_1 \cup L_2$ (the split covers all elements)
+2. **Problem 3.2:** Show that $L = L_1 \cup L_2$ (the split covers all elements) <span style="font-size: 0.6em; color: navy;">Prb 3.2, Pg 62, prb:union</span>
 
-3. **Problem 3.3:** Prove correctness of Mergesort using induction
+3. **Problem 3.3:** Prove correctness of Mergesort using induction <span style="font-size: 0.6em; color: navy;">Prb 3.3, Pg 63, prb:mergesort</span>
 
-4. **Problem 3.4:** Implement Mergesort for sorting words into lexicographic order
+4. **Problem 3.4:** Implement Mergesort for sorting words into lexicographic order <span style="font-size: 0.6em; color: navy;">Prb 3.4, Pg 63, exr:mergesort-program</span>
 
 </v-clicks>
 

@@ -11,7 +11,7 @@ drawings:
   persist: false
 transition: slide-left
 title: Undecidability
-mdc: true
+mdc: false
 ---
 
 <style>
@@ -27,6 +27,8 @@ mdc: true
 # Undecidability
 
 Section 9.5.5 - Undecidability
+
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
 
@@ -46,9 +48,9 @@ $$A_{TM} = \{\langle M, w \rangle : \text{TM } M \text{ accepts } w\}$$
 
 ---
 
-# Theorem 9.6: $A_{TM}$ is Undecidable
+# Theorem: $A_{TM}$ is Undecidable
 
-**Theorem:** There is no Turing Machine that decides $A_{TM}$.
+**Theorem:** There is no Turing Machine that decides $A_{TM}$. <span style="font-size: 0.6em; color: navy;">Thm 9.66, Pg 253, thm:atm</span>
 
 <v-click>
 
@@ -118,7 +120,7 @@ Imagine you're developing a debugger:
 
 </v-clicks>
 
-**Theorem 9.6 says:** This "halting feature" **cannot be implemented** for all programs!
+**The theorem says:** This "halting feature" **cannot be implemented** for all programs!
 
 <v-click>
 
@@ -144,7 +146,7 @@ But:
 
 # The Complement Problem
 
-**Corollary:** $\overline{A_{TM}}$ is **not Recursively Enumerable (RE)**
+**Corollary:** $\overline{A_{TM}}$ is **not Recursively Enumerable (RE)** <span style="font-size: 0.6em; color: navy;">Thm 9.68, Pg 254, thm:zero</span>
 
 <v-click>
 
@@ -235,7 +237,7 @@ Both undecidable by reduction from $A_{TM}$!
 
 # Rice's Theorem
 
-**Theorem:** Every **nontrivial property** of Turing Machine languages is undecidable.
+**Theorem:** Every **nontrivial property** of Turing Machine languages is undecidable. <span style="font-size: 0.6em; color: navy;">Thm 9.70, Pg 256, thm:rice</span>
 
 <v-clicks>
 
@@ -257,7 +259,7 @@ Both undecidable by reduction from $A_{TM}$!
 
 **Enumerator:** A TM with a write-only output tape that lists strings of a language
 
-**Theorem:** A language is **recognizable** iff it is **enumerable**
+**Theorem:** A language is **recognizable** iff it is **enumerable** <span style="font-size: 0.6em; color: navy;">Thm 9.69, Pg 254, thm:enumerable</span>
 
 <v-click>
 
@@ -302,7 +304,7 @@ Both sides: $10111110$ ✓
 
 # PCP is Undecidable
 
-**Theorem:** The Post's Correspondence Problem is undecidable.
+**Theorem:** The Post's Correspondence Problem is undecidable. <span style="font-size: 0.6em; color: navy;">Lem 9.5.8, Pg 257, lem:pcp-mpcp</span>
 
 **Proof Strategy (3 steps):**
 

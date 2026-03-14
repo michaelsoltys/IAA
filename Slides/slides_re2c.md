@@ -18,6 +18,8 @@ mdc: false
 
 From Regular Expressions to Efficient Scanners
 
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
+
 ---
 
 # The Big Picture

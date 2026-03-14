@@ -11,7 +11,7 @@ drawings:
   persist: false
 transition: slide-left
 title: Stable Marriage Problem
-mdc: true
+mdc: false
 ---
 
 <style>
@@ -27,6 +27,8 @@ mdc: true
 # Stable Marriage Problem
 
 Section 1.2.2 - Stable Marriage Problem
+
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
 
@@ -179,6 +181,8 @@ When $b_{s+1}$ proposes to girl $g_j$:
 ---
 
 # Gale-Shapley Algorithm
+
+<span style="font-size: 0.6em; color: navy;">Alg 7, Pg 16, alg:gale-shapley</span> <a href="https://github.com/michaelsoltys/IAA/blob/main/Algorithms/A7_Gale-Shapley.py" style="font-size: 0.6em; color: teal;">[Python implementation]</a>
 
 ```text
 Stage 1: b₁ chooses his top g, M₁ ← {(b₁, g)}
@@ -398,7 +402,7 @@ $$M_4 = \{(b_1, g_1), (b_2, g_4), (b_3, g_2), (b_4, g_3)\}$$
 
 # Optimality Result
 
-**Theorem:** The Gale-Shapley algorithm (with boys proposing) produces a **boy-optimal** and **girl-pessimal** stable matching.
+**Theorem:** The Gale-Shapley algorithm (with boys proposing) produces a **boy-optimal** and **girl-pessimal** stable matching. <span style="font-size: 0.6em; color: navy;">Thm 1.24, Pg 19, thm:saaty</span>
 
 <v-click>
 
@@ -418,15 +422,15 @@ $$M_4 = \{(b_1, g_1), (b_2, g_4), (b_3, g_2), (b_4, g_3)\}$$
 
 <v-clicks>
 
-1. **Problem 1.18:** Show that each $b$ need propose at most once to each $g$
+1. **Problem 1.19:** Show that exactly one new girl becomes engaged at each stage, and engaged girls' partners only improve <span style="font-size: 0.6em; color: navy;">Prb 1.19, Pg 16, exr:girls2</span>
 
-2. **Problem 1.19:** Show that exactly one new girl becomes engaged at each stage, and engaged girls' partners only improve
+2. **Problem 1.20:** Show that at stage $n$, $M_n$ is a stable marriage <span style="font-size: 0.6em; color: navy;">Prb 1.20, Pg 17, exr:girls1</span>
 
-3. **Problem 1.20:** Show that at stage $n$, $M_n$ is a stable marriage
+3. **Problem 1.21:** Show the algorithm produces boy-optimal, girl-pessimal matching <span style="font-size: 0.6em; color: navy;">Prb 1.21, Pg 17, exr:girls3</span>
 
-4. **Problem 1.21:** Show the algorithm produces boy-optimal, girl-pessimal matching
+4. **Problem 1.22:** Implement the Gale-Shapley algorithm <span style="font-size: 0.6em; color: navy;">Prb 1.22, Pg 17, exr:girls4</span>
 
-5. **Problem 1.22:** Implement the Gale-Shapley algorithm
+5. **Problem 1.23:** Show that each $b$ need propose at most once to each $g$ <span style="font-size: 0.6em; color: navy;">Prb 1.23, Pg 17, exr:gale-shapley</span>
 
 </v-clicks>
 

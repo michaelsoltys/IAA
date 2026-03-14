@@ -11,7 +11,7 @@ drawings:
   persist: false
 transition: slide-left
 title: "Savitch's Algorithm"
-mdc: true
+mdc: false
 ---
 
 <style>
@@ -27,6 +27,8 @@ mdc: true
 # Savitch's Algorithm
 
 Section 3.3 - Savitch's Algorithm
+
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
 
@@ -93,6 +95,8 @@ A path of length $\leq 2^i$ can be split into two paths of length $\leq 2^{i-1}$
 ---
 
 # Savitch's Algorithm
+
+<span style="font-size: 0.6em; color: navy;">Alg 19, Pg 68, alg:savitch</span>
 
 ```text
 R(G, u, v, i):
@@ -188,11 +192,11 @@ This gives exponential time — $O(n^{2 \log n})$ — a huge cost for tiny space
 
 <v-clicks>
 
-1. **Problem 3.7:** Prove that Savitch's algorithm correctly computes $\text{R}(G, u, v, i)$ and uses at most $i \cdot s$ space. Conclude $O(\log^2 n)$ space.
+1. **Problem 3.7:** Prove that Savitch's algorithm correctly computes $\text{R}(G, u, v, i)$ and uses at most $i \cdot s$ space. Conclude $O(\log^2 n)$ space. <span style="font-size: 0.6em; color: navy;">Prb 3.7, Pg 67, exr:savitch1</span>
 
-2. **Problem 3.8:** What is the exact time complexity of Savitch's algorithm?
+2. **Problem 3.8:** What is the exact time complexity of Savitch's algorithm? <span style="font-size: 0.6em; color: navy;">Prb 3.8, Pg 67, prb:savitchtime</span>
 
-3. **Problem 3.9:** Implement Savitch's algorithm so that at each step it outputs the contents of the recursion stack.
+3. **Problem 3.9:** Implement Savitch's algorithm so that at each step it outputs the contents of the recursion stack. <span style="font-size: 0.6em; color: navy;">Prb 3.9, Pg 67, exr:savitch-program</span>
 
 </v-clicks>
 

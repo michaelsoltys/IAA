@@ -11,7 +11,7 @@ drawings:
   persist: false
 transition: slide-left
 title: Minimum Cost Spanning Trees
-mdc: true
+mdc: false
 ---
 
 <style>
@@ -27,6 +27,8 @@ mdc: true
 # Minimum Cost Spanning Trees
 
 Section 2.1 - Minimum Cost Spanning Trees
+
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
 
@@ -69,7 +71,7 @@ To check if $(i,j)$ is an edge: look at position $(i-1)n + j$ in $s_G$
 
 # Trees Have $n-1$ Edges
 
-**Lemma:** Every tree with $n$ nodes has exactly $n-1$ edges.
+**Lemma:** Every tree with $n$ nodes has exactly $n-1$ edges. <span style="font-size: 0.6em; color: navy;">Lem 2.1, Pg 34, lem:trees</span>
 
 <v-click>
 
@@ -117,6 +119,8 @@ To check if $(i,j)$ is an edge: look at position $(i-1)n + j$ in $s_G$
 
 # Kruskal's Algorithm
 
+<span style="font-size: 0.6em; color: navy;">Alg 10, Pg 35, alg:kruskal</span>
+
 ```text
 Kruskal's Algorithm:
 1. Sort edges: c(e₁) ≤ c(e₂) ≤ ... ≤ c(eₘ)
@@ -150,6 +154,9 @@ How do we check if adding an edge creates a cycle?
 <v-click>
 
 **Merging Components** (when adding edge $(r,s)$):
+
+<span style="font-size: 0.6em; color: navy;">Alg 11, Pg 35, alg:component</span>
+
 ```text
 k ← D[r]
 l ← D[s]
@@ -190,7 +197,7 @@ If we reject $e_i$ because it forms a cycle, then $T$ already has a path connect
 
 <v-click>
 
-**Theorem:** "$T$ is promising" is a loop invariant for Kruskal's algorithm.
+**Theorem:** "$T$ is promising" is a loop invariant for Kruskal's algorithm. <span style="font-size: 0.6em; color: navy;">Lem 2.10, Pg 37, lem:promising</span>
 
 </v-click>
 
@@ -238,7 +245,7 @@ Since $T$ is promising, there exists MCST $T_1$ with $T \subseteq T_1$.
 
 # Exchange Lemma
 
-**Lemma:** Let $G$ be connected, $T_1$ and $T_2$ be spanning trees. For every edge $e \in T_2 - T_1$, there exists $e' \in T_1 - T_2$ such that $T_1 \cup \{e\} - \{e'\}$ is a spanning tree.
+**Lemma:** Let $G$ be connected, $T_1$ and $T_2$ be spanning trees. For every edge $e \in T_2 - T_1$, there exists $e' \in T_1 - T_2$ such that $T_1 \cup \{e\} - \{e'\}$ is a spanning tree. <span style="font-size: 0.6em; color: navy;">Lem 2.11, Pg 39, lem:exch</span>
 
 <v-click>
 
@@ -315,15 +322,15 @@ Graph with 5 nodes, 7 edges (all cost 1):
 
 <v-clicks>
 
-1. **Problem 2.6:** Prove that every tree with $n$ nodes has $n-1$ edges
+1. **Problem 2.4:** Prove that every tree with $n$ nodes has $n-1$ edges <span style="font-size: 0.6em; color: navy;">Prb 2.4, Pg 34, exr:cycles</span>
 
-2. **Problem 2.8:** Prove Kruskal's algorithm outputs a tree (connected and acyclic)
+2. **Problem 2.5:** Trace Kruskal's algorithm on a given graph <span style="font-size: 0.6em; color: navy;">Prb 2.5, Pg 35, exr:kruskal-run</span>
 
-3. **Problem 2.11:** Prove the Exchange Lemma
+3. **Problem 2.12:** If $e_1$ has strictly smallest cost, show every MCST includes $e_1$ <span style="font-size: 0.6em; color: navy;">Prb 2.12, Pg 39, exr:exch_lem</span>
 
-4. **Problem 2.12:** If $e_1$ has strictly smallest cost, show every MCST includes $e_1$
+4. **Problem 2.13:** Show that the smallest edge is in every MCST <span style="font-size: 0.6em; color: navy;">Prb 2.13, Pg 39, exr:kruskal_smallest_edge</span>
 
-5. **Problem 2.14:** Implement Kruskal's algorithm for grid graphs
+5. **Problem 2.15:** Implement Kruskal's algorithm <span style="font-size: 0.6em; color: navy;">Prb 2.15, Pg 39, exr:kruskal_program</span>
 
 </v-clicks>
 

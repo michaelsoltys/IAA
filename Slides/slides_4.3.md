@@ -11,7 +11,7 @@ drawings:
   persist: false
 transition: slide-left
 title: Simple Knapsack Problem
-mdc: true
+mdc: false
 ---
 
 <style>
@@ -27,6 +27,8 @@ mdc: true
 # Simple Knapsack Problem
 
 Section 4.3 - Simple Knapsack Problem
+
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
 
@@ -132,6 +134,8 @@ $$R(i,j) = \text{true} \iff R(i-1,j) = \text{true} \vee (j \geq w_i \wedge R(i-1
 
 # The Algorithm: Space-Saving Trick
 
+<span style="font-size: 0.6em; color: navy;">Alg 23, Pg 81, alg:sks</span>
+
 Instead of storing a $d \times C$ table, use a 1D array $S(j)$ and update it in **decreasing** order of $j$:
 
 ```text
@@ -234,13 +238,13 @@ Since SKS is $\textbf{NP}$-hard, we cannot solve it optimally in general.
 
 <v-clicks>
 
-1. **Space-saving trick:** Why doesn't overwriting cause problems when we iterate in decreasing order?
+1. **Problem 4.10:** Why doesn't overwriting cause problems when we iterate in decreasing order? <span style="font-size: 0.6em; color: navy;">Prb 4.10, Pg 80, exr:sksover</span>
 
-2. **Formal correctness:** Prove that $S(j) = R(i,j)$ after the $i$-th iteration using induction.
+2. **Problem 4.11:** Prove that $S(j) = R(i,j)$ after the $i$-th iteration using induction. <span style="font-size: 0.6em; color: navy;">Prb 4.11, Pg 80, exr:sksformal</span>
 
-3. **Reconstruction:** How do we build the actual subset of objects that achieves weight $M$?
+3. **Problem 4.12:** How do we build the actual subset of objects that achieves weight $M$? <span style="font-size: 0.6em; color: navy;">Prb 4.12, Pg 80, exr:construct</span>
 
-4. **Greedy comparison:** What is the "obvious" greedy solution, and how does it compare to the DP solution?
+4. **Problem 4.15:** What is the "obvious" greedy solution, and how does it compare to the DP solution? <span style="font-size: 0.6em; color: navy;">Prb 4.15, Pg 82, exr:sks-greedy</span>
 
 </v-clicks>
 

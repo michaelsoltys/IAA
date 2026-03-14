@@ -11,7 +11,7 @@ drawings:
   persist: false
 transition: slide-left
 title: Jobs with Deadlines and Profits
-mdc: true
+mdc: false
 ---
 
 <style>
@@ -27,6 +27,8 @@ mdc: true
 # Jobs with Deadlines and Profits
 
 Section 2.2 - Jobs with Deadlines and Profits
+
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
 
@@ -97,6 +99,8 @@ $$t_1 \neq t_2 \text{ and } S(t_1) \neq 0 \Rightarrow S(t_1) \neq S(t_2)$$
 
 # The Greedy Algorithm
 
+<span style="font-size: 0.6em; color: navy;">Alg 12, Pg 42, alg:jobs</span>
+
 Job scheduling algorithm:
 ```text
 Sort jobs by non-increasing profit: g₁ ≥ g₂ ≥ ... ≥ gₙ
@@ -158,7 +162,7 @@ Jobs: $(d_1, g_1) = (1, 10)$, $(d_2, g_2) = (1, 10)$, $(d_3, g_3) = (2, 8)$, $(d
 
 # Why Does This Work?
 
-**Theorem:** The greedy solution to job scheduling is optimal.
+**Theorem:** The greedy solution to job scheduling is optimal. <span style="font-size: 0.6em; color: navy;">Thm 2.18, Pg 42, thm:theorem1</span>
 
 <v-click>
 
@@ -191,7 +195,7 @@ Example: $S' = (2, 0, 1, 0, 3)$ extends $S = (2, 0, 0, 0, 3)$
 
 # The Loop Invariant
 
-**Lemma:** "$S$ is promising" is an invariant for the for-loop in the job scheduling algorithm.
+**Lemma:** "$S$ is promising" is an invariant for the for-loop in the job scheduling algorithm. <span style="font-size: 0.6em; color: navy;">Lem 2.19, Pg 42, lem:lemma1</span>
 
 <v-click>
 
@@ -405,15 +409,15 @@ Trace: Starting with $S = (0, 0, 0, 0)$
 
 <v-clicks>
 
-1. **Problem 2.17:** Trace the algorithm on a given input, showing how "promising" is maintained
+1. **Problem 2.17:** Trace the algorithm on a given input, showing how "promising" is maintained <span style="font-size: 0.6em; color: navy;">Prb 2.17, Pg 42, exr:job_scheduling</span>
 
-2. **Problem 2.18:** Why does the loop invariant imply the theorem?
+2. **Problem 2.20:** Under what conditions is there a unique optimal schedule? <span style="font-size: 0.6em; color: navy;">Prb 2.20, Pg 42, prb:jobsexm</span>
 
-3. **Problem 2.19:** Answer all the "why's" in the proof
+3. **Problem 2.21:** Why does the loop invariant imply the theorem? <span style="font-size: 0.6em; color: navy;">Prb 2.21, Pg 43, exr:lemma1</span>
 
-4. **Problem 2.20:** Under what conditions is there a unique optimal schedule?
+4. **Problem 2.22:** Discuss the subtle point in Case 1 of the proof <span style="font-size: 0.6em; color: navy;">Prb 2.22, Pg 43, prb:subtle</span>
 
-5. **Problem 2.15:** Implement the job scheduling algorithm
+5. **Problem 2.24:** Answer all the "why's" in the proof <span style="font-size: 0.6em; color: navy;">Prb 2.24, Pg 44, exr:whys</span>
 
 </v-clicks>
 

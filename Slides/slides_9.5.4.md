@@ -11,7 +11,7 @@ drawings:
   persist: false
 transition: slide-left
 title: Undecidability
-mdc: true
+mdc: false
 ---
 
 <style>
@@ -27,6 +27,8 @@ mdc: true
 # Undecidability
 
 Section 9.5.4 - Church-Turing thesis
+
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
 
@@ -102,7 +104,7 @@ $$A_{\text{TM}} = \{\langle M,w\rangle : \text{M is a TM and M accepts w}\}$$
 
 <v-clicks>
 
-**$A_{\text{TM}}$ is undecidable**
+**$A_{\text{TM}}$ is undecidable** <span style="font-size: 0.6em; color: navy;">Thm 9.66, Pg 253, thm:atm</span>
 
 This means:
 - There is **no algorithm** that can determine if an arbitrary TM accepts a given input
@@ -327,7 +329,7 @@ Since we can't decide $A_{\text{TM}}$, we can't compute Busy Beaver
 
 $$\overline{A_{\text{TM}}} = \{\langle M,w\rangle : \text{M does not accept w}\}$$
 
-**$\overline{A_{\text{TM}}}$ is not RE** (not even recognizable!)
+**$\overline{A_{\text{TM}}}$ is not RE** (not even recognizable!) <span style="font-size: 0.6em; color: navy;">Thm 9.68, Pg 254, thm:zero</span>
 
 **Proof:**
 - We know $A_{\text{TM}}$ is RE (recognized by Universal TM)
@@ -398,7 +400,7 @@ A language is **enumerable** if there exists an enumerator $E$ with $L = L(E)$
 
 <v-clicks>
 
-**A language is recognizable iff it is enumerable**
+**A language is recognizable iff it is enumerable** <span style="font-size: 0.6em; color: navy;">Thm 9.69, Pg 254, thm:enumerable</span>
 
 **Proof ($\Leftarrow$):** If $L$ is enumerable
 - Given enumerator $E$ for $L$

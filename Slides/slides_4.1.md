@@ -11,7 +11,7 @@ drawings:
   persist: false
 transition: slide-left
 title: Longest Monotone Subsequence Problem
-mdc: true
+mdc: false
 ---
 
 <style>
@@ -27,6 +27,8 @@ mdc: true
 # Longest Monotone Subsequence
 
 Section 4.1 - LMS
+
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
 
@@ -111,6 +113,8 @@ $$
 
 # Step 3: Write the Algorithm
 
+<span style="font-size: 0.6em; color: navy;">Alg 21, Pg 76, alg:lms</span>
+
 ```text
 LMS Algorithm:
   R(1) ← 1
@@ -156,11 +160,11 @@ Sequence: $\{4, 6, 5, 9, 1\}$
 
 <v-clicks>
 
-1. **Backtracking:** Once we have computed array $R$, how can we build an actual subsequence of length $L$?
+1. **Problem 4.1:** Once we have computed array $R$, how can we build an actual subsequence of length $L$? <span style="font-size: 0.6em; color: navy;">Prb 4.1, Pg 76, exr:lmsbacktrack</span>
 
-2. **Correctness:** What are appropriate pre/post-conditions? How do we prove correctness with a loop invariant?
+2. **Problem 4.2:** What are appropriate pre/post-conditions? How do we prove correctness with a loop invariant? <span style="font-size: 0.6em; color: navy;">Prb 4.2, Pg 76, exr:lmscorrectness</span>
 
-3. **Variant:** What if consecutive elements can differ by at most $s$?
+3. **Problem 4.3:** What if consecutive elements can differ by at most $s$? <span style="font-size: 0.6em; color: navy;">Prb 4.3, Pg 76, exr:stepone</span>
    - Example: For $s=1$ and sequence $\{7, 6, 1, 4, 7, 8, 20\}$
    - Answer: $\{7, 6, 7, 8\}$ with length 4
 

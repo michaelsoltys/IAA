@@ -11,7 +11,7 @@ drawings:
   persist: false
 transition: slide-left
 title: Regular Expressions
-mdc: true
+mdc: false
 ---
 
 <style>
@@ -27,6 +27,8 @@ mdc: true
 # Regular Expressions
 
 Section 9.3.3 - Regular Expressions
+
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
 
@@ -147,7 +149,7 @@ The fundamental equivalence theorem
 
 # The Equivalence Theorem
 
-**Theorem:** A language is regular if and only if it is given by some regular expression
+**Theorem:** A language is regular if and only if it is given by some regular expression <span style="font-size: 0.6em; color: navy;">Thm 9.18, Pg 225, thm:2</span>
 
 <v-click>
 
@@ -458,7 +460,7 @@ The new edge $R_1 R_2^* R_3 + R_4$ captures exactly the strings that could trave
 
 # The Complete Picture
 
-**Theorem:** A language is regular if and only if it is given by some regular expression
+**Theorem:** A language is regular if and only if it is given by some regular expression <span style="font-size: 0.6em; color: navy;">Thm 9.18, Pg 225, thm:2</span>
 
 <v-click>
 

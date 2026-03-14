@@ -11,12 +11,14 @@ drawings:
   persist: false
 transition: slide-left
 title: Pushdown Automata
-mdc: true
+mdc: false
 ---
 
 # Pushdown Automata
 
 Section 9.4.2 - Pushdown Automata
+
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
 
@@ -146,7 +148,7 @@ We write $\vdash^*$ for zero or more steps
 
 <v-click>
 
-**Lemma:** If $(q, x, \alpha) \vdash^* (p, y, \beta)$, then $(q, xw, \alpha\gamma) \vdash^* (p, yw, \beta\gamma)$
+**Lemma:** If $(q, x, \alpha) \vdash^* (p, y, \beta)$, then $(q, xw, \alpha\gamma) \vdash^* (p, yw, \beta\gamma)$ <span style="font-size: 0.6em; color: navy;">Lem 9.39, Pg 239, lem:configs</span>
 
 *Extra input and stack content below the action don't interfere with the computation*
 
@@ -168,7 +170,7 @@ $$L(P) = \{w \mid (q_0, w, \$) \vdash^* (q, \varepsilon, \varepsilon)\}$$
 
 <v-click>
 
-**Theorem:** $L$ is accepted by a PDA by final state **iff** it is accepted by a PDA by empty stack
+**Theorem:** $L$ is accepted by a PDA by final state **iff** it is accepted by a PDA by empty stack <span style="font-size: 0.6em; color: navy;">Lem 9.41, Pg 239, lem:acceptance</span>
 
 **Proof sketch:**
 - Final state $\Rightarrow$ empty stack: When $\$$ is popped, enter an accepting state

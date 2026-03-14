@@ -11,7 +11,7 @@ drawings:
   persist: false
 transition: slide-left
 title: What is Correctness?
-mdc: true
+mdc: false
 ---
 
 <style>
@@ -27,6 +27,8 @@ mdc: true
 # What is Correctness?
 
 Section 1.1 - What is Correctness?
+
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
 
@@ -96,7 +98,7 @@ In words: For any well-formed input $I$, if $I$ satisfies the precondition and $
 
 <v-click>
 
-**Problem 1.1:** How would you modify the partial correctness formula to express full correctness?
+**Problem 1.1:** How would you modify the partial correctness formula to express full correctness? <span style="font-size: 0.6em; color: navy;">Prb 1.1, Pg 2, prb:full-correctness</span>
 
 </v-click>
 
@@ -156,6 +158,8 @@ For functions $f, g : \mathbb{N} \rightarrow \mathbb{R}$:
 ---
 
 # Division Algorithm
+
+<span style="font-size: 0.6em; color: navy;">Alg 1, Pg 4, alg:p1</span> <a href="https://github.com/michaelsoltys/IAA/blob/main/Algorithms/A1_Division.go" style="font-size: 0.6em; color: teal;">[Go implementation]</a>
 
 **Input:** $x \geq 0$, $y > 0$, $x, y \in \mathbb{N}$
 
@@ -256,7 +260,7 @@ By LNP, this sequence cannot go on forever → **Algorithm terminates** ✓
 
 # Division: Complexity
 
-**Problem 1.3:** What is the running time of the division algorithm?
+**Problem 1.3:** What is the running time of the division algorithm? <span style="font-size: 0.6em; color: navy;">Prb 1.3, Pg 5, exr:running-time-div</span>
 
 <v-click>
 
@@ -298,13 +302,13 @@ Assume each of these takes one step:
 
 <v-clicks>
 
-1. **Problem 1.1:** Modify the partial correctness formula for full correctness
+1. **Problem 1.1:** Modify the partial correctness formula for full correctness <span style="font-size: 0.6em; color: navy;">Prb 1.1, Pg 2, prb:full-correctness</span>
 
-2. **Problem 1.3:** Analyze the running time of the division algorithm
+2. **Problem 1.3:** Analyze the running time of the division algorithm <span style="font-size: 0.6em; color: navy;">Prb 1.3, Pg 5, exr:running-time-div</span>
 
-3. **Problem 1.4:** What if the precondition changes to allow $x, y \in \mathbb{Z}$?
+3. **Problem 1.4:** What if the precondition changes to allow $x, y \in \mathbb{Z}$? <span style="font-size: 0.6em; color: navy;">Prb 1.4, Pg 5, exr:N-vs-Z+</span>
 
-4. **Problem 1.5:** Write a program that outputs intermediate values of $q$ and $r$
+4. **Problem 1.5:** Write a program that outputs intermediate values of $q$ and $r$ <span style="font-size: 0.6em; color: navy;">Prb 1.5, Pg 5, exr:div</span>
 
 </v-clicks>
 
