@@ -208,7 +208,7 @@ This is **optimal** for comparison-based sorting!
 
 3. **Problem 3.3:** Prove correctness of Mergesort using induction <span style="font-size: 0.6em; color: navy;">Prb 3.3, Pg 63, prb:mergesort</span>
 
-4. **Problem 3.4:** Implement Mergesort for sorting words into lexicographic order <span style="font-size: 0.6em; color: navy;">Prb 3.4, Pg 63, exr:mergesort-program</span>
+4. **Problem 3.4:** Implement Mergesort for sorting words into lexicographic order <span style="font-size: 0.6em; color: navy;">Prb 3.4, Pg 63, exr:mergesort-program</span> <a href="https://github.com/michaelsoltys/IAA/blob/main/Problems/P3.4_Mergesort.py" style="font-size: 0.6em; color: teal;">[Python solution]</a>
 
 </v-clicks>
 

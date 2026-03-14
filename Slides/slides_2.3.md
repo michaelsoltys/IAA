@@ -368,7 +368,7 @@ Shannon's source coding theorem (1948) gives the theoretical limit: you cannot c
 
 # Key Problems
 
-1. **Problem 2.26:** Implement the make-change algorithm <span style="font-size: 0.6em; color: navy;">Prb 2.26, Pg 44, exr:makechange-program</span>
+1. **Problem 2.26:** Implement the make-change algorithm <span style="font-size: 0.6em; color: navy;">Prb 2.26, Pg 44, exr:makechange-program</span> <a href="https://github.com/michaelsoltys/IAA/blob/main/Problems/P2.26_Make-Change.py" style="font-size: 0.6em; color: teal;">[Python solution]</a>
 
 2. **Problem 2.27:** Show greedy make-change can be suboptimal <span style="font-size: 0.6em; color: navy;">Prb 2.27, Pg 45, exr:suboptimal-change</span>
 
@@ -376,7 +376,7 @@ Shannon's source coding theorem (1948) gives the theoretical limit: you cannot c
 
 4. **Problem 2.29:** Find a bipartite graph where greedy matching fails <span style="font-size: 0.6em; color: navy;">Prb 2.29, Pg 45, exr:matching</span>
 
-5. **Problem 2.35:** Implement Huffman compression <span style="font-size: 0.6em; color: navy;">Prb 2.35, Pg 51, exr:huffman</span>
+5. **Problem 2.35:** Implement Huffman compression <span style="font-size: 0.6em; color: navy;">Prb 2.35, Pg 51, exr:huffman</span> <a href="https://github.com/michaelsoltys/IAA/blob/main/Problems/P2.35_Huffman.py" style="font-size: 0.6em; color: teal;">[Python solution]</a>
 
 ---
 

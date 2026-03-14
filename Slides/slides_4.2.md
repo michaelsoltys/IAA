@@ -1105,13 +1105,13 @@ For **theoretical** interest (space complexity, complexity classes):
 
 <v-click>
 
-**Problem 4.8:** Implement Floyd's algorithm with 2D array and overwriting <span style="font-size: 0.6em; color: navy;">Prb 4.8, Pg 78, exr:floyd</span>
+**Problem 4.8:** Implement Floyd's algorithm with 2D array and overwriting <span style="font-size: 0.6em; color: navy;">Prb 4.8, Pg 78, exr:floyd</span> <a href="https://github.com/michaelsoltys/IAA/blob/main/Problems/P4.8_Floyd.py" style="font-size: 0.6em; color: teal;">[Python solution]</a>
 
 </v-click>
 
 <v-click>
 
-**Problem 4.9:** Implement Bellman-Ford algorithm <span style="font-size: 0.6em; color: navy;">Prb 4.9, Pg 78, exr:bellman</span>
+**Problem 4.9:** Implement Bellman-Ford algorithm <span style="font-size: 0.6em; color: navy;">Prb 4.9, Pg 78, exr:bellman</span> <a href="https://github.com/michaelsoltys/IAA/blob/main/Problems/P4.9_Bellman-Ford.py" style="font-size: 0.6em; color: teal;">[Python solution]</a>
 
 </v-click>
 

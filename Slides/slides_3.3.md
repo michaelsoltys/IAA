@@ -196,7 +196,7 @@ This gives exponential time — $O(n^{2 \log n})$ — a huge cost for tiny space
 
 2. **Problem 3.8:** What is the exact time complexity of Savitch's algorithm? <span style="font-size: 0.6em; color: navy;">Prb 3.8, Pg 67, prb:savitchtime</span>
 
-3. **Problem 3.9:** Implement Savitch's algorithm so that at each step it outputs the contents of the recursion stack. <span style="font-size: 0.6em; color: navy;">Prb 3.9, Pg 67, exr:savitch-program</span>
+3. **Problem 3.9:** Implement Savitch's algorithm so that at each step it outputs the contents of the recursion stack. <span style="font-size: 0.6em; color: navy;">Prb 3.9, Pg 67, exr:savitch-program</span> <a href="https://github.com/michaelsoltys/IAA/blob/main/Problems/P3.9_Savitch.py" style="font-size: 0.6em; color: teal;">[Python solution]</a>
 
 </v-clicks>
 

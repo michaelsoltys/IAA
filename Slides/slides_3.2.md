@@ -193,7 +193,7 @@ Starting from $xy = x_1 y_1 \cdot 2^n + (x_1 y_0 + x_0 y_1) \cdot 2^{n/2} + x_0 
 
 1. **Problem 3.5:** Prove the correctness of the Karatsuba algorithm <span style="font-size: 0.6em; color: navy;">Prb 3.5, Pg 65, exr:recmult-correctness</span>
 
-2. **Problem 3.6:** Implement binary multiplication — input as two strings of 0s and 1s on the command line <span style="font-size: 0.6em; color: navy;">Prb 3.6, Pg 66, exr:recmult-program</span>
+2. **Problem 3.6:** Implement binary multiplication — input as two strings of 0s and 1s on the command line <span style="font-size: 0.6em; color: navy;">Prb 3.6, Pg 66, exr:recmult-program</span> <a href="https://github.com/michaelsoltys/IAA/blob/main/Problems/P3.6_Binary-Mult.py" style="font-size: 0.6em; color: teal;">[Python solution]</a>
 
 3. **Think about:** Can we do even better than $O(n^{1.59})$? (Yes — Toom-Cook, Schönhage-Strassen, and Harvey-van der Hoeven achieve near-linear time!)
 

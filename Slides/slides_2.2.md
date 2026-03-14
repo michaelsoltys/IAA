@@ -409,7 +409,7 @@ Trace: Starting with $S = (0, 0, 0, 0)$
 
 <v-clicks>
 
-1. **Problem 2.17:** Trace the algorithm on a given input, showing how "promising" is maintained <span style="font-size: 0.6em; color: navy;">Prb 2.17, Pg 42, exr:job_scheduling</span>
+1. **Problem 2.17:** Trace the algorithm on a given input, showing how "promising" is maintained <span style="font-size: 0.6em; color: navy;">Prb 2.17, Pg 42, exr:job_scheduling</span> <a href="https://github.com/michaelsoltys/IAA/blob/main/Problems/P2.17_Job-Scheduling.py" style="font-size: 0.6em; color: teal;">[Python solution]</a>
 
 2. **Problem 2.20:** Under what conditions is there a unique optimal schedule? <span style="font-size: 0.6em; color: navy;">Prb 2.20, Pg 42, prb:jobsexm</span>
 

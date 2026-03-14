@@ -308,7 +308,7 @@ Assume each of these takes one step:
 
 3. **Problem 1.4:** What if the precondition changes to allow $x, y \in \mathbb{Z}$? <span style="font-size: 0.6em; color: navy;">Prb 1.4, Pg 5, exr:N-vs-Z+</span>
 
-4. **Problem 1.5:** Write a program that outputs intermediate values of $q$ and $r$ <span style="font-size: 0.6em; color: navy;">Prb 1.5, Pg 5, exr:div</span>
+4. **Problem 1.5:** Write a program that outputs intermediate values of $q$ and $r$ <span style="font-size: 0.6em; color: navy;">Prb 1.5, Pg 5, exr:div</span> <a href="https://github.com/michaelsoltys/IAA/blob/main/Problems/P1.5_Division_1.py" style="font-size: 0.6em; color: teal;">[Python solution]</a>
 
 </v-clicks>
 

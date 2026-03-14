@@ -330,7 +330,7 @@ Graph with 5 nodes, 7 edges (all cost 1):
 
 4. **Problem 2.13:** Show that the smallest edge is in every MCST <span style="font-size: 0.6em; color: navy;">Prb 2.13, Pg 39, exr:kruskal_smallest_edge</span>
 
-5. **Problem 2.15:** Implement Kruskal's algorithm <span style="font-size: 0.6em; color: navy;">Prb 2.15, Pg 39, exr:kruskal_program</span>
+5. **Problem 2.15:** Implement Kruskal's algorithm <span style="font-size: 0.6em; color: navy;">Prb 2.15, Pg 39, exr:kruskal_program</span> <a href="https://github.com/michaelsoltys/IAA/blob/main/Problems/P2.15_Kruskal-Program.py" style="font-size: 0.6em; color: teal;">[Python solution]</a>
 
 </v-clicks>
 

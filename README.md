@@ -44,24 +44,33 @@ Algorithm implementations referenced in the textbook. Each file is named `A<N>_<
 ### Slides/
 Slidev presentations for each section of the book (`slides_X.X.md`). See [Slides/README-SLIDEV.md](Slides/README-SLIDEV.md) for conventions.
 
-### Solutions/
-Worked solutions to selected textbook problems, organized by problem number.
+### Problems/
+Worked solutions to selected textbook problems. Each file is named `P<N>_<Name>.<ext>` where `<N>` is the problem number in the book. Every file has a header comment with the problem number, page, LaTeX label, and a brief description.
+
+**Naming convention:**
+- `P<N>_<Name>.py` — Python solution (single solution)
+- `P<N>_<Name>_1.py`, `P<N>_<Name>_2.py` — alternative solutions to the same problem
+- `P<N>_<Name>.ipynb` — Jupyter notebook with analysis
+- `input_P<N>_<Name>.txt` — sample input file
+
+**42 problems** with solutions across all chapters (52 Python files, 6 Jupyter notebooks).
 
 ## Languages and Tools Used
-- **Python**: Primary implementation language for most algorithms
+- **Python**: Primary implementation language for most algorithms and solutions
 - **Go**: Selected algorithms with unit tests
+- **Jupyter**: Interactive notebooks for complexity analysis and visualization
 - **Slidev**: Markdown-based presentation slides (replaces legacy LaTeX Beamer)
 
 ## Getting Started
 1. Browse the `Algorithms/` directory to find implementations of specific algorithms
-2. Check `Solutions/` for worked examples of textbook problems
+2. Check `Problems/` for worked solutions to textbook problems
 3. View `Slides/` for presentation materials covering theoretical concepts
 
 ## Acknowledgements
 
 The algorithm implementations and solutions in this companion repository were contributed by:
 
-- **Ryan McIntyre** ([ryanmcintyre](https://github.com/ryanmcintyre)) — proof-read the 3rd edition manuscript and wrote the Python implementations during the summer of 2017
+- **Ryan McIntyre** ([arewhyaeenn](https://github.com/arewhyaeenn)) — proof-read the 3rd edition manuscript and wrote the Python implementations during the summer of 2017
 - **Rishikesh Patil** — proof-read the 4th edition during the summer of 2024
 - **Skyler Atchison** — improved the manuscript by pointing out typos, omissions, errors and gaps
 - **Greg Herman** — improved the manuscript by pointing out typos, omissions, errors and gaps

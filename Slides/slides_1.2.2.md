@@ -430,7 +430,7 @@ $$M_4 = \{(b_1, g_1), (b_2, g_4), (b_3, g_2), (b_4, g_3)\}$$
 
 4. **Problem 1.22:** Implement the Gale-Shapley algorithm <span style="font-size: 0.6em; color: navy;">Prb 1.22, Pg 17, exr:girls4</span>
 
-5. **Problem 1.23:** Show that each $b$ need propose at most once to each $g$ <span style="font-size: 0.6em; color: navy;">Prb 1.23, Pg 17, exr:gale-shapley</span>
+5. **Problem 1.23:** Show that each $b$ need propose at most once to each $g$ <span style="font-size: 0.6em; color: navy;">Prb 1.23, Pg 17, exr:gale-shapley</span> <a href="https://github.com/michaelsoltys/IAA/blob/main/Problems/P1.23_Gale-Shapley_1.py" style="font-size: 0.6em; color: teal;">[Python solution]</a>
 
 </v-clicks>
 
