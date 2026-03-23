@@ -30,6 +30,10 @@ Section 3.1 - Mergesort
 
 <div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
+<!--
+Mergesort was invented by **John von Neumann in 1945**, making it one of the earliest algorithms written for a stored-program computer. He described it in a 23-page report on the EDVAC — before the machine was even built. It may be the first O(n log n) sorting algorithm ever implemented.
+-->
+
 ---
 
 # The Merging Problem
@@ -71,6 +75,10 @@ Mergesort and Quicksort are both **divide and conquer** algorithms. This chapter
 **Why is selection sort unstable?** Consider [3a, 2, 3b, 1]. Selection sort swaps 1 with 3a, giving [1, 2, 3b, 3a] — the two 3s are now reversed.
 
 **Why is quicksort unstable?** Partitioning can swap equal elements across the pivot.
+
+**Timsort:** Python's built-in `sort()` uses **Timsort** (created by Tim Peters in 2002), a hybrid of mergesort and insertion sort. It exploits existing "runs" of sorted data in real-world inputs. Timsort was so successful it was adopted by Java (2011), Android, Swift, and Rust. The fact that mergesort is stable was a key reason it (rather than quicksort) was chosen as the basis.
+
+**External sorting:** In the 1950s–60s, data lived on magnetic tape, which could only be read sequentially. Mergesort's sequential access pattern made it the natural choice for sorting data too large to fit in memory. This is still the basis for "external merge sort" used today when sorting massive datasets (e.g., database engines, Hadoop MapReduce's shuffle phase).
 -->
 
 ---
@@ -102,6 +110,10 @@ Merge Two Lists:
 **Complexity:** $O(n + m)$ — each element is compared at most once
 
 </v-click>
+
+<!--
+**Linked lists:** Mergesort is often considered the best algorithm for sorting linked lists. Unlike quicksort or heapsort, it doesn't need random access — only sequential traversal and pointer manipulation. It can sort a linked list in O(n log n) time with O(1) extra space (no auxiliary array needed).
+-->
 
 ---
 
@@ -149,6 +161,10 @@ Mergesort:
 
 </v-click>
 
+<!--
+**Parallel mergesort:** Mergesort is naturally parallelizable — the two recursive calls are independent and can run on separate processors. This made it one of the earliest algorithms studied in parallel computing. Cole (1988) showed that merge sort can be done in O(log n) time with n processors on a CREW PRAM.
+-->
+
 ---
 
 # Example Walkthrough
@@ -195,6 +211,12 @@ $$T(n) \leq 2T(n/2) + cn$$
 This is **optimal** for comparison-based sorting!
 
 </v-click>
+
+<!--
+**Exact comparisons:** Knuth showed that mergesort using binary merge uses between n*ceil(lg n) - 2^ceil(lg n) + 1 and n*ceil(lg n) comparisons. For n = 1,000,000, that's roughly 20 million comparisons — sorting a million items in ~20 million steps.
+
+**Information-theoretic lower bound:** There are n! possible permutations of n items. A comparison-based sort is essentially a binary decision tree, so it needs at least ceil(lg(n!)) comparisons in the worst case. By Stirling's approximation, lg(n!) ~ n lg n, which proves the Omega(n log n) lower bound. Mergesort (essentially) matches this, making it asymptotically optimal.
+-->
 
 ---
 

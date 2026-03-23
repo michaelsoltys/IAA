@@ -20,6 +20,10 @@ Section 9.4.1 - Context-Free Grammars
 
 <div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
+<!--
+Noam Chomsky introduced context-free grammars in 1956 as part of his work on natural language syntax, not programming languages. John Backus developed a similar notation to describe FORTRAN syntax (1959), and Peter Naur refined it for Algol 60, explicitly crediting Chomsky. The notation became known as Backus-Naur Form (BNF), and its equivalence to CFGs cemented the bridge between Chomsky's linguistic hierarchy and programming language design — one of the most fruitful connections between linguistics and computer science.
+-->
+
 ---
 
 # Overview
@@ -64,6 +68,10 @@ A **context-free grammar (CFG)** is $G = (V, T, P, S)$
 Each production has the form $A \longrightarrow \alpha$ where $A \in V$ and $\alpha \in (V \cup T)^*$
 
 </v-clicks>
+
+<!--
+The "context-free" in CFG means the left side of every rule is a single variable — the rewrite applies regardless of surrounding context. In a context-sensitive grammar, by contrast, a rule like $aAb \rightarrow aXYb$ says "rewrite $A$ as $XY$, but only when it appears between $a$ and $b$." This distinction is what makes CFGs so amenable to efficient parsing.
+-->
 
 ---
 
@@ -188,6 +196,10 @@ Two different parse trees — two different meanings!
 
 </v-click>
 
+<!--
+The "dangling else" problem is a famous ambiguity in programming languages. In C, `if (a) if (b) x; else y;` — does the `else` belong to the inner or outer `if`? Most languages resolve this by convention (match with nearest `if`), but it caused real bugs in early compilers. Python sidesteps it entirely by using indentation to determine scope.
+-->
+
 <v-click>
 
 **Why it matters:** Parse trees assign meaning to strings. Two different parse trees mean two possible interpretations — hence the "ambiguity"
@@ -291,6 +303,10 @@ $$A \longrightarrow BC \quad \text{or} \quad A \longrightarrow a$$
 
 </v-click>
 
+<!--
+Chomsky Normal Form is named after Noam Chomsky, who introduced it in 1959. The restriction to binary branching ($A \rightarrow BC$) is what makes the CYK dynamic programming algorithm possible — each cell in the table considers all ways to split a substring into two parts. Without binary branching, the algorithm would need to consider all possible partitions, blowing up the complexity. CNF is also central to the proof of the Pumping Lemma for CFLs, since binary trees have a clean relationship between height and number of leaves.
+-->
+
 ---
 layout: section
 ---
@@ -330,6 +346,10 @@ $w \in L(G)$ iff $S \in (1, n)$
 **Complexity:** $O(n^3 \cdot |G|)$ — a dynamic programming algorithm! <span style="font-size: 0.6em; color: navy;">Alg 42, Pg 243, alg:cyk</span>
 
 </v-click>
+
+<!--
+The CYK algorithm was discovered independently three times: by John Cocke (1969, unpublished), Tadao Kasami (1965, in a technical report), and Daniel Younger (1967). Its $O(n^3)$ complexity stood as the best general CFG parser for decades. Leslie Valiant showed in 1975 that CFG parsing can be reduced to Boolean matrix multiplication, so any improvement to matrix multiplication (currently $O(n^{2.371})$) automatically improves parsing — though the constant factors make this impractical.
+-->
 
 ---
 layout: section
@@ -474,6 +494,12 @@ This leads us to **Turing machines** ...
 
 </v-clicks>
 
+<!--
+The Chomsky hierarchy — regular (Type 3), context-free (Type 2), context-sensitive (Type 1), recursively enumerable (Type 0) — was published by Chomsky in 1956. Each level corresponds to a class of automata: finite automata, pushdown automata, linear-bounded automata, and Turing machines. The hierarchy remains the organizing framework for formal language theory 70 years later.
+
+Semi-Thue systems are named after Axel Thue (1914), who studied word rewriting problems decades before Turing or Chomsky. His "word problem" — given a set of rewrite rules, can string $u$ be transformed into string $v$? — was shown undecidable by Post and Markov (independently, 1947). This was one of the earliest undecidability results outside of pure logic.
+-->
+
 ---
 
 # Advanced Results
@@ -485,6 +511,12 @@ This leads us to **Turing machines** ...
 **Parikh's Theorem:** If $\Sigma = \{a_1, \ldots, a_n\}$, the signature of $x \in \Sigma^*$ is $(\#a_1(x), \ldots, \#a_n(x))$. Regular languages and CFLs have the same signatures!
 
 </v-clicks>
+
+<!--
+The Chomsky-Schützenberger theorem (1963) says every CFL can be obtained by taking a "Dyck language" (matched parentheses of $n$ types), intersecting it with a regular language, and applying a homomorphism. This is a remarkable structural result — it says that the essence of context-freeness is nested matching, and everything else is just regular control and relabeling.
+
+Parikh's theorem (1966) is surprising: if you only care about *how many* of each symbol appear (not their order), CFLs are no more powerful than regular languages. The language $\{a^n b^n\}$ is CF but not regular — yet its set of signatures $\{(n, n) \mid n \geq 0\}$ is also the signature set of the regular language $(ab)^*$. Order is what separates the two classes.
+-->
 
 ---
 
