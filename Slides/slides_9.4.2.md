@@ -20,6 +20,10 @@ Section 9.4.2 - Pushdown Automata
 
 <div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
+<!--
+Pushdown automata were introduced by Marcel-Paul Schützenberger (1961) and independently by Antony Oettinger (1961). Oettinger was studying automatic syntactic analysis of natural language at Harvard and realized that a finite automaton with a stack could parse nested sentence structures that flat finite-state machines could not. The timing was not accidental — Chomsky's context-free grammars (1956) had been adopted for programming language syntax (Algol 60), and there was urgent need for a machine model that could parse them efficiently.
+-->
+
 ---
 
 # Overview
@@ -71,6 +75,10 @@ The PDA pushes and pops symbols on the stack; the stack is assumed to be as larg
 
 </v-click>
 
+<!--
+The stack is what separates PDAs from finite automata — it gives the machine unbounded memory, but only in a last-in-first-out discipline. This is exactly the right amount of memory for matching nested structures: parentheses, HTML tags, recursive function calls. Every compiler's parser is, at its core, a pushdown automaton. The call stack in any programming language is literally a pushdown store — function calls push frames, returns pop them. PDAs are not just abstract theory; they are the architecture of every running program.
+-->
+
 ---
 
 # How the Transition Function Works
@@ -113,6 +121,10 @@ The PDA is in state $q$, reads $a$ from input, and sees $X$ on top of stack
 The PDA nondeterministically guesses where the middle of the string is — this is key! A DFA cannot do this because it has no memory of what it has seen
 
 </v-click>
+
+<!--
+The even palindrome language $\{ww^R\}$ is the classic example of a language that requires both nondeterminism and a stack. A DPDA cannot recognize it — there is no way to deterministically know when you've reached the midpoint without some marker. The odd palindrome language $\{wcw^R\}$ (with a center marker $c$) is recognizable by a DPDA because the marker tells you exactly when to switch from pushing to popping. This distinction — nondeterminism being essential, not just convenient — is what makes $\{ww^R\}$ a key example in the theory.
+-->
 
 ---
 layout: section
@@ -340,6 +352,12 @@ This establishes that the grammar generates exactly the language accepted by the
 
 </v-click>
 
+<!--
+The CFG-PDA equivalence theorem is one of the most satisfying results in automata theory: it says that the same class of languages (context-free) arises whether you think generatively (grammars producing strings) or computationally (machines accepting strings). This duality mirrors the regular languages, where regular expressions (generative) and finite automata (computational) define the same class. There is no such clean equivalence at higher levels of the Chomsky hierarchy — context-sensitive grammars correspond to linear-bounded automata, but the relationship is less elegant and harder to prove.
+
+The PDA→CFG direction (encoding stack operations as grammar variables $A_{[pXq]}$) produces grammars that are typically enormous — the number of variables is $|Q|^2 \cdot |\Gamma|$. For a PDA with 10 states and 5 stack symbols, that is 500 variables. The construction is important for the proof but never used in practice.
+-->
+
 ---
 layout: section
 ---
@@ -370,6 +388,10 @@ A PDA is **deterministic** if:
 **Proof:** Simply ignore the stack — a DFA is a DPDA!
 
 </v-click>
+
+<!--
+Deterministic PDAs are the workhorses of real parsing. Every LR parser (used by yacc/bison) and LL parser (used by recursive descent compilers) is essentially a DPDA. The languages they recognize — the deterministic context-free languages (DCFLs) — include virtually all programming language syntaxes. The class of DCFLs is closed under complementation (a surprisingly difficult theorem proved by Greibach in 1973), but not under union or intersection. This means that if a DPDA accepts a language $L$, another DPDA accepts $\overline{L}$ — but you cannot always combine two DPDAs with union.
+-->
 
 ---
 
@@ -418,6 +440,12 @@ $$\text{Regular} \subsetneq \text{DPDA} \subsetneq \text{CFL}$$
 - CFL: nondeterministic stack (e.g., $\{ww^R\}$)
 
 </v-click>
+
+<!--
+Each inclusion is strict and witnessed by a single language. $\{0^n 1^n\}$ separates DPDA from Regular (a DFA cannot count). $\{ww^R\}$ separates CFL from DPDA (a DPDA cannot guess the midpoint). And $\{0^n 1^n 2^n\}$ separates beyond CFL — no PDA, deterministic or not, can enforce three-way equality.
+
+The inherent ambiguity question is also interesting here. There exist CFLs that are *inherently ambiguous* — every grammar for them is ambiguous. The classic example is $\{a^i b^j c^k \mid i = j \text{ or } j = k\}$. But every DPDA language has an unambiguous grammar, so inherently ambiguous languages are exactly the CFLs that lie strictly above the DPDA level.
+-->
 
 ---
 
