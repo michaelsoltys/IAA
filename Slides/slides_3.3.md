@@ -28,11 +28,29 @@ mdc: false
 
 Section 3.3 - Savitch's Algorithm
 
+<!--
+Walter Savitch published this in 1970, when he was 27, in a paper with the
+unassuming title "Relationships between nondeterministic and deterministic
+tape complexities." Buried in that paper was Savitch's Theorem:
+NSPACE(s(n)) ⊆ DSPACE(s(n)²). It's still one of the cleanest results in
+complexity theory — and we don't know if the squaring is necessary! That's
+the famous open problem: is NL = L? If you solved it, you'd be on a
+postage stamp.
+
+Teaching hook: this is the rare algorithm where the *time* analysis is
+embarrassing and the *space* analysis is the whole point. Most of the
+course optimizes time; here we deliberately throw time away.
+-->
+
+
 <div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
 
 # The Problem: Graph Reachability
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+<div>
 
 Given a directed graph $G$ and two nodes $s$ and $t$:
 
@@ -50,6 +68,12 @@ We're not looking for the *shortest* path — just whether $t$ is **reachable** 
 
 </v-click>
 
+</div>
+<div style="text-align: center;">
+<img src="./Figures/savitch.svg" style="max-height: 380px; width: 100%;" />
+</div>
+</div>
+
 ---
 
 # Why Care About Space?
@@ -65,6 +89,21 @@ The graph may be given **implicitly**, not explicitly.
 - We query pages piecemeal
 
 </v-click>
+
+<!--
+The web graph has roughly 50 billion indexed pages and on the order of a
+trillion edges. Storing the adjacency list alone would take terabytes —
+nobody runs BFS on it from a laptop. But Savitch's algorithm only needs
+~log²(50 billion) ≈ 1300 bits of state. That's *less than this slide*.
+The catch, of course, is that you'd wait until the heat death of the
+universe for it to finish — but the *space* would fit on a Post-it.
+
+Other "implicit graph" examples worth mentioning: chess positions (~10⁴³
+nodes), Rubik's cube states (~4×10¹⁹), reachable states of a Turing machine
+during a computation. Reachability in implicit graphs is *the* canonical
+problem behind PSPACE-completeness.
+-->
+
 
 <v-click>
 
@@ -91,6 +130,21 @@ $$\text{R}(G, u, v, i) \iff (\exists w)[\text{R}(G, u, w, i-1) \wedge \text{R}(G
 A path of length $\leq 2^i$ can be split into two paths of length $\leq 2^{i-1}$
 
 </v-click>
+
+<!--
+This "guess the midpoint" trick is the same idea behind the Floyd–Warshall
+algorithm and behind matrix exponentiation by repeated squaring. It's a
+recurring theme: when you can't afford to remember the *whole* path,
+remember just enough to recurse.
+
+A nice analogy for students: imagine you're trying to prove two strangers
+know each other through a chain of friends, but you can only hold one
+person's name in your head at a time. You'd ask "is there *somebody* I
+both of us know?" — that somebody is the midpoint. Then recurse on each
+half, forgetting the midpoint as soon as you're done. That's literally
+what Savitch's algorithm does on the call stack.
+-->
+
 
 ---
 
@@ -122,23 +176,37 @@ since any path in an $n$-node graph has length $\leq n \leq 2^{\lceil \log_2 n \
 
 # Example: Recursion Stack
 
-Graph: $1 — 2 — 3 — 4$ (path of 4 nodes)
+<div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.5rem; align-items: center;">
+<div>
 
-Query: $\text{R}(1, 4, 2)$ — is there a path of length $\leq 4$?
+5×5 grid; query $\text{R}(s, t, 3)$ — path of length $\leq 8$?
 
-| Step 1 | Step 2 | Step 3 | Step 4 | Step 5 | Step 6 |
-|:------:|:------:|:------:|:------:|:------:|:------:|
-|        |        | R(1,4,0) | **F** | R(2,4,0) | **F** |
-|        |        | R(1,1,0) | **T** | R(1,2,0) | **T** |
-|        | R(1,4,1) | R(1,4,1) | R(1,4,1) | R(1,4,1) | R(1,4,1) |
-|        | R(1,1,1) | R(1,1,1) | R(1,1,1) | R(1,1,1) | R(1,1,1) |
-| R(1,4,2) | R(1,4,2) | R(1,4,2) | R(1,4,2) | R(1,4,2) | R(1,4,2) |
+<v-clicks>
+
+**Level 3:** guess midpoint $w_1$
+$$\text{R}(s, w_1, 2) \;\wedge\; \text{R}(w_1, t, 2)$$
+
+**Level 2 (left half):** guess $w_2$
+$$\text{R}(s, w_2, 1) \;\wedge\; \text{R}(w_2, w_1, 1)$$
+
+**Level 2 (right half):** guess $w_3$
+$$\text{R}(w_1, w_3, 1) \;\wedge\; \text{R}(w_3, t, 1)$$
+
+**Level 1 → 0:** each call splits once more, bottoming out at single edges ✓
+
+</v-clicks>
 
 <v-click>
 
-The stack grows **downward** (depth) but reuses space at each level!
+Stack depth $= O(\log n)$; each frame stores one vertex.
 
 </v-click>
+
+</div>
+<div style="text-align: center;">
+<img src="./Figures/savitch_recursion.svg" style="max-height: 380px; width: 100%;" />
+</div>
+</div>
 
 ---
 
@@ -186,6 +254,19 @@ This gives exponential time — $O(n^{2 \log n})$ — a huge cost for tiny space
 
 </v-click>
 
+<!--
+Time–space trade-offs are a deep theme in CS. The classic motto from
+complexity theory is "you can usually buy one with the other, but rarely
+for free." Savitch is an extreme example: it gives up an *exponential*
+amount of time to save a *quadratic* amount of space.
+
+Real-world echo: cryptographic hash functions like scrypt and Argon2 are
+*deliberately* designed to defeat time–space trade-offs — they want
+attackers to be unable to use Savitch-style tricks. So this 1970 result
+still shows up in 2020s password hashing standards.
+-->
+
+
 ---
 
 # Key Questions
@@ -220,6 +301,29 @@ qsort (x:xs) = qsort smaller ++ [x] ++ qsort larger
 **Git bisect** — binary search through commit history to find which commit introduced a bug. A practical application of divide and conquer!
 
 </v-clicks>
+
+<!--
+A bit of history on git bisect: Linus Torvalds wrote it into Git almost from the
+beginning because he hated reading other people's bug reports — he would
+rather automate the search than ask "what did you change?". The Mozilla and
+Chromium projects routinely bisect across *thousands* of commits, and the
+WebKit team has bisected regressions across more than 10,000 commits in a
+single afternoon — that's only ~14 builds thanks to log₂.
+
+Even better: git bisect run takes a *script* and does the whole thing for
+you while you go get coffee. Tell the students: the next time they're stuck
+on "which of my last 50 commits broke the tests?", they can let divide and
+conquer answer in 6 steps. It's the most viscerally satisfying use of
+log₂(n) most programmers ever encounter.
+
+Historical aside: the technique predates Git. The Linux kernel folks were
+doing "manual bisection" with tarballs in the 90s, and Donald Knuth himself
+called binary search "an idea so simple that it took fifteen years for the
+first bug-free version to appear in print" (TAOCP Vol 3). Knuth's point:
+even *binary search* is hard to get right — off-by-one errors haunted
+published versions until 1962.
+-->
+
 
 ---
 

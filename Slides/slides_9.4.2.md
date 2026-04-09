@@ -170,6 +170,8 @@ We write $\vdash^*$ for zero or more steps
 
 # Two Modes of Acceptance
 
+Two types of PDAs that accept in different ways: 
+
 **Acceptance by final state:**
 $$L(P) = \{w \mid (q_0, w, \$) \vdash^* (q, \varepsilon, \alpha),\; q \in F\}$$
 

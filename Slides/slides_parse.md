@@ -20,6 +20,21 @@ From Theory to Practice
 
 <div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
+<!--
+A nice opening: parsing is one of the few corners of computer science where
+the theory was *finished* before the industry caught up. By the late 1960s
+Knuth had already worked out LR(k) parsing in his 1965 paper "On the
+Translation of Languages from Left to Right" — and that paper still
+underlies essentially every compiler shipped today. Sixty years later, we
+are still using a 1965 algorithm to compile Rust.
+
+Donald Knuth wrote that LR paper while procrastinating on TAOCP. He spent
+months on it because he wanted to settle, once and for all, when a grammar
+could be parsed deterministically left-to-right. The answer turned out to
+be: "exactly when it's LR(k)" — and the proof is constructive.
+-->
+
+
 ---
 
 # The Big Picture
@@ -140,7 +155,7 @@ Flex uses **regular expressions** to define tokens:
 
 <v-click>
 
-This connects to **Regular Languages** (Chapter 9.3)!
+This connects to **Regular Languages** (Section 9.3)!
 
 </v-click>
 
@@ -156,7 +171,7 @@ Bison uses **CFG production rules**:
 
 <v-click>
 
-This connects to **Context-Free Grammars** (Chapter 9.4)!
+This connects to **Context-Free Grammars** (Section 9.4)!
 
 </v-click>
 
@@ -189,6 +204,17 @@ This connects to **Context-Free Grammars** (Chapter 9.4)!
 **Both use the same .l file format!**
 
 </v-click>
+
+<!--
+Lex was written by Mike Lesk and Eric Schmidt in 1975 — yes, *that* Eric
+Schmidt, who later ran Google. He was a Bell Labs summer intern at the
+time. So when students complain about Flex, remind them that the author
+went on to do reasonably well in life.
+
+Flex itself was written by Vern Paxson, who later became famous as the
+author of Bro/Zeek, the network intrusion detection system. Apparently
+once you've written one good lexer, you can't stop scanning things.
+-->
 
 ---
 
@@ -229,7 +255,7 @@ Each line: **regex** → **C code to execute**
 
 <v-click>
 
-**Key insight:** These are **regular expressions** - the theory from Chapter 9.3!
+**Key insight:** These are **regular expressions** - the theory from Section 9.3!
 
 </v-click>
 
@@ -245,23 +271,60 @@ Each line: **regex** → **C code to execute**
 - Created at Bell Labs
 - LALR(1) parser generator
 
-</div>
-<div>
-
 **Bison** (modern, 1985)
 - GNU replacement for Yacc
 - Backward compatible
 - Additional features (GLR parsing)
 - What you should use today
 
-</div>
-</div>
-
 <v-click>
 
 **Both use the same .y file format!**
 
 </v-click>
+
+</div>
+<div style="text-align: center;">
+
+<img src="/gnu_head.png" style="max-height: 200px; margin: 0 auto;" />
+
+<div style="font-size: 0.7em; color: #444; margin-top: 10px; text-align: left;">
+
+**Bison: The Yacc-compatible Parser Generator** -- the official GNU manual is the definitive reference for writing grammars, building parsers, handling conflicts, and using advanced features like GLR parsing and Bison's C++ skeleton.
+
+<div style="font-size: 0.85em; color: gray; margin-top: 6px; text-align: center;">
+
+https://www.gnu.org/software/bison/manual/
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+<!--
+Yacc was written by Stephen C. Johnson at Bell Labs in 1975, originally to
+help build a Fortran 77 compiler. The name "Yet Another Compiler-Compiler"
+was a self-deprecating joke — there were already several compiler-compilers
+floating around, and Johnson assumed his would just be one more. It
+ended up being the one everybody used for the next half-century.
+
+Bison was the GNU Project's clean-room rewrite, started by Robert Corbett
+at Berkeley in 1985 and adopted by Richard Stallman. The name is the
+obvious pun: Yacc → Bison, both bovine. There's also a much less famous
+parser generator called "Buffalo" that nobody uses, which I think is
+deeply unfair.
+
+A historical note worth dropping: the LALR(1) algorithm Yacc implements
+was developed by Frank DeRemer in his 1969 PhD thesis. DeRemer's insight
+was that you could compress LR(1) parse tables by a factor of 10 or more
+with almost no loss of expressive power — and that compression is what
+made parser generators *practical* on 1970s hardware. Without DeRemer,
+Yacc would have needed megabytes of RAM, and we'd probably still be
+hand-writing recursive-descent parsers.
+-->
+
 
 ---
 
@@ -302,7 +365,7 @@ object: LBRACE RBRACE
 
 <v-click>
 
-**Key insight:** These are **CFG production rules** - the theory from Chapter 9.4!
+**Key insight:** These are **CFG production rules** - the theory from Section 9.4!
 
 </v-click>
 
@@ -455,6 +518,29 @@ This is exactly how CFGs handle **unbounded repetition**!
 Every time you use a programming language, a parser (built from CFG theory) is at work!
 
 </v-click>
+
+<!--
+A few real-world points worth dropping here:
+
+GCC used Bison for *decades* — until around 2004, when the C++ committee
+added enough ambiguous syntax (e.g., the famous "most vexing parse")
+that LALR(1) couldn't keep up, and the GCC team rewrote the C++ frontend
+as a hand-written recursive-descent parser. Clang made the same choice
+from day one. So context-free grammars actually *lost* a battle here:
+real C++ is no longer parsed with a CFG-based tool.
+
+Python's parser also made the jump: until version 3.8, CPython used a
+custom LL(1) parser. In Python 3.9 it was replaced with a PEG parser
+(Parsing Expression Grammar) — a different formalism that handles
+left-recursion and lookahead more gracefully. Guido van Rossum himself
+came out of semi-retirement to work on it.
+
+The lesson for students: CFGs are the *theoretical* sweet spot, but real
+language designers often need either more power (PEG, GLR) or more
+control (hand-written). Knowing the theory tells you *why* the trade-offs
+are what they are.
+-->
+
 
 ---
 
