@@ -43,6 +43,10 @@ Section 9.5.2 - Encodings
 
 </v-clicks>
 
+<!--
+The idea that "any object can be encoded as a string" looks innocuous but was revolutionary. Gödel used it in 1931 to encode logical formulas as natural numbers — Gödel numbering — which let him write self-referential statements about provability and prove his incompleteness theorems. Turing reused the same trick in 1936: encode TMs as strings so that TMs can take TM descriptions as input. That single move is what makes the halting problem, the universal TM, and Rice's theorem all possible. Encoding is not a clerical detail; it's the machinery that lets computation reason about itself.
+-->
+
 ---
 
 # ASCII Encoding
@@ -68,6 +72,10 @@ $$
 
 </v-clicks>
 
+<!--
+ASCII was standardized in 1963 by an ANSI committee chaired by Bob Bemer, sometimes called "the father of ASCII." The choice of 7 bits is a hardware compromise: teletype equipment of the era used 8-bit codes, and the 8th bit was reserved as a parity bit for error detection over noisy phone lines. Lowercase letters were initially omitted — uppercase only — and added later. Bemer was also the person who first publicly warned about the Y2K bug, in a 1971 paper. Nobody listened for another 28 years.
+-->
+
 ---
 
 # Extended Encodings
@@ -88,6 +96,10 @@ $$
 
 </v-clicks>
 
+<!--
+UTF-8 has one of the best design anecdotes in computing. Ken Thompson and Rob Pike designed it in September 1992, at a diner in New Jersey, on a placemat, over dinner. They had three hours before a meeting at which a rival proposal was about to be adopted, and they needed an encoding that was self-synchronizing, backwards-compatible with ASCII, and never produced a zero byte inside a multi-byte sequence (so C strings wouldn't break). The placemat survived; Pike still has it. UTF-8 is now the encoding of more than 98% of the web.
+-->
+
 ---
 
 # Common Encoding Formats
@@ -104,6 +116,10 @@ Much of computing is translating between encodings:
 - **Binary to text encodings**
 
 </v-clicks>
+
+<!--
+Base64 exists because early internet email was not 8-bit clean — SMTP servers in the 1980s could mangle bytes with the high bit set. MIME (1992) needed a way to send binary attachments through that fragile infrastructure, so it encoded every 3 bytes (24 bits) as 4 printable ASCII characters (6 bits each). The 33% size bloat was the cost of portability. The choice of exactly 64 symbols is the largest power of 2 that fits inside a safe printable-ASCII subset — letters, digits, plus two extra characters.
+-->
 
 ---
 
@@ -197,6 +213,10 @@ Every Turing machine can be encoded as a string over $\{0,1\}$!
 
 </v-click>
 
+<!--
+This is where Gödel's 1931 trick becomes Turing's 1936 trick. Once TMs are strings, a TM can take another TM's description as input — and that self-reference is the engine of every classical undecidability result. The halting problem — "does M halt on ⟨M⟩?" — only makes sense because M can read its own description. Rice's theorem (1953) goes further: every nontrivial semantic property of TMs is undecidable, proved by diagonalizing over encodings. No encoding, no diagonalization, no undecidability theorems.
+-->
+
 ---
 
 # Well-Formed Strings (WFS)
@@ -235,6 +255,10 @@ Every Turing machine can be encoded as a string over $\{0,1\}$!
 - Example: AES, RSA
 
 </v-clicks>
+
+<!--
+The distinction was formalized by Auguste Kerckhoffs in 1883, in a principle that still governs modern cryptography: a cryptographic system should remain secure even if everything about it except the key is public. Shannon restated this in 1949 as "the enemy knows the system." So the real difference isn't "secret vs. open" — both encoding and encryption are usually public procedures. It's that encryption's output is designed to be indistinguishable from random without the key; an encoding's output is designed to be readable without any key.
+-->
 
 ---
 

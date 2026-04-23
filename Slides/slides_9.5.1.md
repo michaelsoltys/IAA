@@ -30,6 +30,10 @@ Section 9.5.1 - TMs and Non-Det TMs
 
 <div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
+<!--
+Turing introduced this model in his 1936 paper "On Computable Numbers, with an Application to the Entscheidungsproblem." He was 23 and unknown. The paper was a response to Hilbert's 1928 challenge asking for a procedure to decide the truth of arbitrary first-order statements. Turing's answer — no such procedure can exist — required first defining what "procedure" even means, and the machine on the next few slides is his definition. Alonzo Church had published a similar impossibility result using the λ-calculus months earlier, but Turing's formulation is what stuck: it's visibly mechanical, and that's what made the Church–Turing thesis believable.
+-->
+
 ---
 
 # Overview
@@ -104,6 +108,10 @@ A **Turing machine** is a 7-tuple $(Q, \Sigma, \Gamma, \delta, q_0, q_{\text{acc
 **Transition:** $\delta(q, X) = (p, Y, D)$ means: in state $q$ reading $X$, write $Y$, move direction $D$, enter state $p$
 
 </v-click>
+
+<!--
+Turing didn't call these "Turing machines" — he called them "a-machines" (automatic machines), to distinguish them from "c-machines" (choice machines, an early form of nondeterminism) and "o-machines" (oracle machines) which he introduced later. The name "Turing machine" was coined by Alonzo Church in his 1937 review of Turing's paper in the Journal of Symbolic Logic.
+-->
 
 ---
 
@@ -218,6 +226,10 @@ Recursive languages correspond to **algorithmically recognizable** languages
 
 </v-click>
 
+<!--
+The asymmetry between RE and recursive is where incomputability lives. The halting problem — "does M halt on input x?" — is RE (a universal simulator can confirm a YES by observing the halt) but not recursive (you can't safely say NO in finite time, because the simulator might just not have run long enough yet). Post's theorem makes this precise: L is recursive iff both L and its complement are RE. That extra "loop forever" option in the RE definition is not a defect of the definition — it's a feature of the universe of algorithms.
+-->
+
 ---
 
 # The Language Hierarchy
@@ -255,6 +267,10 @@ It is straightforward to "translate" between these models — a multi-tape TM ca
 **This robustness is evidence that TMs capture the right notion of computation**
 
 </v-clicks>
+
+<!--
+The robustness story is much stronger than just "multi-tape = single-tape." In the 1930s, four entirely different formulations of "computable" were proposed independently: Church's λ-calculus, Gödel/Herbrand recursive functions, Kleene's μ-recursive functions, and Turing machines. Post's tag systems came shortly after, and later additions include register machines and combinatory logic. All have been proved pairwise equivalent. That pile of coincidences is what justifies the Church–Turing thesis — the claim that "effectively computable" has only one extension. No one has since proposed a reasonable physical model that exceeds it.
+-->
 
 ---
 layout: section
@@ -416,6 +432,10 @@ $$D \text{ examines } 1 + m + m^2 + m^3 + \cdots + m^n \approx n \cdot m^n \text
 
 </v-click>
 
+<!--
+The question "can nondeterminism save time, not just save description?" is the P vs NP question. Stephen Cook formalized it in his 1971 STOC paper introducing NP-completeness, and Leonid Levin arrived at essentially the same result independently in the USSR around the same time. The Clay Mathematics Institute listed P vs NP among its seven Millennium Problems in 2000, with a $1M prize. Cook's original reduction target was SAT, using a variant of the NTM simulation on the previous slide. Fifty-plus years on, we still don't know whether the exponential in m^n is necessary or can be compressed to a polynomial.
+-->
+
 ---
 
 # Simulation as a General Technique
@@ -457,6 +477,10 @@ This exercise really means:
 - Designing your own compiler (how your machine interprets those descriptions)
 
 </v-clicks>
+
+<!--
+The UTM is the conceptual ancestor of every stored-program computer. Von Neumann read Turing's 1936 paper at Princeton — Turing was there 1936–38 finishing his PhD under Church — and later cited it as the theoretical foundation of the 1945 EDVAC report, the document that fixed the "program lives in memory alongside the data" architecture that every modern CPU still uses. So the reason your laptop can run an arbitrary program is, quite literally, the same reason a UTM can: a description of the computation is just another string on the tape.
+-->
 
 ---
 
