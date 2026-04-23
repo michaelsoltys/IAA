@@ -158,6 +158,53 @@ $$
 
 ---
 
+# Recurrence in Action
+
+Using $\langle 4, 6, 5, 9, 1 \rangle$, with $R(1){=}1$, $R(2){=}2$, $R(3){=}2$ already computed.
+
+<div class="grid grid-cols-2 gap-6 mt-4">
+
+<div style="background: #ecfdf5; border: 2px solid #10b981; border-radius: 10px; padding: 10px 18px; font-size: 0.85em;">
+
+**Extending case — $R(4)$ for $a_4 = 9$**
+
+Candidates $i < 4$ with $a_i \leq 9$:
+
+| $i$ | $a_i$ | $a_i \leq 9$ | $R(i)$ |
+|-----|-------|---------------|--------|
+| 1 | 4 | ✓ | 1 |
+| 2 | 6 | ✓ | 2 |
+| 3 | 5 | ✓ | 2 |
+
+$$R(4) = 1 + \max\{1, 2, 2\} = 3$$
+
+</div>
+
+<div style="background: #fef2f2; border: 2px solid #ef4444; border-radius: 10px; padding: 10px 18px; font-size: 0.85em;">
+
+**Base case — $R(5)$ for $a_5 = 1$**
+
+Candidates $i < 5$ with $a_i \leq 1$:
+
+| $i$ | $a_i$ | $a_i \leq 1$ |
+|-----|-------|---------------|
+| 1 | 4 | ✗ |
+| 2 | 6 | ✗ |
+| 3 | 5 | ✗ |
+| 4 | 9 | ✗ |
+
+No valid predecessor &nbsp;&rarr;&nbsp; $R(5) = 1$
+
+</div>
+
+</div>
+
+<!--
+The two colored panels map to the two branches of the recurrence: green for the "extends a previous run" case, red for the "start fresh" base case. Students often miss that the base case kicks in not only at j=1 but whenever every earlier element is strictly greater than a_j.
+-->
+
+---
+
 # Step 3: Write the Algorithm
 
 <span style="font-size: 0.6em; color: navy;">Alg 21, Pg 76, alg:lms</span>
@@ -189,22 +236,37 @@ The O(d²) DP is the clean, textbook version, but the problem also admits an O(d
 
 # Example Walkthrough
 
-Sequence: $\{4, 6, 5, 9, 1\}$
+Building $R$ left to right for $\langle 4, 6, 5, 9, 1 \rangle$ — arrows show which predecessor each $R(j)$ extends.
 
-| Index $j$ | $a_j$ | $R(j)$ | Explanation |
-|-----------|-------|--------|-------------|
-| 1 | 4 | 1 | Base case |
-| 2 | 6 | 2 | Extends from $a_1$: 4 ≤ 6 |
-| 3 | 5 | 2 | Extends from $a_1$: 4 ≤ 5 |
-| 4 | 9 | 3 | Extends from $a_2$ or $a_3$ |
-| 5 | 1 | 1 | Cannot extend any previous |
+<img src="./Figures/LMS-walkthrough.svg" class="w-3/4 mx-auto block" alt="R values computed for each j, with arrows to argmax predecessors" />
 
-<v-click>
+<div class="grid grid-cols-5 gap-2 mt-2" style="font-size: 0.7em;">
 
-**Result:** $L = \max\{1, 2, 2, 3, 1\} = 3$
+<v-clicks>
 
-</v-click>
+<div style="background: #fef3c7; border-left: 4px solid #d97706; border-radius: 6px; padding: 6px 10px;">
+<b>j=1, a₁=4</b><br/>Base case<br/><b style="color:#1e293b">R(1)=1</b>
+</div>
 
+<div style="background: #ecfdf5; border-left: 4px solid #10b981; border-radius: 6px; padding: 6px 10px;">
+<b>j=2, a₂=6</b><br/>Extends a₁ (4≤6)<br/><b style="color:#1e293b">R(2)=1+1=2</b>
+</div>
+
+<div style="background: #ecfdf5; border-left: 4px solid #10b981; border-radius: 6px; padding: 6px 10px;">
+<b>j=3, a₃=5</b><br/>Extends a₁ (4≤5)<br/><b style="color:#1e293b">R(3)=1+1=2</b>
+</div>
+
+<div style="background: #fee2e2; border-left: 4px solid #d62828; border-radius: 6px; padding: 6px 10px;">
+<b>j=4, a₄=9</b><br/>Extends a₂ or a₃<br/><b style="color:#1e293b">R(4)=1+2=3 ★</b>
+</div>
+
+<div style="background: #fef3c7; border-left: 4px solid #d97706; border-radius: 6px; padding: 6px 10px;">
+<b>j=5, a₅=1</b><br/>No aᵢ ≤ 1 before it<br/><b style="color:#1e293b">R(5)=1</b>
+</div>
+
+</v-clicks>
+
+</div>
 ---
 
 # Key Questions
