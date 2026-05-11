@@ -158,7 +158,7 @@ Trace the $R(i,j)$ table on a small instance to see the recurrence in action.
 | 0 | T | F | F | F | F | F | F | F | F | F | F |
 | 1 ($w_1=3$) | T | F | F | **T** | F | F | F | F | F | F | F |
 | 2 ($w_2=4$) | T | F | F | T | **T** | F | F | **T** | F | F | F |
-| 3 ($w_3=5$) | T | F | F | T | T | **T** | F | T | **T** | **T** | **T** |
+| 3 ($w_3=5$) | T | F | F | T | T | **T** | F | T | **T** | **T** | F |
 
 
 ---
