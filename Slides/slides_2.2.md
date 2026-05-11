@@ -475,18 +475,3 @@ Both use "promising" as a loop invariant, but:
 | Build up a tree | Fill schedule slots |
 
 Same proof structure, different problem!
-
-
----
-
-# Next: Further Greedy Examples
-
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
-
-Three more — coins, paths, codes — where greedy sometimes triumphs and sometimes embarrassingly fails.
-
-</div>
-
-- Make Change
-- Shortest Path (Dijkstra)
-- Huffman Codes

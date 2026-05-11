@@ -30,6 +30,10 @@ Section 1.1 — What it means for an algorithm to do *exactly* what it's suppose
 
 <div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
+<!--
+Why does correctness deserve a chapter of its own? Two reminders from people who knew. Edsger Dijkstra, 1970: "Program testing can be used to show the presence of bugs, but never to show their absence." And Donald Knuth, in a 1977 letter to Peter van Emde Boas: "Beware of bugs in the above code; I have only proved it correct, not tried it." The two quotes together capture the entire game — testing isn't proof, and proof isn't testing, and a serious algorithmicist needs to think about both. A concrete reminder of the cost: in 1994, a math professor named Thomas Nicely noticed that the Pentium chip was producing wrong answers for certain floating-point divisions. Intel knew about the bug and had quietly decided not to recall — until the story broke. The eventual replacement program cost Intel roughly $475 million in 1994 dollars. The bug was in a *division algorithm*, which is exactly where this chapter ends up.
+-->
+
 ---
 
 # Correctness Framework
@@ -52,6 +56,10 @@ Key concepts:
 5. **Full Correctness** - partial correctness *with* termination
 
 
+<!--
+The pre/post-condition framing didn't fall from the sky — it was deliberately invented. Tony Hoare's 1969 paper "An Axiomatic Basis for Computer Programming" introduced the triple {P} S {Q} ("if P holds before S runs, then Q holds after") and built up logical rules for composing them through sequencing, conditionals, and loops. That paper essentially created the field of formal verification and won Hoare the 1980 Turing Award. The same Hoare invented QuickSort a decade earlier, and later gave the famous 2009 talk where he called the null reference his "billion-dollar mistake" — he had introduced it in ALGOL W in 1965 "simply because it was so easy to implement." One person, three formative contributions and one formative regret.
+-->
+
 ---
 
 # Boolean Notation
@@ -71,6 +79,10 @@ The symbol cheat-sheet — $\wedge, \vee, \neg, \rightarrow, \forall, \exists$ �
 - $\exists$ is "there exists" (existential quantifier)
 - $\Rightarrow$ abbreviates "implies"
 
+
+<!--
+A bit of history behind the symbols. George Boole — the Boole of "Boolean" — was an entirely self-taught Irish mathematician who never attended university; he was hired as a professor at Queen's College Cork on the strength of his published work. His 1854 book "An Investigation of the Laws of Thought" was an attempt to do for logic what algebra had done for arithmetic, treating "and", "or", and "not" as operations on a two-element algebra. Nearly a century later, in 1937, MIT graduate student Claude Shannon noticed in his master's thesis that Boolean algebra was exactly the right language for analyzing telephone relay circuits — the leap that made digital electronics possible. The quantifier symbols come later: ∃ from Giuseppe Peano in 1897 (an inverted E for "esiste"), and ∀ from Gerhard Gentzen's 1934 work on natural deduction (an inverted A for "alle"). Frege had the *concept* of universal quantification in 1879 but used a peculiar two-dimensional notation that nobody else adopted.
+-->
 
 ---
 
@@ -133,6 +145,10 @@ A **loop invariant** is an assertion that stays true after each execution of a l
 - Many different invariants may work; the art is selecting them judiciously
 
 
+<!--
+The notion of an invariant as the central tool for reasoning about programs is due to Robert Floyd's 1967 paper "Assigning Meanings to Programs." Floyd's idea was to attach a logical assertion to each edge in a flowchart, then verify each instruction by checking the assertions before and after — turning program-correctness into a finite set of local proofs. Hoare took this and refined it into the cleaner triple-based logic two years later. Floyd received the 1978 Turing Award largely for this work; his citation specifically credits "the invention of fundamental techniques for the construction and analysis of efficient algorithms." Worth knowing: Floyd had no doctorate. He was a self-taught computer scientist who became a full professor at Stanford by sheer force of his work — a useful counterweight to the idea that this subject belongs to people with the right credentials.
+-->
+
 ---
 
 # Complexity
@@ -176,6 +192,10 @@ For functions $f, g : \mathbb{N} \rightarrow \mathbb{R}$:
 **Example:** $an^2 + bn + c = \Theta(n^2)$ where $a > 0$
 
 
+<!--
+The "O" notation is older than computer science by a wide margin. Paul Bachmann introduced it in 1894 in *Analytische Zahlentheorie*, and Edmund Landau popularized it through his 1909 number-theory textbook — that's why mathematicians still sometimes call these "Landau symbols." For decades, computer scientists borrowed the notation informally and inconsistently: people would write "O(n)" when they really meant Θ(n), and use Ω to mean two different things depending on whether they'd learned it from number theory or from a CS paper. Donald Knuth had enough and wrote a 1976 SIGACT News article titled "Big Omicron and big Omega and big Theta," explicitly proposing the standard definitions you see on this slide. The article is barely four pages and very readable — Knuth essentially refereed a notation dispute by writing the canonical paper everyone has cited since.
+-->
+
 ---
 
 # Division Algorithm
@@ -205,6 +225,10 @@ Division Algorithm:
 
 **Example:** $x = 25$, $y = 3$ → $q = 8$, $r = 1$
 
+
+<!--
+Repeated subtraction is genuinely how the earliest computers did integer division — there was no hardware "divide" instruction on a typical 1950s machine, and even the standard binary long-division algorithm was usually open-coded as a shift-and-subtract loop. Division has always been the troublesome operation: it's the slowest of the four basic arithmetic operations, the one where rounding rules cause the most lawsuits, and the one Intel famously got wrong in the Pentium FDIV bug. The bug, by the way, was in a *table* used by the SRT division algorithm — five entries in a 1066-entry lookup table were missing. The cost to Intel was $475 million in 1994 dollars, a number worth quoting when students complain that proving a humble division algorithm correct is overkill.
+-->
 
 ---
 
@@ -297,6 +321,10 @@ Key observations:
 By LNP, this sequence cannot go on forever → **Algorithm terminates** ✓
 
 
+<!--
+The Least Number Principle looks innocuous — "every non-empty set of natural numbers has a smallest element" — but it's logically equivalent to mathematical induction and to the well-ordering of ℕ. Without one of these three (equivalent) principles, you cannot prove that the natural numbers behave the way you think they do. Generalizing this to *more complex* sequences gets you to well-founded relations and ordinals, and that machinery is what termination provers (in tools like Coq, Isabelle, and Dafny) use under the hood. Translation of this slide into modern practice: when an industrial verifier proves a program terminates, it is usually doing exactly what we just did — finding a "ranking function" mapping program states into a well-ordered set, and showing that each loop iteration strictly decreases the rank.
+-->
+
 ---
 
 # Division: Complexity
@@ -321,18 +349,7 @@ Assume each of these takes one step:
 - Each iteration: 3 steps (test + 2 operations)
 - Total: $O(x/y)$ or $O(q)$
 
+<!--
+A quick etymological aside to close the section. The word "algorithm" has nothing to do with Greek "arithmos" (number) — it's a Latinization of the name al-Khwārizmī, a 9th-century Persian mathematician who worked at the House of Wisdom in Baghdad. His treatise on Hindu-Arabic numerals was translated into Latin in the 12th century as "Algoritmi de numero Indorum" ("Al-Khwārizmī on the Hindu numerals"); medieval scholars took "Algoritmi" to be a general word for the procedural arithmetic he was teaching, and the term stuck. The same al-Khwārizmī gave us the word "algebra," from the title of his other book, "Al-Kitāb al-mukhtaṣar fī ḥisāb al-jabr wa-l-muqābala." So the discipline you're enrolled in is named after one specific person — and Euclid's algorithm, which we'll see in Section 1.2, predates him by roughly 1,100 years, which says something about how long humans have been doing this kind of work.
+-->
 
----
-
-# Next: Euclid's Algorithm
-
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
-
-Preview — a 2,300-year-old algorithm that still powers modern cryptography.
-
-</div>
-
-Coming up in Section 1.2:
-- Greatest Common Divisor (GCD)
-- Euclid's algorithm (~300 BC)
-- Why is it fast? (Important for cryptography!)

@@ -236,15 +236,3 @@ This is **optimal** for comparison-based sorting!
 
 **Information-theoretic lower bound:** There are n! possible permutations of n items. A comparison-based sort is essentially a binary decision tree, so it needs at least ceil(lg(n!)) comparisons in the worst case. By Stirling's approximation, lg(n!) ~ n lg n, which proves the Omega(n log n) lower bound. Mergesort (essentially) matches this, making it asymptotically optimal.
 -->
-
----
-
-# Next: Multiplying Numbers in Binary
-
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
-
-A teaser for Section 3.2: schoolbook multiplication is $O(n^2)$ — can we do better?
-
-</div>
-
-Can we multiply two $n$-bit numbers faster than $O(n^2)$?

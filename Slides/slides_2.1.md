@@ -373,16 +373,3 @@ Trace, prove, implement — five problems that lock in every part of the lecture
 4. **Problem 2.13:** Show that the smallest edge is in every MCST <span style="font-size: 0.6em; color: navy;">Prb 2.13, Pg 39, exr:kruskal_smallest_edge</span>
 
 5. **Problem 2.15:** Implement Kruskal's algorithm <span style="font-size: 0.6em; color: navy;">Prb 2.15, Pg 39, exr:kruskal_program</span> <a href="https://github.com/michaelsoltys/IAA/blob/main/Problems/P2.15_Kruskal-Program.py" style="font-size: 0.6em; color: teal;">[Python solution]</a>
-
-
----
-
-# Next: Jobs with Deadlines and Profits
-
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
-
-Same proof template, totally different problem — same template, *different swap*.
-
-</div>
-
-Another greedy algorithm where "promising" is the key invariant!

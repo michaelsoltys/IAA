@@ -503,20 +503,3 @@ Implement, break, and prove — the homework that turns these case studies into 
 4. **Problem 2.29:** Find a bipartite graph where greedy matching fails <span style="font-size: 0.6em; color: navy;">Prb 2.29, Pg 45, exr:matching</span>
 
 5. **Problem 2.35:** Implement Huffman compression <span style="font-size: 0.6em; color: navy;">Prb 2.35, Pg 51, exr:huffman</span> <a href="https://github.com/michaelsoltys/IAA/blob/main/Problems/P2.35_Huffman.py" style="font-size: 0.6em; color: teal;">[Python solution]</a>
-
----
-
-# Next Chapter
-
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
-
-A new design paradigm — split the problem, solve each half, glue the answers together.
-
-</div>
-
-**Chapter 3: Divide and Conquer**
-
-- Mergesort
-- Binary multiplication
-- Savitch's algorithm
-- Quicksort
