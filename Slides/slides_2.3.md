@@ -256,6 +256,47 @@ For negative edge weights, you need Bellman-Ford (O(nm)) or, for all-pairs short
 
 ---
 
+# The Term Paper
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+
+MIT, 1951. Robert Fano offers his class a deal: sit the final exam, or find the optimal binary code.
+
+</div>
+
+<div class="grid grid-cols-2 gap-6">
+<div>
+
+David Huffman, a graduate student, takes the paper.
+
+What Fano does **not** mention: he and **Claude Shannon** have both already tried and failed. The problem is open.
+
+Months of dead ends. Huffman is about to throw his notes away when he reverses the direction of attack.
+
+</div>
+<div>
+
+| | Shannon–Fano | Huffman |
+|---|---|---|
+| Direction | top-down | **bottom-up** |
+| First move | split the alphabet in half | **merge the two rarest** |
+| Result | good | **provably optimal** |
+
+</div>
+</div>
+
+The student's term paper beat the professor's algorithm. It is now in every ZIP file on Earth.
+
+<!--
+Fano taught the information theory course at MIT; Shannon was down the hall at Bell Labs. Shannon-Fano coding, their joint top-down method, splits the alphabet into two groups of roughly equal probability and recurses. It is intuitively the "right" thing to do and it is usually very good — but it is not optimal, and nobody could say why or fix it.
+
+Huffman's insight was that the question "which symbol gets the shortest code?" is the wrong one to ask first. Ask instead "which two symbols must be siblings at the bottom of the tree?" — the two rarest — and the tree assembles itself upward with no choices left to make. He said afterwards that he almost certainly would not have tried the problem at all had Fano mentioned it was unsolved.
+
+Worth noting for students: the greedy step here is not "grab the best," it is "commit the worst." That is unusual and it is exactly why the exchange argument works.
+-->
+
+---
+
 # Huffman Codes
 
 <div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
@@ -278,9 +319,11 @@ Frequent letters get short codes, rare letters get long ones — variable-length
 Fixed-length: 6 chars → 3 bits each → 300 bits total
 
 <!--
-David Huffman invented his coding algorithm in 1952 as a term paper for an MIT course taught by Robert Fano. Fano had been working on a similar problem (Shannon-Fano coding, a top-down approach) and offered students a choice: take the final exam, or find an optimal binary code. Huffman chose the paper, struggled for months, and was about to give up when he hit upon the bottom-up approach. His algorithm turned out to be provably optimal — better than his professor's own method!
+The term paper was written in Fano's 1951 course; the result was published the following year as "A Method for the Construction of Minimum-Redundancy Codes" (Proceedings of the IRE, September 1952). Huffman was in his mid-twenties, a graduate student, and not yet aware that he had solved anything nobody else could.
 
-Huffman was 27 at the time. He later said he probably wouldn't have even attempted the problem if he had known how hard it was supposed to be. The paper "A Method for the Construction of Minimum-Redundancy Codes" (1952) became one of the foundational papers of information theory.
+Huffman went on to found the computer science department at UC Santa Cruz and to do foundational work in a completely unrelated field — the mathematics of paper folding and curved-crease origami. He rarely worked on compression again. He once remarked that the algorithm was "not the most important thing I did," which is a remarkable thing to say about a piece of code that runs several billion times a second worldwide.
+
+The 1952 paper is three pages long.
 -->
 
 ---
@@ -440,9 +483,62 @@ Huffman coding is everywhere, though often as a building block inside larger com
 
 ZIP and GZIP use DEFLATE, which combines LZ77 (a dictionary-based method by Lempel and Ziv, 1977) with Huffman coding. The LZ77 step finds repeated patterns; the Huffman step compresses the resulting symbols. This combination is also used in PNG images and HTTP compression.
 
-Morse code (1838) is an early example of variable-length encoding — 'E' is a single dot (most frequent letter in English), while 'Q' is dash-dash-dot-dash. Samuel Morse counted letter frequencies by examining type cases at a local newspaper. Morse code is not a prefix code, which is why it needs pauses between characters.
+Morse code (1838) is an early example of variable-length encoding — 'E' is a single dot (most frequent letter in English), while 'Q' is dash-dash-dot-dash. The frequency counting is generally credited to Alfred Vail, Morse's collaborator, who walked into a local newspaper office and counted the pieces of type in each compositor's case: the more type a printer stocked for a letter, the more often that letter must be used. Common letters got short codes. Morse code is not a prefix code, which is why it needs pauses between characters.
+
+So the sequence is: Vail counts type by hand in 1838 and gets a good code by intuition; Shannon proves in 1948 exactly how good any code could ever be; Huffman shows in 1951 how to actually build the best one. A century, three steps.
 
 Shannon's source coding theorem (1948) gives the theoretical limit: you cannot compress below the entropy H of the source. Huffman coding achieves within 1 bit of this limit per symbol, and with block coding (encoding groups of symbols) it can get arbitrarily close.
+-->
+
+---
+
+# What Is One Bit Actually Worth?
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+
+Entropy measures how much is *left to learn*. Turn it around and it measures how much you actually *know*.
+
+</div>
+
+<div class="grid grid-cols-2 gap-6">
+<div>
+
+Someone claims an edge: they can call a coin flip **51%** of the time.
+
+Information gained per call:
+
+$$1 - H(0.51) = 0.000289 \text{ bits}$$
+
+| Claim | Bits per call |
+|---|---|
+| Fair coin (no edge) | 0 |
+| 51% caller | 0.000289 |
+| Perfect oracle | 1 |
+
+</div>
+<div>
+
+**Consequences**
+
+- One full bit of knowledge takes **~3,465 calls**
+- 200,000 calls carry about **58 bits ≈ 7 bytes** of real signal
+- Those same 200,000 calls are **25 KB** of raw data
+
+A genuine edge is a few bytes hidden inside 25 KB of noise.
+
+**It is not a pattern you can see.**
+
+</div>
+</div>
+
+<!--
+This is the same theorem read backwards. Huffman tells you a stream compresses only to the extent it is predictable; so if you compress a supposedly-informative stream and it does not shrink, there was nothing there.
+
+The numbers: H(0.51) = 0.99971 bits, so the mutual information is 1 - H(0.51) = 0.000289 bits per outcome. Over 200,000 outcomes that is 57.7 bits, about 7 bytes, against 25,000 bytes of raw outcomes. A 51%-accurate predictor is real, is profitable at scale, and is statistically invisible to the eye — you would need thousands of samples before the evidence amounts to a single bit.
+
+This example is popular in quantitative-trading circles, where the "51% edge" is the standard cartoon of a real but tiny signal. The point generalizes to any weak classifier: a model that is barely better than chance carries almost no information per decision, so backtests on a few hundred samples are worthless, and eyeballing a chart for the pattern is hopeless. Compressibility is the honest test.
+
+For students who want the full arc — Morse, Shannon, Huffman in one place — MIT OpenCourseWare 6.02, "Introduction to EECS II: Digital Communication Systems" (Balakrishnan and Verghese), covers exactly this progression: https://ocw.mit.edu/courses/6-02-introduction-to-eecs-ii-digital-communication-systems-fall-2012/
 -->
 
 ---
