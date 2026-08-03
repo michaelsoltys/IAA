@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="460" height="185" viewBox="0 0 460 185" style="background: transparent;">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,4 L0,8 z" fill="#6c8ebf"/>
+    </marker>
+  </defs>
+  <g font-family="Helvetica, Arial, sans-serif" font-size="15" text-anchor="middle">
+
+    <!-- inbound pages T1..Tn -->
+    <g stroke="#6c8ebf" stroke-width="1.5" fill="#dae8fc">
+      <circle cx="45"  cy="30" r="22"/>
+      <circle cx="140" cy="30" r="22"/>
+      <circle cx="235" cy="30" r="22"/>
+      <circle cx="415" cy="30" r="22"/>
+    </g>
+    <g fill="#000">
+      <text x="45"  y="35">T₁</text>
+      <text x="140" y="35">T₂</text>
+      <text x="235" y="35">T₃</text>
+      <text x="325" y="35">…</text>
+      <text x="415" y="35">Tₙ</text>
+    </g>
+
+    <!-- X -->
+    <circle cx="230" cy="128" r="24" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+    <text x="230" y="134" fill="#000" font-weight="bold">X</text>
+
+    <!-- links into X -->
+    <g stroke="#6c8ebf" stroke-width="1.5" fill="none" marker-end="url(#arrow)">
+      <path d="M60,48  L208,110"/>
+      <path d="M148,52 L216,104"/>
+      <path d="M235,52 L231,102"/>
+      <path d="M400,48 L253,110"/>
+    </g>
+
+    <text x="230" y="176" font-size="12" fill="#666" font-style="italic">rank flows along the arrows</text>
+  </g>
+</svg>

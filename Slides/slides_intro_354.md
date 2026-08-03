@@ -96,7 +96,7 @@ Discrete math and a bit of programming — that's all you need to follow this co
 <div class="flex-1">
 
 <div class="border rounded-lg p-4 bg-gray-50 text-sm">
-  <img src="./Figures/discrete_math.jpg" class="w-full rounded mb-2" />
+  <img src="./Figures/three-dragons.svg" class="w-full rounded mb-2" />
   <p class="italic">"Discrete mathematics I will always love you"</p>
   <p class="text-gray-500 mt-2">— @Anthony_Bonato</p>
 </div>
@@ -248,10 +248,12 @@ Marcus Du Sautoy's accessible tour of algorithms — good background viewing.
 
 </div>
 
-A BBC Documentary by Marcus Du Sautoy
-
-<div class="flex justify-center mt-4">
-<img src="./Figures/algorithms-bbc.png" class="w-70" />
+<div class="flex justify-center mt-6">
+<div class="border-2 rounded-lg px-10 py-6 text-center" style="border-color:#3ba55d;background:#0b0b0b;">
+  <div style="color:#3ba55d;font-family:ui-monospace,Menlo,monospace;font-size:0.85em;">&gt;The Secret Rules of Modern Living:</div>
+  <div style="color:#f0f0f0;font-family:ui-monospace,Menlo,monospace;font-size:1.9em;letter-spacing:0.06em;">ALGORITHMS_</div>
+  <div style="color:#999;font-size:0.7em;margin-top:0.6em;">BBC, 2015 — presented by Marcus du Sautoy</div>
+</div>
 </div>
 
 
