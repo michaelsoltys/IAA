@@ -110,23 +110,25 @@ Discrete math and a bit of programming — that's all you need to follow this co
 
 <div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
 
-Either the 3rd or 4th edition works — both track the course closely.
+The 4th edition (2025) is the latest; strongly recommended, not required.
 
 </div>
 
-<div class="flex gap-8 mt-8 justify-center">
-<div class="text-center">
-<img src="./Figures/IAA-ed3.jpg" class="h-60" />
-<p>3rd Edition</p>
-</div>
+<div class="flex gap-8 mt-4">
 <div class="text-center">
 <img src="./Figures/IAA-ed4.jpg" class="h-60" />
-<p>4th Edition</p>
+<p>4th Edition (World Scientific, 2025)</p>
 </div>
-</div>
+<div class="flex-1 mt-6">
 
+- The book is **strongly recommended**, especially if you plan to work in algorithms, but it is **not required**
+
+- All course material will be given via the slides
 
 **Code Repository:** https://github.com/michaelsoltys/IAA
+
+</div>
+</div>
 
 
 ---
@@ -156,24 +158,33 @@ Five units, each a major algorithmic paradigm — built up over the semester.
 
 <div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
 
-Canvas, GitHub, GitHub Classroom, YouTube — everything you need is one click away.
+Canvas, GitHub, Classroom 50, YouTube — everything you need is one click away.
 
 </div>
 
 
-- **Canvas:** https://cilearn.csuci.edu/courses/34008
+<div class="flex gap-8">
+<div class="flex-1">
+
+- **Canvas:** https://cilearn.csuci.edu/courses/35558
   - Complete modules with all course material
 
 - **GitHub:** https://github.com/michaelsoltys/IAA
   - Slides, Solutions, Summaries
   - Implementations of Algorithms
 
-- **GitHub Classroom:** https://classroom.github.com/
-  - Assignment URL provided in Canvas
+</div>
+<div class="flex-1">
+
+- **Classroom 50:** https://classroom50.org
+  - Assignment accept links provided in Canvas
   - Work directly in Codespaces
 
-- **YouTube:** https://www.youtube.com/playlist?list=PLZV4fOisnXZ4OmDurTxZAq9WA4Vv7NIHR
+- **YouTube:** https://s.msoltys.com/iaa-yt
   - Prerecorded lectures
+
+</div>
+</div>
 
 
 ---
@@ -187,10 +198,14 @@ How the 100% breaks down: quizzes, assignments, two midterms, and a cumulative f
 </div>
 
 
-- **Quizzes:** 8 quizzes × 5% = 40%
-- **Assignments:** 4 assignments × 5% = 20%
-- **Midterms:** 2 midterms × 10% = 20%
-- **Final Exam:** 20% (cumulative)
+- **Quizzes:** 40%, 8 quizzes, **best 6 count** (≈6.67% each)
+- **Assignments:** 20%, 4 assignments, **best 3 count** (≈6.67% each)
+- **Midterms:** 20%, two midterms at 10% each (required, never dropped)
+- **Final Exam:** 20%, cumulative (required, never dropped)
+
+<br>
+
+**No late work and no extensions.** The drops are your flexibility: a missed quiz or assignment simply becomes a dropped score. Use them for illness, travel, or a bad week; no explanation needed.
 
 
 ---
@@ -203,10 +218,21 @@ Two friendly popular books worth reading alongside the course.
 
 </div>
 
-<div class="flex justify-center gap-8 mt-4">
-<img src="./Figures/AlgsToLiveBy.jpg" class="h-70" />
-<img src="./Figures/AlgsSpririt.jpg" class="h-70" />
+<div class="flex justify-center gap-10 mt-4">
+<div class="text-center w-64">
+<img src="./Figures/AlgsToLiveBy.jpg" class="h-70 mx-auto" />
+<p class="text-xs text-gray-500 mt-2">Home of the 37% rule: spend the first 37% of any search just looking, then commit to the next option that beats everything seen so far.</p>
 </div>
+<div class="text-center w-64">
+<img src="./Figures/AlgsSpririt.jpg" class="h-70 mx-auto" />
+<p class="text-xs text-gray-500 mt-2">David Harel also invented statecharts, the visual formalism that made it into UML and runs in embedded systems everywhere.</p>
+</div>
+</div>
+
+<!--
+Algorithms to Live By pairs a writer (Brian Christian) with a cognitive scientist (Tom Griffiths); its argument is that optimal stopping, caching, and scheduling are decision tools for ordinary life: when to stop apartment hunting, how to organize a closet like an LRU cache, why exponential backoff is good advice for social life. Harel's book grew out of lectures aimed at the general public and has been translated into many languages; his own research fame is statecharts, which came from consulting on avionics for the Lavi fighter jet.
+-->
+
 
 ---
 
@@ -218,9 +244,21 @@ Knuth's *The Art of Computer Programming* — the canonical reference, still bei
 
 </div>
 
-<div class="flex justify-center mt-4">
+<div class="flex justify-center items-start gap-10 mt-4">
 <img src="./Figures/theart.jpg" class="h-80" />
+<div class="w-72 text-sm mt-8">
+
+- Begun in **1962**, planned as seven volumes, and still being written
+- Knuth paused for a decade to invent **TeX**, just to typeset it properly
+- Finding an error earns you a check for **$2.56**: one hexadecimal dollar
+
 </div>
+</div>
+
+<!--
+Bill Gates on this book: "If you think you're a really good programmer... You should definitely send me a resume if you can read the whole thing." The $2.56 reward checks are almost never cashed; recipients frame them. Knuth has not used email since 1990, on the grounds that his job is to be at the bottom of things, not on top of things.
+-->
+
 
 ---
 
@@ -232,11 +270,25 @@ Brassard, Kleinberg-Tardos, and CLRS — three textbooks worth knowing about.
 
 </div>
 
-<div class="flex justify-center gap-4 mt-4">
-<img src="./Figures/brassard.jpg" class="h-70" />
-<img src="./Figures/kleinberg.jpg" class="h-70" />
-<img src="./Figures/cormen.jpg" class="h-70" />
+<div class="flex justify-center gap-6 mt-4">
+<div class="text-center w-52">
+<img src="./Figures/brassard.jpg" class="h-70 mx-auto" />
+<p class="text-xs text-gray-500 mt-2">Gilles Brassard is the B in BB84: he co-invented quantum cryptography.</p>
 </div>
+<div class="text-center w-52">
+<img src="./Figures/kleinberg.jpg" class="h-70 mx-auto" />
+<p class="text-xs text-gray-500 mt-2">Kleinberg's HITS algorithm ranked the web by hubs and authorities just as PageRank appeared (Section 1.2.1).</p>
+</div>
+<div class="text-center w-52">
+<img src="./Figures/cormen.jpg" class="h-70 mx-auto" />
+<p class="text-xs text-gray-500 mt-2">Known simply as CLRS, with over a million copies sold; the R is Rivest, the R in RSA.</p>
+</div>
+</div>
+
+<!--
+Brassard co-invented quantum key distribution with Charles Bennett in 1984 (hence BB84), decades before quantum computers existed to threaten RSA. Kleinberg is a MacArthur Fellow, and HITS makes a nice classroom contrast with PageRank: authority flows from link structure in both, but HITS is query-dependent. CLRS is the standard interview-prep reference; Rivest's RSA connects this shelf directly to the cryptography that secures the web.
+-->
+
 
 ---
 
@@ -248,7 +300,7 @@ Marcus Du Sautoy's accessible tour of algorithms — good background viewing.
 
 </div>
 
-<div class="flex justify-center mt-6">
+<div class="flex justify-center mt-4">
 <div class="border-2 rounded-lg px-10 py-6 text-center" style="border-color:#3ba55d;background:#0b0b0b;">
   <div style="color:#3ba55d;font-family:ui-monospace,Menlo,monospace;font-size:0.85em;">&gt;The Secret Rules of Modern Living:</div>
   <div style="color:#f0f0f0;font-family:ui-monospace,Menlo,monospace;font-size:1.9em;letter-spacing:0.06em;">ALGORITHMS_</div>
@@ -256,8 +308,20 @@ Marcus Du Sautoy's accessible tour of algorithms — good background viewing.
 </div>
 </div>
 
+<div class="text-sm mt-4">
+
+- Du Sautoy holds Oxford's chair for the Public Understanding of Science, endowed by Charles Simonyi, the Microsoft engineer behind Word and Excel; his predecessor was Richard Dawkins
+- The film shows the **Gale-Shapley matching algorithm** pairing kidney donors with patients in the UK's national exchange, the same algorithm we meet in Section 1.2.2 as Stable Marriage
+- It also races **bubble sort against merge sort** on a pile of library books, our Section 3.1 in television form
+
+</div>
 
 **Watch:** https://www.youtube.com/watch?v=pxRlo1z2TIQ
+
+<!--
+Du Sautoy is a group theorist; his popular books include The Music of the Primes. The kidney exchange segment is the strongest classroom hook: Gale and Shapley published stable matching in 1962 as a curiosity about marriage proposals, and half a century later it moved real organs between strangers. Shapley shared the 2012 Nobel in Economics for it, with Alvin Roth, who engineered the kidney exchanges. Worth saying out loud: two of the algorithms in this one-hour film are graded topics in this course.
+-->
+
 
 
 ---

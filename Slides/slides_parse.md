@@ -618,4 +618,4 @@ Where to read the specs and find the manuals — and the JSON-parser assignment.
 - **Classic reference:** http://dinosaur.compilertools.net
 
 
-**Assignment:** Complete the JSON parser in GitHub Classroom
+**Assignment:** Complete the JSON parser in Classroom 50

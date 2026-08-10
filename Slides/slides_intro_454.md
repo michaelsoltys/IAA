@@ -71,25 +71,27 @@ You'll need discrete math reflexes and enough Python to implement a parser.
 
 <div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
 
-We'll work primarily out of Chapter 9 of *An Introduction to the Analysis of Algorithms*.
+The 4th edition (2025) is the latest; strongly recommended, not required.
 
 </div>
 
-<div class="flex gap-8 mt-8 justify-center">
-<div class="text-center">
-<img src="./Figures/IAA-ed3.jpg" class="h-60" />
-<p>3rd Edition</p>
-</div>
+<div class="flex gap-8 mt-4">
 <div class="text-center">
 <img src="./Figures/IAA-ed4.jpg" class="h-60" />
-<p>4th Edition</p>
+<p>4th Edition (World Scientific, 2025)</p>
 </div>
-</div>
+<div class="flex-1 mt-6">
 
+- The book is **strongly recommended**, especially if you plan to work in algorithms, but it is **not required**
 
-**We use Chapter 9** (PDF provided by instructor)
+- All course material will be given via the slides
+
+- This course works from **Chapter 9**
 
 **Code Repository:** https://github.com/michaelsoltys/IAA
+
+</div>
+</div>
 
 
 ---
@@ -177,19 +179,28 @@ Where the slides, code, recordings, and assignments live — bookmark all of the
 </div>
 
 
-- **Canvas:** https://cilearn.csuci.edu/courses/33936
+<div class="flex gap-8">
+<div class="flex-1">
+
+- **Canvas:** https://cilearn.csuci.edu/courses/36157
   - Complete modules with all course material
 
 - **GitHub:** https://github.com/michaelsoltys/IAA
   - Slides, Solutions, Summaries
   - Implementations of Algorithms
 
-- **GitHub Classroom:** https://classroom.github.com/
-  - Assignment URL provided in Canvas
+</div>
+<div class="flex-1">
+
+- **Classroom 50:** https://classroom50.org
+  - Assignment accept links provided in Canvas
   - Work directly in Codespaces
 
-- **YouTube:** https://www.youtube.com/playlist?list=PLZV4fOisnXZ4OmDurTxZAq9WA4Vv7NIHR
+- **YouTube:** https://s.msoltys.com/iaa-yt
   - Prerecorded lectures
+
+</div>
+</div>
 
 
 ---
@@ -203,10 +214,14 @@ How your grade is built — frequent low-stakes work, plus two midterms and a cu
 </div>
 
 
-- **Quizzes:** 8 quizzes × 5% = 40%
-- **Assignments:** 4 assignments × 5% = 20%
-- **Midterms:** 2 midterms × 10% = 20%
-- **Final Exam:** 20% (cumulative)
+- **Quizzes:** 40%, 8 quizzes, **best 6 count** (≈6.67% each)
+- **Assignments:** 20%, 4 assignments, **best 3 count** (≈6.67% each)
+- **Midterms:** 20%, two midterms at 10% each (required, never dropped)
+- **Final Exam:** 20%, cumulative (required, never dropped)
+
+<br>
+
+**No late work and no extensions.** The drops are your flexibility: a missed quiz or assignment simply becomes a dropped score. Use them for illness, travel, or a bad week; no explanation needed.
 
 
 ---
