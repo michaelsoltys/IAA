@@ -51,27 +51,153 @@ How to reach me, where to find me, and when class meets.
 
 ---
 
-# Algorithms
+# Why Algorithms: Preponderance
 
 <div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
 
-A few facts to make the case that algorithms are old, useful, and quietly running the world.
+Five places where the choice of algorithm is the difference between possible and impossible.
 
 </div>
 
 
-- **The word "algorithm"** comes from the 9th-century Persian mathematician al-Khwarizmi, whose name was Latinized to "Algoritmi"
+- **Sorting** is estimated to consume 25% of all computing cycles worldwide, so a better sorting algorithm is a rebate on the entire industry's power bill (Divide and Conquer, Section 3.1)
 
-- **Euclid's GCD algorithm** (c. 300 BCE) is one of the oldest algorithms still in use today — over 2,300 years old! (Section 1.1.3)
+- **Google answers 8.5 billion searches a day**, each in under half a second against an index of trillions of pages; the ranking is an eigenvector computation (PageRank, Section 1.2.1)
 
-- **Google processes 8.5 billion searches per day**, each one relying on algorithms that return results in under 0.5 seconds (PageRank, Section 1.2.1)
+- **The Traveling Salesman Problem** on 20 cities has over 60 quadrillion routes. Algorithms are what stand between us and enumerating them (NP, Section 4.4)
 
-- **The Traveling Salesman Problem** with just 20 cities has over 60 quadrillion possible routes — algorithms help us avoid checking them all (NP, Section 4.4)
+- **Dynamic programming** aligns DNA, corrects your spelling, and routes your GPS, all by refusing to solve the same subproblem twice (Chapter 4)
 
-- **Sorting algorithms** are estimated to use 25% of all computing cycles worldwide (Divide and Conquer, Section 3.1)
+- **Gale-Shapley stable matching** assigns every US medical graduate to a residency each year, and moves kidneys between living strangers (Section 1.2.2)
 
-- **Dynamic Programming** powers spell checkers, DNA sequence alignment, and GPS navigation — by remembering solutions to subproblems (Chapter 4)
 
+<!--
+Two pieces of history worth saying out loud rather than putting on the slide. The word "algorithm" comes from the 9th-century Persian mathematician al-Khwarizmi, whose name was Latinized to "Algoritmi"; the word "algebra" comes from the title of the same man's book. And Euclid's GCD algorithm, from around 300 BCE, is still the one your language's standard library runs today: over 2,300 years of continuous production use, which no piece of software can match. We prove it correct in Section 1.1.3.
+-->
+
+
+---
+
+# Why Algorithms: Job Interview
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+
+Google, Amazon, and Meta screen candidates on exactly this material. Here is a real question.
+
+</div>
+
+<div class="flex gap-6">
+<div class="flex-1">
+
+**Asked at Google and Amazon:**
+
+> Given the daily prices of a stock, buy on one day and sell on a later day. Return the maximum profit, or 0 if there is none.
+
+```text
+prices:  7  1  5  3  6  4
+answer:  5     (buy at 1, sell at 6)
+```
+
+The interviewer is not checking whether you know an API. They are watching to see whether you find the linear solution.
+
+</div>
+<div class="flex-1">
+
+| Approach | Work at n = 100,000 |
+|---|---|
+| Try every pair, $O(n^2)$ | 10,000,000,000 steps |
+| One pass, track the running minimum, $O(n)$ | 100,000 steps |
+
+The insight is one sentence: the best sale on day $i$ is $\text{price}[i]$ minus the cheapest price seen so far, so a single scan suffices.
+
+**This is Assignment 1 of this course.**
+
+</div>
+</div>
+
+<!--
+Worth being blunt with students here: the reason these companies ask algorithm questions is not hazing, it is that the O(n squared) and O(n) versions are both about ten lines long and look equally reasonable to someone who has not been taught to count. The gap only shows up at scale, which is precisely where these companies operate. Also worth noting that this same problem, with the constraint relaxed to allow many buys and sells, becomes a greedy algorithm, and with a limit of k transactions becomes dynamic programming: three of our five units in one interview question.
+-->
+
+
+---
+
+# Why Algorithms: Standard Curriculum
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+
+Not a local invention: this is the standard algorithms course, taught from the same outline everywhere.
+
+</div>
+
+**The curriculum standard**
+
+The ACM/IEEE-CS/AAAI **Computer Science Curricula 2023** lists **Algorithmic Foundations (AL)** as one of its seventeen knowledge areas, within the Software Development competency. Its learning outcomes include determining time and space complexity, and defining the classes P and NP. COMP/MATH 354 is our AL.
+
+**The same course elsewhere**
+
+- **UC Berkeley CS 170**, *Efficient Algorithms and Intractable Problems*: divide and conquer, greedy, dynamic programming, then NP-completeness
+- **MIT 6.1210** (for years numbered 6.006), *Introduction to Algorithms*
+
+Compare their syllabi with ours: the five paradigms are the same five. They belong to the field, not to any one campus.
+
+<!--
+The practical point for students: the material transfers. Someone who moves to a graduate program, or reads a paper, or sits an interview, meets these same five paradigms under the same names. CS2023 was the first of these curricular revisions to include the AAAI as a partner, which is why artificial intelligence has a much larger footprint in it than in CS2013. Berkeley's CS 170 is taught from Dasgupta, Papadimitriou and Vazirani, a book worth knowing about; Papadimitriou is also the author of the standard complexity text and, more recently, of a graphic novel about Bertrand Russell.
+-->
+
+
+---
+
+# Why Algorithms: LLMs
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+
+Writing code became cheap. Knowing it is correct did not.
+
+</div>
+
+<div class="flex gap-6">
+<div class="flex-1">
+
+A model will hand you a plausible algorithm in seconds. What it will not hand you is a **guarantee**.
+
+Two things stay yours:
+
+- **Knowing what to ask for.** If you do not know a linear solution exists, you will accept the quadratic one that passes your tests
+- **Knowing whether the answer is right.** Not by testing it, but by proving it
+
+Ask anything for an algorithm that makes change and you get **greedy**: largest coin that fits, repeat. It is correct for $\{1, 5, 10, 25\}$, so every test you would think to write passes.
+
+<span style="font-size: 0.6em; color: navy;">Alg 13, Pg 45, alg:makechange</span>
+
+</div>
+<div class="flex-1">
+
+Now change the denominations:
+
+```text
+denominations {1, 3, 4}, target 6
+
+  greedy:   4 + 1 + 1    three coins
+  optimal:  3 + 3        two coins
+```
+
+The code looks fine. The tests pass. The answer is simply not optimal.
+
+What catches it is asking whether the greedy choice is *promising*, and finding the exchange argument does not go through.
+
+<div class="border-l-4 pl-3 mt-4 text-sm" style="border-color:#4B0082;">
+
+**Design. Analyze. Prove.** The three outcomes of this course are precisely the three things that do not come for free.
+
+</div>
+
+</div>
+</div>
+
+<!--
+This is the slide to spend five minutes on, and it closes the case for the subject: the three preceding slides say algorithms are everywhere, that they are how you get hired, and that every serious program teaches them; this one says why none of that is undone by the tooling. The point is not that machines are unreliable. It is that this particular failure is invisible to every check a competent programmer would apply without the theory. Greedy is correct for US, UK and euro coins because those systems were deliberately designed to be canonical, which is exactly why the failure feels so counterintuitive when you first see it. Deciding whether an arbitrary coin system is canonical is itself a real problem with a non-obvious algorithm, due to Pearson in 2005. Worth telling students that the book has set this as an exercise for several editions: the argument for learning to verify is not new, it has only stopped being optional.
+-->
 
 ---
 
@@ -92,17 +218,35 @@ Discrete math and a bit of programming — that's all you need to follow this co
 - We will implement algorithms in **Python 3**
 
 
+<div class="text-sm mt-6">
+
+**Why discrete math, and not calculus?**
+
+**Calculus** studies continuous change and limits. It is the mathematics you need for physics, signal processing, and gradient descent.
+
+**Linear algebra** studies vector spaces and matrices. Graphics, machine learning, and one starring role in this course: PageRank is an eigenvector computation (Section 1.2.1).
+
+</div>
+
 </div>
 <div class="flex-1">
 
-<div class="border rounded-lg p-4 bg-gray-50 text-sm">
-  <img src="./Figures/three-dragons.svg" class="w-full rounded mb-2" />
-  <p class="italic">"Discrete mathematics I will always love you"</p>
-  <p class="text-gray-500 mt-2">— @Anthony_Bonato</p>
+<div class="text-sm">
+
+**Discrete math** studies finite structures: sets, graphs, logic, counting, and induction. It is what every proof in this course is made of.
+
+A computer cannot hold a real number, only approximate one. Everything an algorithm actually does happens in the countable world: finitely many steps over finitely many states.
+
+**Induction is not a topic in this course, it is the method.** A loop invariant is an induction hypothesis in work clothes. That is why MATH 300 is the prerequisite and calculus is not.
+
 </div>
 
 </div>
 </div>
+
+<!--
+Students arriving from a calculus-heavy high school track often assume the harder mathematics is the more relevant mathematics, and it is worth correcting that directly. Calculus is not absent from algorithms, it is just not load-bearing here: it turns up when we bound a sum by an integral or solve a recurrence asymptotically, and that is about the whole of it. Linear algebra earns exactly one starring role in this course, and it is a good one, since PageRank is an eigenvector computation on a matrix with billions of rows. Discrete mathematics is different in kind rather than degree: it is not a tool the course occasionally reaches for, it is the language the course is written in. Every correctness proof we do is an induction on the number of loop iterations, which is why MATH 300 is the one hard prerequisite.
+-->
 
 ---
 
