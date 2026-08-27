@@ -288,23 +288,6 @@ The relation between **languages** (sets of strings) and **machines** that proce
 
 ---
 
-# Course Overview
-
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
-
-We climb the Chomsky hierarchy: regular, context-free, and finally the full Turing-computable languages.
-
-</div>
-
-Three major topics:
-
-
-1. **Regular Languages** — Finite Automata and Regular Expressions
-2. **Context-Free Languages** — Grammars and Pushdown Automata
-3. **Computability** — Turing Machines and the Church-Turing Thesis
-
----
-
 # Course Outline
 
 <div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
