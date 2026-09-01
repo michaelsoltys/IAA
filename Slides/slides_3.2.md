@@ -302,9 +302,42 @@ Two famous algorithms, one structural insight — shave one recursive call, pay 
 **The pattern:** Trading one recursive multiplication for extra additions — because multiplications are recursive (expensive) but additions are only one level deep (cheap)
 
 <!--
-**Can we do better?** The current best for matrix multiplication is O(n^{2.371}) (Williams, Xu, Xu, Zhou, 2024). The exponent has been slowly chipped away: Strassen's 2.81 (1969), Pan's 2.796 (1978), Coppersmith-Winograd's 2.376 (1990), and most recently 2.371 (2024). Whether O(n^2) is achievable remains one of the biggest open problems in theoretical CS.
+**Can we do better?** Yes, and it is still being done. The next slide is the August 2026 bound (arXiv:2608.16884). Leave the practical-crossover discussion here.
 
 **Practical crossover:** Below the crossover (~500 bits for Karatsuba, ~64 rows for Strassen), the naive algorithm wins because the extra additions and recursion overhead dominate. Real libraries switch strategies at tuned thresholds:
 - **GMP** (GNU Multiple Precision Arithmetic Library — the standard C library for big-integer arithmetic, used by Python, Mathematica, and Maple under the hood): chains schoolbook → Karatsuba → Toom-Cook → FFT as numbers get larger.
 - **BLAS** (Basic Linear Algebra Subpackages — the standard interface for matrix operations, with implementations like OpenBLAS and Intel MKL): switches naive → Strassen, tuned per CPU. Most BLAS implementations don't use Strassen by default because it introduces numerical rounding errors that accumulate with recursion depth.
+-->
+
+---
+
+# The Exponent Is Still Moving
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+
+Strassen's 2.81 was 1969. As of August 2026 the best proven bound is still being improved.
+
+</div>
+
+The exponent $\omega$ is the infimum of $c$ such that $n \times n$ matrices multiply in $O(n^{c+o(1)})$.
+
+| Year | Bound | |
+|---|---|---|
+| 1969 | $\omega < 2.81$ | Strassen: 7 recursive multiplies |
+| 1990 | $\omega < 2.376$ | Coppersmith-Winograd |
+| 2025 | $\omega < 2.371339$ | Alman, Duan, Williams, Xu, Xu, Zhou |
+| Aug 2026 | $\omega < 2.371177$ | Dupont et al., with AlphaEvolve [arXiv](https://arxiv.org/abs/2608.16884) |
+
+The 2026 paper does not invent a new 7-product identity. It solves the same laser-method optimization more carefully (gradient descent, then AlphaEvolve on the optimizer). The digits moved a little. The point for this class: the program you just saw is still live research, 57 years later. Whether $\omega = 2$ is open.
+
+<!--
+This is the "the field did not stop in 1969" slide. Stay on it long enough for students to see that $\omega$ is an object people still publish on, then move on. Do not spend class deriving combination-loss analysis.
+
+Authors (equal contribution, then theory coauthors): Emilien Dupont, Marvin Eisenberger, Borislav Kozlovskii, Abbas Mehrabian, Francisco J. R. Ruiz, Abigail See, Renfei Zhou (CMU), Josh Alman (Columbia), Virginia Vassilevska Williams (MIT), Matej Balog. Alman and Vassilevska Williams are names students will meet again if they go on in algorithms.
+
+What AlphaEvolve did here: it evolved the *optimizer*, not a new Strassen-style formula. Prior bound 2.371339 was Alman et al., SODA 2025, combination loss analysis at recursion level 3. The new work scales the same optimization to level 4 (about 7 million parameters) with a Jax gradient method, then lets AlphaEvolve improve that optimizer. They certify the bound in exact rational arithmetic.
+
+The paper notes that an improvement of this size is typical of the last 40 years of $\omega$ work. Larger jumps likely need new mathematics, not a better optimizer. $O(n^2)$ remains open.
+
+AlphaTensor (Nature 2022) is the small-size story already in the Strassen notes: new identities for fixed $n$, not a new $\omega$. This 2026 note is the $\omega$ story.
 -->
