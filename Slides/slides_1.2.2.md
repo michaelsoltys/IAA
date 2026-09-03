@@ -104,8 +104,10 @@ Two people not married to each other but who'd both prefer to be — the matchin
 
 </div>
 
-A matching $M$ is **unstable** if there exists a **blocking pair**.
+<div class="grid grid-cols-2 gap-6 items-start">
+<div style="text-align: left;">
 
+A matching $M$ is **unstable** if there exists a **blocking pair**.
 
 A pair $(b, g)$ is a **blocking pair** if:
 
@@ -113,10 +115,15 @@ A pair $(b, g)$ is a **blocking pair** if:
 2. $b$ prefers $g$ to his current partner $p_M(b)$
 3. $g$ prefers $b$ to her current partner $p_M(g)$
 
-
-<img src="/Figures/BlockingPair.drawio.svg" class="mx-auto h-40" />
-
 Both $b$ and $g$ would rather be with each other than their current partners!
+
+</div>
+<div>
+
+<img src="/Figures/BlockingPair.drawio.svg" class="mx-auto h-48" />
+
+</div>
+</div>
 
 
 ---
@@ -138,7 +145,7 @@ A matching $M$ is **stable** if it contains **no blocking pairs**.
 **Answer:** Yes! The Gale-Shapley algorithm always produces one.
 
 
-🏆 **Nobel Prize 2012:** Lloyd S. Shapley and Alvin E. Roth received the Nobel Prize in Economics "for the theory of stable allocations and the practice of market design"
+**Nobel Prize 2012:** Lloyd S. Shapley and Alvin E. Roth received the Nobel Prize in Economics "for the theory of stable allocations and the practice of market design"
 
 
 ---
@@ -226,6 +233,7 @@ A small instance with $n=4$ to trace by hand — note nobody's first choice is m
 
 </div>
 
+<div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 10px; padding: 0.8em 1em;">
 <div class="grid grid-cols-2 gap-4">
 <div>
 
@@ -250,127 +258,385 @@ A small instance with $n=4$ to trace by hand — note nobody's first choice is m
 
 </div>
 </div>
+</div>
 
 ---
 
 # Example: Stage 1
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.6em;">
 
 The first boy walks in, picks his favorite — easy, no competition yet.
 
 </div>
 
-$b_1$ chooses his top choice: $g_2$
+<div class="flex gap-8 items-start">
+<div style="text-align: left; flex: 1; min-width: 0;">
 
+$b_1$ chooses his top choice: $g_2$
 
 $$M_1 = \{(b_1, g_2)\}$$
 
+</div>
+<div style="flex: 0 0 auto; display: flex; flex-direction: column; gap: 0.45em;">
+<div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; padding: 0.35em 0.5em; font-size: 0.55em; line-height: 1.3; text-align: left; display: inline-block; width: max-content; flex: 0 0 auto;">
+<div class="grid grid-cols-2 gap-x-3">
+<div>
+
+**Boys**<br>
+$b_1$: $g_2,g_4,g_3,g_1$<br>
+$b_2$: $g_4,g_1,g_2,g_3$<br>
+$b_3$: $g_2,g_1,g_3,g_4$<br>
+$b_4$: $g_3,g_4,g_1,g_2$
+
+</div>
+<div>
+
+**Girls**<br>
+$g_1$: $b_1,b_3,b_4,b_2$<br>
+$g_2$: $b_3,b_1,b_4,b_2$<br>
+$g_3$: $b_3,b_4,b_1,b_2$<br>
+$g_4$: $b_2,b_1,b_3,b_4$
+
+</div>
+</div>
+</div>
+<div style="background: #eff6ff; border: 1px solid #93c5fd; border-radius: 8px; padding: 0.35em 0.5em; font-size: 0.55em; line-height: 1.35; text-align: left;">
+
+**Matching at end of stage 0**
+
+$M_0 = \emptyset$
+
+</div>
+</div>
+</div>
 
 ---
 
 # Example: Stage 2
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.6em;">
 
 $b_2$ proposes to a *different* girl — clean acceptance, no displacement yet.
 
 </div>
 
-$b^* = b_2$ proposes to $g_4$ (his top choice)
+<div class="flex gap-8 items-start">
+<div style="text-align: left; flex: 1; min-width: 0;">
 
+$b^* = b_2$ proposes to $g_4$ (his top choice)
 
 $g_4$ is not engaged → accepts!
 
-
 $$M_2 = \{(b_1, g_2), (b_2, g_4)\}$$
 
+</div>
+<div style="flex: 0 0 auto; display: flex; flex-direction: column; gap: 0.45em;">
+<div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; padding: 0.35em 0.5em; font-size: 0.55em; line-height: 1.3; text-align: left; display: inline-block; width: max-content; flex: 0 0 auto;">
+<div class="grid grid-cols-2 gap-x-3">
+<div>
+
+**Boys**<br>
+$b_1$: $g_2,g_4,g_3,g_1$<br>
+$b_2$: $g_4,g_1,g_2,g_3$<br>
+$b_3$: $g_2,g_1,g_3,g_4$<br>
+$b_4$: $g_3,g_4,g_1,g_2$
+
+</div>
+<div>
+
+**Girls**<br>
+$g_1$: $b_1,b_3,b_4,b_2$<br>
+$g_2$: $b_3,b_1,b_4,b_2$<br>
+$g_3$: $b_3,b_4,b_1,b_2$<br>
+$g_4$: $b_2,b_1,b_3,b_4$
+
+</div>
+</div>
+</div>
+<div style="background: #eff6ff; border: 1px solid #93c5fd; border-radius: 8px; padding: 0.35em 0.5em; font-size: 0.55em; line-height: 1.35; text-align: left;">
+
+**Matching at end of stage 1**
+
+$M_1 = \{(b_1, g_2)\}$
+
+</div>
+</div>
+</div>
 
 ---
 
 # Example: Stage 3
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.6em;">
 
 First conflict — $b_3$ wants $g_2$ who's engaged to $b_1$, and $g_2$ trades up.
 
 </div>
 
-$b^* = b_3$ proposes to $g_2$ (his top choice)
+<div class="flex gap-8 items-start">
+<div style="text-align: left; flex: 1; min-width: 0;">
 
+$b^* = b_3$ proposes to $g_2$ (his top choice)
 
 - $g_2$ is engaged to $b_1$
 - $g_2$'s ranking: $b_3, b_1, b_4, b_2$ → she prefers $b_3$!
 - $g_2$ breaks off with $b_1$, accepts $b_3$
 - Now $b^* = b_1$ must find a new partner
 
+</div>
+<div style="flex: 0 0 auto; display: flex; flex-direction: column; gap: 0.45em;">
+<div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; padding: 0.35em 0.5em; font-size: 0.55em; line-height: 1.3; text-align: left; display: inline-block; width: max-content; flex: 0 0 auto;">
+<div class="grid grid-cols-2 gap-x-3">
+<div>
+
+**Boys**<br>
+$b_1$: $g_2,g_4,g_3,g_1$<br>
+$b_2$: $g_4,g_1,g_2,g_3$<br>
+$b_3$: $g_2,g_1,g_3,g_4$<br>
+$b_4$: $g_3,g_4,g_1,g_2$
+
+</div>
+<div>
+
+**Girls**<br>
+$g_1$: $b_1,b_3,b_4,b_2$<br>
+$g_2$: $b_3,b_1,b_4,b_2$<br>
+$g_3$: $b_3,b_4,b_1,b_2$<br>
+$g_4$: $b_2,b_1,b_3,b_4$
+
+</div>
+</div>
+</div>
+<div style="background: #eff6ff; border: 1px solid #93c5fd; border-radius: 8px; padding: 0.35em 0.5em; font-size: 0.55em; line-height: 1.35; text-align: left;">
+
+**Matching at end of stage 2**
+
+$M_2 = \{(b_1, g_2),\ (b_2, g_4)\}$
+
+</div>
+</div>
+</div>
 
 ---
 
 # Example: Stage 3 (continued)
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.6em;">
 
 The displaced $b_1$ proposes to his 2nd choice — gets rejected — moves on to his 3rd.
 
 </div>
 
-$b^* = b_1$ proposes to $g_4$ (his 2nd choice)
+<div class="flex gap-8 items-start">
+<div style="text-align: left; flex: 1; min-width: 0;">
 
+$b^* = b_1$ proposes to $g_4$ (his 2nd choice)
 
 - $g_4$ is engaged to $b_2$
 - $g_4$'s ranking: $b_2, b_1, b_3, b_4$ → she prefers $b_2$
 - $g_4$ rejects $b_1$
 
-
 $b^* = b_1$ proposes to $g_3$ (his 3rd choice)
-
 
 - $g_3$ is not engaged → accepts!
 
 $$M_3 = \{(b_1, g_3), (b_2, g_4), (b_3, g_2)\}$$
 
+</div>
+<div style="flex: 0 0 auto; display: flex; flex-direction: column; gap: 0.45em;">
+<div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; padding: 0.35em 0.5em; font-size: 0.55em; line-height: 1.3; text-align: left; display: inline-block; width: max-content; flex: 0 0 auto;">
+<div class="grid grid-cols-2 gap-x-3">
+<div>
+
+**Boys**<br>
+$b_1$: $g_2,g_4,g_3,g_1$<br>
+$b_2$: $g_4,g_1,g_2,g_3$<br>
+$b_3$: $g_2,g_1,g_3,g_4$<br>
+$b_4$: $g_3,g_4,g_1,g_2$
+
+</div>
+<div>
+
+**Girls**<br>
+$g_1$: $b_1,b_3,b_4,b_2$<br>
+$g_2$: $b_3,b_1,b_4,b_2$<br>
+$g_3$: $b_3,b_4,b_1,b_2$<br>
+$g_4$: $b_2,b_1,b_3,b_4$
+
+</div>
+</div>
+</div>
+<div style="background: #eff6ff; border: 1px solid #93c5fd; border-radius: 8px; padding: 0.35em 0.5em; font-size: 0.55em; line-height: 1.35; text-align: left;">
+
+**Matching at end of stage 2**
+
+$\{(b_3, g_2),\ (b_2, g_4)\}$ — $b_1$ free
+
+</div>
+</div>
+</div>
 
 ---
 
 # Example: Stage 4
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.6em;">
 
 $b_4$ enters and bumps $b_1$ — *again* — sending poor $b_1$ back to the drawing board.
 
 </div>
 
-$b^* = b_4$ proposes to $g_3$ (his top choice)
+<div class="flex gap-8 items-start">
+<div style="text-align: left; flex: 1; min-width: 0;">
 
+$b^* = b_4$ proposes to $g_3$ (his top choice)
 
 - $g_3$ is engaged to $b_1$
 - $g_3$'s ranking: $b_3, b_4, b_1, b_2$ → she prefers $b_4$!
 - $g_3$ breaks off with $b_1$, accepts $b_4$
 - Now $b^* = b_1$ must find a new partner
 
+</div>
+<div style="flex: 0 0 auto; display: flex; flex-direction: column; gap: 0.45em;">
+<div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; padding: 0.35em 0.5em; font-size: 0.55em; line-height: 1.3; text-align: left; display: inline-block; width: max-content; flex: 0 0 auto;">
+<div class="grid grid-cols-2 gap-x-3">
+<div>
+
+**Boys**<br>
+$b_1$: $g_2,g_4,g_3,g_1$<br>
+$b_2$: $g_4,g_1,g_2,g_3$<br>
+$b_3$: $g_2,g_1,g_3,g_4$<br>
+$b_4$: $g_3,g_4,g_1,g_2$
+
+</div>
+<div>
+
+**Girls**<br>
+$g_1$: $b_1,b_3,b_4,b_2$<br>
+$g_2$: $b_3,b_1,b_4,b_2$<br>
+$g_3$: $b_3,b_4,b_1,b_2$<br>
+$g_4$: $b_2,b_1,b_3,b_4$
+
+</div>
+</div>
+</div>
+<div style="background: #eff6ff; border: 1px solid #93c5fd; border-radius: 8px; padding: 0.35em 0.5em; font-size: 0.55em; line-height: 1.35; text-align: left;">
+
+**Matching at end of stage 3**
+
+$M_3 = \{(b_1, g_3),\ (b_2, g_4),\ (b_3, g_2)\}$
+
+</div>
+</div>
+</div>
 
 ---
 
 # Example: Stage 4 (continued)
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.6em;">
 
 $b_1$ ends up with his *last* choice — a stable matching, but a humbling one for him.
 
 </div>
 
-$b^* = b_1$ proposes to $g_1$ (his 4th choice)
+<div class="flex gap-8 items-start">
+<div style="text-align: left; flex: 1; min-width: 0;">
 
+$b^* = b_1$ proposes to $g_1$ (his 4th choice)
 
 $g_1$ is not engaged → accepts!
 
-
 $$M_4 = \{(b_1, g_1), (b_2, g_4), (b_3, g_2), (b_4, g_3)\}$$
 
+</div>
+<div style="flex: 0 0 auto; display: flex; flex-direction: column; gap: 0.45em;">
+<div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; padding: 0.35em 0.5em; font-size: 0.55em; line-height: 1.3; text-align: left; display: inline-block; width: max-content; flex: 0 0 auto;">
+<div class="grid grid-cols-2 gap-x-3">
+<div>
 
-**Final stable matching!**
+**Boys**<br>
+$b_1$: $g_2,g_4,g_3,g_1$<br>
+$b_2$: $g_4,g_1,g_2,g_3$<br>
+$b_3$: $g_2,g_1,g_3,g_4$<br>
+$b_4$: $g_3,g_4,g_1,g_2$
 
+</div>
+<div>
+
+**Girls**<br>
+$g_1$: $b_1,b_3,b_4,b_2$<br>
+$g_2$: $b_3,b_1,b_4,b_2$<br>
+$g_3$: $b_3,b_4,b_1,b_2$<br>
+$g_4$: $b_2,b_1,b_3,b_4$
+
+</div>
+</div>
+</div>
+<div style="background: #eff6ff; border: 1px solid #93c5fd; border-radius: 8px; padding: 0.35em 0.5em; font-size: 0.55em; line-height: 1.35; text-align: left;">
+
+**Matching at end of stage 3**
+
+$\{(b_2, g_4),\ (b_3, g_2),\ (b_4, g_3)\}$ — $b_1$ free
+
+</div>
+</div>
+</div>
+
+---
+
+# Example: Final matching
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.6em;">
+
+Everyone is paired. This matching is stable — no blocking pair.
+
+</div>
+
+<div class="flex gap-8 items-start">
+<div style="text-align: left; flex: 1; min-width: 0;">
+
+$$M_4 = \{(b_1, g_1),\ (b_2, g_4),\ (b_3, g_2),\ (b_4, g_3)\}$$
+
+- $b_1$ — $g_1$ (his 4th choice)
+- $b_2$ — $g_4$ (his 1st)
+- $b_3$ — $g_2$ (his 1st)
+- $b_4$ — $g_3$ (his 1st)
+
+</div>
+<div style="flex: 0 0 auto; display: flex; flex-direction: column; gap: 0.45em;">
+<div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; padding: 0.35em 0.5em; font-size: 0.55em; line-height: 1.3; text-align: left; display: inline-block; width: max-content; flex: 0 0 auto;">
+<div class="grid grid-cols-2 gap-x-3">
+<div>
+
+**Boys**<br>
+$b_1$: $g_2,g_4,g_3,g_1$<br>
+$b_2$: $g_4,g_1,g_2,g_3$<br>
+$b_3$: $g_2,g_1,g_3,g_4$<br>
+$b_4$: $g_3,g_4,g_1,g_2$
+
+</div>
+<div>
+
+**Girls**<br>
+$g_1$: $b_1,b_3,b_4,b_2$<br>
+$g_2$: $b_3,b_1,b_4,b_2$<br>
+$g_3$: $b_3,b_4,b_1,b_2$<br>
+$g_4$: $b_2,b_1,b_3,b_4$
+
+</div>
+</div>
+</div>
+<div style="background: #eff6ff; border: 1px solid #93c5fd; border-radius: 8px; padding: 0.35em 0.5em; font-size: 0.55em; line-height: 1.35; text-align: left;">
+
+**Matching at end of stage 4**
+
+$M_4 = \{(b_1, g_1),\ (b_2, g_4),\ (b_3, g_2),\ (b_4, g_3)\}$
+
+</div>
+</div>
+</div>
 
 ---
 

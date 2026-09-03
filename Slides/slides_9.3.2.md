@@ -54,20 +54,6 @@ This section introduces **nondeterminism** — a more flexible (but equally powe
 
 
 ---
-layout: section
----
-
-# NFA Definition
-
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
-
-Replace the transition function with a relation — now a state can branch into many possibilities.
-
-</div>
-
-Transition relations and branching
-
----
 
 # From DFA to NFA
 
@@ -154,18 +140,24 @@ Free moves between states — handy for gluing sub-machines together when buildi
 
 </div>
 
+<div class="flex gap-8 items-start">
+<div style="text-align: left; flex: 1; min-width: 0;">
+
 An **$\varepsilon$-NFA** extends the NFA with $\varepsilon$-transitions — transitions that consume **no input**:
 
 $$\delta: Q \times (\Sigma \cup \{\varepsilon\}) \to \mathcal{P}(Q)$$
 
+**Example: Decimal numbers** like $3.14$, $51.$, $.14$, $+3.0$, $-0.5$, but **not** a bare decimal point.
 
-**Example: Decimal numbers**
+$\varepsilon$-transitions are convenient for **designing** NFAs by connecting sub-machines.
 
-An $\varepsilon$-NFA accepting decimal numbers like $3.14$, $51.$, $.14$, $+3.0$, $-0.5$ but **not** a bare decimal point:
+</div>
+<div style="flex: 0 1 48%;">
 
-<img src="/Figures/floating-point.drawio.svg" class="mx-auto h-48 my-4" />
+<img src="/Figures/floating-point.drawio.svg" class="w-full" />
 
-$\varepsilon$-transitions are convenient for **designing** NFAs by connecting sub-machines
+</div>
+</div>
 
 
 ---
@@ -218,20 +210,6 @@ $$\hat\delta(q, w) = \bigcup_{i=1}^{m} \varepsilon\text{-close}(r_i)$$
 
 **Intuition:** Process the string, and after each real transition on a symbol, follow all possible $\varepsilon$-transitions
 
-
----
-layout: section
----
-
-# Subset Construction
-
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
-
-Track *which subset* of NFA states you might be in — that subset is itself a DFA state.
-
-</div>
-
-Converting NFA to DFA
 
 ---
 
