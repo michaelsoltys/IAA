@@ -60,34 +60,76 @@ The plan for this chapter is a ladder of machines, each strictly more powerful t
 
 # Marks Before Machines
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.6em;">
 
 Storing information in discrete symbols is older than writing, and far older than arithmetic.
 
 </div>
 
-| Artefact | Where | Age |
-|---|---|---|
-| Engraved ocher plaque | Blombos Cave, South Africa | 77,000–75,000 yrs |
-| **Ishango bone** — baboon leg, 3 rows of tally marks | Congo | 25,000–20,000 yrs |
-| Reindeer antler with tally marks | La Madeleine, France | 17,000–11,500 yrs |
+<div class="grid grid-cols-3 gap-4 items-start" style="font-size: 0.72em;">
+<div class="text-center">
+<div style="display: inline-block; text-align: left;">
+<img src="/Figures/ocher.jpg" class="h-32 object-contain" style="display: block;" />
+<div style="margin-top: 0.35em;"><strong>Engraved ocher</strong><br>Blombos Cave, South Africa<br>77,000–75,000 yrs</div>
+</div>
+</div>
+<div class="text-center">
+<div style="display: inline-block; text-align: left;">
+<img src="/Figures/ishango.jpg" class="h-24 object-contain" style="display: block;" />
+<div style="margin-top: 0.35em;"><strong>Ishango bone</strong><br>Congo, baboon leg, 3 rows of tallies<br>25,000–20,000 yrs</div>
+</div>
+</div>
+<div class="text-center">
+<div style="display: inline-block; text-align: left;">
+<img src="/Figures/antler.jpg" class="h-24 object-contain" style="display: block;" />
+<div style="margin-top: 0.35em;"><strong>Reindeer antler</strong><br>La Madeleine, France<br>17,000–11,500 yrs</div>
+</div>
+</div>
+</div>
 
-About **8,000 years ago** symbols began standing for words and concepts: cylinder seals rolled across wet clay, then cuneiform, whose marks came to stand first for concepts and later for *sounds and syllables*.
-
-**That shift is the one that matters here.** Once a mark denotes a sound rather than a thing, you have a finite alphabet that can express unboundedly many messages. Everything in this chapter rests on it.
+These are *marks*, not writing. A tally records quantity. It does not yet compose.
 
 <!--
-The artefacts are displayed at the Smithsonian Museum of Natural History in Washington DC, though only some are Smithsonian-held: the Blombos material is at Iziko Museums in Cape Town and the Ishango bone is in Brussels.
+Photographs from the Smithsonian Museum of Natural History in Washington DC; the objects themselves are not all Smithsonian-held. The Blombos material is at Iziko Museums in Cape Town and the Ishango bone is in Brussels.
 
 The Ishango bone is the contested one. Found in 1950 by the Belgian geologist Jean de Heinzelin near Lake Edward in what is now the DRC, it carries three columns of notches. One column reads 11, 13, 17, 19 — every prime between 10 and 20. Another shows 3 and 6, 4 and 8, 10 and 5 — doublings and halvings. Readings range from a plain tally, to a lunar calendar, to genuine arithmetic, and the argument has run for seventy years without resolution. A fragment of quartz is still set in one end, so the object may have been the handle of an engraving tool: a writing implement that also recorded numbers. Raise it precisely because it is unsettled; students assume the deep past is either "primitive" or "solved," and it is neither.
 
 Blombos Cave has kept producing. Beyond the cross-hatched ocher plaque there are shell beads, a 100,000-year-old ochre-processing workshop, and in 2018 a stone flake bearing a deliberate cross-hatch drawn in ochre crayon about 73,000 years ago, currently the oldest known drawing. La Madeleine, the source of the reindeer antler, is the type site that gives the Magdalenian culture its name.
+-->
 
-On the writing side, Denise Schmandt-Besserat traced cuneiform back to small clay tokens used for accounting: tokens sealed inside clay envelopes, then impressed on the outside so the envelope could be read without breaking it, then eventually just the impressions. Writing appears to have been invented by accountants, and the earliest large corpora are receipts rather than literature. Cuneiform then ran for roughly three thousand years and was adapted to at least fifteen languages, which is a strong argument that a symbol set is a technology independent of any one language.
+---
+
+# From Marks to Writing
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.6em;">
+
+About 8,000 years ago the marks started standing for words. Then for sounds.
+
+</div>
+
+<div class="grid grid-cols-2 gap-6 items-start" style="font-size: 0.78em;">
+<div class="text-center">
+<div style="display: inline-block; text-align: left;">
+<img src="/Figures/cylinder.jpg" class="h-40 object-contain" style="display: block;" />
+<div style="margin-top: 0.35em;"><strong>Cylinder seal</strong> rolled across wet clay.<br>Lapis lazuli, Babylon, 4,100–3,600 yrs.<br>Hard to carve, hard to forge: a signature.</div>
+</div>
+</div>
+<div class="text-center">
+<div style="display: inline-block; text-align: left;">
+<img src="/Figures/cuneiform.jpg" class="h-40 object-contain" style="display: block;" />
+<div style="margin-top: 0.35em;"><strong>Cuneiform tablet</strong>, near Babylon,<br>4,000–2,600 yrs. Marks stood first for<br>concepts, later for <em>sounds and syllables</em>.</div>
+</div>
+</div>
+</div>
+
+**That shift is the one that matters here.** Once a mark denotes a sound rather than a thing, you have a finite alphabet that can express unboundedly many messages. Everything in this chapter rests on it.
+
+<!--
+Denise Schmandt-Besserat traced cuneiform back to small clay tokens used for accounting: tokens sealed inside clay envelopes, then impressed on the outside so the envelope could be read without breaking it, then eventually just the impressions. Writing appears to have been invented by accountants, and the earliest large corpora are receipts rather than literature. Cuneiform then ran for roughly three thousand years and was adapted to at least fifteen languages, which is a strong argument that a symbol set is a technology independent of any one language.
 
 The cylinder seal is the detail that lands best in a computing course. Rolling a carved cylinder across wet clay produces a continuous impression that is laborious to carve and hard to forge, and it authenticates a document by a mark only the holder can make. That is a signature scheme, four thousand years early.
 
-The move from logographic to phonetic writing is the conceptual leap this whole course depends on: a finite symbol set, composed into arbitrarily long strings, carrying meaning by convention. Photographs of all of these are in the archived deck at Arch/chp9.1-2.pdf.
+The move from logographic to phonetic writing is the conceptual leap this whole course depends on: a finite symbol set, composed into arbitrarily long strings, carrying meaning by convention.
 -->
 
 ---
@@ -105,6 +147,8 @@ Three definitions, and everything else in the chapter is built from them.
 An **alphabet** $\Sigma$ is a **finite, non-empty** set of distinct symbols.
 
 $$\Sigma = \{0,1\} \quad\text{(binary)} \qquad \Sigma = \{a,b,c,\ldots,z\}$$
+
+We write $\Sigma_\ell$ for a generic alphabet of size $\ell$, so $\Sigma_2 = \{0,1\}$.
 
 A **string** (or **word**) is a *finite ordered* sequence of symbols from $\Sigma$.
 
@@ -179,8 +223,6 @@ $$L = \{\varepsilon, 01, 0011, 000111, \ldots\} = \{0^n 1^n \mid n \ge 0\}$$
 
 <span style="font-size: 0.6em; color: navy;">Eq 9.1, Pg 218, eq:example</span>
 
-**Two things students conflate, and should not:**
-
 | | |
 |---|---|
 | $\{\varepsilon\}$ | the language containing exactly one string, the empty one |
@@ -210,35 +252,42 @@ $$L = \{\underbrace{10}_{2}, \underbrace{11}_{3}, \underbrace{101}_{5}, \underbr
 
 that is, $w \in L$ exactly when $w$ is the binary encoding of a prime.
 
-A finite description of an infinite set, and a procedure to test membership. **And that raises the question the rest of the chapter exists to answer:**
-
-### What *is* an algorithm?
+A finite description of an infinite set, and a procedure to test membership. **And that raises the question the rest of the chapter exists to answer: what *is* an algorithm?**
 
 ---
 
 # Summary
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
 
 Small vocabulary, large consequences.
 
 </div>
 
-| Term | Definition |
+<div class="grid grid-cols-2 gap-8" style="text-align: left; font-size: 0.88em;">
+<div>
+
+| | |
 |---|---|
-| **Alphabet** $\Sigma$ | finite, non-empty set of symbols |
-| **String** $w$ | finite ordered sequence over $\Sigma$; $\;\lvert w\rvert$ is its length |
+| **Alphabet** $\Sigma$ | finite, non-empty |
+| **String** $w$ | finite sequence; $\lvert w\rvert$ its length |
 | $\varepsilon$ | the unique string of length 0 |
-| $\Sigma^k$ | strings of length exactly $k$; $\;\lvert\Sigma^k\rvert = \lvert\Sigma\rvert^k$ |
-| $\Sigma^*,\ \Sigma^+$ | all strings; all non-empty strings |
+| $\Sigma^k$ | length exactly $k$; size $\lvert\Sigma\rvert^k$ |
+| $\Sigma^*,\ \Sigma^+$ | all strings; all non-empty |
 | **Language** $L$ | any subset of $\Sigma^*$ |
 
-**Carry forward:**
+</div>
+<div>
 
-1. A **decision problem is a language.** Computation becomes set membership.
-2. **Finite descriptions of infinite sets** are the recurring problem — regular expressions, grammars, machines.
-3. $\{\varepsilon\} \neq \emptyset$, and $\Sigma^*$ is infinite while every member of it is finite.
+**Carry forward**
 
-**Key problem**
+1. A **decision problem is a language.**
+2. **Finite descriptions of infinite sets** — regular expressions, grammars, machines.
+3. $\{\varepsilon\} \neq \emptyset$, and $\Sigma^*$ is infinite while every member is finite.
 
-1. **Problem 9.1:** count the words in a string, and say precisely what "word" means <span style="font-size: 0.6em; color: navy;">Prb 9.1, Pg 218, exr:word-count</span>
+**Problem 9.1:** $|\Sigma_2^k|$? $|\Sigma_\ell^k|$? If $L$ is the strings over $\Sigma_\ell$ with no repeated symbol, what is $|L|$?
+
+<span style="font-size: 0.7em; color: navy;">Prb 9.1, Pg 218, exr:word-count</span>
+
+</div>
+</div>

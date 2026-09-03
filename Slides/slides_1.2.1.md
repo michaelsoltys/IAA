@@ -193,17 +193,19 @@ Six pages, $d = 1$ — no random jumps, so every bit of rank flows along a link.
 
 </div>
 
-<div class="grid grid-cols-2 gap-6">
+<div class="grid grid-cols-2 gap-6 items-start">
 <div>
 
-<img src="/Figures/pagerank-network.svg" class="mx-auto h-48" />
+<img src="/Figures/pagerank-network.svg" class="mx-auto h-44" />
 
 <span style="font-size: 0.6em; color: navy;">Fig 1.2, Pg 14, fig:pagerank2</span>
 
+**Read off the out-degrees** — how many ways each page splits its rank.
+
+B is the only page that divides.
+
 </div>
 <div>
-
-**Read off the out-degrees** — how many ways each page splits its rank:
 
 | page | links to | $C$ |
 |---|---|---|
@@ -213,8 +215,6 @@ Six pages, $d = 1$ — no random jumps, so every bit of rank flows along a link.
 | D | E | 1 |
 | E | C | 1 |
 | F | A | 1 |
-
-B is the only page that divides.
 
 </div>
 </div>
@@ -248,21 +248,20 @@ $$\text{PR}(F) = \tfrac{\text{PR}(B)}{4} + \text{PR}(C)$$
 </div>
 </div>
 
-Six equations, six unknowns — but each is defined in terms of the others. **So iterate.** Everyone starts equal at $1/6$.
+Six equations, six unknowns — but each is defined in terms of the others. 
+
+**So iterate.** Everyone starts equal at $1/6$.
 
 <!--
 Point out that this is a linear system and could be solved directly by Gaussian elimination. For six pages that is entirely reasonable. For a trillion pages it is not: elimination is cubic in the number of pages, while one iteration costs only one pass over the links. That is the real reason PageRank iterates rather than solves.
+
+Gaussian Elimination does not scale to the size of the internet.
 -->
 
 ---
 
 # Worked Example: First Three Rounds
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
-
-Apply all six equations at once, using the *previous* round's values throughout.
-
-</div>
 
 | $k$ | A | B | C | D | E | F |
 |---|---|---|---|---|---|---|
@@ -271,9 +270,13 @@ Apply all six equations at once, using the *previous* round's values throughout.
 | **2** | **.2083** | .1667 | **.2500** | .0417 | **.0833** | **.2500** |
 | **3** | **.2500** | **.2083** | **.1250** | .0417 | .0833 | **.2917** |
 
-**Round 1, page D:** $\text{PR}(D) = \text{PR}(B)/4 = (1/6)/4 = 1/24 = .0417$. D is fed only by B, and B splits four ways, so D immediately drops to a quarter of everyone else.
+**Round 1, page D:** $\text{PR}(D) = \text{PR}(B)/4 = (1/6)/4 = 1/24 = .0417$. 
 
-**Round 1, page C:** $\text{PR}(C) = \text{PR}(B)/4 + \text{PR}(E) = 1/24 + 1/6 = 5/24 = .2083$. Two inbound links, so C gains.
+D is fed only by B, and B splits four ways, so D immediately drops to a quarter of everyone else.
+
+**Round 1, page C:** $\text{PR}(C) = \text{PR}(B)/4 + \text{PR}(E) = 1/24 + 1/6 = 5/24 = .2083$. 
+
+Two inbound links, so C gains.
 
 Notice **A and B lag**: A cannot move until F does, and B cannot move until A does. Rank has to travel.
 
@@ -305,11 +308,6 @@ The wobble is real: the graph has cycles of length 4 (A→B→C→F→A) and 6, 
 
 # Worked Example: The Answer
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
-
-The exact fixed point, in the fractions Problem 1.17 asks for.
-
-</div>
 
 <div class="grid grid-cols-2 gap-6">
 <div>
@@ -323,7 +321,9 @@ The exact fixed point, in the fractions Problem 1.17 asks for.
 | E | $1/9$ | .1111 |
 | D | $1/18$ | .0556 |
 
-Sum $= 1$. **A, B, F tie for first; D is last with a quarter of their rank.**
+Sum = 1 
+
+A, B, F tie for first; D is last w a 1/4 of their rank.
 
 </div>
 <div>
@@ -350,6 +350,8 @@ The convergence here is slower than the "a few dozen passes for the whole web" c
 
 Problem 1.18 asks for the same computation as a program keeping exact fractions a/b with gcd(a,b)=1, and asks whether the algorithm always terminates — a good question to leave hanging here.
 -->
+
+---
 
 # Why This Was Hard to Game
 
@@ -397,6 +399,49 @@ One number, computed once, for the whole web — and it knows nothing about your
 Worth telling students who assume good ideas sell themselves: in 1999 Page and Brin tried to sell the whole thing. The asking price was around one million dollars and the buyer they approached, Excite, turned it down; other portals passed as well. The usual account is that search was seen as a commodity feature, and portals wanted visitors to stay on the site rather than leave quickly with a good answer, which is exactly what a better search engine does.
 
 The patent belonged to Stanford, not to Google, since the work was done there. Stanford licensed it in exchange for shares, sold them in 2005, and received roughly 336 million dollars. It remains one of the most profitable pieces of university technology transfer on record.
+-->
+
+---
+
+# The Algorithm Is Not the Product
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+
+PageRank is to Google what the model is to a coding agent: the famous core, wrapped in a much larger machine.
+
+</div>
+
+<div class="grid grid-cols-2 gap-6 items-start">
+<div>
+
+<div style="border: 1px solid #d1d5db; border-radius: 12px; padding: 0.7em 0.9em; text-align: left; font-size: 0.68em; line-height: 1.35;">
+<div style="font-weight: 600;">Chaofan Shou · @Fried_rice</div>
+<div style="color: #6b7280; margin: 0.15em 0 0.45em;">31 March 2026</div>
+Claude code source code has been leaked via a map file in their npm registry!
+<img src="/Figures/claude-code-leak-listing.jpg" class="w-full rounded mt-2" style="max-height: 280px; object-fit: cover; object-position: top;" />
+<div style="margin-top: 0.4em;"><a href="https://x.com/Fried_rice/status/2038894956459290963" style="color: teal;">x.com/Fried_rice/status/2038894956459290963</a></div>
+</div>
+
+</div>
+<div style="text-align: left; font-size: 0.92em;">
+
+A packaging mistake put ~512,000 lines of TypeScript on the internet. People who opened the tree did not find a model. They found **scaffolding**: tools, hooks, memory, retries, permissions, sub-agents.
+
+Google search is the same shape.
+
+- **PageRank** is still in there.
+- A query is answered by a stack on top of it: hundreds of ranking signals, spam filters, personalization, freshness, and now generated answers.
+- **PageRank is no longer the product.** It is one layer.
+
+</div>
+</div>
+
+<!--
+31 March 2026: Anthropic shipped Claude Code 2.1.88 with a source map in the public npm package. Chaofan Shou posted the tree the same morning; the tweet is the one on the slide. Roughly 1,900 TypeScript files, half a million lines. Not the model weights — the harness around a model call. Yuchen Jin's comment after reading it: harness engineering is hard and deeply non-trivial. That is the point to steal for this lecture.
+
+The listing on the tweet is the argument: tools/, hooks/, services/, coordinator/, plugins/, memory. The model is the smallest part of the product.
+
+Google is further along the same path. PageRank was the product in 1998. By the 2010s it was one signal among hundreds; the toolbar score was retired in 2016. Today a search result is mostly the rest of the stack, including generated answers. Teach PageRank because the idea is clean and still runs underneath, not because it is what decides what you see.
 -->
 
 ---
