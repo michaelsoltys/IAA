@@ -30,6 +30,12 @@ Section 1.2.2 — Match $n$ boys with $n$ girls so no two would rather elope; a 
 
 <div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
+<!--
+The 1962 paper is seven pages in the American Mathematical Monthly, titled "College Admissions and the Stability of Marriage." Gale and Shapley wrote it as something a bright undergraduate could read, and as an example that mathematics is more than "the relationship and symbolism of numbers and magnitudes." It is still one of the Monthly's most cited papers.
+
+Gale died in 2008. The Nobel is not awarded posthumously, so in 2012 the prize went to Shapley and to Alvin Roth, who had spent the intervening decades turning the paper into working markets. Roth had nominated the two of them together.
+-->
+
 ---
 
 # Motivation
@@ -54,6 +60,11 @@ Real-world matching problems:
 
 This elegant algorithm has been used since the 1960s!
 
+<!--
+The intern market unraveled before anyone had a theorem. By the early 1940s hospitals were making offers in the junior year of medical school, then inquiring of sophomores, because whoever waited lost the good candidates. Uniform appointment dates did not help: the reply window shrank from ten days to eight to twelve hours, then to exploding telegrams at 12:01 AM. Roth wrote the history of this in JAMA in 2003.
+
+The National Intern Matching Program, later the NRMP, started in 1952, a decade before Gale and Shapley wrote anything down. A medical-student rewrite of the first computer program, the "Boston Pool" algorithm, is what survived. Roth showed in 1984 that it was deferred acceptance, with hospitals proposing.
+-->
 
 ---
 
@@ -65,6 +76,9 @@ Two equal-sized groups, each member with a *strict ranking* of every member of t
 
 </div>
 
+<div class="grid grid-cols-2 gap-6 items-start">
+<div style="text-align: left;">
+
 An instance of the **stable marriage problem** of size $n$:
 
 
@@ -75,24 +89,43 @@ An instance of the **stable marriage problem** of size $n$:
 - Each girl $g_j$ has a **ranking** $<^j$ of all boys
   - $b <^j b'$ means $g_j$ prefers $b$ over $b'$
 
+</div>
+<div class="flex gap-4 items-start justify-end">
+<div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; padding: 0.35em 0.5em; font-size: 0.55em; line-height: 1.3; text-align: left; display: inline-block; width: max-content; flex: 0 0 auto;">
+<div class="grid grid-cols-2 gap-x-3">
+<div>
 
----
-
-# Matching and Partners
-
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
-
-A *bijection* between the two sets — every boy paired with exactly one girl, and vice versa.
+**Boys**<br>
+$b_1$: $g_2,g_4,g_3,g_1$<br>
+$b_2$: $g_4,g_1,g_2,g_3$<br>
+$b_3$: $g_2,g_1,g_3,g_4$<br>
+$b_4$: $g_3,g_4,g_1,g_2$
 
 </div>
+<div>
 
-A **matching** (or **marriage**) $M$ is a bijective correspondence between $B$ and $G$.
+**Girls**<br>
+$g_1$: $b_1,b_3,b_4,b_2$<br>
+$g_2$: $b_3,b_1,b_4,b_2$<br>
+$g_3$: $b_3,b_4,b_1,b_2$<br>
+$g_4$: $b_2,b_1,b_3,b_4$
 
+</div>
+</div>
+</div>
+<div>
 
-If $b$ and $g$ are matched in $M$, we say they are **partners**:
-- $p_M(b) = g$
-- $p_M(g) = b$
+<img src="/Figures/stable-marriage.drawio.svg" class="mx-auto h-48" />
 
+</div>
+</div>
+</div>
+
+<!--
+Marriage is the clean n-on-n case they used to prove the idea. The original paper is really about college admissions, the same algorithm with quotas, which is why some students go unmatched and some seats go unfilled. The book follows the marriage presentation, which is why the slides say boys and girls. Strict rankings are a modeling choice: real applicants have ties, and handling ties is a later, messier literature.
+
+In the n=4 instance on the right, nobody's first choice is mutual.
+-->
 
 ---
 
@@ -100,9 +133,11 @@ If $b$ and $g$ are matched in $M$, we say they are **partners**:
 
 <div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
 
-Two people not married to each other but who'd both prefer to be — the matching is unstable.
+A *bijection* first — then the pairs who'd rather elope — then stability.
 
 </div>
+
+A **matching** (or **marriage**) $M$ is a bijective correspondence between $B$ and $G$. If $b$ and $g$ are matched in $M$, they are **partners**: $p_M(b) = g$ and $p_M(g) = b$.
 
 <div class="grid grid-cols-2 gap-6 items-start">
 <div style="text-align: left;">
@@ -115,7 +150,7 @@ A pair $(b, g)$ is a **blocking pair** if:
 2. $b$ prefers $g$ to his current partner $p_M(b)$
 3. $g$ prefers $b$ to her current partner $p_M(g)$
 
-Both $b$ and $g$ would rather be with each other than their current partners!
+$M$ is **stable** if it has **no blocking pairs**. A stable matching always exists (Gale-Shapley).
 
 </div>
 <div>
@@ -125,72 +160,11 @@ Both $b$ and $g$ would rather be with each other than their current partners!
 </div>
 </div>
 
+<!--
+A matching here is a perfect matching of a complete bipartite graph. Stability is an extra constraint on which perfect matching you pick. Knuth devoted a whole monograph to this one problem, Marriages Stables, in 1976, which is a hint that the clean existence proof hides a lot of structure.
 
----
-
-# Stable Matching
-
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
-
-No blocking pairs means nobody can defect — a stable matching always exists, and we can build one efficiently.
-
-</div>
-
-A matching $M$ is **stable** if it contains **no blocking pairs**.
-
-
-**Key Question:** Does a stable matching always exist?
-
-
-**Answer:** Yes! The Gale-Shapley algorithm always produces one.
-
-
-**Nobel Prize 2012:** Lloyd S. Shapley and Alvin E. Roth received the Nobel Prize in Economics "for the theory of stable allocations and the practice of market design"
-
-
----
-
-# Gale-Shapley Algorithm: Overview
-
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
-
-Boys join the matching one at a time; with each stage, *boys settle for less*, *girls trade up*.
-
-</div>
-
-The matching is produced in **stages** $M_1, M_2, \ldots, M_n$
-
-
-**Key properties as stages progress:**
-
-- Boy $b_t$ always has a partner at the end of stage $s$ (for $s \geq t$)
-- Partners of boys **do not get better** (from boy's perspective)
-- Partners of girls **do not get worse** (from girl's perspective)
-
-
-Boys' situation deteriorates, girls' situation improves!
-
-
----
-
-# Gale-Shapley Algorithm: The Idea
-
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
-
-Each new boy proposes down his list; girls accept, reject, or *trade up* — bumped boys keep proposing.
-
-</div>
-
-At stage $s+1$, boy $b_{s+1}$ tries to get a partner by **proposing** to girls in order of his preference.
-
-
-When $b_{s+1}$ proposes to girl $g_j$:
-
-
-- **Case 1:** $g_j$ is not engaged → she accepts
-- **Case 2:** $g_j$ is engaged to $b$, but prefers $b_{s+1}$ → she breaks off with $b$ and accepts $b_{s+1}$; now $b$ must find a new partner
-- **Case 3:** $g_j$ is engaged to $b$ and prefers $b$ → she rejects $b_{s+1}$
-
+Stability is not the same as everyone being happy, and it is not the same as maximizing the sum of ranks. A matching can be stable while one person gets their last choice, as the walkthrough will show. The test is only: would any unmatched pair both walk away. One person preferring someone else is ordinary disappointment, not instability.
+-->
 
 ---
 
@@ -222,6 +196,10 @@ For s = 1 to |B| - 1 (Stage s+1):
 
 Return M_{|B|}
 ```
+
+<!--
+Seven pages, one idea, and this is all of it. The O(n^3) bound is the book's, counting a line of pseudocode as a step. With a bit of care you can implement it in O(n^2), which is also the worst-case number of proposals. For the NRMP that difference does not matter; tens of thousands of applicants finish in seconds either way.
+-->
 
 ---
 
@@ -259,6 +237,10 @@ A small instance with $n=4$ to trace by hand — note nobody's first choice is m
 </div>
 </div>
 </div>
+
+<!--
+Giving everyone their first choice is impossible: b1 and b3 both want g2.
+-->
 
 ---
 
@@ -310,6 +292,10 @@ $M_0 = \emptyset$
 </div>
 </div>
 </div>
+
+<!--
+This is the only stage with no one to disappoint. g2's ranking has b3 first and b1 second, so this engagement is already on borrowed time.
+-->
 
 ---
 
@@ -364,6 +350,10 @@ $M_1 = \{(b_1, g_2)\}$
 </div>
 </div>
 
+<!--
+Clean because b2's first choice was still free. Two boys, both with their first choice. It will not last.
+-->
+
 ---
 
 # Example: Stage 3
@@ -417,6 +407,10 @@ $M_2 = \{(b_1, g_2),\ (b_2, g_4)\}$
 </div>
 </div>
 </div>
+
+<!--
+First trade-up. g2 prefers b3 to b1, so the engagement from stage 1 is revoked. Deferred acceptance means that "yes" was always "yes for now." The dumped boy does not leave the algorithm; he becomes the proposer.
+-->
 
 ---
 
@@ -477,6 +471,10 @@ $\{(b_3, g_2),\ (b_2, g_4)\}$ — $b_1$ free
 </div>
 </div>
 
+<!--
+b1 is learning the theorem in real time: his partner only gets worse. g4 already prefers her current partner, so she rejects him, which is case 3. g3 is free, which is case 1. Two of the three cases on one slide.
+-->
+
 ---
 
 # Example: Stage 4
@@ -531,6 +529,10 @@ $M_3 = \{(b_1, g_3),\ (b_2, g_4),\ (b_3, g_2)\}$
 </div>
 </div>
 
+<!--
+b1 dumped again. The algorithm is not being cruel to b1 in particular. The proposing side as a whole is being optimized, which can still leave one proposer with their last feasible partner. That is coming.
+-->
+
 ---
 
 # Example: Stage 4 (continued)
@@ -583,6 +585,10 @@ $\{(b_2, g_4),\ (b_3, g_2),\ (b_4, g_3)\}$ — $b_1$ free
 </div>
 </div>
 </div>
+
+<!--
+Last choice, last girl who is still free. By the invariant, exactly one new girl becomes engaged each stage, so someone had to be left for him. It happens to be his least favorite.
+-->
 
 ---
 
@@ -638,6 +644,12 @@ $M_4 = \{(b_1, g_1),\ (b_2, g_4),\ (b_3, g_2),\ (b_4, g_3)\}$
 </div>
 </div>
 
+<!--
+Three of four boys got their first choice; b1 got his last. That is still boy-optimal: there is no stable matching in which b1 does better. The people who might want to jump are the ones who did not get their first choice, and those first choices are already happier than they would be with the jumper.
+
+A matching can look unfair and still be stable. Stability is the absence of a mutually preferred defection, not a happiness-maximizing assignment.
+-->
+
 ---
 
 # Why Does It Terminate?
@@ -656,6 +668,9 @@ Bookmarks only move forward — at most $n^2$ proposals before everyone's paired
 - After stage $s$, only $s$ girls are engaged
 - Bookmarks must eventually reach a girl who accepts
 
+<!--
+If a boy proposed twice to the same girl, the bookmark would have to move backward. It never does. The circular-chase worry, that case 2 might loop forever as boys keep bumping each other, is the one the book is answering here. Advancing bookmarks kill the cycle.
+-->
 
 ---
 
@@ -678,6 +693,9 @@ $n$ stages, each $O(n^2)$, gives $O(n^3)$ — well within reach for matching ten
 
 (A "step" = one line of the algorithm: assignment, test, or update)
 
+<!--
+n around 40,000 is a rounding error for O(n^3) on a laptop. The NRMP's actual work is the extras Roth and Peranson added in 1998: couples who need two jobs in the same city, and programs with several slots. That is why the production matcher is not the ten-line algorithm on the earlier slide.
+-->
 
 ---
 
@@ -697,6 +715,9 @@ There can be many stable matchings — which one is *best*, and best for whom?
 - **Boy-pessimal:** every boy is paired with his lowest-ranked feasible partner
 - Similarly for **girl-optimal/pessimal**
 
+<!--
+There can be exponentially many stable matchings. They form a lattice: you can join and meet them. A consequence Roth proved, the rural hospital theorem, is that any hospital that fails to fill its seats in one stable matching fails to fill them in every stable matching. Switching from hospital-optimal to applicant-optimal does not staff the rural hospitals. That was a disappointment to people who hoped a different algorithm would.
+-->
 
 ---
 
@@ -716,6 +737,9 @@ The proposers win, the receivers lose — *who* proposes determines whose side g
 
 **To get girl-optimal:** Let the girls propose instead.
 
+<!--
+Who proposes is whose side gets the best stable matching. NRMP ran hospital-proposing for decades, then in 1998 Roth and Peranson flipped it so applicants propose. It is a dominant strategy for the proposing side to tell the truth; the receiving side can sometimes gain by lying. That is the real reason the 1998 flip mattered, not just the labels "boy-optimal" and "girl-pessimal."
+-->
 
 ---
 
@@ -738,6 +762,9 @@ The exercises that prove the invariants and the optimality theorem — plus a co
 
 5. **Problem 1.23:** Show that each $b$ need propose at most once to each $g$ <span style="font-size: 0.6em; color: navy;">Prb 1.23, Pg 17, exr:gale-shapley</span> <a href="https://github.com/michaelsoltys/IAA/blob/main/Problems/P1.23_Gale-Shapley_1.py" style="font-size: 0.6em; color: teal;">[Python solution]</a>
 
+<!--
+1.19 through 1.21 are the proof of the algorithm. 1.23 is the bookmark lemma that gives termination. 1.22 is the coding one. 1.20 is the one that makes the algorithm worth having: the output is stable.
+-->
 
 ---
 
@@ -758,3 +785,11 @@ A 1962 paper, still placing thousands of doctors and students every year — and
 
 
 The algorithm is still used today to match thousands of medical residents to hospitals every year!
+
+<!--
+NYC high-school choice and Boston both moved off immediate-acceptance after Roth, Pathak, Abdulkadiroğlu, and Sönmez showed that mechanism was unstable and manipulable.
+
+Kidney exchange is the version that is not a simple bipartite marriage: a donor-patient pair that is blood-type incompatible can swap with another pair, and a single altruistic donor can start a chain. Rees, Roth, Sandholm and others reported a 10-transplant chain in the New England Journal of Medicine in 2009. The algorithm on these slides is the ancestor, not the production code.
+
+Match Day is still the third Friday of March. Students open an envelope. The computer that filled it is this idea, plus fifty years of patches.
+-->
