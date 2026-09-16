@@ -70,7 +70,7 @@ A **schedule** $S$ is an array $S(1), S(2), \ldots, S(d)$ where:
 - $S(t) = 0$ means no job is scheduled at time $t$
 
 
-<img src="/Figures/slots.drawio.svg" class="mx-auto h-12 my-4" />
+<img src="./Figures/slots.drawio.svg" class="mx-auto h-12 my-4" />
 
 Each slot can hold at most one job.
 
@@ -158,7 +158,7 @@ Jobs: $(d_1, g_1) = (1, 10)$, $(d_2, g_2) = (1, 10)$, $(d_3, g_3) = (2, 8)$, $(d
 </div>
 <div class="flex items-center">
 
-<img src="/Figures/slots-3.drawio.svg" class="mx-auto h-48" />
+<img src="./Figures/slots-3.drawio.svg" class="mx-auto h-48" />
 
 </div>
 </div>
@@ -236,7 +236,7 @@ Let $S'$ be the result after considering job $i$.
 
 **Goal:** Show there exists optimal $S'_{\text{opt}}$ extending $S'$.
 
-<img src="/Figures/slots-2.drawio.svg" class="mx-auto h-24 my-4" />
+<img src="./Figures/slots-2.drawio.svg" class="mx-auto h-24 my-4" />
 
 If $S$ has job $j$ somewhere, $S_{\text{opt}}$ has $j$ in the same position.
 

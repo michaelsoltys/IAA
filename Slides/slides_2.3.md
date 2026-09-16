@@ -179,7 +179,7 @@ Like old cartographers mapping unknown territory!
 
 **Expanding the frontier:**
 
-<img src="/Figures/explored.drawio.svg" class="mx-auto h-48 my-4" />
+<img src="./Figures/explored.drawio.svg" class="mx-auto h-48 my-4" />
 
 <!--
 Edsger W. Dijkstra invented this algorithm in 1956 while sitting at a cafe in Amsterdam. He was 26 years old. As he later recalled: "What is the shortest way to travel from Rotterdam to Groningen? I designed an algorithm for the shortest path in about twenty minutes. One morning I was shopping in Amsterdam with my young fiancee, and tired, we sat down on the cafe terrace to drink a cup of coffee and I was just thinking about whether I could do this, and I then designed the algorithm for the shortest path."
@@ -373,7 +373,7 @@ The frequent letter $a$ gets a 1-bit code; rare $e$ and $f$ pay 4 bits each — 
 </div>
 <div class="flex items-center">
 
-<img src="/Figures/huffman.drawio.svg" class="mx-auto h-64" />
+<img src="./Figures/huffman.drawio.svg" class="mx-auto h-64" />
 
 </div>
 </div>

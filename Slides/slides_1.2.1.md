@@ -108,7 +108,7 @@ Two things to read off it:
 </div>
 <div>
 
-<img src="/Figures/pagerank.svg" class="mx-auto h-40" />
+<img src="./Figures/pagerank.svg" class="mx-auto h-40" />
 
 </div>
 </div>
@@ -196,7 +196,7 @@ Six pages, $d = 1$ — no random jumps, so every bit of rank flows along a link.
 <div class="grid grid-cols-2 gap-6 items-start">
 <div>
 
-<img src="/Figures/pagerank-network.svg" class="mx-auto h-44" />
+<img src="./Figures/pagerank-network.svg" class="mx-auto h-44" />
 
 <span style="font-size: 0.6em; color: navy;">Fig 1.2, Pg 14, fig:pagerank2</span>
 
@@ -418,7 +418,7 @@ PageRank is to Google what the model is to a coding agent: the famous core, wrap
 <div style="font-weight: 600;">Chaofan Shou · @Fried_rice</div>
 <div style="color: #6b7280; margin: 0.15em 0 0.45em;">31 March 2026</div>
 Claude code source code has been leaked via a map file in their npm registry!
-<img src="/Figures/claude-code-leak-listing.jpg" class="w-full rounded mt-2" style="max-height: 280px; object-fit: cover; object-position: top;" />
+<img src="./Figures/claude-code-leak-listing.jpg" class="w-full rounded mt-2" style="max-height: 280px; object-fit: cover; object-position: top;" />
 <div style="margin-top: 0.4em;"><a href="https://x.com/Fried_rice/status/2038894956459290963" style="color: teal;">x.com/Fried_rice/status/2038894956459290963</a></div>
 </div>
 

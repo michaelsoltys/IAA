@@ -115,7 +115,7 @@ $g_4$: $b_2,b_1,b_3,b_4$
 </div>
 <div>
 
-<img src="/Figures/stable-marriage.drawio.svg" class="mx-auto h-48" />
+<img src="./Figures/stable-marriage.drawio.svg" class="mx-auto h-48" />
 
 </div>
 </div>
@@ -155,7 +155,7 @@ $M$ is **stable** if it has **no blocking pairs**. A stable matching always exis
 </div>
 <div>
 
-<img src="/Figures/BlockingPair.drawio.svg" class="mx-auto h-48" />
+<img src="./Figures/BlockingPair.drawio.svg" class="mx-auto h-48" />
 
 </div>
 </div>

@@ -84,7 +84,7 @@ $\varepsilon$-transitions are convenient for **designing** NFAs by connecting su
 </div>
 <div style="flex: 0 1 48%;">
 
-<img src="/Figures/floating-point.drawio.svg" class="w-full" />
+<img src="./Figures/floating-point.drawio.svg" class="w-full" />
 
 </div>
 </div>

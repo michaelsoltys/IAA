@@ -69,19 +69,19 @@ Storing information in discrete symbols is older than writing, and far older tha
 <div class="grid grid-cols-3 gap-4 items-start" style="font-size: 0.72em;">
 <div class="text-center">
 <div style="display: inline-block; text-align: left;">
-<img src="/Figures/ocher.jpg" class="h-32 object-contain" style="display: block;" />
+<img src="./Figures/ocher.jpg" class="h-32 object-contain" style="display: block;" />
 <div style="margin-top: 0.35em;"><strong>Engraved ocher</strong><br>Blombos Cave, South Africa<br>77,000–75,000 yrs</div>
 </div>
 </div>
 <div class="text-center">
 <div style="display: inline-block; text-align: left;">
-<img src="/Figures/ishango.jpg" class="h-24 object-contain" style="display: block;" />
+<img src="./Figures/ishango.jpg" class="h-24 object-contain" style="display: block;" />
 <div style="margin-top: 0.35em;"><strong>Ishango bone</strong><br>Congo, baboon leg, 3 rows of tallies<br>25,000–20,000 yrs</div>
 </div>
 </div>
 <div class="text-center">
 <div style="display: inline-block; text-align: left;">
-<img src="/Figures/antler.jpg" class="h-24 object-contain" style="display: block;" />
+<img src="./Figures/antler.jpg" class="h-24 object-contain" style="display: block;" />
 <div style="margin-top: 0.35em;"><strong>Reindeer antler</strong><br>La Madeleine, France<br>17,000–11,500 yrs</div>
 </div>
 </div>
@@ -110,13 +110,13 @@ About 8,000 years ago the marks started standing for words. Then for sounds.
 <div class="grid grid-cols-2 gap-6 items-start" style="font-size: 0.78em;">
 <div class="text-center">
 <div style="display: inline-block; text-align: left;">
-<img src="/Figures/cylinder.jpg" class="h-40 object-contain" style="display: block;" />
+<img src="./Figures/cylinder.jpg" class="h-40 object-contain" style="display: block;" />
 <div style="margin-top: 0.35em;"><strong>Cylinder seal</strong> rolled across wet clay.<br>Lapis lazuli, Babylon, 4,100–3,600 yrs.<br>Hard to carve, hard to forge: a signature.</div>
 </div>
 </div>
 <div class="text-center">
 <div style="display: inline-block; text-align: left;">
-<img src="/Figures/cuneiform.jpg" class="h-40 object-contain" style="display: block;" />
+<img src="./Figures/cuneiform.jpg" class="h-40 object-contain" style="display: block;" />
 <div style="margin-top: 0.35em;"><strong>Cuneiform tablet</strong>, near Babylon,<br>4,000–2,600 yrs. Marks stood first for<br>concepts, later for <em>sounds and syllables</em>.</div>
 </div>
 </div>

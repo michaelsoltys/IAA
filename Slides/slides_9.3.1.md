@@ -69,7 +69,7 @@ $$
 
 **Transition diagram:**
 
-<img src="/Figures/L01.drawio.svg" class="h-50" />
+<img src="./Figures/L01.drawio.svg" class="h-50" />
 
 <span style="font-size: 0.6em; color: navy;">Fig 9.1, Pg 220, fig:exampledfa</span>
 
@@ -103,7 +103,7 @@ Each state encodes *what we've seen so far* — the DFA's only memory is which s
 </div>
 <div style="text-align: left; font-size: 0.92em;">
 
-<img src="/Figures/L01.drawio.svg" class="mx-auto h-40" />
+<img src="./Figures/L01.drawio.svg" class="mx-auto h-40" />
 
 **Note:** presenting a DFA is not enough — we must also **prove** it is correct.
 
@@ -136,7 +136,7 @@ State $q_i$ means "$i$ zeros so far, modulo 5." A $0$ advances the count; a $1$ 
 </div>
 <div>
 
-<img src="/Figures/L05.drawio.svg" class="mx-auto h-56" />
+<img src="./Figures/L05.drawio.svg" class="mx-auto h-56" />
 
 </div>
 </div>
