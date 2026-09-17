@@ -78,14 +78,15 @@ Algebraic notation for sets of strings
 
 # Operations on Languages
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
 
 Union, concatenation, and Kleene star — the three building blocks REs are made of.
 
 </div>
 
-Three fundamental operations:
+<div class="grid grid-cols-2 gap-8 items-start" style="text-align: left; font-size: 0.88em;">
 
+<div>
 
 **Union:**
 $$L \cup M = \{ w \mid w \in L \text{ or } w \in M \}$$
@@ -93,10 +94,27 @@ $$L \cup M = \{ w \mid w \in L \text{ or } w \in M \}$$
 **Concatenation:**
 $$LM = \{ xy \mid x \in L \text{ and } y \in M \}$$
 
-**Kleene Star (Closure):**
-$$L^* = \{ x_1 x_2 \ldots x_n \mid x_i \in L, n \geq 0 \}$$
+**Kleene star:**
+$$L^* = \{ x_1 x_2 \ldots x_n \mid x_i \in L,\; n \geq 0 \}$$
 
-Note: $n = 0$ gives $\varepsilon \in L^*$ for any $L$
+$n = 0$ gives $\varepsilon \in L^*$ for any $L$, including $\emptyset$.
+
+</div>
+
+<div>
+
+**Example.** $L = \{0, 01\}$, $M = \{1\}$
+
+- $L \cup M = \{0,\, 01,\, 1\}$
+- $LM = \{01,\, 011\}$
+- $ML = \{10,\, 101\}$
+- $L^* \ni \varepsilon,\; 0,\; 01,\; 00,\; 001,\; 010,\; 0101,\; \ldots$
+
+Concatenation is not commutative: $LM \neq ML$.
+
+</div>
+
+</div>
 
 <!--
 Even $\emptyset^*$ is $\{\varepsilon\}$. Zero copies of nothing is the empty string, so the star of the empty language is not empty. Kleene named the operation; the $+$ in $E+F$ is older algebraic notation for union, which is why some texts write $E \cup F$ and others write $E|F$ as in grep.
@@ -129,32 +147,69 @@ A **Regular Expression (RE)** is a syntactic object defined by **structural indu
 
 REs are a **model of computation**, just like DFAs or NFAs — they describe languages
 
+---
+
+# RE by Example
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
+
+Read an RE as a language, then test a few strings. $\Sigma = \{0,1\}$.
+
+</div>
+
+<div style="font-size: 0.85em;">
+
+| RE | Language | In | Out |
+|----|----------|----|-----|
+| $(0+1)^*$ | all binary strings | $\varepsilon$, $010$ | — |
+| $0^*$ | only $0$s | $\varepsilon$, $000$ | $1$, $01$ |
+| $(00)^*$ | even number of $0$s | $\varepsilon$, $0000$ | $0$, $000$ |
+| $0^*10^*$ | exactly one $1$ | $1$, $0010$ | $\varepsilon$, $11$ |
+| $(0+01)^*$ | no $11$, no leading $1$ | $\varepsilon$, $0$, $010$ | $1$, $10$, $11$ |
+
+</div>
+
+<!--
+$(0+01)^*$ is the running example for Thompson's construction later in the lecture. It is strings built by concatenating blocks $0$ and $01$, so every $1$ is immediately preceded by a $0$. The string $10$ is out because it starts with $1$.
+-->
 
 ---
 
 # RE Semantics
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
 
 Each piece of RE syntax denotes a *language* — that's the meaning function $L(\cdot)$.
 
 </div>
 
-**Exercise:** What are the languages $L(a)$, $L(\varepsilon)$, $L(\emptyset)$, $L(E+F)$, $L(EF)$, $L(E^*)$?
+<div class="grid grid-cols-2 gap-8 items-start" style="text-align: left; font-size: 0.88em;">
 
+<div>
 
-**Answers:**
+**Exercise:** What are $L(a)$, $L(\varepsilon)$, $L(\emptyset)$, $L(E+F)$, $L(EF)$, $L(E^*)$? <span style="font-size: 0.6em; color: navy;">Prb 9.16, Pg 225, exr:regexp-semantics</span>
+
 - $L(a) = \{a\}$
 - $L(\varepsilon) = \{\varepsilon\}$
 - $L(\emptyset) = \emptyset$
 - $L(E + F) = L(E) \cup L(F)$
-- $L(EF) = L(E) \cdot L(F) = \{xy \mid x \in L(E), y \in L(F)\}$
+- $L(EF) = \{xy \mid x \in L(E),\; y \in L(F)\}$
 - $L(E^*) = (L(E))^*$
 
+</div>
 
-**Example:** RE for strings of 0s and 1s **not** containing 101 as a substring:
+<div>
+
+**Example.** Strings of $0$s and $1$s **not** containing $101$: <span style="font-size: 0.6em; color: navy;">Prb 9.17, Pg 225, exr:reg3</span>
 
 $$(\varepsilon + 0)(1^* + 00^*0)^*(\varepsilon + 0)$$
+
+- In: $\varepsilon$, $0$, $11$, $000$, $1100$
+- Out: $101$, $0101$, $1101$
+
+</div>
+
+</div>
 
 
 ---
@@ -230,133 +285,116 @@ This is Thompson's construction, from his 1968 CACM paper "Regular expression se
 
 # RE to $\varepsilon$-NFA: Basis Case
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
 
 Tiny two-state machines for $\varepsilon$, $\emptyset$, and a single symbol — the atoms of the construction.
 
 </div>
 
-For the three base cases $\varepsilon$, $\emptyset$, and $a \in \Sigma$:
+<img src="./Figures/re-basis.svg" class="mx-auto block" style="width: 100%; max-height: 280px;" alt="Three basis NFAs: epsilon, empty set, and a single symbol a" />
 
-
-**$\varepsilon$:**
-
-$\to \bigcirc \xrightarrow{\varepsilon} \bigodot$
-
-(Start state connected to accept state via $\varepsilon$)
-
-**$\emptyset$:**
-
-$\to \bigcirc \qquad \bigodot$
-
-(Start state and accept state with **no** connection)
-
-**$a \in \Sigma$:**
-
-$\to \bigcirc \xrightarrow{a} \bigodot$
-
-(Start state connected to accept state via symbol $a$)
-
-
-Each satisfies all three invariants: one accept state, no arrows in to start, no arrows out of accept
+Each satisfies the three invariants: one accept state, no arrows into start, no arrows out of accept.
 
 
 ---
 
 # RE to $\varepsilon$-NFA: Union ($R + S$)
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
 
 A new start branches via $\varepsilon$ into both sub-machines, and they merge into a new accept.
 
 </div>
 
-Given NFAs for $R$ and $S$ (shown as boxes), build an NFA for $R + S$:
+<div class="grid grid-cols-2 gap-6 items-center" style="text-align: left; font-size: 0.88em;">
 
+<div>
 
-1. Create a **new start state**
-2. Connect it via $\varepsilon$ to the start states of $R$ and $S$
-3. Create a **new accept state**
-4. Connect the accept states of $R$ and $S$ to it via $\varepsilon$
+1. New **start** state
+2. $\varepsilon$ into the starts of $R$ and $S$
+3. New **accept** state
+4. $\varepsilon$ out of the accepts of $R$ and $S$
 
-**Structure:**
+Invariants survive: one accept, nothing into start, nothing out of accept.
 
-$$\to \bigcirc \xrightarrow{\varepsilon} \boxed{R} \xrightarrow{\varepsilon} \bigodot$$
-$$\qquad \searrow^{\varepsilon} \boxed{S} \nearrow^{\varepsilon}$$
+</div>
 
-All three invariants are preserved
+<img src="./Figures/re-union.svg" style="width: 100%; max-height: 320px;" alt="Thompson union: new start splits by epsilon into R and S, then both merge into a new accept" />
+
+</div>
 
 
 ---
 
 # RE to $\varepsilon$-NFA: Concatenation ($RS$)
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
 
 Glue $R$'s accept to $S$'s start with a single $\varepsilon$-arrow — that's all concatenation needs.
 
 </div>
 
-Given NFAs for $R$ and $S$, build an NFA for $RS$:
+<div class="grid grid-cols-2 gap-6 items-center" style="text-align: left; font-size: 0.88em;">
 
+<div>
 
-1. Chain $R$'s accept state to $S$'s start state via $\varepsilon$:
+- Start = $R$'s start
+- Accept = $S$'s accept
+- One $\varepsilon$ from $R$'s old accept to $S$'s old start
+- Those two states become interior
 
-$$\to \boxed{R} \xrightarrow{\varepsilon} \boxed{S} \to \bigodot$$
+Invariants survive because $R$ had nothing into its start and $S$ had nothing out of its accept.
 
-- Start state = $R$'s start state
-- Accept state = $S$'s accept state
-- Old accept of $R$ and old start of $S$ become interior states
+</div>
 
-All three invariants are preserved
+<img src="./Figures/re-concat.svg" style="width: 100%; max-height: 260px;" alt="Thompson concatenation: R then epsilon then S" />
+
+</div>
 
 
 ---
 
 # RE to $\varepsilon$-NFA: Kleene Star ($R^*$)
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
 
-Add a loop to repeat $R$ and a bypass to skip it entirely — handling the $\varepsilon$ case.
+A loop to repeat $R$, and a bypass to skip it — that is how $\varepsilon$ gets into $R^*$.
 
 </div>
 
-Given NFA for $R$, build an NFA for $R^*$:
+<div class="grid grid-cols-2 gap-6 items-center" style="text-align: left; font-size: 0.88em;">
 
+<div>
 
-1. Create a **new start state** (which is also the accept state, for $\varepsilon \in L(R^*)$)
-2. Connect new start to $R$'s start via $\varepsilon$
-3. Connect $R$'s accept back to $R$'s start via $\varepsilon$ (the loop)
-4. Connect $R$'s accept to the new accept state via $\varepsilon$
-5. Also: $\varepsilon$-transition from new start directly to new accept (bypass $R$ entirely)
+1. New start and new accept
+2. $\varepsilon$ into $R$, $\varepsilon$ out of $R$
+3. $\varepsilon$ from $R$'s accept back to $R$'s start (the loop)
+4. $\varepsilon$ from the new start straight to the new accept (the bypass)
 
-**Key:** The bypass handles $\varepsilon \in R^*$; the loop handles $R, RR, RRR, \ldots$
+Bypass: $\varepsilon \in R^*$. Loop: $R, RR, RRR, \ldots$
+
+</div>
+
+<img src="./Figures/re-star.svg" style="width: 100%; max-height: 300px;" alt="Thompson star: bypass epsilon from new start to new accept, and a loop around R" />
+
+</div>
 
 
 ---
 
 # RE to $\varepsilon$-NFA: Example
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.4em;">
 
-Watch the construction in action — assembling $(0 + 01)^*$ piece by piece, basis to star.
+$(0+01)^*$ — strings with no $11$ and no leading $1$. In: $\varepsilon, 0, 01, 010$. Out: $1, 10, 11$.
 
 </div>
 
-Convert $(0 + 01)^*$ step by step:
+<img src="./Figures/re-001star.svg" class="mx-auto block" style="width: 100%; max-height: 440px;" alt="Thompson construction of (0+01)* in four panels: 0 and 1, concatenation 01, union 0+01, then star" />
 
-
-**Step 1:** Build NFAs for $0$ and $1$ (basis case)
-
-$0: \to \bigcirc \xrightarrow{0} \bigodot \qquad 1: \to \bigcirc \xrightarrow{1} \bigodot$
-
-**Step 2:** Build NFA for $01$ (concatenation)
-
-$\to \bigcirc \xrightarrow{0} \bigcirc \xrightarrow{\varepsilon} \bigcirc \xrightarrow{1} \bigodot$
-
-**Step 3:** Build NFA for $0 + 01$ (union)
-
-**Step 4:** Build NFA for $(0 + 01)^*$ (star — add loop and bypass)
+<!--
+Every 1 in this language sits in a block 01, so 10 is out: it would need a 1 with no 0 in front. The four panels are the four inductive cases in order. The star panel wraps the union in a loop and a bypass; the bypass is why ε is in.
+-->
 
 
 ---
@@ -424,24 +462,24 @@ The second term says: go from $i$ to $k$, loop at $k$ zero or more times, then g
 
 # Method 1: Example
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.4em;">
 
-Apply the DP recurrence to a 3-state DFA — and see why the table grows fast.
+DFA for strings containing $00$. Run $001$ (accept) vs $010$ (reject), then fill in $R^{(0)}$.
 
 </div>
 
-Convert the DFA that accepts strings containing $00$ as a substring
+<img src="./Figures/dfa-00.svg" class="mx-auto block" style="width: 90%; max-height: 200px;" alt="Three-state DFA: q1 start, q2 after one 0, q3 absorbing accept after 00" />
 
-States: $q_1$ (start), $q_2$ (seen one 0), $q_3$ (seen 00, accepting)
-
+<div style="font-size: 0.82em; text-align: left;">
 
 **Basis ($k = 0$):**
-- $R_{11}^{(0)} = \varepsilon + 1$, $\quad R_{12}^{(0)} = 0$, $\quad R_{13}^{(0)} = \emptyset$
-- $R_{21}^{(0)} = 1$, $\quad R_{22}^{(0)} = \varepsilon$, $\quad R_{23}^{(0)} = 0$
-- $R_{31}^{(0)} = \emptyset$, $\quad R_{32}^{(0)} = \emptyset$, $\quad R_{33}^{(0)} = \varepsilon + 0 + 1$
+$R_{11}^{(0)} = \varepsilon + 1$,\; $R_{12}^{(0)} = 0$,\; $R_{13}^{(0)} = \emptyset$,\;
+$R_{21}^{(0)} = 1$,\; $R_{22}^{(0)} = \varepsilon$,\; $R_{23}^{(0)} = 0$,\;
+$R_{31}^{(0)} = R_{32}^{(0)} = \emptyset$,\; $R_{33}^{(0)} = \varepsilon + 0 + 1$
 
+**Exercise:** compute $R^{(1)}, R^{(2)}, R^{(3)}$, and $R = R_{13}^{(3)}$. <span style="font-size: 0.7em; color: navy;">Prb 9.19, Pg 228, exr:dfa-to-reg</span>
 
-**Exercise:** Complete the construction by computing $R^{(1)}$, $R^{(2)}$, $R^{(3)}$, and finally the RE $R = R_{13}^{(3)}$
+</div>
 
 
 ---
@@ -504,6 +542,33 @@ State elimination is the same algebra as Arden's lemma: the language $X$ of a st
 
 ---
 
+# GNFA: Example
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.4em;">
+
+Rip $q_2$ out of the "$00$ as a substring" DFA. The leftover path is already the language.
+
+</div>
+
+<img src="./Figures/gnfa-00.svg" class="mx-auto block" style="width: 100%; max-height: 340px;" alt="GNFA before and after eliminating q2, yielding the RE (1+01)*00(0+1)*" />
+
+<div style="font-size: 0.85em; text-align: left;">
+
+$q_1 \xrightarrow{0} q_2 \xrightarrow{0} q_3$ plus the detour $q_2 \xrightarrow{1} q_1$ become
+$q_1 \xrightarrow{1+01} q_1$ and $q_1 \xrightarrow{00} q_3$. Reading off:
+
+$$(1+01)^*\,00\,(0+1)^*$$
+
+In: $00$, $100$, $00101$. Out: $\varepsilon$, $1$, $10$, $010$.
+
+</div>
+
+<!--
+$(1+01)^*$ is "no 00 yet": every 0 is immediately followed by a 1. Then 00 is the first double-zero, and $(0+1)^*$ is free. 010 is out because the only 00 never appears; 100 is 1 then 00.
+-->
+
+---
+
 # GNFA: Why It Works
 
 <div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
@@ -527,19 +592,28 @@ The new edge $R_1 R_2^* R_3 + R_4$ captures exactly the strings that could trave
 
 # The Complete Picture
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
 
-DFA, NFA, $\varepsilon$-NFA, RE — four formalisms, one class of languages, four perspectives.
+DFA, NFA, $\varepsilon$-NFA, RE — four formalisms, one class of languages.
 
 </div>
 
-**Theorem:** A language is regular if and only if it is given by some regular expression <span style="font-size: 0.6em; color: navy;">Thm 9.18, Pg 225, thm:2</span>
+<div class="grid grid-cols-2 gap-8 items-start" style="text-align: left; font-size: 0.88em;">
 
+<div>
 
-We have now established the **equivalence of four formalisms**:
+**Theorem:** A language is regular iff it is given by some regular expression. <span style="font-size: 0.6em; color: navy;">Thm 9.18, Pg 225, thm:2</span>
 
 $$\text{DFA} \iff \text{NFA} \iff \varepsilon\text{-NFA} \iff \text{RE}$$
 
+**Perspectives:**
+- **DFA:** algorithmic, deterministic
+- **NFA:** design flexibility, compact
+- **RE:** algebraic, declarative
+
+</div>
+
+<div>
 
 | Conversion | Method |
 |-----------|--------|
@@ -548,10 +622,9 @@ $$\text{DFA} \iff \text{NFA} \iff \varepsilon\text{-NFA} \iff \text{RE}$$
 | DFA $\to$ RE | Dynamic Programming or GNFA |
 | DFA $\to$ NFA | Trivial (every DFA is an NFA) |
 
-Each formalism offers a different **perspective** on regular languages:
-- **DFA:** algorithmic, deterministic
-- **NFA:** design flexibility, compact
-- **RE:** algebraic, declarative
+</div>
+
+</div>
 
 <!--
 The regex engine in a language like Python is not this formalism. Backreferences (`(a+)b\1`) already take you to context-sensitive matching; lookaheads and possessive quantifiers are outside it too. Thompson's NFA simulation still runs in linear time in the input; backtracking engines can go exponential on the same pattern. The theorem on this slide is about the mathematical objects, not about `re.search`.

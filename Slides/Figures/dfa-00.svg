@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 644 216" width="644" height="216">
+<rect width="100%" height="100%" fill="white"/>
+
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155"/>
+  </marker>
+  <marker id="arrt" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+  </marker>
+  <marker id="arrr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#b91c1c"/>
+  </marker>
+</defs>
+
+<rect x="12" y="8" width="620" height="200" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+<line x1="82" y1="110" x2="103" y2="110" stroke="#334155" stroke-width="1.8" marker-end="url(#arr)"/>
+<circle cx="120" cy="110" r="16" fill="white" stroke="#0f172a" stroke-width="2.1"/>
+<circle cx="310" cy="110" r="16" fill="white" stroke="#0f172a" stroke-width="2.1"/>
+<circle cx="500" cy="110" r="16" fill="white" stroke="#0f172a" stroke-width="2.1"/>
+<circle cx="500" cy="110" r="12" fill="none" stroke="#0f172a" stroke-width="1.7"/>
+<text x="120" y="115" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">q1</text>
+<text x="310" y="115" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">q2</text>
+<text x="500" y="115" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">q3</text>
+<path d="M 112 94 C 98 66, 142 66, 128 94" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arr)"/><text x="120" y="60" text-anchor="middle" font-family="Times New Roman, Times, serif" font-style="italic" font-size="14" fill="#334155">1</text>
+<line x1="136.0" y1="110.0" x2="294.0" y2="110.0" stroke="#334155" stroke-width="1.8" marker-end="url(#arr)"/><text x="215.0" y="94.0" text-anchor="middle" font-family="Times New Roman, Times, serif" font-style="italic" font-size="14" fill="#334155">0</text>
+<path d="M 294 126 C 250 178, 180 178, 136 126" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arr)"/><text x="215" y="192" text-anchor="middle" font-family="Times New Roman, Times, serif" font-style="italic" font-size="14" fill="#334155">1</text>
+<line x1="326.0" y1="110.0" x2="480.0" y2="110.0" stroke="#334155" stroke-width="1.8" marker-end="url(#arr)"/><text x="403.0" y="94.0" text-anchor="middle" font-family="Times New Roman, Times, serif" font-style="italic" font-size="14" fill="#334155">0</text>
+<path d="M 492 94 C 478 66, 522 66, 508 94" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arr)"/><text x="500" y="60" text-anchor="middle" font-family="Times New Roman, Times, serif" font-style="italic" font-size="14" fill="#334155">0, 1</text>
+<text x="322" y="32" text-anchor="middle" font-family="Times New Roman, Times, serif" font-style="italic" font-size="16" fill="#0f172a">contains 00</text>
+</svg>
