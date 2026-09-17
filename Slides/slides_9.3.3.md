@@ -375,7 +375,7 @@ Bypass: $\varepsilon \in R^*$. Loop: $R, RR, RRR, \ldots$
 
 </div>
 
-<img src="./Figures/re-star.svg" style="width: 100%; max-height: 300px;" alt="Thompson star: bypass epsilon from new start to new accept, and a loop around R" />
+<img src="./Figures/re-star.drawio.svg" style="width: 100%; max-height: 300px;" alt="Thompson star: bypass epsilon from new start to new accept, and a loop around R" />
 
 </div>
 
@@ -390,7 +390,7 @@ $(0+01)^*$ — strings with no $11$ and no leading $1$. In: $\varepsilon, 0, 01,
 
 </div>
 
-<img src="./Figures/re-001star.svg" class="mx-auto block" style="width: 100%; max-height: 440px;" alt="Thompson construction of (0+01)* in four panels: 0 and 1, concatenation 01, union 0+01, then star" />
+<img src="./Figures/re-001star.drawio.svg" class="mx-auto block" style="width: 100%; max-height: 440px;" alt="Thompson construction of (0+01)* in four panels: 0 and 1, concatenation 01, union 0+01, then star" />
 
 <!--
 Every 1 in this language sits in a block 01, so 10 is out: it would need a 1 with no 0 in front. The four panels are the four inductive cases in order. The star panel wraps the union in a loop and a bypass; the bypass is why ε is in.
@@ -468,7 +468,7 @@ DFA for strings containing $00$. Run $001$ (accept) vs $010$ (reject), then fill
 
 </div>
 
-<img src="./Figures/dfa-00.svg" class="mx-auto block" style="width: 90%; max-height: 200px;" alt="Three-state DFA: q1 start, q2 after one 0, q3 absorbing accept after 00" />
+<img src="./Figures/dfa-00.drawio.svg" class="mx-auto block" style="width: 90%; max-height: 200px;" alt="Three-state DFA: q1 start, q2 after one 0, q3 absorbing accept after 00" />
 
 <div style="font-size: 0.82em; text-align: left;">
 
@@ -550,7 +550,7 @@ Rip $q_2$ out of the "$00$ as a substring" DFA. The leftover path is already the
 
 </div>
 
-<img src="./Figures/gnfa-00.svg" class="mx-auto block" style="width: 100%; max-height: 340px;" alt="GNFA before and after eliminating q2, yielding the RE (1+01)*00(0+1)*" />
+<img src="./Figures/gnfa-00.drawio.svg" class="mx-auto block" style="width: 100%; max-height: 340px;" alt="GNFA before and after eliminating q2, yielding the RE (1+01)*00(0+1)*" />
 
 <div style="font-size: 0.85em; text-align: left;">
 

@@ -94,7 +94,7 @@ A $1$ where there is an edge. Concatenate the rows and you have the input string
 
 $$A_G[i,j] = \begin{cases} 1 & \text{if } (i,j) \in E \\ 0 & \text{otherwise} \end{cases}$$
 
-<img src="./Figures/graph-representation.svg" class="mx-auto block" style="width: 100%; max-height: 390px;" alt="Five-vertex house graph and its 5 by 5 adjacency matrix" />
+<img src="./Figures/graph-representation.drawio.svg" class="mx-auto block" style="width: 100%; max-height: 390px;" alt="Five-vertex house graph and its 5 by 5 adjacency matrix" />
 
 <!--
 The matrix is symmetric because the graph is undirected, and the diagonal is zero because there are no loops. Looking up edge (i,j) is a single bit test at position (i-1)n + j in s_G. The 240-node maze on the previous slide is the same object, just too big to read by eye.
@@ -110,7 +110,7 @@ The vocabulary — paths, cycles, connected, tree, spanning tree — that we'll 
 
 </div>
 
-<img src="./Figures/graph-definitions.svg" class="mx-auto block" style="width: 100%; max-height: 460px;" alt="Eight graph definitions, each with a four-vertex diagram: undirected, degree, path, connected, cycle, acyclic, tree, spanning tree" />
+<img src="./Figures/graph-definitions.drawio.svg" class="mx-auto block" style="width: 100%; max-height: 460px;" alt="Eight graph definitions, each with a four-vertex diagram: undirected, degree, path, connected, cycle, acyclic, tree, spanning tree" />
 
 <!--
 The four vertices sit in the same places in every panel. Acyclic is a forest, two components, so it is not a tree; the spanning-tree panel is the tree from the panel next to it, drawn as a subset of the original edge set. If G has a cycle it has more than one spanning tree, and every spanning tree has n-1 edges — that is the next slide.
@@ -173,7 +173,7 @@ Pick $n-1$ edges that connect everything *and* minimize total cost — the class
 
 </div>
 
-<img src="./Figures/house-spanning.svg" style="width: 100%; max-height: 390px;" alt="House graph G and one spanning tree T on the same five vertices" />
+<img src="./Figures/house-spanning.drawio.svg" style="width: 100%; max-height: 390px;" alt="House graph G and one spanning tree T on the same five vertices" />
 
 </div>
 
@@ -211,7 +211,7 @@ In words, order edges by cost, starting with cheapest; keep adding edges unless 
 
 </div>
 
-<img src="./Figures/kruskal-hat.svg" style="width: 100%; max-height: 400px;" alt="Kruskal on the house graph: add the two roof edges, skip the ceiling, add the two walls, skip the floor" />
+<img src="./Figures/kruskal-hat.drawio.svg" style="width: 100%; max-height: 400px;" alt="Kruskal on the house graph: add the two roof edges, skip the ceiling, add the two walls, skip the floor" />
 
 </div>
 
@@ -251,7 +251,7 @@ for j = 1 to n:
 
 </div>
 
-<img src="./Figures/kruskal-components.svg" style="width: 100%; max-height: 400px;" alt="Kruskal on the hat graph, nodes colored by connected component, with the D array under each step" />
+<img src="./Figures/kruskal-components.drawio.svg" style="width: 100%; max-height: 400px;" alt="Kruskal on the hat graph, nodes colored by connected component, with the D array under each step" />
 
 </div>
 
@@ -281,70 +281,9 @@ We need to show the output $T$ is:
 
 If we reject $e_i$ because it forms a cycle, then $T$ already has a path connecting the endpoints of $e_i$, so connectivity is preserved.
 
-
----
-
-# The "Promising" Property
-
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
-
-The central idea: at every step, our partial $T$ can still be completed to *some* MCST — keep this true and we win.
-
-</div>
-
-**Definition:** A set $T$ of edges is **promising** if it can be extended to a MCST.
-
-
-**Theorem:** "$T$ is promising" is a loop invariant for Kruskal's algorithm. <span style="font-size: 0.6em; color: navy;">Lem 2.10, Pg 37, lem:promising</span>
-
-
-**Why this matters:** After the algorithm terminates, $T$ is promising AND all edges have been considered → $T$ must itself be a MCST!
-
 <!--
-The same "promising" argument is the reason greedy works on matroids. Whitney defined matroids in 1935; Edmonds showed in the 1960s that the greedy algorithm is optimal precisely on those structures. Graphic matroids (forests of a graph) are the example sitting in this lecture. Kruskal is the special case you can prove with one exchange lemma and no matroid language.
+Optimality is the promising invariant plus the Exchange Lemma on the next slide. The full write-up (promising, both cases, the swap, a witness-MCST trace) is TailEnds/slides_2.1-tailends.md.
 -->
-
----
-
-# Proof: Promising is Invariant
-
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
-
-The basis is trivial; the rejection case is easy — the real work is when we *accept* an edge.
-
-</div>
-
-**Basis:** $T = \emptyset$ is promising (empty set extends to any MCST)
-
-**Induction Step:** Assume $T$ is promising. Show it remains so after considering edge $e_i$.
-
-
-**Case 1:** $e_i$ is rejected (creates cycle)
-- $T$ unchanged, still promising
-- The MCST extending $T$ couldn't have used $e_i$ anyway (would create cycle)
-
-
----
-
-# Proof: Case 2 - Edge Accepted
-
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
-
-If our chosen $e_i$ is already in the witness MCST, we're done — otherwise we'll need to *swap*.
-
-</div>
-
-$e_i$ is accepted. Must show $T \cup \{e_i\}$ is promising.
-
-Since $T$ is promising, there exists MCST $T_1$ with $T \subseteq T_1$.
-
-
-**Subcase a:** $e_i \in T_1$
-- Then $T \cup \{e_i\} \subseteq T_1$, so $T \cup \{e_i\}$ is promising ✓
-
-**Subcase b:** $e_i \notin T_1$
-- Use the **Exchange Lemma**!
-
 
 ---
 
@@ -358,56 +297,11 @@ Adding $e$ to $T_1$ creates a cycle; some edge $e'$ on that cycle lies in $T_1 -
 
 **Lemma:** Let $G$ be connected, $T_1$ and $T_2$ be spanning trees. For every $e \in T_2 - T_1$ there is an $e' \in T_1 - T_2$ such that $T_1 \cup \{e\} - \{e'\}$ is a spanning tree. <span style="font-size: 0.6em; color: navy;">Lem 2.11, Pg 39, lem:exch</span>
 
-<img src="./Figures/exchange-lemma.svg" class="mx-auto block" style="width: 100%; max-height: 380px;" alt="Three spanning trees of a 4-cycle: add e from T2 to T1, forming a cycle, then drop e-prime from T1 minus T2" />
+<img src="./Figures/exchange-lemma.drawio.svg" class="mx-auto block" style="width: 100%; max-height: 380px;" alt="Three spanning trees of a 4-cycle: add e from T2 to T1, forming a cycle, then drop e-prime from T1 minus T2" />
 
 <!--
-T1 union {e} has a unique cycle. That cycle cannot live entirely inside T2, because T2 is acyclic, so some edge e' of the cycle is missing from T2 and therefore sits in T1 - T2. Delete it. Whitney's 1935 definition of a matroid is this same exchange property, abstracted away from graphs; graphic matroids are the special case sitting on this slide.
+T1 union {e} has a unique cycle. That cycle cannot live entirely inside T2, because T2 is acyclic, so some edge e' of the cycle is missing from T2 and therefore sits in T1 - T2. Delete it. Whitney's 1935 definition of a matroid is this same exchange property, abstracted away from graphs; graphic matroids are the special case sitting on this slide. The rest of the promising proof is TailEnds/slides_2.1-tailends.md.
 -->
-
-
----
-
-# Completing the Proof
-
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
-
-Sorting + the exchange lemma forces $c(e_i) \leq c(e_j)$, so swapping doesn't make things worse.
-
-</div>
-
-**Subcase b continued:** $e_i \notin T_1$
-
-
-- By Exchange Lemma: $\exists e_j \in T_1 - T_2$ such that $T_3 = (T_1 \cup \{e_i\}) - \{e_j\}$ is a spanning tree
-- Key observation: $i < j$ (otherwise $e_j$ would have been rejected earlier, forming a cycle in $T$)
-- Since edges are sorted: $c(e_i) \leq c(e_j)$
-- Therefore: $c(T_3) \leq c(T_1)$
-- So $T_3$ is also a MCST!
-- Since $T \cup \{e_i\} \subseteq T_3$, we have $T \cup \{e_i\}$ is promising ✓
-
-
----
-
-# Example Run
-
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
-
-Watch the *witness MCST* — the one extending $T$ — change as edges get accepted or rejected.
-
-</div>
-
-Graph with 5 nodes, 7 edges (all cost 1):
-
-| Iteration | Edge | Current $T$ | MCST extending $T$ |
-|-----------|------|-------------|-------------------|
-| 0 | — | $\emptyset$ | $\{e_1,e_3,e_4,e_7\}$ |
-| 1 | $e_1$ | $\{e_1\}$ | $\{e_1,e_3,e_4,e_7\}$ |
-| 2 | $e_2$ | $\{e_1,e_2\}$ | $\{e_1,e_2,e_4,e_7\}$ |
-| 3 | $e_3$ | $\{e_1,e_2\}$ | $\{e_1,e_2,e_4,e_7\}$ |
-| 4 | $e_4$ | $\{e_1,e_2,e_4\}$ | $\{e_1,e_2,e_4,e_7\}$ |
-| 5 | $e_5$ | $\{e_1,e_2,e_4\}$ | $\{e_1,e_2,e_4,e_7\}$ |
-| 6 | $e_6$ | $\{e_1,e_2,e_4,e_6\}$ | $\{e_1,e_2,e_4,e_6\}$ |
-| 7 | $e_7$ | $\{e_1,e_2,e_4,e_6\}$ | $\{e_1,e_2,e_4,e_6\}$ |
 
 ---
 
