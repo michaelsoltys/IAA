@@ -30,6 +30,10 @@ Section 9.3.3 — An algebraic notation for regular languages, and its full equi
 
 <div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
+<!--
+Stephen Cole Kleene introduced regular events in 1956, in Shannon and McCarthy's *Automata Studies*. He was modelling nerve nets, not text search. The Unix tool `grep` is named for the `ed` command `g/re/p` — global, regular expression, print — and Ken Thompson wrote the original grep in a night in 1973 after a user asked for a search that could span lines. Formal REs and the regex in Perl or Python later diverged: backreferences take you outside the regular languages.
+-->
+
 ---
 
 # Overview
@@ -94,6 +98,9 @@ $$L^* = \{ x_1 x_2 \ldots x_n \mid x_i \in L, n \geq 0 \}$$
 
 Note: $n = 0$ gives $\varepsilon \in L^*$ for any $L$
 
+<!--
+Even $\emptyset^*$ is $\{\varepsilon\}$. Zero copies of nothing is the empty string, so the star of the empty language is not empty. Kleene named the operation; the $+$ in $E+F$ is older algebraic notation for union, which is why some texts write $E \cup F$ and others write $E|F$ as in grep.
+-->
 
 ---
 
@@ -189,6 +196,9 @@ $$\text{DFA} \iff \text{NFA} \iff \varepsilon\text{-NFA} \iff \text{RE}$$
 
 All four formalisms describe **exactly** the same class of languages!
 
+<!--
+Kleene proved one direction in 1956: every event realized by a nerve net (a finite automaton) is a regular event. The other direction, RE to automaton, is the construction on the next slides. Once NFAs and DFAs are already known to be equivalent, the four formalisms collapse. That collapse is the whole point of this section of the course: you may design in whichever notation is convenient and compile to whichever machine you need.
+-->
 
 ---
 
@@ -213,11 +223,7 @@ Convert RE $R$ to an $\varepsilon$-NFA using **structural induction**
 
 
 <!--
-This structural induction construction is known as **Thompson's construction**, after Ken Thompson, who described it in his 1968 CACM paper "Programming Techniques: Regular expression search algorithm." Thompson used it to build one of the first practical regex engines, which powered the text editor QED and later ed — the standard Unix line editor (the "ed" in sed, grep's ancestor).
-
-Thompson is one of the towering figures of CS. With Dennis Ritchie he created Unix (1969) and the B programming language (precursor to C). He later co-created UTF-8 encoding and the Go programming language. He won the Turing Award in 1983. His classic book with Ritchie — "The UNIX Programming Environment" (1984, co-authored with Rob Pike) — wait, actually the famous book is "The Unix Programming Environment" by Kernighan and Pike (1984). Thompson and Ritchie's iconic contribution was the paper "The UNIX Time-Sharing System" (1974, CACM). The whole ecosystem — Unix, C, regex, grep, lex — grew from the same Bell Labs culture of the 1970s.
-
-The beauty of Thompson's construction is that it produces an NFA with at most 2n states for a regex of length n (linear!), and the three invariants we maintain are exactly what make the inductive step work cleanly.
+This is Thompson's construction, from his 1968 CACM paper "Regular expression search algorithm." He used it in QED and then in `ed`, the line editor that later gave us `sed` and `grep`. The NFA has at most $2n$ states for an expression of length $n$, linear in the size of the RE, and the three invariants are exactly what let the inductive step glue pieces without creating stray arrows. Thompson and Ritchie built Unix in the same years; their 1974 CACM paper "The UNIX Time-Sharing System" is the public record of that lab. Thompson later co-designed UTF-8 and Go, and shared the 1983 Turing Award with Ritchie.
 -->
 
 ---
@@ -492,6 +498,9 @@ $$q_i \xrightarrow{R_1 R_2^* R_3 + R_4} q_j$$
 
 The label $R$ is the desired regular expression!
 
+<!--
+State elimination is the same algebra as Arden's lemma: the language $X$ of a state with a self-loop $A$ and an exit $B$ satisfies $X = AX + B$, whose solution is $A^*B$. Sipser popularized the GNFA packaging; the idea of ripping out states and writing the leftover path as an RE is older. Different elimination orders give different-looking expressions that denote the same language, which is why two correct homework answers can look nothing alike.
+-->
 
 ---
 
@@ -544,6 +553,9 @@ Each formalism offers a different **perspective** on regular languages:
 - **NFA:** design flexibility, compact
 - **RE:** algebraic, declarative
 
+<!--
+The regex engine in a language like Python is not this formalism. Backreferences (`(a+)b\1`) already take you to context-sensitive matching; lookaheads and possessive quantifiers are outside it too. Thompson's NFA simulation still runs in linear time in the input; backtracking engines can go exponential on the same pattern. The theorem on this slide is about the mathematical objects, not about `re.search`.
+-->
 
 ---
 
