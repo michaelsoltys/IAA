@@ -291,7 +291,7 @@ Tiny two-state machines for $\varepsilon$, $\emptyset$, and a single symbol — 
 
 </div>
 
-<img src="./Figures/re-basis.svg" class="mx-auto block" style="width: 100%; max-height: 280px;" alt="Three basis NFAs: epsilon, empty set, and a single symbol a" />
+<img src="./Figures/re-basis.drawio.svg" class="mx-auto block" style="width: 100%; max-height: 280px;" alt="Three basis NFAs: epsilon, empty set, and a single symbol a" />
 
 Each satisfies the three invariants: one accept state, no arrows into start, no arrows out of accept.
 
@@ -319,7 +319,7 @@ Invariants survive: one accept, nothing into start, nothing out of accept.
 
 </div>
 
-<img src="./Figures/re-union.svg" style="width: 100%; max-height: 320px;" alt="Thompson union: new start splits by epsilon into R and S, then both merge into a new accept" />
+<img src="./Figures/re-union.drawio.svg" style="width: 100%; max-height: 320px;" alt="Thompson union: new start splits by epsilon into R and S, then both merge into a new accept" />
 
 </div>
 
@@ -347,7 +347,7 @@ Invariants survive because $R$ had nothing into its start and $S$ had nothing ou
 
 </div>
 
-<img src="./Figures/re-concat.svg" style="width: 100%; max-height: 260px;" alt="Thompson concatenation: R then epsilon then S" />
+<img src="./Figures/re-concat.drawio.svg" style="width: 100%; max-height: 260px;" alt="Thompson concatenation: R then epsilon then S" />
 
 </div>
 
