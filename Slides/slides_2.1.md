@@ -166,17 +166,16 @@ Sort edges cheap-to-expensive and add each one *unless it would close a cycle*.
 
 <span style="font-size: 0.6em; color: navy;">Alg 10, Pg 35, alg:kruskal</span>
 
+Kruskal's Algorithm:
 ```text
-Kruskal:
-1. Sort: c(e₁) ≤ … ≤ c(eₘ)
-2. T ← ∅
-3. for i = 1 to m:
-4.   if T ∪ {eᵢ} has no cycle:
-5.     T ← T ∪ {eᵢ}
-6. return T
+Sort: c(e₁) ≤ … ≤ c(eₘ)
+T ← ∅
+for i = 1 to m:
+   if T ∪ {eᵢ} has no cycle:
+      T ← T ∪ {eᵢ}
+return T
 ```
-
-Always the cheapest edge that does not close a cycle.
+In words, order edges by cost, starting with cheapest; keep adding edges unless adding an edge creates a cycle.
 
 </div>
 
