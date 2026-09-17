@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 348" width="1080" height="348">
+  <defs>
+    <marker id="exch-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b"/>
+    </marker>
+    <filter id="exch-soft" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="white"/>
+
+  <rect x="16" y="8" width="312" height="300" rx="16" fill="#f8fafc" stroke="#e2e8f0" filter="url(#exch-soft)"/>
+  <rect x="384" y="8" width="312" height="300" rx="16" fill="#f8fafc" stroke="#e2e8f0" filter="url(#exch-soft)"/>
+  <rect x="752" y="8" width="312" height="300" rx="16" fill="#f8fafc" stroke="#e2e8f0" filter="url(#exch-soft)"/>
+
+  <line x1="338" y1="158" x2="374" y2="158" stroke="#64748b" stroke-width="2.2" marker-end="url(#exch-arrow)"/>
+  <line x1="706" y1="158" x2="742" y2="158" stroke="#64748b" stroke-width="2.2" marker-end="url(#exch-arrow)"/>
+  <text x="356" y="144" text-anchor="middle" font-family="Times New Roman, Times, serif" font-style="italic" font-size="15" fill="#0f766e">add e</text>
+  <text x="724" y="144" text-anchor="middle" font-family="Times New Roman, Times, serif" font-style="italic" font-size="15" fill="#b91c1c">drop e′</text>
+
+  <!-- Panel 1: T1 -->
+  <g font-family="Times New Roman, Times, serif">
+    <text x="172" y="42" text-anchor="middle" font-style="italic" font-size="22" fill="#0f172a">T₁</text>
+
+    <line x1="86" y1="88" x2="258" y2="88" stroke="#334155" stroke-width="3.4" stroke-linecap="round"/>
+    <line x1="86" y1="260" x2="258" y2="260" stroke="#334155" stroke-width="3.4" stroke-linecap="round"/>
+    <line x1="86" y1="88" x2="86" y2="260" stroke="#b91c1c" stroke-width="4" stroke-linecap="round"/>
+    <line x1="258" y1="88" x2="258" y2="260" stroke="#0f766e" stroke-width="2.4" stroke-dasharray="7 7" stroke-linecap="round" opacity="0.45"/>
+
+    <circle cx="86" cy="88" r="11" fill="white" stroke="#0f172a" stroke-width="2.4"/>
+    <circle cx="258" cy="88" r="11" fill="white" stroke="#0f172a" stroke-width="2.4"/>
+    <circle cx="86" cy="260" r="11" fill="white" stroke="#0f172a" stroke-width="2.4"/>
+    <circle cx="258" cy="260" r="11" fill="white" stroke="#0f172a" stroke-width="2.4"/>
+
+    <text x="172" y="76" text-anchor="middle" font-style="italic" font-size="16" fill="#334155">e₁</text>
+    <text x="172" y="284" text-anchor="middle" font-style="italic" font-size="16" fill="#334155">e₃</text>
+    <text x="68" y="180" text-anchor="end" font-style="italic" font-size="18" fill="#b91c1c">e′</text>
+    <text x="276" y="180" font-style="italic" font-size="18" fill="#0f766e">e</text>
+  </g>
+
+  <!-- Panel 2: T1 ∪ {e} -->
+  <g font-family="Times New Roman, Times, serif">
+    <text x="540" y="42" text-anchor="middle" font-style="italic" font-size="22" fill="#0f172a">T₁ ∪ {e}</text>
+
+    <rect x="454" y="88" width="172" height="172" fill="#d1fae5" opacity="0.7"/>
+
+    <line x1="454" y1="88" x2="626" y2="88" stroke="#334155" stroke-width="3.4" stroke-linecap="round"/>
+    <line x1="454" y1="260" x2="626" y2="260" stroke="#334155" stroke-width="3.4" stroke-linecap="round"/>
+    <line x1="454" y1="88" x2="454" y2="260" stroke="#b91c1c" stroke-width="4" stroke-dasharray="8 6" stroke-linecap="round"/>
+    <line x1="626" y1="88" x2="626" y2="260" stroke="#0f766e" stroke-width="4" stroke-linecap="round"/>
+
+    <circle cx="454" cy="88" r="11" fill="white" stroke="#0f172a" stroke-width="2.4"/>
+    <circle cx="626" cy="88" r="11" fill="white" stroke="#0f172a" stroke-width="2.4"/>
+    <circle cx="454" cy="260" r="11" fill="white" stroke="#0f172a" stroke-width="2.4"/>
+    <circle cx="626" cy="260" r="11" fill="white" stroke="#0f172a" stroke-width="2.4"/>
+
+    <text x="540" y="76" text-anchor="middle" font-style="italic" font-size="16" fill="#334155">e₁</text>
+    <text x="540" y="284" text-anchor="middle" font-style="italic" font-size="16" fill="#334155">e₃</text>
+    <text x="436" y="180" text-anchor="end" font-style="italic" font-size="18" fill="#b91c1c">e′</text>
+    <text x="644" y="180" font-style="italic" font-size="18" fill="#0f766e">e</text>
+    <text x="540" y="182" text-anchor="middle" font-size="13" font-family="Helvetica, Arial, sans-serif" fill="#0f766e">cycle</text>
+  </g>
+
+  <!-- Panel 3: T1 ∪ {e} − {e'} -->
+  <g font-family="Times New Roman, Times, serif">
+    <text x="908" y="42" text-anchor="middle" font-style="italic" font-size="22" fill="#0f172a">T₁ ∪ {e} − {e′}</text>
+
+    <line x1="822" y1="88" x2="994" y2="88" stroke="#334155" stroke-width="3.4" stroke-linecap="round"/>
+    <line x1="822" y1="260" x2="994" y2="260" stroke="#334155" stroke-width="3.4" stroke-linecap="round"/>
+    <line x1="822" y1="88" x2="822" y2="260" stroke="#b91c1c" stroke-width="2" stroke-dasharray="3 8" opacity="0.28" stroke-linecap="round"/>
+    <line x1="994" y1="88" x2="994" y2="260" stroke="#0f766e" stroke-width="4" stroke-linecap="round"/>
+
+    <circle cx="822" cy="88" r="11" fill="white" stroke="#0f172a" stroke-width="2.4"/>
+    <circle cx="994" cy="88" r="11" fill="white" stroke="#0f172a" stroke-width="2.4"/>
+    <circle cx="822" cy="260" r="11" fill="white" stroke="#0f172a" stroke-width="2.4"/>
+    <circle cx="994" cy="260" r="11" fill="white" stroke="#0f172a" stroke-width="2.4"/>
+
+    <text x="908" y="76" text-anchor="middle" font-style="italic" font-size="16" fill="#334155">e₁</text>
+    <text x="908" y="284" text-anchor="middle" font-style="italic" font-size="16" fill="#334155">e₃</text>
+    <text x="1012" y="180" font-style="italic" font-size="18" fill="#0f766e">e</text>
+  </g>
+
+  <g font-family="Times New Roman, Times, serif" font-style="italic" font-size="15">
+    <line x1="352" y1="328" x2="386" y2="328" stroke="#0f766e" stroke-width="4" stroke-linecap="round"/>
+    <text x="394" y="333" fill="#0f766e">e ∈ T₂ − T₁</text>
+    <line x1="562" y1="328" x2="596" y2="328" stroke="#b91c1c" stroke-width="4" stroke-linecap="round"/>
+    <text x="604" y="333" fill="#b91c1c">e′ ∈ T₁ − T₂</text>
+  </g>
+</svg>

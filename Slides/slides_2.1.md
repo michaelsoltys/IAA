@@ -54,40 +54,35 @@ By eye, even *a* path through this is a slog. Breadth-first search finds one in 
 
 # Graph Representation
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
 
-The adjacency matrix of the graph on the previous slide — $n = 240$ nodes, a $1$ where there is an edge. Green entries are the path.
+A $1$ where there is an edge. Concatenate the rows and you have the input string $s_G \in \{0,1\}^{n^2}$.
 
 </div>
 
-$$A_G[i,j] = \begin{cases} 1 & \text{if } (i,j) \in E \\ 0 & \text{otherwise} \end{cases}
-\quad\text{encoded as } s_G \in \{0,1\}^{n^2}$$
+$$A_G[i,j] = \begin{cases} 1 & \text{if } (i,j) \in E \\ 0 & \text{otherwise} \end{cases}$$
 
-<img src="./Figures/grid-path-matrix.jpg" class="mx-auto block" style="max-height: 280px;" alt="240 by 240 adjacency matrix of the grid graph; green cells are the path" />
+<img src="./Figures/graph-representation.svg" class="mx-auto block" style="width: 100%; max-height: 390px;" alt="Five-vertex house graph and its 5 by 5 adjacency matrix" />
 
 <!--
-Vertices are numbered row-major, left to right, top to bottom. A 4-connected grid puts the 1s on two bands: offset 1 (horizontal neighbours) and offset 20 (vertical neighbours). Gaps in those bands are missing maze walls; the green dots are the path from slide 2, appearing twice because the graph is undirected. Concatenate the rows and you have the n²-bit input string; looking up edge (i,j) is a single bit test at position (i-1)n + j.
+The matrix is symmetric because the graph is undirected, and the diagonal is zero because there are no loops. Looking up edge (i,j) is a single bit test at position (i-1)n + j in s_G. The 240-node maze on the previous slide is the same object, just too big to read by eye.
 -->
 
 ---
 
 # Graph Definitions
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.4em;">
 
 The vocabulary — paths, cycles, connected, tree, spanning tree — that we'll use for every graph algorithm.
 
 </div>
 
+<img src="./Figures/graph-definitions.svg" class="mx-auto block" style="width: 100%; max-height: 460px;" alt="Eight graph definitions, each with a four-vertex diagram: undirected, degree, path, connected, cycle, acyclic, tree, spanning tree" />
 
-- **Undirected graph:** $G = (V, E)$ where $(u,v) \in E \Leftrightarrow (v,u) \in E$
-- **Degree:** Number of edges touching a vertex
-- **Path:** Sequence $v_1, v_2, \ldots, v_k$ where each $(v_i, v_{i+1}) \in E$
-- **Connected:** Every pair of nodes has a path between them
-- **Cycle:** Simply closed path $v_1, \ldots, v_k, v_1$ with all $v_i$ distinct, $k \geq 3$
-- **Acyclic:** No cycles
-- **Tree:** Connected + Acyclic
-- **Spanning tree:** Subset $T \subseteq E$ such that $(V, T)$ is a tree
+<!--
+The four vertices sit in the same places in every panel. Acyclic is a forest, two components, so it is not a tree; the spanning-tree panel is the tree from the panel next to it, drawn as a subset of the original edge set. If G has a cycle it has more than one spanning tree, and every spanning tree has n-1 edges — that is the next slide.
+-->
 
 
 ---
@@ -124,52 +119,73 @@ Cayley's formula says the complete graph $K_n$ has exactly $n^{n-2}$ distinct sp
 
 # Minimum Cost Spanning Tree
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
 
 Pick $n-1$ edges that connect everything *and* minimize total cost — the classic network-design problem.
 
 </div>
 
-**Setup:**
-- Graph $G = (V, E)$ with cost function $c: E \rightarrow \mathbb{R}^+$
-- Total cost: $c(T) = \sum_{e \in T} c(e)$
+<div style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 1.4rem; align-items: center; text-align: left;">
 
+<div>
+
+**Setup:**
+- Graph $G = (V, E)$ with cost $c: E \rightarrow \mathbb{R}^+$
+- Total cost: $c(T) = \sum_{e \in T} c(e)$
 
 **Definition:** $T$ is a **Minimum Cost Spanning Tree (MCST)** if:
 1. $T$ is a spanning tree for $G$
 2. For any other spanning tree $T'$: $c(T) \leq c(T')$
 
-
 **Goal:** Find a MCST for $G$
+
+</div>
+
+<img src="./Figures/house-spanning.svg" style="width: 100%; max-height: 390px;" alt="House graph G and one spanning tree T on the same five vertices" />
+
+</div>
+
+<!--
+The house is the graph from the representation slide. T keeps the two roof edges and the two walls, and drops the ceiling and the floor: four edges, five vertices, no cycle. It is a spanning tree, not yet a *minimum-cost* one; costs come in on the next slide.
+-->
 
 
 ---
 
 # Kruskal's Algorithm
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
 
-Sort edges cheap-to-expensive and add each one *unless it would close a cycle* — that's the entire algorithm.
+Sort edges cheap-to-expensive and add each one *unless it would close a cycle*.
 
 </div>
+
+<div style="display: grid; grid-template-columns: 0.85fr 1.25fr; gap: 1.2rem; align-items: center; text-align: left;">
+
+<div>
 
 <span style="font-size: 0.6em; color: navy;">Alg 10, Pg 35, alg:kruskal</span>
 
 ```text
-Kruskal's Algorithm:
-1. Sort edges: c(e₁) ≤ c(e₂) ≤ ... ≤ c(eₘ)
+Kruskal:
+1. Sort: c(e₁) ≤ … ≤ c(eₘ)
 2. T ← ∅
 3. for i = 1 to m:
-4.     if T ∪ {eᵢ} has no cycle:
-5.         T ← T ∪ {eᵢ}
+4.   if T ∪ {eᵢ} has no cycle:
+5.     T ← T ∪ {eᵢ}
 6. return T
 ```
 
+Always the cheapest edge that does not close a cycle.
 
-**Key insight:** Greedy approach - always add the cheapest edge that doesn't create a cycle
+</div>
+
+<img src="./Figures/kruskal-hat.svg" style="width: 100%; max-height: 400px;" alt="Kruskal on the house graph: add the two roof edges, skip the ceiling, add the two walls, skip the floor" />
+
+</div>
 
 <!--
-Joseph Kruskal published this in 1956 in the Proceedings of the AMS, while at Princeton and later Bell Labs. His brother Martin Kruskal is the Kruskal of Kruskal–Szekeres (general relativity) and of soliton theory; two brothers, two fields, the same surname on a lemma. If all edge costs are distinct the MCST is unique, which is why Problem 2.12 can insist that the strictly cheapest edge sits in every MCST.
+Joseph Kruskal published this in 1956 in the Proceedings of the AMS, while at Princeton and later Bell Labs. His brother Martin Kruskal is the Kruskal of Kruskal–Szekeres (general relativity) and of soliton theory; two brothers, two fields, the same surname on a lemma. Costs on the hat are 1 through 6 in the order Kruskal considers them. After the two roof edges, e3 is the ceiling and closes the triangle, so it is rejected in the middle of the run; the two walls go in, then the floor is rejected because 4 is already joined to 5 through the roof. Same spanning tree as the previous slide. Distinct costs, so this MCST is unique.
 -->
 
 ---
@@ -294,27 +310,19 @@ Since $T$ is promising, there exists MCST $T_1$ with $T \subseteq T_1$.
 
 # Exchange Lemma
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
 
-Two spanning trees can be transformed into each other one edge at a time — the swap that powers the proof.
+Adding $e$ to $T_1$ creates a cycle; some edge $e'$ on that cycle lies in $T_1 - T_2$.
 
 </div>
 
-**Lemma:** Let $G$ be connected, $T_1$ and $T_2$ be spanning trees. For every edge $e \in T_2 - T_1$, there exists $e' \in T_1 - T_2$ such that $T_1 \cup \{e\} - \{e'\}$ is a spanning tree. <span style="font-size: 0.6em; color: navy;">Lem 2.11, Pg 39, lem:exch</span>
+**Lemma:** Let $G$ be connected, $T_1$ and $T_2$ be spanning trees. For every $e \in T_2 - T_1$ there is an $e' \in T_1 - T_2$ such that $T_1 \cup \{e\} - \{e'\}$ is a spanning tree. <span style="font-size: 0.6em; color: navy;">Lem 2.11, Pg 39, lem:exch</span>
 
+<img src="./Figures/exchange-lemma.svg" class="mx-auto block" style="width: 100%; max-height: 380px;" alt="Three spanning trees of a 4-cycle: add e from T2 to T1, forming a cycle, then drop e-prime from T1 minus T2" />
 
-```
-    T₁                    T₂
-   ┌───────────┐    ┌───────────┐
-   │     ●     │    │     ●     │
-   │    /      │    │      \    │
-   │   ● e'    │    │    e  ●   │
-   │           │    │           │
-   └───────────┘    └───────────┘
-```
-
-
-**Idea:** Adding $e$ to $T_1$ creates a cycle; some edge $e'$ in that cycle must be in $T_1 - T_2$
+<!--
+T1 union {e} has a unique cycle. That cycle cannot live entirely inside T2, because T2 is acyclic, so some edge e' of the cycle is missing from T2 and therefore sits in T1 - T2. Delete it. Whitney's 1935 definition of a matroid is this same exchange property, abstracted away from graphs; graphic matroids are the special case sitting on this slide.
+-->
 
 
 ---
