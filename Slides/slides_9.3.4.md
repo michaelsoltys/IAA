@@ -110,27 +110,17 @@ Concatenation distributes over $+$ on both sides — and union swallows duplicat
 
 # Missing Law: Commutativity of Concatenation
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
 
-Strings are ordered, so $ab \neq ba$ — concatenation is *not* commutative, just like matrix multiplication.
+$RP = PR$ is the law that is not there. Strings are ordered, so $ab \neq ba$.
 
 </div>
 
-**Question:** Is $RP = PR$ a valid law?
+<img src="./Figures/re-laws-concat.drawio.svg" class="mx-auto block" style="width: 100%; max-height: 360px;" alt="Two cards: language of a then b is {ab}, language of b then a is {ba}, not equal" />
 
-
-**No!** Commutativity of concatenation is **conspicuously missing**
-
-
-**Why?** Concatenation is not commutative: $ab \neq ba$ as strings
-
-- $L(\{a\}\{b\}) = \{ab\}$
-- $L(\{b\}\{a\}) = \{ba\}$
-
-These are different languages!
-
-
-**Analogy:** Matrix multiplication is also not commutative — order matters when combining structured objects
+<!--
+The same reason matrix multiplication fails to commute: the objects have an order, and swapping the factors is a different object. Two-letter words are the smallest witness. RP = PR can hold for particular R and P (take R = P, or R = a* and P = a), but it is not an identity.
+-->
 
 
 ---
@@ -174,30 +164,17 @@ Including the *interleaving lemma* $(R + P)^* = (R^*P^*)^*$ — both produce all
 
 # A Subtle Point About $R^+$
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
 
-If $\varepsilon \in L(R)$, then $\varepsilon \in L(R^+)$ too — so $R^+$ is *not* always $R^*$ minus $\varepsilon$.
+$R^* = R^+ + \varepsilon$ does not mean $L(R^+) = L(R^*) - \{\varepsilon\}$. It depends on whether $\varepsilon$ is already in $R$.
 
 </div>
 
-From $R^* = R^+ + \varepsilon$ one might be tempted to conclude:
+<img src="./Figures/re-laws-starplus.drawio.svg" class="mx-auto block" style="width: 100%; max-height: 400px;" alt="Left: R = a, epsilon dropped from R+. Right: R = epsilon + a, epsilon stays in R+" />
 
-$$L(R^+) = L(R^*) - \{\varepsilon\}$$
-
-
-**This is NOT necessarily true!**
-
-
-**Counterexample:** Let $R = \varepsilon + a$
-
-- $L(R) = \{\varepsilon, a\}$
-- $L(R^+) = \{\varepsilon, a, aa, aaa, \ldots\}$ — note that $\varepsilon \in L(R^+)$ since $\varepsilon \in L(R)$
-- $L(R^*) = \{\varepsilon, a, aa, aaa, \ldots\}$
-
-So $L(R^+) = L(R^*)$ in this case — removing $\varepsilon$ would be wrong!
-
-
-**The issue:** $R^+ = RR^*$, and if $\varepsilon \in L(R)$, then $\varepsilon \in L(R^+)$
+<!--
+R+ is defined as RR*, one copy of R followed by a star. If that one copy can be ε, the star is free to contribute ε as well, and ε survives. The identity R* = R+ + ε is still true; union with {ε} does not force ε out of the other summand.
+-->
 
 
 ---
@@ -218,66 +195,51 @@ A surprising verification method
 
 # The Test for RE Algebraic Laws
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
 
-Substitute distinct symbols for the variables, compare the resulting languages — that's all you need.
+To test $E = F$, replace the variables by distinct letters and compare the two concrete languages. One free instance decides the identity.
 
 </div>
 
-**Problem:** How do we check if an alleged algebraic law $E = F$ is valid?
+<img src="./Figures/re-laws-test.drawio.svg" class="mx-auto block" style="width: 100%; max-height: 380px;" alt="Substitution R to a and P to b turns (R+P)* = (R*P*)* into (a+b)* = (a*b*)*, both equal to {a,b}*" />
 
-
-**Method:** Replace all variables ($R, P, Q, \ldots$) by **distinct symbols** ($a, b, c, \ldots$) to get concrete REs $C, D$. Then check if $L(C) = L(D)$.
-
-
-**If $L(C) = L(D)$, then the law $E = F$ is valid!**
-
-
-This is remarkable: we verify a **universal** statement (for all languages $R, P, Q, \ldots$) by testing a **single particular instance**
-
-
-This contradicts typical mathematical reasoning — usually one example proves nothing about a universal claim
+<!--
+Language operations are homomorphisms: substituting languages for letters preserves equality. Distinct letters are the free case, so equality there lifts to every substitution. A mismatch on those letters is an ordinary counterexample. Salomaa axiomatized the algebra of regular events in 1966; the classroom test is the free-case specialization of that completeness.
+-->
 
 
 ---
 
 # Testing Example
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
 
-Replace $R \mapsto a$, $P \mapsto b$ — both sides describe $\{a,b\}^*$, so the law holds.
+$(R + P)^* = (R^*P^*)^*$ becomes $(a + b)^* = (a^*b^*)^*$. Both are $\{a,b\}^*$, read two ways.
 
 </div>
 
-**Claim:** $(R + P)^* = (R^*P^*)^*$
+<img src="./Figures/re-laws-interleave.drawio.svg" class="mx-auto block" style="width: 100%; max-height: 380px;" alt="The string abba read letter by letter as (a+b)* and as two a*b* blocks" />
 
-
-**Step 1:** Replace $R$ by $a$ and $P$ by $b$
-
-**Step 2:** Check whether $(a + b)^* = (a^*b^*)^*$
-
-**Step 3:** Verify:
-- $L((a+b)^*) = \Sigma^*$, i.e., all strings over $\{a, b\}$
-- $L((a^*b^*)^*) = \Sigma^*$, since any string is a concatenation of blocks of $a$s and $b$s
-
-**Conclusion:** The two languages are equal, so the law holds!
+<!--
+Any string over {a,b} splits uniquely into maximal runs of a's and b's. Grouping those runs as (a* b*) pairs, with a trailing empty b* if the string ends in a, shows it is in (a* b*)*. The other direction is immediate: a* b* only uses a and b. That is the interleaving lemma as a picture.
+-->
 
 
 ---
 
-# Why Does the Test Work?
+# When the Test Fails
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
 
-Distinct symbols expose the *structural* equivalence — no accidental coincidence between the languages.
+The same substitution kills a fake law. $R + PR^* \neq (P + R)^*$, because $ab$ is on one side only.
 
 </div>
 
-**Intuition:** Replacing variables by distinct symbols preserves the **structural relationships** between the RE operations
+<img src="./Figures/re-laws-fake.drawio.svg" class="mx-auto block" style="width: 100%; max-height: 390px;" alt="After substituting a and b, ab is missing from a + ba* and present in (a+b)*" />
 
-If two REs produce the same language even when their components are maximally distinct (different symbols), then the equivalence depends only on the **algebraic structure**, not on the specific languages
-
-**Formal justification:** If $L(C) \neq L(D)$ for the concrete instance, then we have a **counterexample** — the particular languages show the law fails. If $L(C) = L(D)$, then the structural equivalence guarantees $L(E) = L(F)$ for all substitutions
+<!--
+One mismatched string is enough. Distinct letters keep the two sides from accidentally agreeing: if the identity were true for all languages, it would be true of {a} and {b}. The witness ab is the shortest string that uses both letters in the order the left-hand side forbids.
+-->
 
 
 ---

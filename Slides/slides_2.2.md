@@ -30,6 +30,10 @@ Section 2.2 — Schedule unit-time jobs to maximize profit, by *procrastinating*
 
 <div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
+<!--
+James R. Jackson's 1955 UCLA report, *Scheduling a production line to minimize maximum tardiness*, is the sequencing paper still taught. Same year, Richard Bellman at RAND surveyed the field and wrote of "the deplorable state of the art." Jackson's rule is earliest due date, one sort; this lecture sorts by profit and packs each job as late as it will fit. The book's index has an entry for procrastination.
+-->
+
 ---
 
 # Problem Setup
@@ -41,15 +45,26 @@ One processor, $n$ jobs, each with a deadline and a payoff — what's the most m
 </div>
 
 
+<div style="display: grid; grid-template-columns: 0.9fr 1.2fr; gap: 1.2rem; align-items: center; text-align: left;">
+
+<div>
+
 - **$n$ jobs**, each takes **unit time**
 - **One processor** to schedule them sequentially
-- Each job $i$ has:
-  - **Profit** $g_i \in \mathbb{R}^+$ (gain if completed)
-  - **Deadline** $d_i \in \mathbb{N}$ (must finish by this time)
-- If a job is not scheduled by its deadline → **no profit**
+- Each job $i$ has profit $g_i$ and deadline $d_i$
+- Miss the deadline → **no profit**
 
+**Goal:** maximize total profit
 
-**Goal:** Find a schedule that maximizes total profit!
+</div>
+
+<img src="./Figures/jobs-setup.drawio.svg" style="width: 100%; max-height: 390px;" alt="Four jobs with deadlines and profits feeding one processor with two empty unit-time slots" />
+
+</div>
+
+<!--
+Unit durations turn the processor into an array of slots. Give the jobs arbitrary lengths and the same objective is a knapsack: one shared capacity and you are packing items. The later section on durations is careful to say greedy does not "seem" to work, with a footnote to Borodin, Nielsen, and Rackoff 2003 on how hard it is even to define the greedy paradigm.
+-->
 
 
 ---
@@ -62,17 +77,17 @@ An array of $d$ slots — each holds a job ID or zero, with $d$ being the latest
 
 </div>
 
-A **schedule** $S$ is an array $S(1), S(2), \ldots, S(d)$ where:
+A **schedule** $S$ is an array $S(1), S(2), \ldots, S(d)$ where $d = \max_i d_i$:
 
+- $S(t) = i$ means job $i$ occupies time $t$
+- $S(t) = 0$ means the slot is idle
+- each slot holds at most one job
 
-- $d = \max_i d_i$ (latest deadline)
-- $S(t) = i$ means job $i$ is scheduled at time $t$
-- $S(t) = 0$ means no job is scheduled at time $t$
+<img src="./Figures/jobs-schedule.drawio.svg" class="mx-auto block" style="width: 100%; max-height: 220px;" alt="Schedule array S of six slots: jobs 2, 1, and 3 in positions 1, 3, and 5, zeros elsewhere" />
 
-
-<img src="./Figures/slots.drawio.svg" class="mx-auto h-12 my-4" />
-
-Each slot can hold at most one job.
+<!--
+Henry Gantt drew these charts around 1917 for US munitions and shipbuilding. The array S is a one-row Gantt chart. Its length is the latest deadline, not the number of jobs; extra jobs simply fail to find a free slot.
+-->
 
 
 ---
@@ -87,15 +102,17 @@ Two rules — meet every deadline, no job twice — and we measure success by to
 
 A schedule $S$ is **feasible** if it satisfies two conditions:
 
+**Condition 1:** $S(t) = i > 0 \Rightarrow t \leq d_i$ (meet the deadline)
 
-**Condition 1:** Every scheduled job meets its deadline
-$$S(t) = i > 0 \Rightarrow t \leq d_i$$
-
-**Condition 2:** Each job is scheduled at most once
-$$t_1 \neq t_2 \text{ and } S(t_1) \neq 0 \Rightarrow S(t_1) \neq S(t_2)$$
-
+**Condition 2:** each job appears in at most one slot
 
 **Total profit:** $P(S) = \sum_{t=1}^{d} g_{S(t)}$ where $g_0 = 0$
+
+<img src="./Figures/jobs-feasible.drawio.svg" class="mx-auto block" style="width: 100%; max-height: 300px;" alt="Left: feasible schedule (1, 3) with both jobs on time. Right: infeasible schedule with job 1 twice" />
+
+<!--
+Profit here is all or nothing: miss the deadline and g_i is gone, with no extra charge for how late. Moore's 1968 algorithm, the version he credited to T. E. Hodgson, minimizes the *count* of late jobs instead, by scanning in due-date order and dropping the longest job whenever the schedule overflows. Unweighted, one greedy pass; weighted, NP-hard. The algorithm on these slides only ever writes a feasible S, so the proof stays inside the feasible set.
+-->
 
 
 ---
@@ -110,23 +127,32 @@ Take jobs in *decreasing profit order* and schedule each as *late as it'll fit* 
 
 <span style="font-size: 0.6em; color: navy;">Alg 12, Pg 42, alg:jobs</span>
 
+<div style="display: grid; grid-template-columns: 0.95fr 1.15fr; gap: 1.1rem; align-items: center; text-align: left;">
+
+<div>
+
 Job scheduling algorithm:
 ```text
-Sort jobs by non-increasing profit: g₁ ≥ g₂ ≥ ... ≥ gₙ
+Sort: g₁ ≥ g₂ ≥ … ≥ gₙ
 d ← max_i dᵢ
-for t = 1 to d:
-    S(t) ← 0
+S(t) ← 0 for all t
 for i = 1 to n:
-    Find largest t such that S(t) = 0 and t ≤ dᵢ
+    latest free t ≤ dᵢ
     S(t) ← i
 return S
 ```
 
+Process by decreasing profit; pack each job as **late as it will fit**.
 
-**Key idea:** Process jobs in order of decreasing profit, schedule each as **late as possible** within its deadline.
+</div>
 
+<img src="./Figures/jobs-late.drawio.svg" style="width: 100%; max-height: 340px;" alt="Naive placement puts job i at the first free slot; greedy puts the same job at the latest free slot before its deadline" />
 
-A scientific confirmation of the benefits of **procrastination**!
+</div>
+
+<!--
+The book calls this a scientific confirmation of procrastination: early slots stay free for jobs whose deadlines are tight. Jackson sequenced by due date; here the order is profit and the placement is the latest feasible slot. The naive scan for that slot is O(n d). A parent array parent[t] = latest free slot at or before t, with path compression, brings the placements to nearly linear after the sort.
+-->
 
 
 ---
@@ -139,29 +165,54 @@ Four jobs, two slots — we get the *two highest payouts* and skip the cheaper d
 
 </div>
 
-<div class="grid grid-cols-2 gap-4">
-<div>
+Jobs: $(d_1, g_1) = (1, 10)$, $(d_2, g_2) = (1, 10)$, $(d_3, g_3) = (2, 8)$, $(d_4, g_4) = (2, 8)$. Latest deadline $d = 2$.
 
-Jobs: $(d_1, g_1) = (1, 10)$, $(d_2, g_2) = (1, 10)$, $(d_3, g_3) = (2, 8)$, $(d_4, g_4) = (2, 8)$
+<img src="./Figures/jobs-example.drawio.svg" class="mx-auto block" style="width: 100%; max-height: 380px;" alt="Jobs 1 and 3 occupy the two slots; jobs 2 and 4 cannot fit; profit 18" />
 
+<!--
+Two jobs of profit 10 compete for slot 1; the second is dropped, not postponed. Slot 2 then takes the first profit-8 job. Total 18, the same number you would get by taking both 8s. Problem 2.20 asks when the optimum is unique; tied profits are the usual source of several optima.
+-->
 
-- Latest deadline $d = 2$
-- Job 1 ($g=10$, $d=1$): slot 1
-- Job 2 ($g=10$, $d=1$): can't schedule
-- Job 3 ($g=8$, $d=2$): slot 2
-- Job 4 ($g=8$, $d=2$): can't schedule
+---
 
+# Detailed Example
 
-**Final:** $S = (1, 3)$, profit $= 18$
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
 
-
-</div>
-<div class="flex items-center">
-
-<img src="./Figures/slots-3.drawio.svg" class="mx-auto h-48" />
+Eight jobs, four slots, already sorted by profit — watch them fill from the right.
 
 </div>
+
+<div style="display: grid; grid-template-columns: 0.95fr 1.15fr; gap: 1.1rem; align-items: center; text-align: left;">
+
+<div style="font-size: 0.88em;">
+
+| Job | $d_i$ | $g_i$ |
+|-----|-------|-------|
+| 1 | 1 | 10 |
+| 2 | 1 | 10 |
+| 3 | 2 | 8 |
+| 4 | 2 | 8 |
+| 5 | 4 | 6 |
+| 6 | 4 | 6 |
+| 7 | 4 | 6 |
+| 8 | 4 | 6 |
+
+$d = 4$, four slots. Jobs 2, 4, 7, 8 find no free slot.
+
+**Final profit:** $10 + 8 + 6 + 6 = 30$
+
 </div>
+
+<img src="./Figures/jobs-trace.drawio.svg" style="width: 100%; max-height: 420px;" alt="Five snapshots of a four-slot schedule filling from the right: (0,0,0,0), then 1, then 1 3, then 1 3 _ 5, then 1 3 6 5" />
+
+</div>
+
+<!--
+Lawler, in 1973, sequenced jobs last-to-first, always taking, among those still available, the one with the latest deadline. Filling slots from the right is that idea with no precedence constraints. Job 5, deadline 4, takes slot 4, the latest free slot, and only then does job 6 take slot 3. Jobs 2, 4, 7, 8 are late. Total profit 30; the eight profits sum to 60, so half the money is on the floor.
+-->
+
+
 
 ---
 
@@ -180,6 +231,10 @@ Same trick as Kruskal — *promising* is the loop invariant, just with schedules
 
 Show that "$S$ is promising" is a loop invariant.
 
+<!--
+Edmonds proved in 1971 that greedy is optimal for every weight function on a hereditary set system if and only if that system is a matroid. Kruskal is the graphic matroid: independent sets are forests. This problem is the scheduling matroid: a set of unit-time jobs is independent when they can all meet their deadlines. CLRS §16.5 is that theorem. That is why the promising argument copies Kruskal's.
+-->
+
 
 ---
 
@@ -191,14 +246,15 @@ Show that "$S$ is promising" is a loop invariant.
 
 </div>
 
-**Definition:** Schedule $S'$ **extends** schedule $S$ if:
-- For all $t$: if $S(t) \neq 0$, then $S(t) = S'(t)$
+**Definition:** $S'$ **extends** $S$ if every filled slot of $S$ reappears, in the same place, in $S'$.
 
-
-Example: $S' = (2, 0, 1, 0, 3)$ extends $S = (2, 0, 0, 0, 3)$
-
+<img src="./Figures/jobs-extends.drawio.svg" class="mx-auto block" style="width: 100%; max-height: 280px;" alt="S = (2, 0, 0, 0, 3) and S-prime = (2, 0, 1, 0, 3); S-prime extends S" />
 
 **Definition:** $S$ is **promising** if it can be extended to an optimal schedule using jobs not yet considered.
+
+<!--
+Extends is the schedule analogue of "is a subset of." Zeros may be filled later; a written job is frozen. In matroid language S is a partial independent set, and promising means it sits inside some maximum-weight basis.
+-->
 
 
 ---
@@ -218,6 +274,10 @@ The empty schedule is trivially promising — we just need to maintain that prop
 - Can extend to any optimal schedule using all jobs
 - So $S$ is promising ✓
 
+<!--
+The empty set is independent in every matroid, so the basis of the invariant is free. After zero iterations the witness can be any optimal schedule.
+-->
+
 
 ---
 
@@ -229,16 +289,15 @@ Pick any optimal $S_{\text{opt}}$ that extends $S$ — we'll modify it to extend
 
 </div>
 
-Suppose $S$ is promising, and let $S_{\text{opt}}$ be some optimal schedule extending $S$.
+Suppose $S$ is promising, and let $S_{\text{opt}}$ be some optimal schedule extending $S$. Let $S'$ be $S$ after considering job $i$.
 
-Let $S'$ be the result after considering job $i$.
+**Goal:** an optimal $S'_{\text{opt}}$ that extends $S'$.
 
+<img src="./Figures/jobs-opt-extends.drawio.svg" class="mx-auto block" style="width: 100%; max-height: 280px;" alt="S has job j frozen and two idle slots; S-opt keeps j in that slot and may place a later job i in a former zero" />
 
-**Goal:** Show there exists optimal $S'_{\text{opt}}$ extending $S'$.
-
-<img src="./Figures/slots-2.drawio.svg" class="mx-auto h-24 my-4" />
-
-If $S$ has job $j$ somewhere, $S_{\text{opt}}$ has $j$ in the same position.
+<!--
+A written job is a promise S_opt must honour. Idle slots are the only places the witness is allowed to differ. That is the book's figure for this argument (label fig:jobs). The rest of the proof is one exchange, in two cases.
+-->
 
 
 ---
@@ -264,6 +323,10 @@ Let $S'_{\text{opt}} = S_{\text{opt}}$.
 
 But that's OK! If $S_{\text{opt}}$ used job $i$, there would have been a free slot in $S$ for it (contradiction).
 
+<!--
+If adding i would make the on-time set infeasible, no maximum-weight completion of S can contain i. The witness needs no edit. Problem 2.22 is this case.
+-->
+
 
 ---
 
@@ -284,6 +347,10 @@ So $S'(t_0) = i$ where $S(t_0) = 0$.
 - (a) Job $i$ is in $S_{\text{opt}}$ at some time $t_1$
 - (b) Job $i$ is not in $S_{\text{opt}}$
 
+<!--
+t_0 is the latest hole that still meets d_i. The witness either already uses i, somewhere at or before t_0, or it does not. Those are the two subcases.
+-->
+
 
 ---
 
@@ -297,17 +364,17 @@ If $S_{\text{opt}}$ scheduled job $i$ earlier, swap it with whatever's at $t_0$ 
 
 Job $i$ is scheduled in $S_{\text{opt}}$ at time $t_1$.
 
+**If $t_1 = t_0$:** $S'_{\text{opt}} = S_{\text{opt}}$
 
-**If $t_1 = t_0$:** Let $S'_{\text{opt}} = S_{\text{opt}}$ ✓
+**If $t_1 < t_0$:** swap those two slots — same profit, still feasible, now extends $S'$
 
-**If $t_1 < t_0$:** Swap positions $t_0$ and $t_1$ in $S_{\text{opt}}$
-- $S'_{\text{opt}}(t_0) = S_{\text{opt}}(t_1) = i$
-- $S'_{\text{opt}}(t_1) = S_{\text{opt}}(t_0)$
-- Still feasible (why?)
-- Still extends $S'$ (why?)
-- Same profit (just swapped)
+**If $t_1 > t_0$:** impossible ($t_0$ was the latest free slot in $S$)
 
-**If $t_1 > t_0$:** Not possible! ($t_0$ was the latest possible slot)
+<img src="./Figures/jobs-swap.drawio.svg" class="mx-auto block" style="width: 100%; max-height: 300px;" alt="S-opt has job i at t1 and job k at t0; after the swap, i is at t0 and k is at t1" />
+
+<!--
+The swap is the Exchange Lemma of this section. Feasibility of the swap is one of the "why"s in Problem 2.24: i still meets its deadline because t0 ≤ d_i, and k moves earlier so it cannot miss its deadline. Jackson's original proof that earliest due date minimizes maximum lateness is the same adjacent transposition: swap any inversion of due dates and L_max does not increase.
+-->
 
 
 ---
@@ -320,19 +387,15 @@ Drop whatever $S_{\text{opt}}$ had at $t_0$, replace it with $i$ — and now we 
 
 </div>
 
-Job $i$ is not scheduled in $S_{\text{opt}}$.
+Job $i$ is not scheduled in $S_{\text{opt}}$. Write $i$ at $t_0$ instead.
 
+<img src="./Figures/jobs-replace.drawio.svg" class="mx-auto block" style="width: 100%; max-height: 280px;" alt="S-opt has job j at t0; S-prime-opt replaces j with i at the same slot" />
 
-Define $S'_{\text{opt}}$ same as $S_{\text{opt}}$, except $S'_{\text{opt}}(t_0) = i$.
+**Claim:** if $S_{\text{opt}}(t_0) = j$, then $g_j \leq g_i$. Otherwise $j$ would already have been written into $S$ at $t_0$.
 
-
-Must show: $P(S'_{\text{opt}}) = P(S_{\text{opt}})$
-
-
-**Claim:** Let $S_{\text{opt}}(t_0) = j$. Then $g_j \leq g_i$.
-
-
-If $g_j > g_i$, then job $j$ was considered before job $i$...
+<!--
+If S_opt left t_0 for a cheaper job, write i there instead. Profit cannot fall, because i was the most profitable remaining job that fitted. That is the weighted-matroid exchange: a heavier element displaces a lighter one at the same rank.
+-->
 
 
 ---
@@ -356,6 +419,10 @@ Assume for contradiction: $g_j > g_i$ (so $j \neq 0$).
 - But $S_{\text{opt}}$ extends $S$, so $S_{\text{opt}}(t_2) = j$
 - Yet we said $S_{\text{opt}}(t_0) = j$
 - **Contradiction!** (job scheduled twice)
+
+<!--
+The contradiction is the greedy-choice property: a heavier job j would already have claimed t_0 when it was considered. So the occupant of t_0 in the witness is at most as valuable as i.
+-->
 
 
 ---
@@ -381,55 +448,9 @@ This completes the induction step, proving the loop invariant.
 
 After the algorithm terminates, $S$ is promising and all jobs considered → $S$ is optimal!
 
-
----
-
-# Detailed Example
-
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
-
-Eight jobs, four slots — pre-sorted by profit so we can focus on the *placement* dynamics.
-
-</div>
-
-Input (already sorted by profit):
-
-| Job | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
-|-----|---|---|---|---|---|---|---|---|
-| $d_i$ | 1 | 1 | 2 | 2 | 4 | 4 | 4 | 4 |
-| $g_i$ | 10 | 10 | 8 | 8 | 6 | 6 | 6 | 6 |
-
-
-Latest deadline $d = 4$, so schedule has 4 slots.
-
-
-Trace: Starting with $S = (0, 0, 0, 0)$
-
-
----
-
-# Example Trace
-
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
-
-Watch the slots fill up *from the right* — late slots first, exactly as the algorithm prescribes.
-
-</div>
-
-| Step | Job | Deadline | Action | Schedule |
-|------|-----|----------|--------|----------|
-| 0 | — | — | Initialize | $(0, 0, 0, 0)$ |
-| 1 | 1 | 1 | Place at slot 1 | $(1, 0, 0, 0)$ |
-| 2 | 2 | 1 | Can't place | $(1, 0, 0, 0)$ |
-| 3 | 3 | 2 | Place at slot 2 | $(1, 3, 0, 0)$ |
-| 4 | 4 | 2 | Can't place | $(1, 3, 0, 0)$ |
-| 5 | 5 | 4 | Place at slot 4 | $(1, 3, 0, 5)$ |
-| 6 | 6 | 4 | Place at slot 3 | $(1, 3, 6, 5)$ |
-| 7 | 7 | 4 | Can't place | $(1, 3, 6, 5)$ |
-| 8 | 8 | 4 | Can't place | $(1, 3, 6, 5)$ |
-
-
-**Final profit:** $10 + 8 + 6 + 6 = 30$
+<!--
+At termination every job has been considered, so a promising S is already a maximum-weight independent set. That is the theorem.
+-->
 
 
 ---
@@ -453,6 +474,10 @@ Trace the algorithm, plug holes in the proof, and uniqueness questions about the
 
 5. **Problem 2.24:** Answer all the "why's" in the proof <span style="font-size: 0.6em; color: navy;">Prb 2.24, Pg 44, exr:whys</span>
 
+<!--
+Problem 2.24's "whys" are the feasibility of the swap: i still meets d_i at t_0, and k moving earlier cannot miss its deadline. A linear independence test for this matroid: for every t, at most t jobs in the set have deadline ≤ t.
+-->
+
 
 ---
 
@@ -475,3 +500,7 @@ Both use "promising" as a loop invariant, but:
 | Build up a tree | Fill schedule slots |
 
 Same proof structure, different problem!
+
+<!--
+Kruskal's independent sets are forests; here they are sets of unit-time jobs that can all meet their deadlines. Same Edmonds theorem, two matroids. Give the jobs arbitrary durations and the feasible sets stop being a matroid, which is why the later section leaves greedy behind.
+-->

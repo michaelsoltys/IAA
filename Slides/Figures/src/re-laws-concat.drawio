@@ -1,0 +1,55 @@
+<mxfile host="Electron" agent="5.0">
+  <diagram name="re-laws-concat" id="re-laws-concat">
+    <mxGraphModel grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="0" page="0" pageScale="1" pageWidth="760" pageHeight="268" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#e2e8f0;strokeWidth=1;absoluteArcSize=1;arcSize=14;" value="" vertex="1">
+          <mxGeometry height="244" width="318" x="12" y="12" as="geometry" />
+        </mxCell>
+        <mxCell id="3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#e2e8f0;strokeWidth=1;absoluteArcSize=1;arcSize=14;" value="" vertex="1">
+          <mxGeometry height="244" width="318" x="430" y="12" as="geometry" />
+        </mxCell>
+        <mxCell id="4" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=17;fontColor=#0f172a;fontStyle=1;" value="L({a}{b})" vertex="1">
+          <mxGeometry height="28" width="318" x="12" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="5" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;fontColor=#64748b;fontStyle=2;" value="first a, then b" vertex="1">
+          <mxGeometry height="22" width="318" x="12" y="56" as="geometry" />
+        </mxCell>
+        <mxCell id="6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ccfbf1;strokeColor=#0f766e;strokeWidth=2.4;absoluteArcSize=1;arcSize=10;fontFamily=Times New Roman;fontSize=20;fontColor=#0f172a;fontStyle=2;" value="a" vertex="1">
+          <mxGeometry height="60" width="70" x="90" y="104" as="geometry" />
+        </mxCell>
+        <mxCell id="7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ccfbf1;strokeColor=#0f766e;strokeWidth=2.4;absoluteArcSize=1;arcSize=10;fontFamily=Times New Roman;fontSize=20;fontColor=#0f172a;fontStyle=2;" value="b" vertex="1">
+          <mxGeometry height="60" width="70" x="176" y="104" as="geometry" />
+        </mxCell>
+        <mxCell id="8" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=15;fontColor=#0f766e;fontStyle=2;" value="{ab}" vertex="1">
+          <mxGeometry height="26" width="318" x="12" y="184" as="geometry" />
+        </mxCell>
+        <mxCell id="9" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontColor=#64748b;fontStyle=0;" value="concatenation in this order" vertex="1">
+          <mxGeometry height="20" width="318" x="12" y="214" as="geometry" />
+        </mxCell>
+        <mxCell id="10" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=28;fontColor=#0f172a;fontStyle=0;" value="≠" vertex="1">
+          <mxGeometry height="40" width="100" x="330" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="11" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=17;fontColor=#0f172a;fontStyle=1;" value="L({b}{a})" vertex="1">
+          <mxGeometry height="28" width="318" x="430" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="12" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;fontColor=#64748b;fontStyle=2;" value="first b, then a" vertex="1">
+          <mxGeometry height="22" width="318" x="430" y="56" as="geometry" />
+        </mxCell>
+        <mxCell id="13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ccfbf1;strokeColor=#0f766e;strokeWidth=2.4;absoluteArcSize=1;arcSize=10;fontFamily=Times New Roman;fontSize=20;fontColor=#0f172a;fontStyle=2;" value="b" vertex="1">
+          <mxGeometry height="60" width="70" x="508" y="104" as="geometry" />
+        </mxCell>
+        <mxCell id="14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ccfbf1;strokeColor=#0f766e;strokeWidth=2.4;absoluteArcSize=1;arcSize=10;fontFamily=Times New Roman;fontSize=20;fontColor=#0f172a;fontStyle=2;" value="a" vertex="1">
+          <mxGeometry height="60" width="70" x="594" y="104" as="geometry" />
+        </mxCell>
+        <mxCell id="15" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=15;fontColor=#0f766e;fontStyle=2;" value="{ba}" vertex="1">
+          <mxGeometry height="26" width="318" x="430" y="184" as="geometry" />
+        </mxCell>
+        <mxCell id="16" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontColor=#64748b;fontStyle=0;" value="a different language" vertex="1">
+          <mxGeometry height="20" width="318" x="430" y="214" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
