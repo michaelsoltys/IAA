@@ -298,6 +298,39 @@ Five units, each a major algorithmic paradigm — built up over the semester.
 
 ---
 
+# Course Schedule
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
+
+Wednesdays 18:00–19:00. Quizzes 18:05–18:20. The Canvas Course Schedule page has the same table.
+
+</div>
+
+<div style="font-size: 0.48em;">
+
+| L | Date | Topic | Section | Due |
+|---|---|---|---|---|
+| L1 | Wed Aug 26 | Course Introduction | | |
+| L2 | Wed Sep 02 | PageRank | 1.2.1 | |
+| L3 | Wed Sep 09 | Stable Marriage | 1.2.2 | Quiz 1 |
+| L4 | Wed Sep 16 | Greedy: MCST | 2.1 | Quiz 2 |
+| L5 | Wed Sep 23 | Greedy: Jobs with deadlines and profits | 2.2 | Quiz 3, Assignment 1 |
+| L6 | Wed Sep 30 | Greedy: Other examples | 2.3 | Quiz 4 |
+| L7 | Wed Oct 07 | Midterm 1 | | Midterm 1 |
+| L8 | Wed Oct 14 | Divide and Conquer: Mergesort | 3.1 | Assignment 2 |
+| L9 | Wed Oct 21 | Divide and Conquer: Karatsuba | 3.2 | Quiz 5 |
+| L10 | Wed Oct 28 | Divide and Conquer: Savitch | 3.3 | Quiz 6 |
+| L11 | Wed Nov 04 | Midterm 2 | | Midterm 2, Assignment 3 |
+| L12 | Wed Nov 18 | Dynamic Programming: LMS | 4.1 | |
+| L13 | Wed Nov 25 | Dynamic Programming: APSP | 4.2 | Quiz 7 |
+| L14 | Wed Dec 02 | Dynamic Programming: Knapsack | 4.3 | Quiz 8, Assignment 4 |
+| L15 | dropped | Review / catching up | | |
+| L16 | Wed Dec 09 | Final Exam | | Final Exam |
+
+</div>
+
+---
+
 # Resources
 
 <div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">

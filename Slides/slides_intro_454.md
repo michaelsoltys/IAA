@@ -326,6 +326,39 @@ A topic-by-topic roadmap of the semester — the order matters; each layer subsu
 
 ---
 
+# Course Schedule
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
+
+Wednesdays 19:00–20:00. Quizzes 19:05–19:20. The Canvas Course Schedule page has the same table.
+
+</div>
+
+<div style="font-size: 0.48em;">
+
+| L | Date | Topic | Section | Due |
+|---|---|---|---|---|
+| L1 | Wed Aug 26 | Course Introduction | 9.1-2 | |
+| L2 | Wed Sep 02 | DFA | 9.3.1 | |
+| L3 | Wed Sep 09 | NFA | 9.3.2 | Quiz 1 |
+| L4 | Wed Sep 16 | Regular Expressions | 9.3.3 | Quiz 2 |
+| L5 | Wed Sep 23 | Properties of Regular Languages | 9.3.4-5 | Quiz 3, Assignment 1 |
+| L6 | Wed Sep 30 | Tools for Regular Expressions (RE2C) | | Quiz 4 |
+| L7 | Wed Oct 07 | Midterm 1 | | Midterm 1 |
+| L8 | Wed Oct 14 | CFG | 9.4.1 | Assignment 2 |
+| L9 | Wed Oct 21 | PDA | 9.4.2 | Quiz 5 |
+| L10 | Wed Oct 28 | Tools for CFG (Bison/YACC, Lex, Flex) | | Quiz 6 |
+| L11 | Wed Nov 04 | Midterm 2 | | Midterm 2, Assignment 3 |
+| L12 | Wed Nov 18 | Turing Machines / Encodings | 9.5.1, 9.5.2 | |
+| L13 | Wed Nov 25 | Decidable Languages / Church-Turing | 9.5.3, 9.5.4 | Quiz 7 |
+| L14 | Wed Dec 02 | Undecidable Languages | 9.5.5 | Quiz 8, Assignment 4 |
+| L15 | dropped | Review / catching up | | |
+| L16 | Wed Dec 09 | Final Exam | | Final Exam |
+
+</div>
+
+---
+
 # Resources
 
 <div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
