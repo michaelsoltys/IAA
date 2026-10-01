@@ -118,6 +118,10 @@ Greedy by weight *can* fail here too — Edmonds' blossom algorithm is the real 
 
 </div>
 
+<div style="display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 1.1rem; align-items: center; text-align: left;">
+
+<div>
+
 **Setup:** Bipartite graph $G = (V_1 \cup V_2, E)$ with edge weights
 
 **Matching:** Set $M \subseteq E$ where no two edges share a vertex
@@ -129,6 +133,12 @@ Greedy by weight *can* fail here too — Edmonds' blossom algorithm is the real 
 **Does it work?** Not always! (Problem 2.29)
 
 **Special case:** If all weights are distinct powers of 2, greedy works!
+
+</div>
+
+<img src="./Figures/bipartite-matching.drawio.svg" style="width: 100%; max-height: 390px;" alt="Bipartite graph with parts V1 = {a, b, c, d, e} and V2 = {x, y, z, v, w}. Teal matching a-w, b-v, c-z, d-y, e-x of weight 26, edges crossing; dashed a-x weight 2 and e-w weight 1 unmatched." />
+
+</div>
 
 <!--
 Maximum weight matching in general graphs is solved optimally by Jack Edmonds' "blossom algorithm" (1965), one of the landmark results in combinatorial optimization. It runs in O(n^3) and introduced the concept of "blossoms" — odd-length cycles that must be contracted to handle non-bipartite graphs. Edmonds' paper "Paths, Trees, and Flowers" is considered one of the most beautiful papers in theoretical CS.
@@ -146,6 +156,10 @@ The problem behind every GPS, every router, every map app — find cheapest path
 
 </div>
 
+<div style="display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 1.1rem; align-items: start; text-align: left;">
+
+<div>
+
 **Setup:**
 - Graph $G = (V, E)$
 - Start node $s$
@@ -155,10 +169,30 @@ The problem behind every GPS, every router, every map app — find cheapest path
 
 (Cost of path = sum of edge costs)
 
+</div>
+
+<div style="font-size: 0.82em;">
+
+**Breakthroughs**
+
+| Year | Result |
+|------|--------|
+| 1959 | Dijkstra, $O(n^2)$; later $O(m + n\log n)$ with Fibonacci heaps |
+| 1999 | Thorup: undirected integers, $O(m+n)$ in the RAM model |
+| 2023 | Duan–Mao–Shu–Yin: first break of Dijkstra on undirected reals |
+| 2025 | same group, directed: $O(m\log^{2/3}n)$ |
+| 2026 | Kadria–Roditty: first improvement since FOCS 2023 |
+
+</div>
+
+</div>
+
 <!--
 The shortest path problem is one of the most practically important problems in all of computer science. Every time you use Google Maps, a GPS navigator, or a network routing protocol, shortest path algorithms are running behind the scenes.
 
 The problem was first posed formally by mathematicians studying operations research in the 1950s. Before Dijkstra, the only known approaches were either brute-force (try all paths) or the Bellman-Ford algorithm (1956-1958), which handles negative edges but is slower.
+
+Dijkstra with Fibonacci heaps (Fredman and Tarjan, 1984) was O(m + n log n) for forty years. Thorup got linear time for undirected integer weights in the RAM model, but the comparison-addition model (only compare and add weights) stayed stuck. Duan, Mao, Shu, and Yin (FOCS 2023) were the first to beat Dijkstra on undirected real weights, randomized. The same group then broke the directed sorting barrier (STOC 2025). Kadria and Roditty, 14 September 2026, shave a (log log n / log log log n)^{1/4} factor off the FOCS 2023 bound; arXiv:2609.15247.
 -->
 
 ---
@@ -171,6 +205,10 @@ Grow an "explored region" outward from $s$, recording the best known cost to eac
 
 </div>
 
+<div style="display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 1.1rem; align-items: center; text-align: left;">
+
+<div>
+
 Like old cartographers mapping unknown territory!
 
 - Maintain set $S$ of "explored" nodes
@@ -179,12 +217,30 @@ Like old cartographers mapping unknown territory!
 
 **Expanding the frontier:**
 
-<img src="./Figures/explored.drawio.svg" class="mx-auto h-48 my-4" />
+<img src="./Figures/explored.drawio.svg" class="mx-auto h-36 my-2" alt="Explored set S growing outward from s toward an unexplored neighbor v" />
+
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; align-items: start; justify-items: center;">
+
+<figure style="margin: 0; text-align: center;">
+<img src="./Figures/dijkstra.jpg" style="height: 208px; width: auto; max-width: 100%; object-fit: cover; object-position: 50% 12%; border-radius: 10px;" alt="Edsger W. Dijkstra, photograph by Hamilton Richards, 2002" />
+<figcaption style="font-size: 0.55em; color: #64748b; margin-top: 0.35em; text-align: center;">Edsger W. Dijkstra</figcaption>
+</figure>
+
+<figure style="margin: 0; text-align: center;">
+<img src="./Figures/amsterdam-poster.jpg" style="height: 208px; width: auto; max-width: 100%; object-fit: contain; object-position: center; border-radius: 10px; background: #f5e6c8;" alt="Stylized Amsterdam travel poster: canal houses, a cafe terrace, and the word Amsterdam" />
+<figcaption style="font-size: 0.55em; color: #64748b; margin-top: 0.35em; text-align: center;">Amsterdam, 1956</figcaption>
+</figure>
+
+</div>
+
+</div>
 
 <!--
 Edsger W. Dijkstra invented this algorithm in 1956 while sitting at a cafe in Amsterdam. He was 26 years old. As he later recalled: "What is the shortest way to travel from Rotterdam to Groningen? I designed an algorithm for the shortest path in about twenty minutes. One morning I was shopping in Amsterdam with my young fiancee, and tired, we sat down on the cafe terrace to drink a cup of coffee and I was just thinking about whether I could do this, and I then designed the algorithm for the shortest path."
 
-He didn't publish it until 1959 — a 3-page paper in Numerische Mathematik. It's now one of the most cited papers in computer science.
+He didn't publish it until 1959, a 3-page paper in Numerische Mathematik. It's now one of the most cited papers in computer science. Portrait on the slide: Hamilton Richards, 2002, University of Texas at Austin, Wikimedia Commons, CC BY-SA 3.0.
 
 Dijkstra won the Turing Award in 1972, primarily for his contributions to programming methodology (structured programming, semaphores, the "Go To Statement Considered Harmful" letter). He was famously opinionated — he hand-wrote all his manuscripts and distributed them as numbered "EWDs" (over 1,300 of them), refusing to use a word processor.
 -->

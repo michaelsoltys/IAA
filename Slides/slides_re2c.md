@@ -22,6 +22,70 @@ re2c — A lexer generator that compiles regex straight to fast `goto`-driven C 
 
 ---
 
+# Regex Tools
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.85em; margin-bottom: 0.45em;">
+
+You already match text with regular expressions. RE2C compiles those same patterns into a C lexer.
+
+</div>
+
+<div class="re2c-tools">
+
+| Tool | Example | Meaning | Service |
+|------|---------|---------|---------|
+| **grep** | <code>grep error log.txt</code> | Print every line that mentions "error." | <em class="re-svc">used to hunt crash lines in Netflix's overnight logs</em> |
+| **egrep** | <code>egrep 'cat&#124;dog' pets.txt</code> | Print lines that mention cat or dog. | <em class="re-svc">used to find "late&#124;cold" on DoorDash support tickets</em> |
+| **sed** | <code>sed 's/colour/color/g' essay.txt</code> | Rewrite every "colour" as "color." | <em class="re-svc">used to rewrite API hosts in Stripe's deploy scripts</em> |
+| **awk** | <code>awk '/TODO/ {print $2}' notes.txt</code> | On lines that contain TODO, print the second word. | <em class="re-svc">used to pull the fare column off Uber's trip dumps</em> |
+| **vim** | <code>:g/TODO/d</code> | Delete every line that mentions TODO. | <em class="re-svc">used to patch Kubernetes YAML at Cloudflare</em> |
+| **emacs** | <code>C-M-s [0-9]+</code> | Search forward for the next run of digits. | <em class="re-svc">used to edit trading code at Jane Street</em> |
+| **perl** | <code>perl -pe 's/\d+/N/g' data.txt</code> | Turn every run of digits into N. | <em class="re-svc">used to parse taxes at File Your Taxes in Oxnard</em> |
+| **python** | <code>re.search(r'\d{3}-\d{4}', line)</code> | Ask whether the line holds a 3-then-4 digit chunk. | <em class="re-svc">used to run Instagram, and Netflix's recommendation jobs</em> |
+
+</div>
+
+<div style="color: #0f172a; font-size: 0.78em; margin-top: 0.35em; text-align: left; width: 96%; margin-left: auto; margin-right: auto;">
+
+<strong>Advantage of RE2C.</strong> These eight tools interpret a pattern as they run, which is right for a one-off search. RE2C compiles the pattern once into a <code>goto</code>-driven DFA in C, so a lexer that runs on every PHP request or Ninja build pays only the cost of those jumps.
+
+</div>
+
+<style>
+.re2c-tools {
+  font-size: 0.78em;
+  text-align: left;
+  width: 96%;
+  margin: 0 auto;
+  line-height: 1.2;
+}
+.re2c-tools table :is(th, td) {
+  padding-top: 0.16em !important;
+  padding-bottom: 0.16em !important;
+  line-height: 1.2 !important;
+  text-align: left;
+  vertical-align: top;
+}
+.re2c-tools .re-svc {
+  font-style: italic;
+  color: #4B0082;
+}
+.re2c-tools code {
+  font-size: 0.86em;
+  background: #f3f4f6;
+  padding: 0.05em 0.3em;
+  border-radius: 3px;
+}
+</style>
+
+<!--
+Ken Thompson's 1968 CACM paper "Regular Expression Search Algorithm" is the NFA construction from this course. He put that algorithm into ed, then extracted grep in 1973; the name is the ed command g/re/p, "global regular expression print." egrep is the Extended Regular Expression sibling, so |, +, and ? need no backslash. sed (Lee McMahon, 1974) is grep that can rewrite. awk (Aho, Weinberger, Kernighan, 1977) adds fields and a small language; Aho is the A of the Dragon Book. vi, later vim, and GNU Emacs built the same engines into the editor. Larry Wall's Perl (1987) made a richer dialect the default in scripting; Python's re module follows that dialect. Every one of those tools interprets the pattern at run time, which is the right trade for a one-off search or a rewrite in a script. RE2C (Peter Bumbulis, Waterloo, 1993) compiles the pattern ahead of time into a DFA hard-coded as C gotos. PHP and Ninja use it because that DFA is the inner loop of the lexer: the tokenizer runs on every request or every build file, so the compile-once cost is paid once and the interpreter is gone from the hot path.
+
+The Netflix line is a query. Someone on call types a pattern that did not exist when any binary was built: a request id, a new error string, "timeout after". The input is a pile of overnight text. The program is one command, then it is gone. Writing a .re file, generating C, and compiling would outlast the incident. RE2C is a lexer baked into a product. The patterns are PHP's or Ninja's token grammar, known at ship time, and the scanner runs on every request or every build file. The eight tools and RE2C share regular languages. They split on when the pattern is known and how often the scan runs.
+-->
+
+---
+
 # The Big Picture
 
 <div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
@@ -251,13 +315,17 @@ No table lookups, better branch prediction, smaller code — that's where the 2�
 
 # RE2C vs Other Lexer Tools
 
-<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+<div style="color: #9ca3af; font-style: italic; font-size: 0.85em; margin-bottom: 0.45em;">
 
 Flex, RE2C, Ragel, hand-written — all the same theory, only the code-generation step differs.
 
 </div>
 
+<div class="re2c-cmp" style="font-size: 0.88em; text-align: left; line-height: 1.25;">
+
 **Flex** = "Fast Lexical Analyzer Generator." Written by Vern Paxson (~1987) at Lawrence Berkeley Lab as a free replacement for AT&T's proprietary **Lex** (1975, Bell Labs). The classic Unix lexer tool, typically paired with Bison/Yacc for parsing.
+
+<div style="font-size: 0.9em;">
 
 | Tool | Approach | Speed | Portability |
 |------|----------|-------|-------------|
@@ -266,9 +334,21 @@ Flex, RE2C, Ragel, hand-written — all the same theory, only the code-generatio
 | **Ragel** | Multiple backends | Excellent | Good |
 | **Hand-written** | Manual | Varies | Excellent |
 
+</div>
+
 All implement the same theory: **Regular Expression → NFA → DFA → Code**
 
 The difference is only in the final step — how the DFA is represented in code.
+
+</div>
+
+<style>
+.re2c-cmp table :is(th, td) {
+  padding-top: 0.18em !important;
+  padding-bottom: 0.18em !important;
+  line-height: 1.2 !important;
+}
+</style>
 
 <!--
 The original Lex (1975) was co-created at Bell Labs by Mike Lesk and Eric Schmidt — the same Eric Schmidt who later became CEO of Google. So the roots of lexer generators trace back to the same Bell Labs Unix culture that gave us C, Unix, and grep.

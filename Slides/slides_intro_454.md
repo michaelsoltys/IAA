@@ -271,6 +271,51 @@ The 4th edition (2025) is the latest; strongly recommended, not required.
 
 ---
 
+# Gödel, Escher, Bach
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.6em;">
+
+*An Eternal Golden Braid* (Douglas Hofstadter, 1979). Pulitzer Prize, 1980. Still a sharp guide to why theory matters now.
+
+</div>
+
+<div class="flex gap-6 mt-2">
+<div class="text-center" style="min-width: 9.5rem;">
+<img src="./Figures/geb-cover.jpg" class="h-40" alt="Cover of Gödel, Escher, Bach: an Eternal Golden Braid by Douglas R. Hofstadter" />
+<p class="text-xs text-gray-500 mt-1">Douglas Hofstadter, 1979</p>
+<img src="./Figures/escher-penrose-stairs.jpg" class="h-24 mt-3 mx-auto" alt="Penrose stairs, the visual paradox behind Ascending and Descending" />
+<p class="text-xs text-gray-500 mt-1">Penrose stairs<br/>(Ascending and Descending)</p>
+</div>
+<div class="flex-1 text-sm">
+
+<div class="flex gap-4 justify-around mb-3">
+<div class="text-center">
+<img src="./Figures/godel.jpg" class="h-16 rounded object-cover" alt="Kurt Gödel" />
+<p class="text-xs mt-1">Kurt Gödel</p>
+</div>
+<div class="text-center">
+<img src="./Figures/escher.jpg" class="h-16 rounded object-cover" alt="M. C. Escher" />
+<p class="text-xs mt-1">M. C. Escher</p>
+</div>
+<div class="text-center">
+<img src="./Figures/bach.jpg" class="h-16 rounded object-cover" alt="J. S. Bach" />
+<p class="text-xs mt-1">J. S. Bach</p>
+</div>
+</div>
+
+- **Strange loops:** self-reference that bridges Gödel's incompleteness, Escher's visual paradoxes, and Bach's fugues
+- Historically, the book excited a generation into theoretical CS, minds, and machines
+- The ideas remain **applicable today**: self-reference in systems, levels of description, formal systems versus meaning, and metaphors that still shape how we talk about AI and cognition
+
+</div>
+</div>
+
+<!--
+The cover is a teaching hook: two carved blocks cast three letter-shadows depending on the wall — one object, three readings. Portraits: Gödel (logic), Escher (visual paradox), Bach (fugue / self-reference in music). The Penrose stairs stand in for Ascending and Descending; Escher's famous prints remain under copyright, so we use the public-domain geometric motif. The book is long and playful (Lewis Carroll-style dialogues); students need not finish it. Takeaway for COMP 454: see a formal system from inside and outside at once — the move a Turing machine makes when it takes another machine's description as input. Gödel numbering ↔ encoding; incompleteness ↔ undecidability; "strange loops" ↔ Halting-style self-reference.
+-->
+
+---
+
 # What is This Course About?
 
 <div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
