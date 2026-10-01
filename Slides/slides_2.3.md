@@ -33,8 +33,9 @@ Quick map of today's three case studies — and the headline answer to "does gre
 Three more examples of greedy algorithms:
 
 1. **Make Change** - Sometimes greedy fails!
-2. **Shortest Path (Dijkstra)** - Greedy works beautifully
-3. **Huffman Codes** - Optimal data compression
+2. **Bipartite Matching** 
+3. **Shortest Path (Dijkstra)** - Greedy works beautifully
+4. **Huffman Codes** - Optimal data compression
 
 ---
 
@@ -80,7 +81,7 @@ A 6-coin disaster vs. a 3-coin optimum — greedy *can* fail, even on a familiar
 
 </div>
 
-**Example:** $n = 30$ cents
+**Example:** Coins $\{1,10,25\}$ (a proper subset of US denominations) and target is $30$ cents
 
 Greedy: $25 + 1 + 1 + 1 + 1 + 1 = 30$ → **6 coins**
 
@@ -105,7 +106,7 @@ Examples where greedy works:
 - Decimal: $\lbrace 1, 10, 100, 1000, \ldots \rbrace$
 
 Examples where greedy may fail:
-- US coins: $\lbrace 1, 5, 10, 25 \rbrace$ (fails for 30 cents)
+- A subset of US coins: $\lbrace 1, 10, 25 \rbrace$ (fails for 30 cents)
 - Custom: $\lbrace 1, 3, 4 \rbrace$ (fails for 6: greedy gives $4+1+1$, optimal is $3+3$)
 
 ---
@@ -136,7 +137,7 @@ Greedy by weight *can* fail here too — Edmonds' blossom algorithm is the real 
 
 </div>
 
-<img src="./Figures/bipartite-matching.drawio.svg" style="width: 100%; max-height: 390px;" alt="Bipartite graph with parts V1 = {a, b, c, d, e} and V2 = {x, y, z, v, w}. Teal matching a-w, b-v, c-z, d-y, e-x of weight 26, edges crossing; dashed a-x weight 2 and e-w weight 1 unmatched." />
+<img src="./Figures/bipartite-matching.drawio.svg" style="width: 100%; max-height: 390px;" alt="Bipartite graph with parts V1 = {a, b, c, d, e} and V2 = {x, y, z, v, w}. Teal matching a-y, b-x, c-v, d-w, e-z of weight 26, edges crossing; dashed a-x weight 2 and e-w weight 1 unmatched." />
 
 </div>
 

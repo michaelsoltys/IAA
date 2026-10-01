@@ -79,7 +79,7 @@ You already match text with regular expressions. RE2C compiles those same patter
 </style>
 
 <!--
-Ken Thompson's 1968 CACM paper "Regular Expression Search Algorithm" is the NFA construction from this course. He put that algorithm into ed, then extracted grep in 1973; the name is the ed command g/re/p, "global regular expression print." egrep is the Extended Regular Expression sibling, so |, +, and ? need no backslash. sed (Lee McMahon, 1974) is grep that can rewrite. awk (Aho, Weinberger, Kernighan, 1977) adds fields and a small language; Aho is the A of the Dragon Book. vi, later vim, and GNU Emacs built the same engines into the editor. Larry Wall's Perl (1987) made a richer dialect the default in scripting; Python's re module follows that dialect. Every one of those tools interprets the pattern at run time, which is the right trade for a one-off search or a rewrite in a script. RE2C (Peter Bumbulis, Waterloo, 1993) compiles the pattern ahead of time into a DFA hard-coded as C gotos. PHP and Ninja use it because that DFA is the inner loop of the lexer: the tokenizer runs on every request or every build file, so the compile-once cost is paid once and the interpreter is gone from the hot path.
+Ken Thompson's 1968 CACM paper "Regular Expression Search Algorithm" is the NFA construction from this course. He put that algorithm into ed, then extracted grep in 1973; the name is the ed command g/re/p, "global regular expression print." egrep is the Extended Regular Expression sibling, so |, +, and ? need no backslash. sed (Lee McMahon, 1974) is grep that can rewrite. awk (Aho, Weinberger, Kernighan, 1977) adds fields and a small language. Alfred V. Aho is the first author of Compilers: Principles, Techniques, and Tools (Aho, Sethi, Ullman; later also Lam). The cover is a knight fighting a dragon, so the book is called the Dragon Book; the A is his last name in that author list. Same Aho as the A in awk. vi, later vim, and GNU Emacs built the same engines into the editor. Larry Wall's Perl (1987) made a richer dialect the default in scripting; Python's re module follows that dialect. Every one of those tools interprets the pattern at run time, which is the right trade for a one-off search or a rewrite in a script. RE2C (Peter Bumbulis, Waterloo, 1993) compiles the pattern ahead of time into a DFA hard-coded as C gotos. PHP and Ninja use it because that DFA is the inner loop of the lexer: the tokenizer runs on every request or every build file, so the compile-once cost is paid once and the interpreter is gone from the hot path.
 
 The Netflix line is a query. Someone on call types a pattern that did not exist when any binary was built: a request id, a new error string, "timeout after". The input is a pile of overnight text. The program is one command, then it is gone. Writing a .re file, generating C, and compiling would outlast the incident. RE2C is a lexer baked into a product. The patterns are PHP's or Ninja's token grammar, known at ship time, and the scanner runs on every request or every build file. The eight tools and RE2C share regular languages. They split on when the pattern is known and how often the scan runs.
 -->
@@ -240,7 +240,7 @@ Regex → Thompson NFA → subset construction DFA → C code with labels and go
 
 </div>
 
-RE2C follows exactly the pipeline from Chapter 9.3:
+RE2C follows exactly the pipeline from Section 9.3:
 
 1. **Parse** regular expressions from the `/*!re2c` block
 2. **Build** NFA using Thompson's construction
