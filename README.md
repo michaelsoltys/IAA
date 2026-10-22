@@ -42,7 +42,7 @@ Algorithm implementations referenced in the textbook. Each file is named `A<N>_<
 | `A33_Gauss-Lattice-Reduction.py` | Gauss Lattice Reduction (2D) | 163 |
 
 ### Slides/
-Slidev presentations for each section of the book (`slides_X.X.md`). See [Slides/README-SLIDEV.md](Slides/README-SLIDEV.md) for conventions.
+Slidev presentations for each section of the book (`slides_X.X.md`). See [Slides/README.md](Slides/README.md).
 
 ### Problems/
 Worked solutions to selected textbook problems. Each file is named `P<N>_<Name>.<ext>` where `<N>` is the problem number in the book. Every file has a header comment with the problem number, page, LaTeX label, and a brief description.
