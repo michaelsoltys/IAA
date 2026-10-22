@@ -166,7 +166,7 @@ Sort edges cheap-to-expensive and add each one *unless it would close a cycle*.
 
 <div>
 
-<span style="font-size: 0.6em; color: navy;">Alg 10, Pg 35, alg:kruskal</span>
+<span style="font-size: 0.6em; color: navy;">Alg 10, Pg 35, alg:kruskal</span> <a href="https://github.com/michaelsoltys/IAA/blob/main/Algorithms/A10_Kruskal.py" style="font-size: 0.6em; color: teal;">[Python implementation]</a>
 
 Kruskal's Algorithm:
 ```text

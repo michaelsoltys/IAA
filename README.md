@@ -34,6 +34,7 @@ Algorithm implementations referenced in the textbook. Each file is named `A<N>_<
 | `A6_Ulam.go` | Ulam's Algorithm | 10 |
 | `A7_Gale-Shapley.py` | Gale-Shapley Stable Marriage | 16 |
 | `A9_Powers2.py` | Powers of 2 | 24 |
+| `A10_Kruskal.py` | Kruskal | 35 |
 | `A24_Dispersed-Knapsack.py` | Dispersed Knapsack | 83 |
 | `A25_Consecutive-Subsequence.py` | Consecutive Subsequence | 89 |
 | `A27_Perfect-Matching.py` | Perfect Matching | 125 |
