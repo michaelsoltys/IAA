@@ -1,0 +1,52 @@
+<mxfile host="Electron" agent="5.0">
+  <diagram name="dc-paradigm" id="dc-paradigm">
+    <mxGraphModel grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="0" page="0" pageScale="1" pageWidth="760" pageHeight="220" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#e2e8f0;strokeWidth=1;absoluteArcSize=1;arcSize=14;" value="" vertex="1">
+          <mxGeometry height="110" width="200" x="30" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=16;fontColor=#0f172a;fontStyle=1;" value="1. Divide" vertex="1">
+          <mxGeometry height="28" width="200" x="30" y="52" as="geometry" />
+        </mxCell>
+        <mxCell id="4" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=13;fontColor=#64748b;fontStyle=2;" value="split the list&lt;br&gt;into two halves" vertex="1">
+          <mxGeometry height="52" width="184" x="38" y="84" as="geometry" />
+        </mxCell>
+        <mxCell id="5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#e2e8f0;strokeWidth=1;absoluteArcSize=1;arcSize=14;" value="" vertex="1">
+          <mxGeometry height="110" width="200" x="280" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=16;fontColor=#0f172a;fontStyle=1;" value="2. Conquer" vertex="1">
+          <mxGeometry height="28" width="200" x="280" y="52" as="geometry" />
+        </mxCell>
+        <mxCell id="7" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=13;fontColor=#64748b;fontStyle=2;" value="sort each half&lt;br&gt;recursively" vertex="1">
+          <mxGeometry height="52" width="184" x="288" y="84" as="geometry" />
+        </mxCell>
+        <mxCell id="8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#e2e8f0;strokeWidth=1;absoluteArcSize=1;arcSize=14;" value="" vertex="1">
+          <mxGeometry height="110" width="200" x="530" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="9" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=16;fontColor=#0f172a;fontStyle=1;" value="3. Combine" vertex="1">
+          <mxGeometry height="28" width="200" x="530" y="52" as="geometry" />
+        </mxCell>
+        <mxCell id="10" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=13;fontColor=#64748b;fontStyle=2;" value="Merge the two&lt;br&gt;sorted lists, O(n)" vertex="1">
+          <mxGeometry height="52" width="184" x="538" y="84" as="geometry" />
+        </mxCell>
+        <mxCell id="11" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=#0f766e;strokeWidth=2.4;startArrow=none;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="230" y="95.0" as="sourcePoint" />
+            <mxPoint x="280" y="95.0" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="12" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=#0f766e;strokeWidth=2.4;startArrow=none;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="480" y="95.0" as="sourcePoint" />
+            <mxPoint x="530" y="95.0" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="13" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;fontColor=#0f766e;fontStyle=2;" value="the combine step has to be cheap, or the recursion buys nothing" vertex="1">
+          <mxGeometry height="28" width="700" x="30" y="168" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

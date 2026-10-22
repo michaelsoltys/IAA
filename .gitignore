@@ -1,0 +1,52 @@
+# Ignore all .tex files in Slides folder
+Slides/*.tex
+# Archive folder for migrated LaTeX slides (keep local only)
+Slides/Arch/
+# Instructor-only files for slide development (not for students)
+Slides/README-SLIDEV.md
+Slides/Notes/
+Slides/synchronization_report.txt
+# Synchronization tools and build automation - keep local only
+util/
+Makefile
+
+# Slidev build cache — regenerated on every `slidev <deck>` run
+node_modules/
+.slidev/
+
+# Python files
+*.pyc
+__pycache__/
+*.ipynb_checkpoints
+
+# LaTeX build files
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# LaTeX temporary files
+*.swp
+*.blg
+*.dvi
+*.bbl
+
+# Editor files
+.DS_Store
+*~
+*.bak
+*.bkp
+Slides/Figures/.$.*
+*.tmp
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace

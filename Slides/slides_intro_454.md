@@ -1,0 +1,485 @@
+---
+theme: default
+class: text-center
+highlighter: shiki
+lineNumbers: true
+info: |
+  ## COMP 454: Automata, Languages and Computation
+  An Introduction to the Analysis of Algorithms (4th Edition)
+  Michael Soltys
+drawings:
+  persist: false
+transition: slide-left
+title: COMP 454 - Automata, Languages and Computation
+mdc: false
+---
+
+<style>
+.slidev-layout.cover {
+  background: white !important;
+  color: black !important;
+}
+.slidev-layout.cover h1 {
+  color: black !important;
+}
+</style>
+
+# COMP 454
+
+COMP 454 — What can be computed, and what *can't* — a tour from finite automata to Turing machines.
+
+<div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
+
+---
+
+# Instructor
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+
+Where to find me, when to find me, and how to reach me.
+
+</div>
+
+**Michael Soltys**
+
+
+- Email: michael.soltys@csuci.edu
+- Office: Shasta Hall 2611
+- Office Hours: Thursdays 11:30–2:30 or by appointment
+- Lecture: Wednesdays 7:00–8:00
+
+---
+
+# Why Automata: Preponderance
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+
+This is the most quietly practical theory in computer science; you are already running it.
+
+</div>
+
+
+- **Every regular expression you have ever written is a finite automaton.** Google's RE2 engine compiles patterns to automata to guarantee linear-time matching, and deliberately refuses backreferences because automata cannot do them (Regular Languages)
+
+- **A regex written without this theory took down 10% of the internet.** On 2 July 2019 a Cloudflare firewall rule containing `.*(?:.*=.*)` caused catastrophic backtracking and 27 minutes of global outage. A DFA has nothing to backtrack with; that is the entire point (Regular Languages)
+
+- **Every compiler is this course in order.** Lexing is a DFA, the grammar is a CFG, and the parser is a pushdown automaton (Regular and Context-Free Languages)
+
+- **Some problems have no algorithm at all.** No tool will ever flag every infinite loop. That is not a gap in our engineering, it is a theorem (Computability)
+
+- **Protocols, controllers, and UI flows are state machines.** Drawing the automaton is how you find the transition nobody handled
+
+---
+
+# Why Automata: Job Interview
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+
+Two of the most-asked questions at Google and Amazon are this course wearing a disguise.
+
+</div>
+
+<div class="flex gap-6">
+<div class="flex-1">
+
+**Asked constantly at Amazon and Google:**
+
+> Given a string of brackets, decide whether it is balanced.
+
+```text
+"([]{})"   valid
+"([)]"     invalid
+```
+
+Push on open, pop on close: you have just built a **pushdown automaton**. Balanced brackets is the standard example of a language that is context-free but not regular.
+
+**The follow-up they actually ask:** "Could you do this in constant memory?" The answer is no, and the **pumping lemma** is the proof.
+
+</div>
+<div class="flex-1">
+
+**Also standard:**
+
+> Implement regular-expression matching supporting `.` and `*`
+
+This is the NFA-to-DFA subset construction under another name. Candidates who have seen it write it in twenty minutes; candidates who have not, usually do not finish.
+
+<br>
+
+**You will build both in this course:**
+
+- A lexer, with RE2C (Assignment 2)
+- A JSON parser, with Bison (Assignment 3)
+
+</div>
+</div>
+
+---
+
+# Why Automata: Standard Curriculum
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+
+The standard theory-of-computation course, taught from the same outline at every research university.
+
+</div>
+
+**The curriculum standard**
+
+The ACM/IEEE-CS/AAAI **Computer Science Curricula 2023** places computability and complexity inside the **Algorithmic Foundations (AL)** knowledge area, with learning outcomes covering the classes P and NP and the significance of NP-completeness. COMP 454 is where our program delivers that.
+
+**The same course elsewhere**
+
+- **UC Berkeley CS 172**, *Computability and Complexity*: finite automata, Turing machines, undecidability, Cook's theorem
+- **MIT 6.1400 / 18.400**, *Automata, Computability, and Complexity Theory*, and Michael Sipser's own **18.404**
+
+Both are taught from Sipser's *Introduction to the Theory of Computation*, the book that fixed the shape of this subject. Our Chapter 9 covers the same ground.
+
+---
+
+# Why Automata: LLMs
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+
+Writing code became cheap. Some questions still have no answer, and never will.
+
+</div>
+
+<div class="flex gap-6">
+<div class="flex-1">
+
+Ask any model whether a program halts on every input and it will answer you, fluently and with confidence.
+
+In general it cannot be right. Not because the model is weak, but because **no procedure whatsoever can decide this**, and that is a theorem rather than a limitation of the current generation.
+
+Ask one for an infinite-loop detector and you will get one. It will work on the examples you tried.
+
+<span style="font-size: 0.6em; color: navy;">Thm 9.70, Pg 256, thm:rice</span>
+
+</div>
+<div class="flex-1">
+
+**Rice's theorem** settles it: every non-trivial semantic property of programs is undecidable. No complete loop detector exists, at any scale, ever.
+
+This is why static analyzers report false positives, why type systems reject programs that would in fact have run, and why compilers are conservative. Those are not bugs; they are the only options available.
+
+<div class="border-l-4 pl-3 mt-4 text-sm" style="border-color:#4B0082;">
+
+The skill that survives is knowing which questions are **decidable**, which are only **semi-decidable**, and which are neither. That judgment is this course.
+
+</div>
+
+</div>
+</div>
+
+---
+
+# Prerequisites
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+
+You'll need discrete math reflexes and enough Python to implement a parser.
+
+</div>
+
+
+<div class="flex gap-8">
+<div class="flex-1">
+
+
+- **MATH 300** (Discrete Math)
+- **Python** programming language
+- We will implement automata and parsers in Python
+
+
+<div class="text-sm mt-6">
+
+**What discrete math buys you here**
+
+A **language** is a set of strings. The objects of this course are therefore sets, and the operations that build them, union, concatenation and Kleene star, are operations on sets.
+
+A **finite automaton** is a labelled directed graph. Everything you already know about paths and reachability carries over unchanged.
+
+</div>
+
+</div>
+<div class="flex-1">
+
+<div class="text-sm">
+
+**Induction is the method, not a topic.** Nearly every proof in this course is an induction on the length of the input string, or a structural induction over a regular expression or a grammar derivation.
+
+**Quantifiers are load-bearing.** The pumping lemma reads: *there exists* $p$, such that *for all* $s$, *there exists* a split, such that *for all* $i$. Read that alternation correctly and the lemma is mechanical; read it wrongly and it is unusable (Section 9.3.8.1).
+
+**Counting settles the arguments.** The subset construction turns $n$ NFA states into as many as $2^n$ DFA states, and that number is what tells you when determinising is affordable (Section 9.3).
+
+</div>
+
+</div>
+</div>
+
+---
+
+# Textbook
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+
+The 4th edition (2025) is the latest; strongly recommended, not required.
+
+</div>
+
+<div class="flex gap-8 mt-4">
+<div class="text-center">
+<img src="./Figures/IAA-ed4.jpg" class="h-60" />
+<p>4th Edition (World Scientific, 2025)</p>
+</div>
+<div class="flex-1 mt-6">
+
+- The book is **strongly recommended**, especially if you plan to work in algorithms, but it is **not required**
+
+- All course material will be given via the slides
+
+- This course works from **Chapter 9**
+
+**Code Repository:** https://github.com/michaelsoltys/IAA
+
+</div>
+</div>
+
+---
+
+# Gödel, Escher, Bach
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.6em;">
+
+*An Eternal Golden Braid* (Douglas Hofstadter, 1979). Pulitzer Prize, 1980. Still a sharp guide to why theory matters now.
+
+</div>
+
+<div class="flex gap-8 mt-2">
+<div class="flex-1">
+
+<div class="flex gap-4 items-end justify-center">
+<div class="text-center">
+<img src="./Figures/geb-cover.jpg" class="h-40 mx-auto" alt="Cover of Gödel, Escher, Bach: an Eternal Golden Braid by Douglas R. Hofstadter" />
+<p class="text-xs text-gray-500 mt-1">Douglas Hofstadter, 1979</p>
+</div>
+<div class="text-center">
+<img src="./Figures/escher-penrose-stairs.jpg" class="h-28 mx-auto" alt="Penrose stairs, the visual paradox behind Ascending and Descending" />
+<p class="text-xs text-gray-500 mt-1">Penrose stairs<br/>(Ascending and Descending)</p>
+</div>
+</div>
+
+<div class="flex gap-4 justify-center mt-4">
+<div class="text-center">
+<img src="./Figures/godel.jpg" class="h-16 rounded object-cover mx-auto" alt="Kurt Gödel" />
+<p class="text-xs mt-1">Kurt Gödel</p>
+</div>
+<div class="text-center">
+<img src="./Figures/escher.jpg" class="h-16 rounded object-cover mx-auto" alt="M. C. Escher" />
+<p class="text-xs mt-1">M. C. Escher</p>
+</div>
+<div class="text-center">
+<img src="./Figures/bach.jpg" class="h-16 rounded object-cover mx-auto" alt="J. S. Bach" />
+<p class="text-xs mt-1">J. S. Bach</p>
+</div>
+</div>
+
+</div>
+<div class="flex-1 text-sm">
+
+- **Strange loops:** self-reference that bridges Gödel's incompleteness, Escher's visual paradoxes, and Bach's fugues
+- Historically, the book excited a generation into theoretical CS, minds, and machines
+- The ideas remain **applicable today**: self-reference in systems, levels of description, formal systems versus meaning, and metaphors that still shape how we talk about AI and cognition
+
+</div>
+</div>
+
+---
+
+# Data, Information, Knowledge, Wisdom
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.6em;">
+
+Each level gives meaning to the one below it.
+
+</div>
+
+<div class="flex gap-8 mt-2">
+<div class="flex-1 relative text-sm" style="height: 17rem;">
+<div class="absolute" style="left: 50%; top: 0.5rem; bottom: 0.5rem; border-left: 2px solid #374151;"></div>
+<div class="absolute flex flex-col justify-between items-center w-full" style="top: 0; bottom: 0;">
+<div class="bg-white px-3 text-center"><b>Wisdom</b><br/>knowing what matters, and why</div>
+<div class="bg-white px-3 text-center"><b>Knowledge</b><br/>knowing how; models and methods</div>
+<div class="bg-white px-3 text-center"><b>Information</b><br/>data given context and structure</div>
+<div class="bg-white px-3 text-center"><b>Data</b><br/>raw symbols, with no meaning yet</div>
+</div>
+</div>
+<div class="flex-1 text-sm">
+
+- Machines now handle the lower levels at enormous scale: they store data, organize information, and increasingly produce knowledge
+- Wisdom is still a human matter: judgment, choosing the right question, and seeing what a result means and where its limits are
+- In the age of AI, wisdom becomes more valuable, not less
+- COMP 454 aims at **computer wisdom**: what can be computed, what cannot, and why. That understanding is invaluable, and no tool replaces it.
+
+</div>
+</div>
+
+---
+
+# What is This Course About?
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+
+The deep correspondence between *what* you can describe and *how* a machine recognizes it.
+
+</div>
+
+The relation between **languages** (sets of strings) and **machines** that process them
+
+
+- What can be computed?
+- What are the limits of computation?
+- How do we describe sets of strings formally?
+
+---
+
+# Course Outline
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+
+A topic-by-topic roadmap of the semester — the order matters; each layer subsumes the previous.
+
+</div>
+
+<div class="grid grid-cols-2 gap-8">
+<div>
+
+
+**1. Regular Languages**
+- DFAs and NFAs (equivalence)
+- Regular Expressions
+- Pumping Lemma
+- Applications to text search
+
+**2. Context-Free Languages**
+- Context-Free Grammars (CFGs)
+- Pushdown Automata (PDAs)
+- Pumping Lemma for CFLs
+
+
+</div>
+<div>
+
+
+**3. Turing Machines**
+- Church-Turing Thesis
+- Decidability and undecidability
+
+
+</div>
+</div>
+
+---
+
+# Course Schedule
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.5em;">
+
+Wednesdays 19:00–20:00. Quizzes 19:05–19:20. The Canvas Course Schedule page has the same table.
+
+</div>
+
+<div style="font-size: 0.48em;">
+
+| L | Date | Topic | Section | Due |
+|---|---|---|---|---|
+| L1 | Wed Aug 26 | Course Introduction | 9.1-2 | |
+| L2 | Wed Sep 02 | DFA | 9.3.1 | |
+| L3 | Wed Sep 09 | NFA | 9.3.2 | Quiz 1 |
+| L4 | Wed Sep 16 | Regular Expressions | 9.3.3 | Quiz 2 |
+| L5 | Wed Sep 23 | Properties of Regular Languages | 9.3.4-5 | Quiz 3, Assignment 1 |
+| L6 | Wed Sep 30 | Tools for Regular Expressions (RE2C) | | Quiz 4 |
+| L7 | Wed Oct 07 | Midterm 1 | | Midterm 1 |
+| L8 | Wed Oct 14 | CFG | 9.4.1 | Assignment 2 |
+| L9 | Wed Oct 21 | PDA | 9.4.2 | Quiz 5 |
+| L10 | Wed Oct 28 | Tools for CFG (Bison/YACC, Lex, Flex) | | Quiz 6 |
+| L11 | Wed Nov 04 | Midterm 2 | | Midterm 2, Assignment 3 |
+| L12 | Wed Nov 18 | Turing Machines / Encodings | 9.5.1, 9.5.2 | |
+| L13 | Wed Nov 25 | Decidable Languages / Church-Turing | 9.5.3, 9.5.4 | Quiz 7 |
+| L14 | Wed Dec 02 | Undecidable Languages | 9.5.5 | Quiz 8, Assignment 4 |
+| L15 | dropped | Review / catching up | | |
+| L16 | Wed Dec 09 | Final Exam | | Final Exam |
+
+</div>
+
+---
+
+# Resources
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+
+Where the slides, code, recordings, and assignments live — bookmark all of these.
+
+</div>
+
+
+<div class="flex gap-8">
+<div class="flex-1">
+
+- **Canvas:** https://cilearn.csuci.edu/courses/36157
+  - Complete modules with all course material
+
+- **GitHub:** https://github.com/michaelsoltys/IAA
+  - Slides, Solutions, Summaries
+  - Implementations of Algorithms
+
+</div>
+<div class="flex-1">
+
+- **Classroom 50:** https://classroom50.org
+  - Assignment accept links provided in Canvas
+  - Work directly in Codespaces
+
+- **YouTube:** https://s.msoltys.com/iaa-yt
+  - Prerecorded lectures
+
+</div>
+</div>
+
+---
+
+# Grading
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+
+How your grade is built — frequent low-stakes work, plus two midterms and a cumulative final.
+
+</div>
+
+
+- **Quizzes:** 40%, 8 quizzes, **best 6 count** (≈6.67% each)
+- **Assignments:** 20%, 4 assignments, **best 3 count** (≈6.67% each)
+- **Midterms:** 20%, two midterms at 10% each (required, never dropped)
+- **Final Exam:** 20%, cumulative (required, never dropped)
+
+<br>
+
+**No late work and no extensions.** The drops are your flexibility: a missed quiz or assignment simply becomes a dropped score. Use them for illness, travel, or a bad week; no explanation needed.
+
+---
+
+# Student Learning Outcomes (SLOs)
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+
+What you'll walk out of the course knowing — and being able to *do*.
+
+</div>
+
+Upon successful completion you will be able to:
+
+
+1. **Describe** sets of strings with different computational models
+2. **Understand** the computational power of different models
+3. **Understand** the limits of computability

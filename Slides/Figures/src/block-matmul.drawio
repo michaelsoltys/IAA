@@ -1,0 +1,89 @@
+<mxfile host="Electron" agent="5.0">
+  <diagram name="block-matmul" id="block-matmul">
+    <mxGraphModel grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="0" page="0" pageScale="1" pageWidth="500" pageHeight="280" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="t" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontSize=15;fontColor=#0f172a;fontStyle=1;" value="Naive block multiply" vertex="1">
+          <mxGeometry x="16" y="6" width="468" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="s" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;fontColor=#64748b;fontStyle=2;" value="C₁₁ takes row 1 of A and column 1 of B — two of the eight products" vertex="1">
+          <mxGeometry x="16" y="28" width="468" height="18" as="geometry" />
+        </mxCell>
+
+        <mxCell id="Alab" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=16;fontColor=#0f172a;fontStyle=2;" value="A" vertex="1">
+          <mxGeometry x="20" y="50" width="128" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Aout" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff1f2;strokeColor=#dc2626;strokeWidth=2.2;absoluteArcSize=1;arcSize=8;" value="" vertex="1">
+          <mxGeometry x="20" y="72" width="128" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="A11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fca5a5;strokeColor=#dc2626;strokeWidth=2.4;fontFamily=Times New Roman;fontSize=15;fontColor=#0f172a;fontStyle=2;" value="A&lt;sub&gt;11&lt;/sub&gt;" vertex="1">
+          <mxGeometry x="24" y="76" width="58" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="A12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fca5a5;strokeColor=#dc2626;strokeWidth=2.4;fontFamily=Times New Roman;fontSize=15;fontColor=#0f172a;fontStyle=2;" value="A&lt;sub&gt;12&lt;/sub&gt;" vertex="1">
+          <mxGeometry x="86" y="76" width="58" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="A21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fecaca;strokeColor=#f87171;strokeWidth=1.8;fontFamily=Times New Roman;fontSize=15;fontColor=#0f172a;fontStyle=2;" value="A&lt;sub&gt;21&lt;/sub&gt;" vertex="1">
+          <mxGeometry x="24" y="138" width="58" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="A22" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fecaca;strokeColor=#f87171;strokeWidth=1.8;fontFamily=Times New Roman;fontSize=15;fontColor=#0f172a;fontStyle=2;" value="A&lt;sub&gt;22&lt;/sub&gt;" vertex="1">
+          <mxGeometry x="86" y="138" width="58" height="58" as="geometry" />
+        </mxCell>
+
+        <mxCell id="times" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=28;fontColor=#0f172a;fontStyle=0;" value="×" vertex="1">
+          <mxGeometry x="148" y="112" width="40" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="Blab" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=16;fontColor=#0f172a;fontStyle=2;" value="B" vertex="1">
+          <mxGeometry x="188" y="50" width="128" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Bout" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=2.2;absoluteArcSize=1;arcSize=8;" value="" vertex="1">
+          <mxGeometry x="188" y="72" width="128" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="B11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#93c5fd;strokeColor=#2563eb;strokeWidth=2.4;fontFamily=Times New Roman;fontSize=15;fontColor=#0f172a;fontStyle=2;" value="B&lt;sub&gt;11&lt;/sub&gt;" vertex="1">
+          <mxGeometry x="192" y="76" width="58" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="B12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#60a5fa;strokeWidth=1.8;fontFamily=Times New Roman;fontSize=15;fontColor=#0f172a;fontStyle=2;" value="B&lt;sub&gt;12&lt;/sub&gt;" vertex="1">
+          <mxGeometry x="254" y="76" width="58" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="B21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#93c5fd;strokeColor=#2563eb;strokeWidth=2.4;fontFamily=Times New Roman;fontSize=15;fontColor=#0f172a;fontStyle=2;" value="B&lt;sub&gt;21&lt;/sub&gt;" vertex="1">
+          <mxGeometry x="192" y="138" width="58" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="B22" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#60a5fa;strokeWidth=1.8;fontFamily=Times New Roman;fontSize=15;fontColor=#0f172a;fontStyle=2;" value="B&lt;sub&gt;22&lt;/sub&gt;" vertex="1">
+          <mxGeometry x="254" y="138" width="58" height="58" as="geometry" />
+        </mxCell>
+
+        <mxCell id="eq" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=28;fontColor=#0f172a;fontStyle=0;" value="=" vertex="1">
+          <mxGeometry x="316" y="112" width="40" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="Clab" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=16;fontColor=#0f172a;fontStyle=2;" value="C" vertex="1">
+          <mxGeometry x="356" y="50" width="128" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Cout" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#7c3aed;strokeWidth=2.2;absoluteArcSize=1;arcSize=8;" value="" vertex="1">
+          <mxGeometry x="356" y="72" width="128" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="C11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d8b4fe;strokeColor=#7c3aed;strokeWidth=2.4;fontFamily=Times New Roman;fontSize=15;fontColor=#0f172a;fontStyle=2;" value="C&lt;sub&gt;11&lt;/sub&gt;" vertex="1">
+          <mxGeometry x="360" y="76" width="58" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="C12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e9d5ff;strokeColor=#c084fc;strokeWidth=1.8;fontFamily=Times New Roman;fontSize=15;fontColor=#0f172a;fontStyle=2;" value="C&lt;sub&gt;12&lt;/sub&gt;" vertex="1">
+          <mxGeometry x="422" y="76" width="58" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="C21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e9d5ff;strokeColor=#c084fc;strokeWidth=1.8;fontFamily=Times New Roman;fontSize=15;fontColor=#0f172a;fontStyle=2;" value="C&lt;sub&gt;21&lt;/sub&gt;" vertex="1">
+          <mxGeometry x="360" y="138" width="58" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="C22" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e9d5ff;strokeColor=#c084fc;strokeWidth=1.8;fontFamily=Times New Roman;fontSize=15;fontColor=#0f172a;fontStyle=2;" value="C&lt;sub&gt;22&lt;/sub&gt;" vertex="1">
+          <mxGeometry x="422" y="138" width="58" height="58" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cap" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=13;fontColor=#0f172a;fontStyle=0;" value="C&lt;sub&gt;11&lt;/sub&gt; = A&lt;sub&gt;11&lt;/sub&gt;B&lt;sub&gt;11&lt;/sub&gt; + A&lt;sub&gt;12&lt;/sub&gt;B&lt;sub&gt;21&lt;/sub&gt;. Four blocks × two products each = 8." vertex="1">
+          <mxGeometry x="16" y="212" width="468" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="cap2" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;fontColor=#64748b;fontStyle=2;" value="The other three C blocks each take one row of A and one column of B." vertex="1">
+          <mxGeometry x="16" y="234" width="468" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

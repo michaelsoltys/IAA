@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr-ext" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981"/>
+    </marker>
+    <marker id="arr-lms" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d62828"/>
+    </marker>
+    <marker id="arr-other" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <path d="M 67.5 138.1 Q 170.0 10.0 272.5 138.1" fill="none" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#arr-other)"/>
+  <path d="M 70.9 141.4 Q 230.0 0.0 389.1 141.4" fill="none" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#arr-other)"/>
+  <path d="M 181.0 134.3 Q 230.0 20.0 279.0 134.3" fill="none" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#arr-other)"/>
+  <path d="M 308.7 139.1 Q 350.0 93.0 391.3 139.1" fill="none" stroke="#10b981" stroke-width="2.0" marker-end="url(#arr-ext)"/>
+  <path d="M 68.7 139.1 Q 110.0 93.0 151.3 139.1" fill="none" stroke="#d62828" stroke-width="2.6" marker-end="url(#arr-lms)"/>
+  <path d="M 193.4 144.6 Q 290.0 81.0 386.6 144.6" fill="none" stroke="#d62828" stroke-width="2.6" marker-end="url(#arr-lms)"/>
+  <circle cx="50" cy="160" r="28" fill="#fee2e2" stroke="#d62828" stroke-width="2.2"/>
+  <text x="50" y="161" text-anchor="middle" dominant-baseline="central" font-size="22" font-weight="700" fill="#991b1b">4</text>
+  <text x="50" y="206" text-anchor="middle" font-size="13" fill="#64748b">j = 1</text>
+  <text x="50" y="230" text-anchor="middle" font-size="18" font-weight="700" fill="#1e293b">R = 1</text>
+  <circle cx="170" cy="160" r="28" fill="#fee2e2" stroke="#d62828" stroke-width="2.2"/>
+  <text x="170" y="161" text-anchor="middle" dominant-baseline="central" font-size="22" font-weight="700" fill="#991b1b">6</text>
+  <text x="170" y="206" text-anchor="middle" font-size="13" fill="#64748b">j = 2</text>
+  <text x="170" y="230" text-anchor="middle" font-size="18" font-weight="700" fill="#1e293b">R = 2</text>
+  <circle cx="290" cy="160" r="28" fill="#e0f2fe" stroke="#0369a1" stroke-width="1.5"/>
+  <text x="290" y="161" text-anchor="middle" dominant-baseline="central" font-size="22" font-weight="700" fill="#0c4a6e">5</text>
+  <text x="290" y="206" text-anchor="middle" font-size="13" fill="#64748b">j = 3</text>
+  <text x="290" y="230" text-anchor="middle" font-size="18" font-weight="700" fill="#1e293b">R = 2</text>
+  <circle cx="410" cy="160" r="28" fill="#fee2e2" stroke="#d62828" stroke-width="2.2"/>
+  <text x="410" y="161" text-anchor="middle" dominant-baseline="central" font-size="22" font-weight="700" fill="#991b1b">9</text>
+  <text x="410" y="206" text-anchor="middle" font-size="13" fill="#64748b">j = 4</text>
+  <text x="410" y="230" text-anchor="middle" font-size="18" font-weight="700" fill="#1e293b">R = 3</text>
+  <circle cx="530" cy="160" r="28" fill="#e0f2fe" stroke="#0369a1" stroke-width="1.5"/>
+  <text x="530" y="161" text-anchor="middle" dominant-baseline="central" font-size="22" font-weight="700" fill="#0c4a6e">1</text>
+  <text x="530" y="206" text-anchor="middle" font-size="13" fill="#64748b">j = 5</text>
+  <text x="530" y="230" text-anchor="middle" font-size="18" font-weight="700" fill="#1e293b">R = 1</text>
+</svg>

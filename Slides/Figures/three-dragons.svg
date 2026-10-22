@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="960" height="620" viewBox="0 0 960 620" style="background:transparent;">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#16212e"/>
+      <stop offset="55%" stop-color="#243b52"/>
+      <stop offset="100%" stop-color="#33566f"/>
+    </linearGradient>
+
+    <!-- one menacing head, front-facing; origin at head centre -->
+    <g id="scary">
+      <!-- neck, descending -->
+      <path d="M-34,44 C-44,180 -52,330 -48,470 L52,470 C56,330 48,180 36,44 Z"/>
+      <!-- skull: broad brow tapering to a snout -->
+      <path d="M-62,-16 C-72,-60 -34,-86 0,-86 C34,-86 72,-60 62,-16
+               L40,18 C34,52 22,74 0,74 C-22,74 -34,52 -40,18 Z"/>
+      <!-- swept horns -->
+      <path d="M-48,-58 C-80,-84 -108,-126 -112,-158 C-92,-136 -62,-104 -30,-74 Z"/>
+      <path d="M48,-58 C80,-84 108,-126 112,-158 C92,-136 62,-104 30,-74 Z"/>
+      <path d="M-26,-76 C-40,-100 -46,-128 -42,-146 C-32,-126 -20,-100 -8,-84 Z"/>
+      <path d="M26,-76 C40,-100 46,-128 42,-146 C32,-126 20,-100 8,-84 Z"/>
+      <!-- angular brow ridge over the eyes -->
+      <path d="M-56,-20 L-14,-6 L0,-18 L14,-6 L56,-20 L52,-34 L0,-44 L-52,-34 Z"/>
+      <!-- neck spines -->
+      <path d="M-46,112 L-72,98 L-50,136 Z"/>
+      <path d="M-50,202 L-78,192 L-52,226 Z"/>
+      <path d="M-52,298 L-80,292 L-52,322 Z"/>
+      <path d="M50,112 L76,98 L54,136 Z"/>
+      <path d="M54,202 L82,192 L56,226 Z"/>
+    </g>
+
+    <!-- one goofy head, front-facing -->
+    <g id="goofy">
+      <path d="M-36,44 C-48,180 -56,330 -50,470 L54,470 C60,330 50,180 38,44 Z"/>
+      <!-- round friendly skull -->
+      <path d="M0,-84 C46,-84 78,-52 78,-12 C78,32 44,68 0,68
+               C-44,68 -78,32 -78,-12 C-78,-52 -46,-84 0,-84 Z"/>
+      <!-- short floppy horns -->
+      <path d="M-42,-62 C-62,-92 -52,-116 -32,-114 C-44,-100 -46,-80 -30,-58 Z"/>
+      <path d="M42,-62 C62,-92 52,-116 32,-114 C44,-100 46,-80 30,-58 Z"/>
+      <!-- rounded neck bumps -->
+      <circle cx="-48" cy="132" r="10"/>
+      <circle cx="-52" cy="212" r="9"/>
+      <circle cx="-53" cy="290" r="8"/>
+    </g>
+  </defs>
+
+  <rect width="960" height="620" fill="url(#sky)"/>
+
+  <g fill="#101a25">
+    <use xlink:href="#scary" x="215" y="180"/>
+    <use xlink:href="#scary" x="480" y="150" transform="translate(0,0)"/>
+    <use xlink:href="#goofy" x="748" y="192"/>
+  </g>
+
+  <!-- CALCULUS: angry eyes + fangs -->
+  <g transform="translate(215,180)">
+    <path d="M-48,-14 L-10,10 L-14,20 L-50,0 Z" fill="#ffd23f"/>
+    <path d="M48,-14 L10,10 L14,20 L50,0 Z" fill="#ffd23f"/>
+    <path d="M-38,-6 L-20,6 L-23,12 L-40,2 Z" fill="#141414"/>
+    <path d="M38,-6 L20,6 L23,12 L40,2 Z" fill="#141414"/>
+    <g fill="#f4f4f4">
+      <path d="M-20,54 L-14,74 L-8,54 Z"/>
+      <path d="M-4,58 L1,76 L6,58 Z"/>
+      <path d="M10,54 L16,74 L22,54 Z"/>
+    </g>
+  </g>
+
+  <!-- LINEAR ALGEBRA: angry eyes + fangs -->
+  <g transform="translate(480,150)">
+    <path d="M-48,-14 L-10,10 L-14,20 L-50,0 Z" fill="#ffd23f"/>
+    <path d="M48,-14 L10,10 L14,20 L50,0 Z" fill="#ffd23f"/>
+    <path d="M-38,-6 L-20,6 L-23,12 L-40,2 Z" fill="#141414"/>
+    <path d="M38,-6 L20,6 L23,12 L40,2 Z" fill="#141414"/>
+    <g fill="#f4f4f4">
+      <path d="M-20,54 L-14,74 L-8,54 Z"/>
+      <path d="M-4,58 L1,76 L6,58 Z"/>
+      <path d="M10,54 L16,74 L22,54 Z"/>
+    </g>
+  </g>
+
+  <!-- DISCRETE MATHEMATICS: googly eyes + tongue -->
+  <g transform="translate(748,192)">
+    <circle cx="-30" cy="-6" r="27" fill="#ffffff"/>
+    <circle cx="32"  cy="-10" r="24" fill="#ffffff"/>
+    <circle cx="-22" cy="2"  r="11" fill="#141414"/>
+    <circle cx="26"  cy="-19" r="9"  fill="#141414"/>
+    <!-- lopsided grin -->
+    <path d="M-26,36 C-8,52 22,52 38,34" stroke="#141414" stroke-width="5"
+          fill="none" stroke-linecap="round"/>
+    <!-- lolling tongue -->
+    <path d="M6,44 C22,48 26,70 12,80 C0,88 -12,78 -8,62 C-6,52 -2,46 6,44 Z"
+          fill="#ff8fa3"/>
+    <!-- one snaggletooth -->
+    <path d="M-16,36 L-11,50 L-6,35 Z" fill="#f4f4f4"/>
+  </g>
+
+  <!-- labels -->
+  <g font-family="Helvetica,Arial,sans-serif" font-size="27" font-weight="bold"
+     fill="#ffffff" text-anchor="middle">
+    <text x="215" y="596">Calculus</text>
+    <text x="480" y="596">Linear Algebra</text>
+    <text x="748" y="596">Discrete Mathematics</text>
+  </g>
+</svg>

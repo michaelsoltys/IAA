@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1130 330" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+    <marker id="arr-lms" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d62828"/>
+    </marker>
+  </defs>
+  <path d="M 55.1 270.2 Q 152.5 207.0 249.9 270.2" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 56.1 271.9 Q 227.5 185.0 398.9 271.9" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 56.3 272.3 Q 265.0 174.0 473.7 272.3" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 56.4 272.7 Q 302.5 163.0 548.6 272.7" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 56.6 272.9 Q 340.0 152.0 623.4 272.9" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 56.6 273.1 Q 377.5 141.0 698.4 273.1" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 56.8 273.5 Q 452.5 119.0 848.2 273.5" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 56.8 273.6 Q 490.0 108.0 923.2 273.6" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 56.9 273.7 Q 527.5 97.0 998.1 273.7" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 56.9 273.8 Q 565.0 86.0 1073.1 273.8" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 130.7 271.2 Q 265.0 196.0 399.3 271.2" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 131.6 272.9 Q 415.0 152.0 698.4 272.9" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 131.7 273.3 Q 490.0 130.0 848.3 273.3" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 131.8 273.5 Q 527.5 119.0 923.2 273.5" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 131.9 273.7 Q 602.5 97.0 1073.1 273.7" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 200.7 265.5 Q 227.5 229.0 254.3 265.5" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 205.1 270.2 Q 302.5 207.0 399.9 270.2" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 205.7 271.2 Q 340.0 196.0 474.3 271.2" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 206.1 271.9 Q 377.5 185.0 548.9 271.9" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 206.3 272.3 Q 415.0 174.0 623.7 272.3" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 206.4 272.7 Q 452.5 163.0 698.6 272.7" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 206.6 272.9 Q 490.0 152.0 773.4 272.9" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 206.6 273.1 Q 527.5 141.0 848.4 273.1" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 206.7 273.3 Q 565.0 130.0 923.3 273.3" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 206.8 273.5 Q 602.5 119.0 998.2 273.5" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 206.8 273.6 Q 640.0 108.0 1073.2 273.6" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 281.3 272.3 Q 490.0 174.0 698.7 272.3" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 281.6 273.1 Q 602.5 141.0 923.4 273.1" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 281.8 273.5 Q 677.5 119.0 1073.2 273.5" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 350.7 265.5 Q 377.5 229.0 404.3 265.5" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 353.9 268.5 Q 415.0 218.0 476.1 268.5" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 355.1 270.2 Q 452.5 207.0 549.9 270.2" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 355.7 271.2 Q 490.0 196.0 624.3 271.2" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 356.1 271.9 Q 527.5 185.0 698.9 271.9" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 356.3 272.3 Q 565.0 174.0 773.7 272.3" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 356.4 272.7 Q 602.5 163.0 848.6 272.7" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 356.6 272.9 Q 640.0 152.0 923.4 272.9" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 356.6 273.1 Q 677.5 141.0 998.4 273.1" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 356.7 273.3 Q 715.0 130.0 1073.3 273.3" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 431.4 272.7 Q 677.5 163.0 923.6 272.7" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 500.7 265.5 Q 527.5 229.0 554.3 265.5" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 503.9 268.5 Q 565.0 218.0 626.1 268.5" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 505.1 270.2 Q 602.5 207.0 699.9 270.2" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 506.1 271.9 Q 677.5 185.0 848.9 271.9" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 506.3 272.3 Q 715.0 174.0 923.7 272.3" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 506.6 272.9 Q 790.0 152.0 1073.4 272.9" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 578.9 268.5 Q 640.0 218.0 701.1 268.5" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 580.7 271.2 Q 715.0 196.0 849.3 271.2" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 581.1 271.9 Q 752.5 185.0 923.9 271.9" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 581.4 272.7 Q 827.5 163.0 1073.6 272.7" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 650.7 265.5 Q 677.5 229.0 704.3 265.5" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 655.1 270.2 Q 752.5 207.0 849.9 270.2" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 655.7 271.2 Q 790.0 196.0 924.3 271.2" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 656.3 272.3 Q 865.0 174.0 1073.7 272.3" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 800.7 265.5 Q 827.5 229.0 854.3 265.5" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 803.9 268.5 Q 865.0 218.0 926.1 268.5" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 805.1 270.2 Q 902.5 207.0 999.9 270.2" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 805.7 271.2 Q 940.0 196.0 1074.3 271.2" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 875.7 265.5 Q 902.5 229.0 929.3 265.5" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 880.1 270.2 Q 977.5 207.0 1074.9 270.2" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 1025.7 265.5 Q 1052.5 229.0 1079.3 265.5" fill="none" stroke="#cbd5e1" stroke-width="0.9" marker-end="url(#arr-gray)"/>
+  <path d="M 50.7 265.5 Q 77.5 229.0 104.3 265.5" fill="none" stroke="#d62828" stroke-width="2.2" marker-end="url(#arr-lms)"/>
+  <path d="M 128.9 268.5 Q 190.0 218.0 251.1 268.5" fill="none" stroke="#d62828" stroke-width="2.2" marker-end="url(#arr-lms)"/>
+  <path d="M 278.9 268.5 Q 340.0 218.0 401.1 268.5" fill="none" stroke="#d62828" stroke-width="2.2" marker-end="url(#arr-lms)"/>
+  <path d="M 430.7 271.2 Q 565.0 196.0 699.3 271.2" fill="none" stroke="#d62828" stroke-width="2.2" marker-end="url(#arr-lms)"/>
+  <path d="M 730.1 270.2 Q 827.5 207.0 924.9 270.2" fill="none" stroke="#d62828" stroke-width="2.2" marker-end="url(#arr-lms)"/>
+  <g font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="600" text-anchor="middle" dominant-baseline="central">
+    <circle cx="40" cy="280" r="18" fill="#fee2e2" stroke="#d62828" stroke-width="2"/>
+    <text x="40" y="280" fill="#991b1b">3</text>
+    <circle cx="115" cy="280" r="18" fill="#fee2e2" stroke="#d62828" stroke-width="2"/>
+    <text x="115" y="280" fill="#991b1b">7</text>
+    <circle cx="190" cy="280" r="18" fill="#e0f2fe" stroke="#0369a1" stroke-width="1.2"/>
+    <text x="190" y="280" fill="#0c4a6e">2</text>
+    <circle cx="265" cy="280" r="18" fill="#fee2e2" stroke="#d62828" stroke-width="2"/>
+    <text x="265" y="280" fill="#991b1b">8</text>
+    <circle cx="340" cy="280" r="18" fill="#e0f2fe" stroke="#0369a1" stroke-width="1.2"/>
+    <text x="340" y="280" fill="#0c4a6e">1</text>
+    <circle cx="415" cy="280" r="18" fill="#fee2e2" stroke="#d62828" stroke-width="2"/>
+    <text x="415" y="280" fill="#991b1b">9</text>
+    <circle cx="490" cy="280" r="18" fill="#e0f2fe" stroke="#0369a1" stroke-width="1.2"/>
+    <text x="490" y="280" fill="#0c4a6e">4</text>
+    <circle cx="565" cy="280" r="18" fill="#e0f2fe" stroke="#0369a1" stroke-width="1.2"/>
+    <text x="565" y="280" fill="#0c4a6e">6</text>
+    <circle cx="640" cy="280" r="18" fill="#e0f2fe" stroke="#0369a1" stroke-width="1.2"/>
+    <text x="640" y="280" fill="#0c4a6e">5</text>
+    <circle cx="715" cy="280" r="18" fill="#fee2e2" stroke="#d62828" stroke-width="2"/>
+    <text x="715" y="280" fill="#991b1b">10</text>
+    <circle cx="790" cy="280" r="18" fill="#e0f2fe" stroke="#0369a1" stroke-width="1.2"/>
+    <text x="790" y="280" fill="#0c4a6e">2</text>
+    <circle cx="865" cy="280" r="18" fill="#e0f2fe" stroke="#0369a1" stroke-width="1.2"/>
+    <text x="865" y="280" fill="#0c4a6e">7</text>
+    <circle cx="940" cy="280" r="18" fill="#fee2e2" stroke="#d62828" stroke-width="2"/>
+    <text x="940" y="280" fill="#991b1b">11</text>
+    <circle cx="1015" cy="280" r="18" fill="#e0f2fe" stroke="#0369a1" stroke-width="1.2"/>
+    <text x="1015" y="280" fill="#0c4a6e">3</text>
+    <circle cx="1090" cy="280" r="18" fill="#e0f2fe" stroke="#0369a1" stroke-width="1.2"/>
+    <text x="1090" y="280" fill="#0c4a6e">8</text>
+  </g>
+</svg>

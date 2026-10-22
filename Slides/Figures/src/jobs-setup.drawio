@@ -1,0 +1,61 @@
+<mxfile host="Electron" agent="5.0">
+  <diagram name="jobs-setup" id="jobs-setup">
+    <mxGraphModel grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="0" page="0" pageScale="1" pageWidth="740" pageHeight="292" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#e2e8f0;strokeWidth=1;absoluteArcSize=1;arcSize=14;" value="" vertex="1">
+          <mxGeometry height="268" width="340" x="12" y="12" as="geometry" />
+        </mxCell>
+        <mxCell id="3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#e2e8f0;strokeWidth=1;absoluteArcSize=1;arcSize=14;" value="" vertex="1">
+          <mxGeometry height="268" width="340" x="388" y="12" as="geometry" />
+        </mxCell>
+        <mxCell id="4" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=17;fontColor=#0f172a;fontStyle=1;" value="n jobs, each unit time" vertex="1">
+          <mxGeometry height="28" width="340" x="12" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="5" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;fontColor=#64748b;fontStyle=2;" value="one profit, one deadline" vertex="1">
+          <mxGeometry height="22" width="340" x="12" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0f172a;strokeWidth=2.1;absoluteArcSize=1;arcSize=10;fontFamily=Helvetica;fontSize=13;fontColor=#0f172a;fontStyle=1;" value="Job 1&lt;br&gt;&lt;font style=&quot;font-size:12px;color:#64748b;font-weight:normal;font-style:italic;&quot;&gt;d = 1, g = 10&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="136" x="44" y="96" as="geometry" />
+        </mxCell>
+        <mxCell id="7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0f172a;strokeWidth=2.1;absoluteArcSize=1;arcSize=10;fontFamily=Helvetica;fontSize=13;fontColor=#0f172a;fontStyle=1;" value="Job 2&lt;br&gt;&lt;font style=&quot;font-size:12px;color:#64748b;font-weight:normal;font-style:italic;&quot;&gt;d = 1, g = 10&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="136" x="194" y="96" as="geometry" />
+        </mxCell>
+        <mxCell id="8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0f172a;strokeWidth=2.1;absoluteArcSize=1;arcSize=10;fontFamily=Helvetica;fontSize=13;fontColor=#0f172a;fontStyle=1;" value="Job 3&lt;br&gt;&lt;font style=&quot;font-size:12px;color:#64748b;font-weight:normal;font-style:italic;&quot;&gt;d = 2, g = 8&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="136" x="44" y="182" as="geometry" />
+        </mxCell>
+        <mxCell id="9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0f172a;strokeWidth=2.1;absoluteArcSize=1;arcSize=10;fontFamily=Helvetica;fontSize=13;fontColor=#0f172a;fontStyle=1;" value="Job 4&lt;br&gt;&lt;font style=&quot;font-size:12px;color:#64748b;font-weight:normal;font-style:italic;&quot;&gt;d = 2, g = 8&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="136" x="194" y="182" as="geometry" />
+        </mxCell>
+        <mxCell id="10" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=17;fontColor=#0f172a;fontStyle=1;" value="One processor" vertex="1">
+          <mxGeometry height="28" width="340" x="388" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="11" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;fontColor=#64748b;fontStyle=2;" value="d = max dᵢ  slots" vertex="1">
+          <mxGeometry height="22" width="340" x="388" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;strokeWidth=2;absoluteArcSize=1;arcSize=10;fontFamily=Times New Roman;fontSize=18;fontColor=#94a3b8;fontStyle=2;" value="0" vertex="1">
+          <mxGeometry height="64" width="90" x="448" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;strokeWidth=2;absoluteArcSize=1;arcSize=10;fontFamily=Times New Roman;fontSize=18;fontColor=#94a3b8;fontStyle=2;" value="0" vertex="1">
+          <mxGeometry height="64" width="90" x="554" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="14" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontColor=#64748b;fontStyle=0;" value="t = 1" vertex="1">
+          <mxGeometry height="18" width="90" x="448" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="15" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontColor=#64748b;fontStyle=0;" value="t = 2" vertex="1">
+          <mxGeometry height="18" width="90" x="554" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="16" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;fontColor=#0f766e;fontStyle=2;" value="schedule them sequentially" vertex="1">
+          <mxGeometry height="24" width="340" x="388" y="236" as="geometry" />
+        </mxCell>
+        <mxCell id="17" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=#0f766e;strokeWidth=2.6;startArrow=none;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="352" y="146" as="sourcePoint" />
+            <mxPoint x="388" y="146" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,58 @@
+<mxfile host="Electron" agent="5.0">
+  <diagram name="re-laws-test" id="re-laws-test">
+    <mxGraphModel grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="0" page="0" pageScale="1" pageWidth="760" pageHeight="300" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#e2e8f0;strokeWidth=1;absoluteArcSize=1;arcSize=14;" value="" vertex="1">
+          <mxGeometry height="276" width="736" x="12" y="12" as="geometry" />
+        </mxCell>
+        <mxCell id="3" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=17;fontColor=#0f172a;fontStyle=1;" value="Test: replace variables by distinct letters" vertex="1">
+          <mxGeometry height="24" width="736" x="12" y="22" as="geometry" />
+        </mxCell>
+        <mxCell id="4" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;fontColor=#64748b;fontStyle=2;" value="one free instance decides the law" vertex="1">
+          <mxGeometry height="18" width="736" x="12" y="46" as="geometry" />
+        </mxCell>
+        <mxCell id="5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ccfbf1;strokeColor=#0f766e;strokeWidth=2.4;absoluteArcSize=1;arcSize=10;fontFamily=Times New Roman;fontSize=20;fontColor=#0f172a;fontStyle=2;" value="(R + P)*" vertex="1">
+          <mxGeometry height="52" width="200" x="70" y="82" as="geometry" />
+        </mxCell>
+        <mxCell id="6" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=28;fontColor=#0f172a;fontStyle=0;" value="=" vertex="1">
+          <mxGeometry height="40" width="50" x="280" y="88" as="geometry" />
+        </mxCell>
+        <mxCell id="7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ccfbf1;strokeColor=#0f766e;strokeWidth=2.4;absoluteArcSize=1;arcSize=10;fontFamily=Times New Roman;fontSize=20;fontColor=#0f172a;fontStyle=2;" value="(R* P*)*" vertex="1">
+          <mxGeometry height="52" width="200" x="340" y="82" as="geometry" />
+        </mxCell>
+        <mxCell id="8" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontColor=#64748b;fontStyle=0;" value="claimed law" vertex="1">
+          <mxGeometry height="32" width="160" x="560" y="92" as="geometry" />
+        </mxCell>
+        <mxCell id="9" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=#0f766e;strokeWidth=2.6;startArrow=none;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="250" y="140" as="sourcePoint" />
+            <mxPoint x="250" y="168" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=15;fontColor=#0f766e;fontStyle=2;" value="R ↦ a,   P ↦ b" vertex="1">
+          <mxGeometry height="24" width="280" x="300" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ccfbf1;strokeColor=#0f766e;strokeWidth=2.4;absoluteArcSize=1;arcSize=10;fontFamily=Times New Roman;fontSize=20;fontColor=#0f172a;fontStyle=2;" value="(a + b)*" vertex="1">
+          <mxGeometry height="52" width="200" x="70" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="12" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=28;fontColor=#0f172a;fontStyle=0;" value="=" vertex="1">
+          <mxGeometry height="40" width="50" x="280" y="186" as="geometry" />
+        </mxCell>
+        <mxCell id="13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ccfbf1;strokeColor=#0f766e;strokeWidth=2.4;absoluteArcSize=1;arcSize=10;fontFamily=Times New Roman;fontSize=20;fontColor=#0f172a;fontStyle=2;" value="(a* b*)*" vertex="1">
+          <mxGeometry height="52" width="200" x="340" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="14" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontColor=#64748b;fontStyle=0;" value="concrete REs" vertex="1">
+          <mxGeometry height="32" width="160" x="560" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ccfbf1;strokeColor=#0f766e;strokeWidth=2.4;absoluteArcSize=1;arcSize=10;fontFamily=Times New Roman;fontSize=20;fontColor=#0f172a;fontStyle=2;" value="{a, b}*" vertex="1">
+          <mxGeometry height="40" width="300" x="230" y="242" as="geometry" />
+        </mxCell>
+        <mxCell id="16" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=15;fontColor=#0f766e;fontStyle=2;" value="languages match, law holds" vertex="1">
+          <mxGeometry height="28" width="180" x="540" y="248" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
