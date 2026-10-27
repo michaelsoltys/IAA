@@ -50,3 +50,7 @@ Slides/Figures/.$.*
 .idea/
 *.sublime-project
 *.sublime-workspace
+# COMP 490 winter pitch deck and its figures (local only, never pushed)
+Slides/slide_aws.md
+Slides/Figures/aws-pitch-*
+Slides/Figures/src/aws-pitch-*

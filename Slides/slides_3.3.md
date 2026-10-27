@@ -130,7 +130,6 @@ R(G, u, v, i):
 
 since any path in an $n$-node graph has length $\leq n \leq 2^{\lceil \log_2 n \rceil}$
 
-
 ---
 
 # Example: Recursion Stack
