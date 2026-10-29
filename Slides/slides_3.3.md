@@ -140,7 +140,12 @@ The recursion tree only ever holds $O(\log n)$ midpoints at once — that's wher
 
 </div>
 
-<div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.5rem; align-items: center;">
+<style>
+.rstack .katex-display { margin: 0.2em 0 0.5em 0; }
+.rstack p { margin: 0.25em 0; }
+</style>
+
+<div class="rstack" style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.5rem; align-items: center; font-size: 0.88em;">
 <div>
 
 5×5 grid; query $\text{R}(s, t, 3)$ — path of length $\leq 8$?
@@ -163,7 +168,7 @@ Stack depth $= O(\log n)$; each frame stores one vertex.
 
 </div>
 <div style="text-align: center;">
-<img src="./Figures/savitch_recursion.svg" style="max-height: 380px; width: 100%;" />
+<img src="./Figures/savitch_recursion.svg" style="max-height: 320px; width: 100%;" />
 </div>
 </div>
 

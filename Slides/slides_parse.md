@@ -18,6 +18,12 @@ mdc: false
 
 Parsers — From context-free grammars on the page to working compilers built with Bison and Yacc.
 
+<figure style="margin: 1.2em auto 0; width: fit-content; text-align: center;">
+<img src="./Figures/knuth-1965.jpg" style="height: 140px; width: auto; border-radius: 8px; margin: 0 auto;" alt="Donald Knuth at a blackboard, 1965" />
+<figcaption style="font-size: 0.55em; color: #64748b; margin-top: 0.35em;">Donald Knuth in 1965, the year of his LR(k) paper</figcaption>
+<div style="font-size: 0.45em; color: #9ca3af; line-height: 1.3;">Photo: <em>The Big T</em>, Caltech yearbook, 1965. Public domain, Wikimedia Commons</div>
+</figure>
+
 <div style="position: absolute; bottom: 20px; right: 30px; font-size: 0.55em; color: navy;">All references are to the 4th edition of <em>An Introduction to the Analysis of Algorithms</em> (World Scientific, 2025)</div>
 
 ---
@@ -36,7 +42,9 @@ A grammar describes the language; a parser generator turns it into a working rec
 - **Parser generators** automatically create parsers from CFG specifications
 
 
-CFG Specification → Parser Generator → Working Parser
+<img src="./Figures/parse-pipeline-parser.svg" class="mx-auto mt-8" style="width: 100%; max-height: 135px; object-fit: contain;" alt="Pipeline: source code, Flex/Lex, token stream, Bison/Yacc (highlighted), parse tree" />
+
+<div style="font-size: 0.6em; color: #64748b; text-align: center; margin-top: 0.4em;">The parser generator (highlighted) turns CFG rules into the parser.</div>
 
 
 ---
@@ -49,6 +57,8 @@ It reads tokens, checks them against grammar rules, and either accepts or builds
 
 </div>
 
+<div class="grid gap-6" style="grid-template-columns: 2fr 3fr;">
+<div>
 
 A parser is a program that:
 
@@ -59,6 +69,16 @@ A parser is a program that:
 
 
 **Example:** Is a JSON object like name:Alice valid?
+
+</div>
+<div style="text-align: center;">
+
+<img src="./Figures/parse-json-tree.svg" class="mx-auto" style="max-height: 330px;" alt="Parse tree for a two-member JSON object" />
+
+<div style="font-size: 0.6em; color: #64748b; margin-top: 0.3em;">Parse tree for <code>{"name": "Alice", "age": 30}</code></div>
+
+</div>
+</div>
 
 
 ---
@@ -97,38 +117,26 @@ Flex turns characters into tokens; Bison turns tokens into a parse — two tools
 
 </div>
 
-<div class="grid grid-cols-2 gap-8 mt-8">
+<div class="grid grid-cols-2 gap-8 mt-4">
 <div>
-
 
 **Flex (Lexer Generator)**
 - Input: Regular expressions
 - Output: Lexical analyzer (scanner)
 - Converts character stream to tokens
 
+</div>
+<div>
+
 **Bison (Parser Generator)**
 - Input: CFG rules
 - Output: Parser
 - Analyzes token stream
 
-
-</div>
-<div>
-
-
-Source Code
-
-→ Flex/Lex (regex rules)
-
-→ Token Stream
-
-→ Bison/Yacc (CFG rules)
-
-→ Parse Result
-
-
 </div>
 </div>
+
+<img src="./Figures/parse-pipeline-tools.svg" class="mx-auto mt-6" style="width: 100%; max-height: 135px; object-fit: contain;" alt="Pipeline: source code, Flex/Lex (highlighted), token stream, Bison/Yacc (highlighted), parse tree" />
 
 ---
 
@@ -140,6 +148,9 @@ Each regex maps to a token — a direct application of regular languages from Se
 
 </div>
 
+<div class="grid grid-cols-2 gap-6">
+<div>
+
 Flex uses **regular expressions** to define tokens:
 
 - Match literal braces: return LBRACE, RBRACE
@@ -148,6 +159,16 @@ Flex uses **regular expressions** to define tokens:
 - Match quoted strings: return STRING token
 - Match numbers: return NUMBER token
 - Skip whitespace
+
+</div>
+<div style="text-align: center;">
+
+<img src="./Figures/parse-dfa.svg" class="mx-auto mt-2" style="max-height: 235px;" alt="DFA for [0-9]+ and the keyword true" />
+
+<div style="font-size: 0.6em; color: #64748b; margin-top: 0.4em; text-align: left;">Flex compiles all the rules into one DFA. This one covers <code>[0-9]+</code> and <code>"true"</code>. Accepting states return a token; missing edges go to a reject state. DFAs are Section 9.3.</div>
+
+</div>
+</div>
 
 
 This connects to **Regular Languages** (Section 9.3)!
@@ -183,7 +204,7 @@ Lex is the 1975 Bell Labs original; Flex is the open-source rewrite — same `.l
 
 </div>
 
-<div class="grid grid-cols-2 gap-8">
+<div class="grid grid-cols-3 gap-6">
 <div>
 
 **Lex** (original, 1975)
@@ -200,6 +221,13 @@ Lex is the 1975 Bell Labs original; Flex is the open-source rewrite — same `.l
 - Faster and more features
 - What you should use today
 
+</div>
+<div>
+<figure style="margin: 0.4em 0 0;">
+<img src="./Figures/bell-labs-murray-hill.jpg" style="width: 100%; max-height: 140px; object-fit: cover; border-radius: 8px;" alt="Aerial view of the Bell Labs campus, Murray Hill, New Jersey" />
+<figcaption style="font-size: 0.55em; color: #64748b; margin-top: 0.35em;">Bell Labs, Murray Hill, New Jersey</figcaption>
+<div style="font-size: 0.45em; color: #9ca3af; line-height: 1.3;">Photo: Ken Lund, CC BY-SA 2.0, Wikimedia Commons</div>
+</figure>
 </div>
 </div>
 
@@ -288,7 +316,14 @@ Yacc is the 1975 LALR(1) original; Bison is the GNU rewrite — backward compati
 </div>
 <div style="text-align: center;">
 
-<img src="/gnu_head.png" style="max-height: 200px; margin: 0 auto;" />
+<div style="display: flex; justify-content: center; align-items: flex-end; gap: 1.2em;">
+<img src="/gnu_head.png" style="max-height: 140px;" />
+<figure style="margin: 0; text-align: center;">
+<img src="./Figures/dragon-book-2e.jpg" style="max-height: 140px; margin: 0 auto; border-radius: 4px;" alt="Cover of Compilers: Principles, Techniques, and Tools, 2nd edition" />
+</figure>
+</div>
+<div style="font-size: 0.55em; color: #64748b; margin-top: 0.35em;">The "Dragon Book" (Aho, Lam, Sethi, Ullman, 2nd ed., 2006) covers LR parsing and Yacc.</div>
+<div style="font-size: 0.45em; color: #9ca3af; line-height: 1.3;">Cover: Addison-Wesley, 2006. Low-resolution image from Wikipedia, used under fair use.</div>
 
 <div style="font-size: 0.7em; color: #444; margin-top: 10px; text-align: left;">
 
@@ -444,6 +479,37 @@ Side-by-side: textbook CFG on the left, the same rules in Bison `.y` syntax on t
 
 ---
 
+# JSON Grammar as Railroad Diagrams
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+
+The JSON spec draws the same grammar as railroad diagrams. Any path from left to right is a valid string.
+
+</div>
+
+<div class="grid grid-cols-2 gap-6 items-start">
+<div>
+
+**object**
+
+<img src="./Figures/json-railroad-object.png" style="width: 100%; max-height: 200px; object-fit: contain;" alt="Railroad diagram for a JSON object" />
+
+The loop back through "," is the recursive rule for members.
+
+</div>
+<div>
+
+**value**
+
+<img src="./Figures/json-railroad-value.png" style="width: 100%; max-height: 300px; object-fit: contain;" alt="Railroad diagram for a JSON value" />
+
+</div>
+</div>
+
+<div style="font-size: 0.55em; color: #9ca3af; margin-top: 0.6em;">Diagrams: Douglas Crockford, json.org (https://www.json.org/json-en.html)</div>
+
+---
+
 # Recursive Rules
 
 <div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
@@ -452,17 +518,28 @@ Self-referential productions are how CFGs express lists of unbounded length.
 
 </div>
 
-
 **Key insight:** Lists are naturally recursive!
+
+<div class="grid grid-cols-2 gap-6" style="font-size: 0.9em; margin-top: -0.8em; margin-bottom: -0.6em;">
+<div>
 
 **Members** (key-value pairs in objects):
 - Base case: One member
 - Recursive: One member, comma, more members
 
+</div>
+<div>
+
 **Elements** (values in arrays):
 - Base case: One element
 - Recursive: One value, comma, more values
 
+</div>
+</div>
+
+<img src="./Figures/parse-members-tree.svg" class="mx-auto" style="max-height: 200px;" alt="members unrolled for three key-value pairs" />
+
+<div style="font-size: 0.6em; color: #64748b; text-align: center;"><code>members</code> for <code>"a": 1, "b": 2, "c": 3</code>. Each level peels off one pair.</div>
 
 This is exactly how CFGs handle **unbounded repetition**!
 
@@ -509,6 +586,20 @@ Every concept in Chapter 9 has a direct counterpart in real lexer and parser too
 
 ---
 
+# The Parser Stack: Parsing [1, 2]
+
+<div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
+
+Bison runs a pushdown automaton: shift tokens, reduce when a rule's right side is on top.
+
+</div>
+
+<img src="./Figures/parse-lr-stack.svg" class="mx-auto" style="width: 100%; max-height: 340px; object-fit: contain;" alt="Twelve shift and reduce steps parsing [1, 2]" />
+
+<div style="font-size: 0.6em; color: #64748b; text-align: center; margin-top: 0.3em;">Rules used: json → value, value → NUMBER | array, array → LBRACK elements RBRACK, elements → value | value COMMA elements. $ marks the end of input.</div>
+
+---
+
 # Why This Matters
 
 <div style="color: #9ca3af; font-style: italic; font-size: 0.9em; margin-bottom: 0.8em;">
@@ -526,6 +617,15 @@ Compilers, data formats, config files, protocols — parsers are quietly running
 
 
 Every time you use a programming language, a parser (built from CFG theory) is at work!
+
+<div style="display: flex; justify-content: center; align-items: flex-end; gap: 3em; margin-top: 0.6em;">
+<figure style="margin: 0; text-align: center;"><img src="./Figures/logo-json.svg" style="height: 52px; margin: 0 auto;" alt="JSON logo" /><figcaption style="font-size: 0.55em; color: #64748b;">JSON</figcaption></figure>
+<figure style="margin: 0; text-align: center;"><img src="./Figures/logo-python.svg" style="height: 52px; margin: 0 auto;" alt="Python logo" /><figcaption style="font-size: 0.55em; color: #64748b;">Python</figcaption></figure>
+<figure style="margin: 0; text-align: center;"><img src="./Figures/icon-database.svg" style="height: 52px; margin: 0 auto; opacity: 0.75;" alt="Database icon" /><figcaption style="font-size: 0.55em; color: #64748b;">SQL</figcaption></figure>
+<figure style="margin: 0; text-align: center;"><img src="./Figures/logo-nginx.svg" style="height: 26px; margin: 0 auto 13px;" alt="nginx logo" /><figcaption style="font-size: 0.55em; color: #64748b;">nginx.conf</figcaption></figure>
+</div>
+
+<div style="font-size: 0.45em; color: #9ca3af; text-align: center; margin-top: 0.5em;">Wikimedia Commons: JSON logo, Douglas Crockford, public domain. Python logo, python.org, public domain. Database icon, Zahra Ibrahem, CC BY-SA 4.0. nginx logo, Igor Sysoev, public domain.</div>
 
 ---
 
